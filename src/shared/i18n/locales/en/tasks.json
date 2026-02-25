@@ -1,0 +1,23 @@
+{
+  "pageTitle": {
+    "title": "Tasks",
+    "subtitle": "Manage your tasks efficiently"
+  },
+  "actions": {
+    "add": "Add task",
+    "edit": "Edit task"
+  },
+  "tasksByPriority": {
+    "header": "Tasks by Priority",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "selectAPriority": "Select a priority",
+  "snackbar": {
+    "addSuccess": "Task added successfully",
+    "editSuccess": "Task updated successfully",
+    "deleteSuccess": "Task deleted successfully",
+    "deleteError": "Error deleting task"
+  }
+}

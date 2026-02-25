@@ -1,0 +1,23 @@
+{
+  "search": "Search",
+  "edit": "Edit",
+  "delete": "Delete",
+  "cancel": "Cancel",
+  "add": "Add",
+  "save": "Save",
+  "title": "Title",
+  "dueDate": "Due Date",
+  "priority": "Priority",
+  "completed": "Completed",
+  "high": "High",
+  "medium": "Medium",
+  "low": "Low",
+  "active": "Active",
+  "confirmDelete": "Confirm Delete",
+  "confirmDeleteMessage": "Are you sure you want to delete this item?",
+  "user": "User",
+  "administrator": "Administrator",
+  "goToDashboard": "Go to Dashboard",
+  "goBack": "Go Back",
+  "id": "ID"
+}

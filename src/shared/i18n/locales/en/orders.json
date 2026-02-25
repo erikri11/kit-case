@@ -1,0 +1,23 @@
+{
+  "pageTitle": {
+    "title": "Orders",
+    "subtitle": "Manage your orders efficiently"
+  },
+  "customerName": "Customer Name",
+  "totalAmount": "Total Amount",
+  "status": "Status",
+  "createdAt": "Created At",
+  "ordersByStatus": {
+    "header": "Orders by Status",
+    "pending": "Pending",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
+  }
+}
+
+
+
+  
+  
+
+
