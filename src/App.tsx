@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { Box, Container, Toolbar } from "@mui/material";
+import { menuItems } from './app/config/menuConfig';
+import { DRAWER_WIDTH } from './shared/types/drawerWidth';
+import AppHeader from '@widgets/AppHeader/AppHeader';
+import AppFooter from '@widgets/AppFooter';
+import { PersistentDrawer } from './layout/PersistentDrawer';
+import { AppRoutes } from './app/routes/router';
 
-function App() {
-  const [count, setCount] = useState(0)
+export function App() {
+ const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(open => !open);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Box sx={{ display: "flex" }}>
+      <AppHeader onMenuClick={handleDrawerToggle} />
+
+      <PersistentDrawer
+        mobileOpen={mobileOpen}
+        onClose={handleDrawerToggle}
+        menuItems={menuItems}
+      />
+
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` }
+        }}
+      >
+        {/* Push content below AppBar */}
+        <Toolbar />
+
+        <Container maxWidth={false} disableGutters sx={{ flex: 1 }}>
+          <Container maxWidth="xl" sx={{ py: 4 }}>
+            <AppRoutes />
+          </Container>
+        </Container>
+
+        <AppFooter />
+      </Box>
+    </Box>
+  );
 }
 
-export default App
+export default App;
