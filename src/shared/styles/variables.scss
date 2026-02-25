@@ -1,0 +1,19 @@
+$font-family-base: 'Lato', 'Roboto', 'Open Sans', 'sans-serif';
+$font-family-base-variant: 'Roboto', 'Lato', 'Open Sans', 'sans-serif';
+
+$font-size-base: 1rem;
+$font-weight-light: 300;
+$font-weight-normal: 400; 
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+:root {
+  --font-family-base: #{$font-family-base};
+  --font-family-base-variant: #{$font-family-base-variant};
+
+  --font-size-base: #{$font-size-base};
+  --font-weight-light: #{$font-weight-light};
+  --font-weight-normal: #{$font-weight-normal};
+  --font-weight-medium: #{$font-weight-medium};
+  --font-weight-bold: #{$font-weight-bold};
+}
