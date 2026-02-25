@@ -1,0 +1,9 @@
+import { render } from '@testing-library/react';
+import FormControl from './FormControl';
+
+describe('FormControl', () => {
+  it('should render successfully', () => {
+    const { baseElement } = render(<FormControl><div>Test</div></FormControl>);
+    expect(baseElement).toBeTruthy();
+  });
+});
