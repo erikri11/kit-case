@@ -4,7 +4,7 @@ import { useColorScheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Brightness4, Brightness7, BrightnessAuto } from '@mui/icons-material';
 import { AppBarLogo } from './AppBarLogo';
-import { useUserRights } from '../../shared/context/userRights/userRights';
+import { useUserRights } from '../../shared/context/userRights/useUserRights';
 import LanguageToggle from '@shared/components/LanguageToggle';
 import Select from '@shared/mui/Select/Select';
 import { RoleEnum } from '@shared/types/roleEnum';

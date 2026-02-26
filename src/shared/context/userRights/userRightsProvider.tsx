@@ -1,5 +1,5 @@
 import { useMemo, useState, useCallback, type ReactNode } from 'react';
-import { UserRightsContext } from './userRightsContext';
+import { UserRightsContext } from './UserRightsContext';
 import { RoleEnum } from '@shared/types/roleEnum';
 
 const STORAGE_KEY = 'demo.role';

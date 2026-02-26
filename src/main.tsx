@@ -8,7 +8,7 @@ import '@shared/styles/variables.scss';
 import '@shared/styles/global';
 
 import { theme } from '@shared/theme/mui/theme';
-import { AppProviders } from './app/AppProviders';
+import { AppProviders } from './app/providers/AppProviders';
 import App from './App';
 
 const root = ReactDOM.createRoot(

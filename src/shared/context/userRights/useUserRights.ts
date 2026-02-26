@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { UserRightsContext } from './userRightsContext';
+import { UserRightsContext } from './UserRightsContext';
 
 export function useUserRights() {
   const ctx = useContext(UserRightsContext);
