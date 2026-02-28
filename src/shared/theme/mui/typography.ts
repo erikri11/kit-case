@@ -48,5 +48,10 @@ export const typography = {
       fontFamily: 'var(--font-family-base-variant)',
       fontWeight: 'var(--font-weight-medium)',
       fontSize: 'calc(var(--font-size-base) * 0.875)'
+    },
+    menu: {
+      fontFamily: 'var(--font-family-base)',
+      fontWeight: 'var(--font-weight-normal)',
+      fontSize: 'calc(var(--font-size-base) * 1)'
     }
 };

@@ -3,10 +3,6 @@
     "title": "Oppgaver",
     "subtitle": "Administrer oppgavene dine effektivt"
   },
-  "actions": {
-    "add": "Legg til oppgave",
-    "edit": "Rediger oppgave"
-  },
   "tasksByPriority": {
     "header": "Oppgaver etter prioritet",
     "high": "Høy",

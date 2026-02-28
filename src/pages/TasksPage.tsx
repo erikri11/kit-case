@@ -8,7 +8,6 @@ export function TasksPage() {
   return (
    <Box>
       <PageTitle title={t('tasks:pageTitle.title')} subtitle={t('tasks:pageTitle.subtitle')} />
-      
     </Box>
   );
 }

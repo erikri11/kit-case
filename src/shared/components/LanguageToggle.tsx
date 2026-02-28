@@ -14,7 +14,7 @@ export function LanguageToggle() {
     <Tooltip title={currentLang === 'en' ? 'Norsk' : 'English'}>
       <IconButton onClick={toggleLanguage} aria-label="Change language">
         <img
-          src={currentLang === 'en' ? 'src/assets/flags/no.svg' : 'src/assets/flags/gb.svg'}
+          src={currentLang === 'en' ? '/flags/no.svg' : '/flags/gb.svg'}
           alt="Language"
           width={24}
           height={24}

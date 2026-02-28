@@ -2,5 +2,9 @@
   "pageTitle": {
     "title": "Customers",
     "subtitle": "Manage your customers effectively"
+  },
+  "actions": {
+    "add": "Add customer",
+    "edit": "Edit customer"
   }
 }

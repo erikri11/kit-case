@@ -5,12 +5,12 @@ import { Button, Divider, Stack, TextField } from '@mui/material';
 export interface BaseToolbarProps {
   quickFilter: string;
   setQuickFilter: (value: string) => void;
-  isAddTaskButtonVisible?: boolean;
-  onAddTaskClick?: () => void;
+  isAddCustomerButtonVisible?: boolean;
+  onAddCustomerClick?: () => void;
 }
 
 export function BaseToolbar(props: BaseToolbarProps) {
-  const { t } = useTranslation(['common', 'tasks']);
+  const { t } = useTranslation(['common', 'customers']);
   const search = (e: React.ChangeEvent<HTMLInputElement>) => props.setQuickFilter(e.target.value);
 
   return (
@@ -25,14 +25,14 @@ export function BaseToolbar(props: BaseToolbarProps) {
         value={props.quickFilter}
       />
 
-      {props.isAddTaskButtonVisible && <>
+      {props.isAddCustomerButtonVisible && <>
         <Divider orientation="vertical" variant="middle" flexItem />
         <Button 
           variant="contained" 
           startIcon={<Add />}
-          onClick={props.onAddTaskClick}
+          onClick={props.onAddCustomerClick}
         >
-          {t('tasks:actions.add')}
+          {t('customers:actions.add')}
         </Button>
       </>}
     </Stack>

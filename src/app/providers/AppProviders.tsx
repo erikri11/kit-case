@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { SnackbarHost } from '@shared/components/SnackbarHost';
 import { SnackbarContext } from '../../shared/context/snackbar/SnackbarContext';
 import type { SnackbarMessage } from '@shared/types/snackbar';
-import { UserRightsProvider } from '@shared/context/userRights/userRightsProvider';
+import { UserRightsProvider } from '@shared/context/userRights/UserRightsProvider';
 
 export interface AppProvidersProps {
   children: ReactNode;

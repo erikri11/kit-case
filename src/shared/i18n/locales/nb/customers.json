@@ -2,5 +2,9 @@
   "pageTitle": {
     "title": "Kunder",
     "subtitle": "Administrer kundene dine effektivt"
+  },
+  "actions": {
+    "add": "Legg til kunde",
+    "edit": "Rediger kunde"
   }
 }

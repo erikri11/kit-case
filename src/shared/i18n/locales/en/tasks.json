@@ -3,10 +3,6 @@
     "title": "Tasks",
     "subtitle": "Manage your tasks efficiently"
   },
-  "actions": {
-    "add": "Add task",
-    "edit": "Edit task"
-  },
   "tasksByPriority": {
     "header": "Tasks by Priority",
     "high": "High",

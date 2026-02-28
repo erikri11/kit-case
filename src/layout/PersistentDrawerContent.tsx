@@ -58,7 +58,12 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
                   selected={isExactPath(location.pathname, item.url)}
                 >
                   {item.icon ? <ListItemIcon>{item.icon}</ListItemIcon> : null}
-                  <ListItemText primary={t(item.textKey)} />
+                  <ListItemText 
+                    primary={t(item.textKey)} 
+                    slotProps={{
+                        primary: { variant: 'menu' }
+                    }}
+                  />
                 </ListItemButton>,
                 [role],
                 item.requiredRole

@@ -3,6 +3,9 @@
     "dashboard": "Dashboard",
     "orders": "Orders",
     "products": "Products",
-    "customers": "Customers"
+    "customers": "Customers",
+    "customers.list": "Customer List",
+    "customers.create": "Create Customer",
+    "customers.details": "Customer Details"
   }
 }

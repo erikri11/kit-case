@@ -3,6 +3,9 @@
     "dashboard": "Dashboard",
     "orders": "Ordre",
     "products": "Produkter",
-    "customers": "Kunder"
+    "customers": "Kunder",
+    "customers.list": "Kundeliste",
+    "customers.create": "Opprett kunde",
+    "customers.details": "Kundedetaljer"
   }
 }
