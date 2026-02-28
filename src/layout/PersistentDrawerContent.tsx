@@ -24,7 +24,10 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
       
       <List
         subheader={
-          <ListSubheader component="div" className="d-sm-none">
+          <ListSubheader 
+            component="div" 
+            sx={{ display: { xs: 'block', sm: 'none' } }}
+          >
             Navigasjon
           </ListSubheader>
         }

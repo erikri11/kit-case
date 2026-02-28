@@ -22,7 +22,6 @@
     "@mui/x-date-pickers-pro": "^8.27.2",
     "ag-grid-enterprise": "^35.1.0",
     "ag-grid-react": "^35.1.0",
-    "bootstrap": "^5.3.8",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.19",
     "i18next-browser-languagedetector": "^8.2.1",

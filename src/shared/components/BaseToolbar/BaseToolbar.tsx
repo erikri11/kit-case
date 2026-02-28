@@ -14,27 +14,32 @@ export function BaseToolbar(props: BaseToolbarProps) {
   const search = (e: React.ChangeEvent<HTMLInputElement>) => props.setQuickFilter(e.target.value);
 
   return (
-    <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 1, md: 2 }} className='mb-3'>
+    <Stack 
+      direction={{ xs: 'column', md: 'row' }} 
+      spacing={{ xs: 1, md: 2 }} 
+      sx={{ mb: 3 }}
+    >
       <TextField
         label={t('common:search')}
         type="search"
         name='quickFilter'
         variant='filled'
-        size='small'
+        size="small"
         onChange={search}
         value={props.quickFilter}
       />
-
-      {props.isAddCustomerButtonVisible && <>
-        <Divider orientation="vertical" variant="middle" flexItem />
-        <Button 
-          variant="contained" 
-          startIcon={<Add />}
-          onClick={props.onAddCustomerClick}
-        >
-          {t('customers:actions.add')}
-        </Button>
-      </>}
+      {props.isAddCustomerButtonVisible && 
+        <>
+          <Divider orientation="vertical" variant="middle" flexItem />
+          <Button 
+            variant="contained" 
+            startIcon={<Add />}
+            onClick={props.onAddCustomerClick}
+          >
+            {t('customers:actions.add')}
+          </Button>
+        </>
+      }
     </Stack>
   );
 }
