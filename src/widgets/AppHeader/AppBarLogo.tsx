@@ -15,7 +15,7 @@ export function AppBarLogo() {
       <Box
         component="img"
         src={logo}
-        alt="KitCase logo"
+        alt="Demo Soft logo"
         sx={{ width: 32, height: 32 }}
       />
     </IconButton>

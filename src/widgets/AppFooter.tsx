@@ -13,7 +13,7 @@ export function AppFooter() {
       }}
     >
       <Typography variant="body2" align="center">
-        © {new Date().getFullYear()} KitCase 
+        © {new Date().getFullYear()} Demo Soft
       </Typography>
     </Box>
   );

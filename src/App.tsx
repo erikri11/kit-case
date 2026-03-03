@@ -38,7 +38,7 @@ export function App() {
         <Toolbar />
 
         <Container maxWidth={false} disableGutters sx={{ flex: 1 }}>
-          <Container maxWidth="xl" sx={{ py: 4 }}>
+          <Container maxWidth={false} sx={{ py: 4 }}>
             <AppRoutes />
           </Container>
         </Container>

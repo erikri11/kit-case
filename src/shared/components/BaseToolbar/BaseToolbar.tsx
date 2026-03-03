@@ -9,9 +9,17 @@ export interface BaseToolbarProps {
   onAddCustomerClick?: () => void;
 }
 
-export function BaseToolbar(props: BaseToolbarProps) {
+export function BaseToolbar({ 
+  quickFilter, 
+  setQuickFilter, 
+  isAddCustomerButtonVisible, 
+  onAddCustomerClick 
+}: BaseToolbarProps) {
+  
   const { t } = useTranslation(['common', 'customers']);
-  const search = (e: React.ChangeEvent<HTMLInputElement>) => props.setQuickFilter(e.target.value);
+  const search = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setQuickFilter(e.target.value)
+  };
 
   return (
     <Stack 
@@ -26,15 +34,15 @@ export function BaseToolbar(props: BaseToolbarProps) {
         variant='filled'
         size="small"
         onChange={search}
-        value={props.quickFilter}
+        value={quickFilter}
       />
-      {props.isAddCustomerButtonVisible && 
+      {isAddCustomerButtonVisible && 
         <>
           <Divider orientation="vertical" variant="middle" flexItem />
           <Button 
             variant="contained" 
             startIcon={<Add />}
-            onClick={props.onAddCustomerClick}
+            onClick={onAddCustomerClick}
           >
             {t('customers:actions.add')}
           </Button>

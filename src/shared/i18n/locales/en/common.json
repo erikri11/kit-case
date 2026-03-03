@@ -19,5 +19,12 @@
   "administrator": "Administrator",
   "goToDashboard": "Go to Dashboard",
   "goBack": "Go Back",
-  "id": "ID"
+  "id": "ID",
+  "name": "Name",
+  "avatar": "Avatar",
+  "email": "Email",
+  "phone": "Phone",
+  "quota": "Quota",
+  "status": "Status",
+  "createdAt": "Created at"
 }

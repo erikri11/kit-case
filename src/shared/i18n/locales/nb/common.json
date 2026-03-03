@@ -19,5 +19,12 @@
   "administrator": "Administrator",
   "goToDashboard": "Gå til dashbord",
   "goBack": "Gå tilbake",
-  "id": "ID"
+  "id": "ID",
+  "name": "Navn",
+  "avatar": "Avatar",
+  "email": "E-post",
+  "phone": "Telefon",
+  "quota": "Kvota",
+  "status": "Status",
+  "createdAt": "Opprettet den"
 }

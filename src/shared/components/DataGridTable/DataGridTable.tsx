@@ -10,7 +10,13 @@ export interface DataGridTableProps<T> {
   onAddCustomerClick?: () => void;
 }
 
-export function DataGridTable<T>(props: DataGridTableProps<T>) {
+export function DataGridTable<T>({ 
+  data, 
+  headers, 
+  isAddCustomerButtonVisible, 
+  onAddCustomerClick 
+}: DataGridTableProps<T>) {
+  
   const [gridApi, setGridApi] = useState<GridApi | null>(null);
   const [quickFilter, setQuickFilter] = useState<string>("");
 
@@ -23,15 +29,15 @@ export function DataGridTable<T>(props: DataGridTableProps<T>) {
       <BaseToolbar 
         quickFilter={quickFilter}
         setQuickFilter={setQuickFilter}
-        isAddCustomerButtonVisible={props.isAddCustomerButtonVisible}
-        onAddCustomerClick={props.onAddCustomerClick}
+        isAddCustomerButtonVisible={isAddCustomerButtonVisible}
+        onAddCustomerClick={onAddCustomerClick}
       />
 
       <BaseTable 
         gridApi={gridApi}
         setGridApi={setGridApi}
-        data={props.data} 
-        headers={props.headers}
+        data={data} 
+        headers={headers}
       />
     </> 
   );
