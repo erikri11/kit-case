@@ -3,8 +3,8 @@ import { Avatar, Box } from "@mui/material";
 import type { ICellRendererParams } from "ag-grid-enterprise";
 
 export const avatarRenderer = (params: ICellRendererParams<Customer, string>) => {
-  const pv = params.value;
-  if (!pv) return null;
+  const customer = params.value;
+  if (!customer) return null;
 
   return (
     <Box
@@ -17,9 +17,17 @@ export const avatarRenderer = (params: ICellRendererParams<Customer, string>) =>
     >
       <Avatar
         alt={params.data?.name ?? 'avatar'}
-        src={pv}
+        src={customer}
         sx={{ width: 36, height: 36 }}
+        {...stringAvatar(params.data?.name ?? 'NN')}
       />
     </Box>
-);
+  );
 };
+
+function stringAvatar(name: string) {
+  return {
+    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+  };
+}
+

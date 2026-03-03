@@ -1,6 +1,6 @@
 import { makeRequest } from '@shared/services/makeRequest';
 import type { QueryParams } from '@shared/types/QueryParams';
-import type { Customer } from '../models/customer';
+import type { Customer, CustomerCreate, CustomerUpdate } from '../models/customer';
 
 function toQuery(params?: QueryParams) {
   if (!params) return '';
@@ -18,14 +18,14 @@ export const CustomersApi = {
   get: (params?: QueryParams) => (
     makeRequest<Customer[]>(`/customers${toQuery(params)}`)
   ),
-  post: (customer: Customer) => (
+  post: (payload: CustomerCreate) => (
     makeRequest<Customer>('/customers', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(customer)
+      body: JSON.stringify(payload)
     })
   ),
-  put: (id: string, payload: Partial<Customer>) => (
+  put: (id: string, payload: CustomerUpdate) => (
     makeRequest<Customer>(`/customers/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
