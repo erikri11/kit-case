@@ -5,6 +5,8 @@ import crypto from "crypto";
 import express from "express";
 import app from "../../app";
 
+const BASE_URL = process.env.PUBLIC_BASE_URL ?? "http://localhost:4000";
+
 const uploadDir = path.join(process.cwd(), "uploads/avatars");
 fs.mkdirSync(uploadDir, { recursive: true });
 
@@ -42,6 +44,6 @@ app.post("/uploads/avatar", upload.single("image"), (req, res) => {
     mimetype: req.file.mimetype,
     size: req.file.size,
     url,
-    fullUrl: `http://localhost:4000${url}`,
+    fullUrl: `${BASE_URL}${url}`,
   });
 });

@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { Customer } from "./customer.model";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -11,7 +10,7 @@ export const mockCustomers: Customer[] = [
 		phone: "(815) 704-0045",
 		quota: 50,
 		status: "Active",
-		createdAt: dayjs().add(1, "hour").toDate()
+		createdAt: new Date()
 	},
 	{
 		id: uuidv4(),
@@ -21,7 +20,7 @@ export const mockCustomers: Customer[] = [
 		phone: "(803) 937-8925",
 		quota: 100,
 		status: "Active",
-		createdAt: dayjs().add(1, "hour").toDate()
+		createdAt: new Date()
 	},
 	{
 		id: uuidv4(),
@@ -31,7 +30,7 @@ export const mockCustomers: Customer[] = [
 		phone: "(715) 278-5041",
 		quota: 50,
 		status: "Blocked",
-		createdAt: dayjs().add(1, "hour").toDate()
+		createdAt: new Date()
 	},
 	{
 		id: uuidv4(),
@@ -41,7 +40,7 @@ export const mockCustomers: Customer[] = [
 		phone: "(603) 766-0431",
 		quota: 0,
 		status: "Pending",
-		createdAt: dayjs().add(1, "hour").toDate()
+		createdAt: new Date()
 	},
 	{
 		id: uuidv4(),
@@ -51,6 +50,6 @@ export const mockCustomers: Customer[] = [
 		phone: "(425) 434-5535",
 		quota: 50,
 		status: "Active",
-		createdAt: dayjs().add(1, "hour").toDate()
+		createdAt: new Date()
 	}
 ];
