@@ -1,16 +1,14 @@
+import { Router } from "express";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
 import crypto from "crypto";
-import express from "express";
-import app from "../../app";
+import { BASE_URL } from "../../config/api";
 
-const BASE_URL = process.env.PUBLIC_BASE_URL ?? "http://localhost:4000";
+const router = Router();
 
 const uploadDir = path.join(process.cwd(), "uploads/avatars");
 fs.mkdirSync(uploadDir, { recursive: true });
-
-app.use("/uploads/avatars", express.static(uploadDir));
 
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => cb(null, uploadDir),
@@ -33,7 +31,7 @@ const upload = multer({
   },
 });
 
-app.post("/uploads/avatar", upload.single("image"), (req, res) => {
+router.post("/uploads/avatar", upload.single("image"), (req, res) => {
   if (!req.file) return res.status(400).json({ error: "No file uploaded" });
 
   const url = `/uploads/avatars/${req.file.filename}`;
@@ -47,3 +45,5 @@ app.post("/uploads/avatar", upload.single("image"), (req, res) => {
     fullUrl: `${BASE_URL}${url}`,
   });
 });
+
+export default router;
