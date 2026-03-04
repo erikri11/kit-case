@@ -7,21 +7,33 @@ import { chipRenderer } from '../renderers/chipRenderer';
 import { statusRankCompare } from '@features/customers/components/comparators/statusRankCompare';
 import { linearProgressRenderer } from '../renderers/linearProgressRenderer';
 import { createActionButtonRenderer } from '../renderers/createActionButtonRenderer';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface ColumnArgsProps {
   t: TFunction;
-  onAction: (customer: Customer) => void;
+  onEdit: (customer: Customer) => void;
+  onDelete: (customer: Customer) => void;
 }
 
 export function createCustomerGridColumns({ 
   t, 
-  onAction: onEdit
+  onEdit,
+  onDelete
 }: ColumnArgsProps): ColDef<Customer>[] {
 
   const editRenderer = createActionButtonRenderer({
-    t: t,
-    label: 'common:edit',
+    icon: EditIcon,
+    iconButtonProps: { color: 'default' },
+    title: t('common:edit'),
     onAction: onEdit
+  });
+
+  const deleteRenderer = createActionButtonRenderer({
+    icon: DeleteIcon,
+    iconButtonProps: { color: 'error' },
+    title: t('common:delete'),
+    onAction: onDelete
   });
 
   return [
@@ -35,6 +47,7 @@ export function createCustomerGridColumns({
       field: 'avatar',
       headerName: t('common:avatar'),
       minWidth: 100,
+      filter: false,
       cellRenderer: avatarRenderer
     },
     {
@@ -71,15 +84,19 @@ export function createCustomerGridColumns({
     },
     {
       headerName: '',
-      minWidth: 160,
+      minWidth: 100,
+      maxWidth: 120,
       type: 'rightAligned',
+      filter: false,
       cellRenderer: editRenderer
     },
-    // {
-    //   headerName: '',
-    //   minWidth: 160,
-    //   type: 'rightAligned',
-    //   cellRenderer: deleteRenderer
-    // },
+    {
+      headerName: '',
+      minWidth: 100,
+      maxWidth: 120,
+      type: 'rightAligned',
+      filter: false,
+      cellRenderer: deleteRenderer
+    },
   ];
 }

@@ -5,16 +5,20 @@ import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
 import { useTranslation } from "react-i18next";
 import { createCustomerGridColumns } from "./createCustomerGridColumns";
 import { CustomerUpsertDialog } from "../CustomerUpsertDialog/CustomerUpsertDialog";
+import CustomerDeleteDialog from "../CustomerDeleteDialog/CustomerDeleteDialog";
 
 export function CustomersGrid() {
   const { t } = useTranslation(['common', 'customers']);
+
+  const [isAddOpen, setIsAddOpen] = useState(false);
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [updateCustomer, setUpdateCustomer] = useState<Customer | undefined>();
-  const [isAddOpen, setIsAddOpen] = useState(false);
+  const [deleteCustomer, setDeleteCustomer] = useState<Customer | undefined>();
 
   const headers = createCustomerGridColumns({ 
     t,
-    onAction: setUpdateCustomer
+    onEdit: setUpdateCustomer,
+    onDelete: setDeleteCustomer
   });
   
   useEffect(() => {
@@ -56,6 +60,14 @@ export function CustomersGrid() {
           customerId={updateCustomer.id}
           initialCustomer={updateCustomer}
           onClose={() => setUpdateCustomer(undefined)}
+        />
+      )}
+
+      {deleteCustomer && (
+        <CustomerDeleteDialog
+          open
+          customer={deleteCustomer}
+          onClose={() => setDeleteCustomer(undefined)}
         />
       )}
     </>

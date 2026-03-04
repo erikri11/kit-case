@@ -6,7 +6,8 @@ import { CustomersApi } from "@features/customers/api/customersApi";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { validateEmail, validateName, validatePhone } from "@features/customers/validation/validateCustomer";
-import type { FieldName } from "@features/customers/models/FieldName";
+import type { FieldName } from "@features/customers/models/fieldName";
+import { AvatarUpload } from "../AvatarUpload/AvatarUpload";
 
 export interface CustomerUpsertDialogProps {
   open: boolean;
@@ -32,6 +33,8 @@ export function CustomerUpsertDialog({
   const [phone, setPhone] = useState<string>(initialCustomer?.phone ?? '');
   const [quota, setQuota] = useState<number>(initialCustomer?.quota ?? 0);
   const [status, setStatus] = useState<string>(initialCustomer?.status ?? 'Pending');
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<FieldName, boolean>>({
     name: false, 
     email: false, 
@@ -58,7 +61,8 @@ export function CustomerUpsertDialog({
          const payload: CustomerCreate = { 
           name: name.trim(),
           email: email.trim(),
-          phone: phone.trim()
+          phone: phone.trim(),
+          avatarUrl: avatarUrl ?? undefined,
         };
 
         await CustomersApi.post(payload);
@@ -73,7 +77,8 @@ export function CustomerUpsertDialog({
           email: email.trim(),
           phone: phone.trim(),
           quota: quota,
-          status: status as CustomerUpdate['status']
+          status: status as CustomerUpdate['status'],
+          avatarUrl: avatarUrl ?? undefined,
         };
         
         await CustomersApi.put(customerId, payload);
@@ -99,12 +104,31 @@ export function CustomerUpsertDialog({
       onClose={onClose} 
       fullWidth 
       maxWidth="sm"
+      slotProps={{
+        transition: {
+          onEnter: () => {
+            const existingAvatar = (
+              initialCustomer as CustomerUpdate 
+                & { avatar?: string | null })?.avatar ?? null;
+            setAvatarUrl(existingAvatar);
+            setAvatarPreview(null);
+          }
+        }
+      }}
     >
       <DialogTitle>
         {mode === 'add' ? t('customers:actions.add') : t('customers:actions.edit')}
       </DialogTitle>
       <DialogContent className='pt-3'>
         <Grid container spacing={2}>
+
+          <AvatarUpload
+            avatarPreview={avatarPreview}
+            setAvatarPreview={setAvatarPreview}
+            avatarUrl={avatarUrl}
+            setAvatarUrl={setAvatarUrl}
+          />
+
           <Grid size={12}>
             <TextField 
               label="Name" 

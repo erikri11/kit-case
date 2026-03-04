@@ -1,19 +1,19 @@
 import type { ICellRendererParams } from 'ag-grid-enterprise';
-import { Button, type ButtonProps } from '@mui/material';
-import { type TFunction } from 'i18next';
+import { Box, IconButton, Tooltip, type IconButtonProps } from '@mui/material';
 import type { Customer } from '@features/customers/models/customer';
+import type { SvgIconComponent } from '@mui/icons-material';
 
 interface ActionButtonRendererProps {
-  t: TFunction;
-  label: string;
-  buttonProps?: Omit<ButtonProps, 'onClick' | 'children'>;
+  icon: SvgIconComponent; 
+  iconButtonProps?: Omit<IconButtonProps, 'onClick' | 'children'>;
+  title: string;
   onAction: (customer: Customer) => void;
 }
 
 export function createActionButtonRenderer({ 
-  t, 
-  label,
-  buttonProps,
+  icon: Icon,
+  iconButtonProps,
+  title,
   onAction
 }: ActionButtonRendererProps) {
 
@@ -22,14 +22,25 @@ export function createActionButtonRenderer({
     if (!customer) return null;
 
     return (
-      <Button
-        size="small"
-        variant="contained"
-        onClick={() => onAction(customer)}
-        {...buttonProps}
+      <Box
+        sx={{
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
       >
-        {t(label)}
-      </Button>
+        <Tooltip title={title}>
+          <IconButton 
+            size='small'
+            onClick={() => onAction(customer)}
+            {...iconButtonProps}
+          >
+          <Icon />
+          </IconButton>
+        </Tooltip>
+       
+      </Box>
     );
   };
 }
