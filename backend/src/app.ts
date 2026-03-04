@@ -1,5 +1,5 @@
 import express from 'express';
-import { corsLite } from './cors';
+import { corsLite } from './features/middlewares/cors';
 
 const app = express();
 
