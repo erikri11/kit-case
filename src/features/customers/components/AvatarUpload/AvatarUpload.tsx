@@ -4,6 +4,7 @@ import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import { useEffect } from "react";
 import { resolveAvatarSrc } from "@features/customers/utils/resolveAvatarSrc";
 import type { UploadResponse } from "@features/customers/models/uploadResponse";
+import { API_BASE, API_PREFIX } from "@shared/config/api";
 
 interface AvatarUploadProps {
   avatarPreview: string | null;
@@ -35,7 +36,7 @@ export function AvatarUpload({
     const form = new FormData();
     form.append("image", file);
 
-    const res = await fetch("http://localhost:4000/uploads/avatar", {
+    const res = await fetch(`${API_BASE}${API_PREFIX}/uploads/avatar`, {
       method: "POST",
       body: form,
     });

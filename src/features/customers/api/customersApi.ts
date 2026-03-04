@@ -19,7 +19,7 @@ export const CustomersApi = {
     makeRequest<Customer[]>(`/customers${toQuery(params)}`)
   ),
   post: (payload: CustomerCreate) => (
-    makeRequest<Customer>('/customers', {
+    makeRequest<Customer>(`/customers`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:4000';
+import { API_BASE, API_PREFIX } from "@shared/config/api";
 
 export async function makeRequest<T>(
   path: string, 
@@ -8,7 +8,7 @@ export async function makeRequest<T>(
   const headers = new Headers(options?.headers);
   if (!headers.has('Accept')) headers.set('Accept', 'application/json');
 
-  const result = await fetch(`${API_BASE}${path}`, {
+  const result = await fetch(`${API_BASE}${API_PREFIX}${path}`, {
     ...options,
     method: method,
     headers: headers
