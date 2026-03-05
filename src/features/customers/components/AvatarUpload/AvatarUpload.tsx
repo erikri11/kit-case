@@ -133,12 +133,6 @@ export function AvatarUpload({
           accept="image/png,image/jpeg,image/webp,image/gif"
           onChange={handleFileChange}
         />
-
-        {avatarUrl ? (
-          <Typography variant="caption" sx={{ opacity: 0.8 }}>
-            Uploaded: {avatarUrl}
-          </Typography>
-        ) : null}
       </Stack>
     </Stack>
   );

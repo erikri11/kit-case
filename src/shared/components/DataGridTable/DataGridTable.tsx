@@ -6,15 +6,15 @@ import BaseTable from '../BaseTable/BaseTable';
 export interface DataGridTableProps<T> {
   data: T[];
   headers: ColDef<T>[];
-  isAddCustomerButtonVisible?: boolean;
-  onAddCustomerClick?: () => void;
+  isAddButtonVisible?: boolean;
+  onAddButtonClick?: () => void;
 }
 
 export function DataGridTable<T>({ 
   data, 
   headers, 
-  isAddCustomerButtonVisible, 
-  onAddCustomerClick 
+  isAddButtonVisible, 
+  onAddButtonClick
 }: DataGridTableProps<T>) {
   
   const [gridApi, setGridApi] = useState<GridApi | null>(null);
@@ -29,8 +29,8 @@ export function DataGridTable<T>({
       <BaseToolbar 
         quickFilter={quickFilter}
         setQuickFilter={setQuickFilter}
-        isAddCustomerButtonVisible={isAddCustomerButtonVisible}
-        onAddCustomerClick={onAddCustomerClick}
+        isAddButtonVisible={isAddButtonVisible}
+        onAddButtonClick={onAddButtonClick}
       />
 
       <BaseTable 

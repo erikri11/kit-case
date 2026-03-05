@@ -5,15 +5,15 @@ import { Button, Divider, Stack, TextField } from '@mui/material';
 export interface BaseToolbarProps {
   quickFilter: string;
   setQuickFilter: (value: string) => void;
-  isAddCustomerButtonVisible?: boolean;
-  onAddCustomerClick?: () => void;
+  isAddButtonVisible?: boolean;
+  onAddButtonClick?: () => void;
 }
 
 export function BaseToolbar({ 
   quickFilter, 
   setQuickFilter, 
-  isAddCustomerButtonVisible, 
-  onAddCustomerClick 
+  isAddButtonVisible, 
+  onAddButtonClick 
 }: BaseToolbarProps) {
   
   const { t } = useTranslation(['common', 'customers']);
@@ -36,13 +36,13 @@ export function BaseToolbar({
         onChange={search}
         value={quickFilter}
       />
-      {isAddCustomerButtonVisible && 
+      {isAddButtonVisible && 
         <>
           <Divider orientation="vertical" variant="middle" flexItem />
           <Button 
             variant="contained" 
             startIcon={<Add />}
-            onClick={onAddCustomerClick}
+            onClick={onAddButtonClick}
           >
             {t('customers:actions.add')}
           </Button>

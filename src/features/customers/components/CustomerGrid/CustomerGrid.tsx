@@ -6,9 +6,11 @@ import { useTranslation } from "react-i18next";
 import { createCustomerGridColumns } from "./createCustomerGridColumns";
 import { CustomerUpsertDialog } from "../CustomerUpsertDialog/CustomerUpsertDialog";
 import CustomerDeleteDialog from "../CustomerDeleteDialog/CustomerDeleteDialog";
+import { useNavigate } from "react-router-dom";
 
 export function CustomersGrid() {
   const { t } = useTranslation(['common', 'customers']);
+  const navigate = useNavigate();
 
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [customers, setCustomers] = useState<Customer[]>([]);
@@ -18,7 +20,9 @@ export function CustomersGrid() {
   const headers = createCustomerGridColumns({ 
     t,
     onEdit: setUpdateCustomer,
-    onDelete: setDeleteCustomer
+    onDelete: setDeleteCustomer,
+    onOpenDetails: (customer) =>
+      navigate(`/admin/customers/details/${customer.id}`)
   });
   
   useEffect(() => {
@@ -41,8 +45,8 @@ export function CustomersGrid() {
       <DataGridTable
         data={customers}
         headers={headers}
-        isAddCustomerButtonVisible
-        onAddCustomerClick={() => setIsAddOpen(true)}
+        isAddButtonVisible
+        onAddButtonClick={() => setIsAddOpen(true)}
       />
 
       {isAddOpen && (

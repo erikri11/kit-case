@@ -9,17 +9,20 @@ import { linearProgressRenderer } from '../renderers/linearProgressRenderer';
 import { createActionButtonRenderer } from '../renderers/createActionButtonRenderer';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { iconRenderer } from '../renderers/iconRenderer';
 
 interface ColumnArgsProps {
   t: TFunction;
   onEdit: (customer: Customer) => void;
   onDelete: (customer: Customer) => void;
+  onOpenDetails: (customer: Customer) => void;
 }
 
 export function createCustomerGridColumns({ 
   t, 
   onEdit,
-  onDelete
+  onDelete,
+  onOpenDetails
 }: ColumnArgsProps): ColDef<Customer>[] {
 
   const editRenderer = createActionButtonRenderer({
@@ -41,12 +44,13 @@ export function createCustomerGridColumns({
       field: 'name',
       headerName: t('common:name'),
       minWidth: 180,
-      flex: 1
+      flex: 2
     },
     {
       field: 'avatar',
       headerName: t('common:avatar'),
       minWidth: 100,
+      flex: 1,
       filter: false,
       cellRenderer: avatarRenderer
     },
@@ -54,24 +58,27 @@ export function createCustomerGridColumns({
       field: 'email',
       headerName: t('common:email'),
       minWidth: 180,
-      flex: 1
+      flex: 2
     },
     {
       field: 'phone',
       headerName: t('common:phone'),
       minWidth: 140,
+      flex: 2,
       type: 'rightAligned'
     },
     {
       field: 'quota',
       headerName: t('common:quota'),
       minWidth: 140,
+      flex: 2,
       cellRenderer: linearProgressRenderer
     },
     {
       field: 'status',
       headerName: t('common:status'),
       minWidth: 160,
+      flex: 1,
       cellRenderer: chipRenderer,
       comparator: statusRankCompare
     },
@@ -79,13 +86,14 @@ export function createCustomerGridColumns({
       field: 'createdAt',
       headerName: t('common:createdAt'),
       minWidth: 160,
+      flex: 1,
       type: 'rightAligned',
       cellRenderer: dateRenderer
     },
     {
       headerName: '',
       minWidth: 100,
-      maxWidth: 120,
+      flex: 1,
       type: 'rightAligned',
       filter: false,
       cellRenderer: editRenderer
@@ -93,10 +101,21 @@ export function createCustomerGridColumns({
     {
       headerName: '',
       minWidth: 100,
-      maxWidth: 120,
+      flex: 1,
       type: 'rightAligned',
       filter: false,
       cellRenderer: deleteRenderer
     },
+    {
+      headerName: '',
+      minWidth: 100,
+      flex: 1,
+      type: 'rightAligned',
+      filter: false,
+      cellRenderer: iconRenderer,
+      cellRendererParams: {
+        onOpenDetails
+      } 
+    }
   ];
 }

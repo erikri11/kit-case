@@ -10,6 +10,7 @@ const TasksPage = lazy(() => import("@pages/TasksPage"));
 // const Orders = lazy(() => import("@pages/Orders/Orders"));
 // const Products = lazy(() => import("@pages/Products/Products"));
 const CustomersPage = lazy(() => import("@pages/CustomersPage"));
+const CustomerDetailsPage = lazy(() => import("@pages/CustomerDetailsPage"));
 
 export function AppRoutes() {
   const { role } = useUserRights();
@@ -20,10 +21,8 @@ export function AppRoutes() {
         {createRoute('/dashboard', <TasksPage />, [role], RoleEnum.USER)}
         {createRoute('/admin/orders', <TasksPage />, [role], RoleEnum.ADMIN)}
         {createRoute('/admin/products', <TasksPage />, [role], RoleEnum.ADMIN)}
-        {createRoute('/admin/customers', <CustomersPage />, [role], RoleEnum.ADMIN)}
         {createRoute('/admin/customers/list', <CustomersPage />, [role], RoleEnum.ADMIN)}
-        {createRoute('/admin/customers/create', <CustomersPage />, [role], RoleEnum.ADMIN)}
-        {createRoute('/admin/customers/details/:id', <CustomersPage />, [role], RoleEnum.ADMIN)}
+        {createRoute('/admin/customers/details/*', <CustomerDetailsPage />, [role], RoleEnum.ADMIN)}
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </Suspense>

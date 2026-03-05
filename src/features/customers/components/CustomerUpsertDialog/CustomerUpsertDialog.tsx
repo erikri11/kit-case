@@ -144,7 +144,7 @@ export function CustomerUpsertDialog({
               helperText={showNameError ? nameError : ''}
             />
           </Grid>
-          <Grid size={6}>
+          <Grid size={12}>
             <TextField 
               label="Email" 
               variant="filled" 
