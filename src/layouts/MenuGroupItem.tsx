@@ -6,7 +6,6 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Collapse, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import type { MenuItem } from "@shared/types/menu";
 import type { RoleEnum } from "@shared/types/roleEnum";
-import { isExactPath } from "@shared/utils/isExactPath";
 import { isSelectedPath } from "@shared/utils/isSelectedPath";
 
 interface MenuGroupItemProps {
@@ -19,14 +18,17 @@ export function MenuGroupItem({ item, role }: MenuGroupItemProps) {
   const location = useLocation();
   const { t } = useTranslation('menu');
 
-  const hasActiveChild = item.items?.some((child) => isSelectedPath(location.pathname, child.url) ?? false);
-  const open = hasActiveChild || userOpen;
+  const pathname = location.pathname;
+  const isParentActive = pathname === item.url || pathname.startsWith(`${item.url}/`);
+
+  const hasActiveChild = item.items?.some((child) => isSelectedPath(pathname, child.url) ?? false);
+  const open = isParentActive || hasActiveChild || userOpen;
   
   return (
     <>
       <ListItemButton 
         onClick={() => setUserOpen((prev) => !prev)} 
-        selected={isExactPath(location.pathname, item.url)}
+        selected={isParentActive}
       >
         {item.icon ? <ListItemIcon>{item.icon}</ListItemIcon> : null}
         <ListItemText 
@@ -53,7 +55,7 @@ export function MenuGroupItem({ item, role }: MenuGroupItemProps) {
                     component={child.url ? Link : 'button'}
                     to={child.url ?? undefined}
                     sx={{ pl: 6 }}
-                    selected={isSelectedPath(location.pathname, child.url)}
+                    selected={isSelectedPath(pathname, child.url)}
                   >
                     {child.icon ? <ListItemIcon>{child.icon}</ListItemIcon> : null}
                     <ListItemText 

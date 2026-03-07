@@ -37,7 +37,7 @@ export function CustomersGrid() {
     loadCustomers();
   }, []);
 
-  // TODO: Remove after testing
+  // TODO:: Remove after testing
   console.log('Loaded customers:', customers);
 
   return (

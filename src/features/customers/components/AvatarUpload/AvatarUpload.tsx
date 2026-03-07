@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useTranslation } from 'react-i18next';
 import { Avatar, Box, Button, Stack, Typography } from "@mui/material";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import { useEffect } from "react";
@@ -20,6 +21,7 @@ export function AvatarUpload({
   setAvatarUrl,
 }: AvatarUploadProps) {
 
+  const { t } = useTranslation('customers');
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
   const [isUploading, setIsUploading] = React.useState(false);
 
@@ -43,7 +45,7 @@ export function AvatarUpload({
 
     if (!res.ok) {
       const text = await res.text().catch(() => "");
-      throw new Error(text || "Upload failed");
+      throw new Error(text || t("Upload failed"));
     }
 
     return res.json();
@@ -55,7 +57,7 @@ export function AvatarUpload({
 
     const okType = ["image/jpeg", "image/png", "image/webp", "image/gif"].includes(file.type);
     if (!okType) {
-      alert("Please select an image (jpeg/png/webp/gif).");
+      alert(t("Please select an image (jpeg/png/webp/gif)."));
       e.target.value = "";
       return;
     }
@@ -73,7 +75,7 @@ export function AvatarUpload({
       setAvatarUrl(result.fullUrl);
     } catch (err) {
       console.error(err);
-      alert("Upload failed. Check backend/cors.");
+      alert(t("Upload failed. Check backend/cors."));
       setAvatarUrl(null);
     } finally {
       setIsUploading(false);
@@ -91,10 +93,11 @@ export function AvatarUpload({
     <Stack direction="row" spacing={3} sx={{ alignItems: "center" }}>
       <Box
         sx={{
-          border: "1px dashed var(--mui-palette-divider)",
+          border: "1px dashed",
+          borderColor: "divider",
           borderRadius: "50%",
           display: "inline-flex",
-          p: "4px",
+          p: 0.5
         }}
       >
         <Avatar
@@ -103,10 +106,8 @@ export function AvatarUpload({
             width: 100,
             height: 100,
             alignItems: "center",
-            bgcolor: "var(--mui-palette-background-level1)",
-            color: "var(--mui-palette-text-primary)",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "center"
           }}
         >
           {!avatarSrc ? <CameraAltOutlinedIcon /> : null}
@@ -114,16 +115,16 @@ export function AvatarUpload({
       </Box>
 
       <Stack spacing={1} sx={{ alignItems: "flex-start" }}>
-        <Typography variant="subtitle1">Avatar</Typography>
-        <Typography variant="caption">Min 400x400px, PNG or JPEG</Typography>
+        <Typography variant="subtitle1">{t("Avatar")}</Typography>
+        <Typography variant="caption">{t("Min 400x400px, PNG or JPEG")}</Typography>
 
         <Button
-          color="secondary"
+          color="inherit"
           variant="outlined"
           onClick={openFilePicker}
           disabled={isUploading}
         >
-          {isUploading ? "Uploading..." : "Select"}
+          {isUploading ? t("Uploading...") : t("Select")}
         </Button>
 
         <input

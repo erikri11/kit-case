@@ -34,7 +34,6 @@ export function DataGridTable<T>({
       />
 
       <BaseTable 
-        gridApi={gridApi}
         setGridApi={setGridApi}
         data={data} 
         headers={headers}

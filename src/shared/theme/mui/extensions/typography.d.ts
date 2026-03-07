@@ -1,19 +1,21 @@
-import type * as React from 'react';
-import '@mui/material/styles';
-import '@mui/material/Typography';
+import type { CSSProperties } from "react";
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
-    menu: React.CSSProperties;
+    menu: CSSProperties;
+    dialogTitle: CSSProperties;
   }
 
   interface TypographyVariantsOptions {
-    menu?: React.CSSProperties;
+    menu?: CSSProperties;
+    dialogTitle?: CSSProperties;
   }
 }
 
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     menu: true;
+    dialogTitle: true;
   }
 }
+

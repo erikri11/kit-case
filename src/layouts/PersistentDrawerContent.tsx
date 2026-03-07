@@ -4,7 +4,6 @@ import type { PersistentDrawerProps } from "./PersistentDrawer";
 import { useTranslation } from "react-i18next";
 import { Box, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Toolbar } from "@mui/material";
 import { checkMenuAccess } from "@app/routes/access";
-import { isExactPath } from "@shared/utils/isExactPath";
 import { useUserRights } from "@shared/context/userRights/useUserRights";
 import { MenuGroupItem } from "./MenuGroupItem";
 
@@ -12,6 +11,9 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
   const { role } = useUserRights();
   const location = useLocation();
   const { t } = useTranslation('menu');
+
+   if (!role) return null;
+   const pathname = location.pathname;
 
   return (
     <Box sx={{ 
@@ -36,8 +38,6 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
           const key = item.url ?? item.textKey;
           const hasChildren = Boolean(item.items?.length);
 
-          if (!role) return null;
-
           // 1) Parent with children => collapsible group
           if (hasChildren) {
             return (
@@ -52,13 +52,17 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
           }
 
           // 2) Normal single link item
+          const isActive =
+            item.url &&
+            (pathname === item.url || pathname.startsWith(`${item.url}/`));
+
           return (
             <Fragment key={key}>
               {checkMenuAccess(
                 <ListItemButton
                   component={item.url ? Link : 'button'}
                   to={item.url ?? undefined}
-                  selected={isExactPath(location.pathname, item.url)}
+                  selected={Boolean(isActive)}
                 >
                   {item.icon ? <ListItemIcon>{item.icon}</ListItemIcon> : null}
                   <ListItemText 

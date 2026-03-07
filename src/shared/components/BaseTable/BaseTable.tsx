@@ -11,13 +11,16 @@ setupAgGrid();
 interface BaseTableProps<T> {
   data: T[];
   headers: ColDef<T>[];
-  gridApi: GridApi | null;
   setGridApi: (gridApi: GridApi | null) => void;
 }
 
-export default function BaseTable<T>(props: BaseTableProps<T>) {
+export default function BaseTable<T>({ 
+  data, 
+  headers, 
+  setGridApi 
+}: BaseTableProps<T>) {
   const agTheme = useAgTheme();
-  const onGridReady = (params: GridReadyEvent) => props.setGridApi(params.api);
+  const onGridReady = (params: GridReadyEvent) => setGridApi(params.api);
 
   const defaultColDef = useMemo<ColDef<T>>(
     () => defaultColDefBase as ColDef<T>,
@@ -33,8 +36,8 @@ export default function BaseTable<T>(props: BaseTableProps<T>) {
     <Box style={{ width: '100%' }}>
       <AgGridReact<T>
         theme={agTheme}
-        columnDefs={props.headers}
-        rowData={props.data}
+        columnDefs={headers}
+        rowData={data}
         defaultColDef={defaultColDef}
         animateRows={true}
         rowHeight={50}

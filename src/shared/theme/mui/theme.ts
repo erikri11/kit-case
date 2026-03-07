@@ -8,7 +8,7 @@ import '@fontsource/lato/700.css';
 
 import { createTheme } from '@mui/material/styles';
 import { typography } from './typography';
-import { MuiButton } from './MuiButton';
+import { MuiButton } from './components/MuiButton';
 import { darkPalette, lightPalette } from './palette';
 
 export const theme = createTheme({
@@ -34,6 +34,11 @@ export const theme = createTheme({
   zIndex: {},
   transitions: {},
   components: {
-    ...MuiButton
+    ...MuiButton,
+    MuiDialogTitle: {
+      defaultProps: {
+        variant: 'dialogTitle'
+      }
+    }
   } 
 });

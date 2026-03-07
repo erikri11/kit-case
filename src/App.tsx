@@ -1,18 +1,28 @@
 import { useState } from 'react';
 import { Box, Container, Toolbar } from "@mui/material";
-import { menuItems } from './app/config/menuConfig';
-import { DRAWER_WIDTH } from './shared/types/drawerWidth';
+
+import { DRAWER_WIDTH } from '@shared/types/drawerWidth';
 import AppHeader from '@widgets/AppHeader/AppHeader';
 import AppFooter from '@widgets/AppFooter';
-import { PersistentDrawer } from './layout/PersistentDrawer';
+import { PersistentDrawer } from '@layouts/PersistentDrawer';
 import { AppRoutes } from './app/routes/router';
+import { useLocation } from 'react-router-dom';
+import { menuItems } from '@app/config/menuConfig';
 
 export function App() {
  const [mobileOpen, setMobileOpen] = useState(false);
+ const { pathname } = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileOpen(open => !open);
   };
+
+  const pageMaxWidth =
+    pathname.startsWith("/admin/customers/details")
+      ? "lg"
+      : pathname.startsWith("/admin/customers")
+      ? false
+      : "xl";
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -38,7 +48,7 @@ export function App() {
         <Toolbar />
 
         <Container maxWidth={false} disableGutters sx={{ flex: 1 }}>
-          <Container maxWidth={false} sx={{ py: 4 }}>
+          <Container maxWidth={pageMaxWidth} sx={{ py: 4 }}>
             <AppRoutes />
           </Container>
         </Container>

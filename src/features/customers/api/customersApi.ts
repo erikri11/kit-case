@@ -18,6 +18,9 @@ export const CustomersApi = {
   get: (params?: QueryParams) => (
     makeRequest<Customer[]>(`/customers${toQuery(params)}`)
   ),
+  getById: (id: string) => (
+    makeRequest<Customer>(`/customers/${id}`)
+  ),
   post: (payload: CustomerCreate) => (
     makeRequest<Customer>(`/customers`, {
       method: 'POST',
