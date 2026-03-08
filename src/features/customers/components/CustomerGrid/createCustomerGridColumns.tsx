@@ -1,6 +1,6 @@
 import type { TFunction } from 'i18next';
 import type { ColDef } from 'ag-grid-enterprise';
-import type { Customer } from '@features/customers/models/customer';
+import type { Customer } from '@features/customers/models/customer.model';
 import { avatarRenderer } from '../renderers/avatarRenderer';
 import { dateRenderer } from '../renderers/dateRenderer';
 import { chipRenderer } from '../renderers/chipRenderer';

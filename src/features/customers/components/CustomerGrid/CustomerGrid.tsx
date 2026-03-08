@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { Customer } from "@features/customers/models/customer";
+import type { Customer } from "@features/customers/models/customer.model";
 import { CustomersApi } from "@features/customers/api/customersApi";
 import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
 import { useTranslation } from "react-i18next";

@@ -1,4 +1,4 @@
-import type { Customer } from "@features/customers/models/customer";
+import type { Customer } from "@features/customers/models/customer.model";
 import { Avatar, Box } from "@mui/material";
 import type { ICellRendererParams } from "ag-grid-enterprise";
 

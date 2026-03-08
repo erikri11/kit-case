@@ -1,6 +1,6 @@
 import type { ICellRendererParams } from 'ag-grid-enterprise';
 import { Box, IconButton, Tooltip, type IconButtonProps } from '@mui/material';
-import type { Customer } from '@features/customers/models/customer';
+import type { Customer } from '@features/customers/models/customer.model';
 import type { SvgIconComponent } from '@mui/icons-material';
 
 interface ActionButtonRendererProps {

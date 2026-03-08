@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { CustomerCreate, CustomerUpdate } from "@features/customers/models/customer";
+import type { CustomerCreate, CustomerUpdate } from "@features/customers/models/customer.model";
 import type { Mode } from "@features/customers/models/mode";
 import { CustomersApi } from "@features/customers/api/customersApi";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";

@@ -1,7 +1,7 @@
 import { Box, IconButton } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import type { ICellRendererParams } from "ag-grid-community";
-import type { Customer } from "@features/customers/models/customer";
+import type { Customer } from "@features/customers/models/customer.model";
 
 export function iconRenderer(params: 
   ICellRendererParams<Customer> & { 

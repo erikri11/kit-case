@@ -1,4 +1,4 @@
-import type { CustomerStatus } from "../../models/customer";
+import type { CustomerStatus } from "../../models/customer.model";
 import { STATUS_RANK } from "../../models/statusRank";
 
 export const statusRankCompare = (a?: string, b?: string) =>

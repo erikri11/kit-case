@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@mui/material';
 import { theme } from '@shared/theme/mui/theme';
 import { useSnackbar } from '@shared/context/snackbar/useSnackbar';
-import type { Customer } from '@features/customers/models/customer';
+import type { Customer } from '@features/customers/models/customer.model';
 import { CustomersApi } from '@features/customers/api/customersApi';
 
 export interface CustomerDeleteDialogProps {
