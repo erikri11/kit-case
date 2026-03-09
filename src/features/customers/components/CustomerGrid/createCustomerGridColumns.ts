@@ -1,15 +1,15 @@
 import type { TFunction } from 'i18next';
 import type { ColDef } from 'ag-grid-enterprise';
 import type { Customer } from '@features/customers/models/customer.model';
-import { avatarRenderer } from '../renderers/avatarRenderer';
 import { dateRenderer } from '../renderers/dateRenderer';
-import { chipRenderer } from '../renderers/chipRenderer';
+import { StatusChipRenderer } from '../renderers/StatusChipRenderer';
 import { statusRankCompare } from '@features/customers/components/comparators/statusRankCompare';
-import { linearProgressRenderer } from '../renderers/linearProgressRenderer';
-import { createActionButtonRenderer } from '../renderers/createActionButtonRenderer';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { iconRenderer } from '../renderers/iconRenderer';
+import { AvatarRenderer } from '../renderers/AvatarRenderer';
+import { IconRenderer } from '../renderers/IconRenderer';
+import { LinearProgressRenderer } from '../renderers/LinearProgressRenderer';
+import { CreateActionButtonRenderer } from '../renderers/CreateActionButtonRenderer';
 
 interface ColumnArgsProps {
   t: TFunction;
@@ -25,14 +25,14 @@ export function createCustomerGridColumns({
   onOpenDetails
 }: ColumnArgsProps): ColDef<Customer>[] {
 
-  const editRenderer = createActionButtonRenderer({
+  const editRenderer = CreateActionButtonRenderer({
     icon: EditIcon,
     iconButtonProps: { color: 'default' },
     title: t('common:edit'),
     onAction: onEdit
   });
 
-  const deleteRenderer = createActionButtonRenderer({
+  const deleteRenderer = CreateActionButtonRenderer({
     icon: DeleteIcon,
     iconButtonProps: { color: 'error' },
     title: t('common:delete'),
@@ -52,7 +52,7 @@ export function createCustomerGridColumns({
       minWidth: 100,
       flex: 1,
       filter: false,
-      cellRenderer: avatarRenderer
+      cellRenderer: AvatarRenderer
     },
     {
       field: 'email',
@@ -72,14 +72,14 @@ export function createCustomerGridColumns({
       headerName: t('common:quota'),
       minWidth: 140,
       flex: 2,
-      cellRenderer: linearProgressRenderer
+      cellRenderer: LinearProgressRenderer
     },
     {
       field: 'status',
       headerName: t('common:status'),
       minWidth: 160,
       flex: 1,
-      cellRenderer: chipRenderer,
+      cellRenderer: StatusChipRenderer,
       comparator: statusRankCompare
     },
     {
@@ -112,7 +112,7 @@ export function createCustomerGridColumns({
       flex: 1,
       type: 'rightAligned',
       filter: false,
-      cellRenderer: iconRenderer,
+      cellRenderer: IconRenderer,
       cellRendererParams: {
         onOpenDetails
       } 

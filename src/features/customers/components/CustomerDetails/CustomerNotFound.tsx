@@ -20,18 +20,18 @@ export function CustomerNotFound() {
         <PersonOffIcon sx={{ fontSize: 80, color: "text.secondary" }} />
 
         <Typography variant="h4">
-          {t('Customer not found')}
+          {t('customers:customerNotFound')}
         </Typography>
 
         <Typography color="text.secondary">
-          {t('The customer you are looking for does not exist or may have been removed.')}
+          {t('customers:customerNotFoundMessage')}
         </Typography>
 
         <Button
           variant="contained"
           onClick={() => navigate("/admin/customers/list")}
         >
-          Back to customers
+          {t('customers:backToCustomers')}
         </Button>
       </Stack>
     </Box>

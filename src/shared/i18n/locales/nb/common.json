@@ -26,5 +26,24 @@
   "phone": "Telefon",
   "quota": "Kvota",
   "status": "Status",
-  "createdAt": "Opprettet den"
+  "createdAt": "Opprettet den",
+  "amount": "Beløp",
+  "currency": "Valuta",
+  "invoiceId": "Faktura ID",
+  "uploadFailed": "Opplasting mislyktes",
+  "basicDetails": "Grunnleggende detaljer",
+  "customerId": "Kunde ID",
+  "customers": "Kunder",
+  "payments": "Betalinger",
+  "security": "Sikkerhet",
+  "deleteAccount": "Slett konto",
+  "deleteAccountWarning": "En slettet kunde kan ikke gjenopprettes. Alle data vil bli permanent fjernet.",
+  "validation": {
+    "nameRequired": "Navn er påkrevd",
+    "nameInvalid": "Ugyldig navnformat",
+    "emailRequired": "E-post er påkrevd",
+    "emailInvalid": "Ugyldig e-postformat",
+    "phoneRequired": "Telefon er påkrevd",
+    "phoneInvalid": "Ugyldig telefonformat"
+  }
 }

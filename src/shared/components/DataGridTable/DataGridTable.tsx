@@ -7,6 +7,7 @@ export interface DataGridTableProps<T> {
   data: T[];
   headers: ColDef<T>[];
   isAddButtonVisible?: boolean;
+  disableSearch?: boolean;
   onAddButtonClick?: () => void;
 }
 
@@ -14,7 +15,8 @@ export function DataGridTable<T>({
   data, 
   headers, 
   isAddButtonVisible, 
-  onAddButtonClick
+  disableSearch,
+  onAddButtonClick,
 }: DataGridTableProps<T>) {
   
   const [gridApi, setGridApi] = useState<GridApi | null>(null);
@@ -31,6 +33,7 @@ export function DataGridTable<T>({
         setQuickFilter={setQuickFilter}
         isAddButtonVisible={isAddButtonVisible}
         onAddButtonClick={onAddButtonClick}
+        disableSearch={disableSearch}
       />
 
       <BaseTable 

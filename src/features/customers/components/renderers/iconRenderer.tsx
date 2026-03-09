@@ -3,7 +3,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import type { ICellRendererParams } from "ag-grid-community";
 import type { Customer } from "@features/customers/models/customer.model";
 
-export function iconRenderer(params: 
+export function IconRenderer(params: 
   ICellRendererParams<Customer> & { 
   onOpenDetails: (customer: Customer) => void 
   }) {

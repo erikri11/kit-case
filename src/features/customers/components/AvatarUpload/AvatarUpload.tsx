@@ -45,7 +45,7 @@ export function AvatarUpload({
 
     if (!res.ok) {
       const text = await res.text().catch(() => "");
-      throw new Error(text || t("Upload failed"));
+      throw new Error(text || t("common:uploadFailed"));
     }
 
     return res.json();
@@ -57,6 +57,7 @@ export function AvatarUpload({
 
     const okType = ["image/jpeg", "image/png", "image/webp", "image/gif"].includes(file.type);
     if (!okType) {
+      // TODO: add Snackbar instead of alert
       alert(t("Please select an image (jpeg/png/webp/gif)."));
       e.target.value = "";
       return;
@@ -75,6 +76,7 @@ export function AvatarUpload({
       setAvatarUrl(result.fullUrl);
     } catch (err) {
       console.error(err);
+      // TODO: add Snackbar instead of alert
       alert(t("Upload failed. Check backend/cors."));
       setAvatarUrl(null);
     } finally {
@@ -90,7 +92,11 @@ export function AvatarUpload({
   const avatarSrc = resolveAvatarSrc(avatarUrl ?? avatarPreview);
 
   return (
-    <Stack direction="row" spacing={3} sx={{ alignItems: "center" }}>
+    <Stack 
+      direction="row" 
+      spacing={3} 
+      sx={{ alignItems: "center" }}
+    >
       <Box
         sx={{
           border: "1px dashed",
@@ -115,8 +121,8 @@ export function AvatarUpload({
       </Box>
 
       <Stack spacing={1} sx={{ alignItems: "flex-start" }}>
-        <Typography variant="subtitle1">{t("Avatar")}</Typography>
-        <Typography variant="caption">{t("Min 400x400px, PNG or JPEG")}</Typography>
+        <Typography variant="subtitle1">{t("common:avatar")}</Typography>
+        <Typography variant="caption">{t("customers:avatarUploadHint")}</Typography>
 
         <Button
           color="inherit"
@@ -124,6 +130,7 @@ export function AvatarUpload({
           onClick={openFilePicker}
           disabled={isUploading}
         >
+          {/* TODO:: add LoadingButton */}
           {isUploading ? t("Uploading...") : t("Select")}
         </Button>
 

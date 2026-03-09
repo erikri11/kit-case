@@ -2,10 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { Avatar, Box, Chip, Link, Stack, Typography } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { resolveAvatarSrc } from '@features/customers/utils/resolveAvatarSrc';
-import { statusColorMap } from '@features/customers/models/statusColorMap';
 import type { Customer } from "@features/customers/models/customer.model";
+import { STATUS_CONFIG } from '@features/customers/models/statusConfig';
 
 interface CustomerDetailsHeaderProps {
   customer: Customer;
@@ -16,15 +15,19 @@ export function CustomerDetailsHeader({
 }: CustomerDetailsHeaderProps) {
 
   const navigate = useNavigate();
-  const { t } = useTranslation('customers');
+  const { t } = useTranslation(['customers', 'common']);
 
   const avatarSrc = resolveAvatarSrc(customer.avatar);
-  const statusColor = statusColorMap[customer.status];
+
+  const config = STATUS_CONFIG[customer.status];
+  const Icon = config.icon;
 
   return (
     <>
       <Box sx={{ mb: 4 }}>
         <Link
+          component='button'
+          type='button'
           color="text.primary"
           variant="subtitle2"
           underline='hover'
@@ -37,7 +40,7 @@ export function CustomerDetailsHeader({
           }}
         >
         <ArrowBackIcon />
-        {t('Customers')}
+        {t('common:customers')}
         </Link>
       </Box>
 
@@ -51,7 +54,14 @@ export function CustomerDetailsHeader({
           alt={customer.name} 
           sx={{ width: 64, height: 64 }}
         >
-          {customer.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
+          {customer.name
+            .trim()
+            .split(/\s+/)
+            .map((n) => n[0])
+            .slice(0, 2)
+            .join('')
+            .toUpperCase()
+          }
         </Avatar>
     
         <Stack>
@@ -65,11 +75,11 @@ export function CustomerDetailsHeader({
           >
             <Typography variant="h4">{customer.name}</Typography>
             <Chip
-              icon={<CheckCircleIcon />}
-              label={customer.status}
+              icon={<Icon />}
+              label={t(config.labelKey)}
               size="small"
               variant="outlined"
-              color={statusColor}
+              color={config.color}
             />
           </Stack>
           <Typography color="text.secondary" variant="body1">

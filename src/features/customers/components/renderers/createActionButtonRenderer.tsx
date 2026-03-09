@@ -10,7 +10,7 @@ interface ActionButtonRendererProps {
   onAction: (customer: Customer) => void;
 }
 
-export function createActionButtonRenderer({ 
+export function CreateActionButtonRenderer({ 
   icon: Icon,
   iconButtonProps,
   title,

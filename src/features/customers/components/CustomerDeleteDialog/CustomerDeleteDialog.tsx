@@ -24,11 +24,13 @@ export function CustomerDeleteDialog({
     try {
       if (customer?.id) {
         await CustomersApi.delete(customer.id);
+        // TODO:: Remove after testing
         console.log('Deleting customer with id:', customer.id);
         setSnackbarMessage({ content: t("customers:snackbar.deleteSuccess"), type: "success" });
       }
       onClose();
     } catch (error) {
+      // TODO:: Remove after testing
       console.error('Error deleting customer:', error);
       setSnackbarMessage({ content: t("customers:snackbar.deleteError"), type: "error" });
     }

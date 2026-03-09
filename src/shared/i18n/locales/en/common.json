@@ -26,5 +26,27 @@
   "phone": "Phone",
   "quota": "Quota",
   "status": "Status",
-  "createdAt": "Created at"
+  "createdAt": "Created at",
+  "amount": "Amount",
+  "currency": "Currency",
+  "invoiceId": "Invoice ID",
+  "uploadFailed": "Upload failed",
+  "basicDetails": "Basic details",
+  "customerId": "Customer ID",
+  "customers": "Customers",
+  "payments": "Payments",
+  "security": "Security",
+  "deleteAccount": "Delete account",
+  "deleteAccountWarning": "A deleted customer cannot be restored. All data will be permanently removed.",
+  "validation": {
+    "nameRequired": "Name is required",
+    "nameInvalid": "Invalid name format",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Invalid email format",
+    "phoneRequired": "Phone is required",
+    "phoneInvalid": "Invalid phone format"
+  },
+  "statusActive": "Aktiv",
+  "statusPending": "Venter",
+  "statusBlocked": "Blokkert"
 }

@@ -12,7 +12,7 @@ export function CustomerSecurityCard({
   customerId 
 }: CustomerSecurityCardProps) {
 
-  const { t } = useTranslation('customers');
+  const { t } = useTranslation(['customers', 'common']);
   const navigate = useNavigate();
 
   return (
@@ -23,7 +23,7 @@ export function CustomerSecurityCard({
             <PrivacyTipIcon  />
           </Avatar>
         }
-        title={t('Security')}
+        title={t('common:security')}
       />
       <CardContent>
         <Stack spacing={1}>
@@ -40,10 +40,10 @@ export function CustomerSecurityCard({
               }
             }}
           >
-            {t('Delete account')}
+            {t('common:deleteAccount')}
           </Button>
           <Typography color="text.secondary" variant="body2">
-            {t('A deleted customer cannot be restored. All data will be permanently removed.')}
+            {t('common:deleteAccountWarning')}
           </Typography>
         </Stack>
       </CardContent>

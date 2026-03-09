@@ -1,15 +1,17 @@
 import { Box, IconButton } from '@mui/material';
 import { useNavigateWithQuery } from './useNavigateWithQuery';
 import logo from '@assets/logo-emblem.png';
+import { useTranslation } from 'react-i18next';
 
 export function AppBarLogo() {
   const navigateWithQuery = useNavigateWithQuery();
+  const { t } = useTranslation('common');
 
   return (
     <IconButton
       edge="start"
       onClick={() => navigateWithQuery('/dashboard')}
-      aria-label="Go to dashboard"
+      aria-label={t("common:goToDashboard")}
       sx={{ mr: 1 }}
     >
       <Box

@@ -33,7 +33,7 @@ export default function BaseTable<T>({
   );
 
   return (
-    <Box style={{ width: '100%' }}>
+    <Box sx={{ width: '100%' }}>
       <AgGridReact<T>
         theme={agTheme}
         columnDefs={headers}

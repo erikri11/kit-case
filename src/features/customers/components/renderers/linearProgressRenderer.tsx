@@ -1,11 +1,11 @@
 import { Box, LinearProgress, Stack, Typography } from "@mui/material";
-import type { ValueFormatterParams } from "ag-grid-enterprise";
+import type { ICellRendererParams } from "ag-grid-enterprise";
 
-export const linearProgressRenderer = (params: ValueFormatterParams) => {
-  const pv = params.value as number | undefined;
-  if (pv == null) return null;
+export function LinearProgressRenderer (params: ICellRendererParams<number, undefined>) {
+  const value = params.value;
+  if (value == null) return null;
 
-  const safeValue = Math.max(0, Math.min(100, pv));
+  const safeValue = Math.max(0, Math.min(100, value));
 
   return (
     <Box

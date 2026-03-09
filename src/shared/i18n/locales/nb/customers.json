@@ -6,5 +6,15 @@
   "actions": {
     "add": "Legg til kunde",
     "edit": "Rediger kunde"
-  }
+  },
+  "totalOrders": "Totale bestillinger",
+  "ordersValue": "Bestillingsverdi",
+  "refundsValue": "Refusjonsverdi",
+  "avatarUploadHint": "Min 400x400px, PNG eller JPEG",
+  "customerNotFound": "Kunde ikke funnet",
+  "customerNotFoundMessage": "Kunden du leter etter eksisterer ikke eller kan ha blitt fjernet.",
+  "backToCustomers": "Tilbake til kunder",
+  "statusActive": "Aktiv",
+  "statusPending": "Venter",
+  "statusBlocked": "Blokkert"
 }

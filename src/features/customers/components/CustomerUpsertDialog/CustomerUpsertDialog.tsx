@@ -8,6 +8,7 @@ import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { validateEmail, validateName, validatePhone } from "@features/customers/validation/validateCustomer";
 import type { FieldName } from "@features/customers/models/fieldName";
 import { AvatarUpload } from "../AvatarUpload/AvatarUpload";
+import { PhoneMaskInput } from "../PhoneMaskInput/PhoneMaskInput";
 
 export interface CustomerUpsertDialogProps {
   open: boolean;
@@ -25,14 +26,14 @@ export function CustomerUpsertDialog({
   initialCustomer
 }: CustomerUpsertDialogProps) {
 
-  const { t } = useTranslation('customers');
+  const { t } = useTranslation(['customers', 'common']);
   const { setSnackbarMessage } = useSnackbar();
 
   const [name, setName] = useState<string>(initialCustomer?.name ?? '');
   const [email, setEmail] = useState<string>(initialCustomer?.email ?? '');
   const [phone, setPhone] = useState<string>(initialCustomer?.phone ?? '');
   const [quota, setQuota] = useState<number>(initialCustomer?.quota ?? 0);
-  const [status, setStatus] = useState<string>(initialCustomer?.status ?? 'Pending');
+  const [status, setStatus] = useState<string>(initialCustomer?.status ?? t('customers:statusPending'));
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<FieldName, boolean>>({
@@ -66,6 +67,7 @@ export function CustomerUpsertDialog({
         };
 
         await CustomersApi.post(payload);
+        // TODO:: Remove after testing
         console.log('Adding customer:', payload);
         setSnackbarMessage({ 
           content: t("customers:snackbar.addSuccess"), 
@@ -82,6 +84,7 @@ export function CustomerUpsertDialog({
         };
         
         await CustomersApi.put(customerId, payload);
+        // TODO:: Remove after testing
         console.log('Updating customer:', payload);
         setSnackbarMessage({ 
           content: t("customers:snackbar.editSuccess"), 
@@ -90,6 +93,7 @@ export function CustomerUpsertDialog({
       }
       onClose();
     } catch (error) {
+      // TODO:: Remove after testing
       console.error('Error upserting customer:', error);
       setSnackbarMessage({ 
         content: t("customers:snackbar.editError"), 
@@ -121,14 +125,12 @@ export function CustomerUpsertDialog({
       </DialogTitle>
       <DialogContent className='pt-3'>
         <Grid container spacing={2}>
-
           <AvatarUpload
             avatarPreview={avatarPreview}
             setAvatarPreview={setAvatarPreview}
             avatarUrl={avatarUrl}
             setAvatarUrl={setAvatarUrl}
           />
-
           <Grid size={12}>
             <TextField 
               label="Name" 
@@ -141,7 +143,7 @@ export function CustomerUpsertDialog({
                 name: true 
               }))}
               error={showNameError}
-              helperText={showNameError ? nameError : ''}
+              helperText={showNameError && nameError ? t(nameError) : ''}
             />
           </Grid>
           <Grid size={12}>
@@ -156,7 +158,7 @@ export function CustomerUpsertDialog({
                 email: true 
               }))}
               error={showEmailError}
-              helperText={showEmailError ? emailError : ''}
+              helperText={showEmailError && emailError ? t(emailError) : ''}
             />
           </Grid>
           <Grid size={6}>
@@ -171,10 +173,14 @@ export function CustomerUpsertDialog({
                 phone: true 
               }))}
               error={showPhoneError}
-              helperText={showPhoneError ? phoneError : ''}
+              helperText={showPhoneError && phoneError ? t(phoneError) : ''}
+              slotProps={{
+                input: {
+                  inputComponent: PhoneMaskInput
+                }
+              }}
             />
           </Grid>
-
           {mode === 'edit' && (
             <>
               <Grid size={6}>
@@ -182,10 +188,10 @@ export function CustomerUpsertDialog({
                   variant="filled" 
                   fullWidth
                 >
-                  <InputLabel>Quota</InputLabel>
+                  <InputLabel>{t('customers:quota')}</InputLabel>
                   <Select
                     value={quota}
-                    label="Quota"
+                    label={t('customers:quota')}
                     onChange={(e) => setQuota(e.target.value)}
                     renderValue={(value) => `${value}%`}
                   >
@@ -200,16 +206,16 @@ export function CustomerUpsertDialog({
                   variant="filled" 
                   fullWidth
                 >
-                  <InputLabel>Status</InputLabel>
+                  <InputLabel>{t('customers:status')}</InputLabel>
                   <Select
                     value={status}
-                    label="Status"
+                    label={t('customers:status')}
                     onChange={(e) => setStatus(e.target.value)}
-                    renderValue={(value) => value}
+                    renderValue={(value) => t(`customers:status${value}`)}
                   >
-                    <MenuItem value={'Active'}>Active</MenuItem>
-                    <MenuItem value={'Pending'}>Pending</MenuItem>
-                    <MenuItem value={'Blocked'}>Blocked</MenuItem>
+                    <MenuItem value={'Active'}>{t('customers:statusActive')}</MenuItem>
+                    <MenuItem value={'Pending'}>{t('customers:statusPending')}</MenuItem>
+                    <MenuItem value={'Blocked'}>{t('customers:statusBlocked')}</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>

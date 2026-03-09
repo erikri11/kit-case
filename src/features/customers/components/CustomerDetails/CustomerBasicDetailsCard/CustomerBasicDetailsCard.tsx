@@ -11,7 +11,7 @@ export function CustomerBasicDetailsCard({
   customer 
 }: CustomerBasicDetailsCardProps) {
 
-  const { t } = useTranslation('customers');
+  const { t } = useTranslation(['customers', 'common']);
 
   return (
     <Card variant="outlined">
@@ -21,13 +21,13 @@ export function CustomerBasicDetailsCard({
             <UserIcon />
           </Avatar>
         }
-        title={t('Basic details')}
+        title={t('common:basicDetails')}
       />
       <CardContent>
         <Stack spacing={2}>
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t('Customer ID')}
+              {t('common:customerId')}
             </Typography>
             <Chip label={customer.id} sx={{ alignSelf: 'flex-start' }} />
           </Stack>
@@ -36,7 +36,7 @@ export function CustomerBasicDetailsCard({
 
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t('Name')} 
+              {t('common:name')} 
             </Typography>
             <Typography variant="body1">
               {customer.name}
@@ -47,7 +47,7 @@ export function CustomerBasicDetailsCard({
 
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t('Email')} 
+              {t('common:email')} 
             </Typography>
             <Typography variant="body1">
               {customer.email}
@@ -58,7 +58,7 @@ export function CustomerBasicDetailsCard({
 
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t('Phone')} 
+              {t('common:phone')} 
             </Typography>
             <Typography variant="body1">
               {customer.phone}
@@ -69,7 +69,7 @@ export function CustomerBasicDetailsCard({
           
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t('Quota')} 
+              {t('common:quota')} 
             </Typography>
             <Stack
               direction="row"

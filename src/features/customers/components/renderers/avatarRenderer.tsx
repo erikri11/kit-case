@@ -2,13 +2,13 @@ import type { Customer } from "@features/customers/models/customer.model";
 import { Avatar, Box } from "@mui/material";
 import type { ICellRendererParams } from "ag-grid-enterprise";
 
-export const avatarRenderer = (params: ICellRendererParams<Customer, string>) => {
-  const customer = params.value;
-  if (!customer) return null;
+export function AvatarRenderer (params: ICellRendererParams<Customer, string>) {
+  const avatar = params.value;
+  const name = params.data?.name ?? 'NN';
 
   return (
     <Box
-      style={{
+      sx={{
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -16,18 +16,20 @@ export const avatarRenderer = (params: ICellRendererParams<Customer, string>) =>
       }}
     >
       <Avatar
-        alt={params.data?.name ?? 'avatar'}
-        src={customer}
+        alt={name}
+        src={avatar ?? undefined}
         sx={{ width: 36, height: 36 }}
-        {...stringAvatar(params.data?.name ?? 'NN')}
-      />
+      >
+        {!avatar ? getInitials(name) : null}
+      </Avatar>
     </Box>
   );
-};
-
-function stringAvatar(name: string) {
-  return {
-    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
-  };
 }
 
+function getInitials(name: string): string {
+  const parts = name.trim().split(' ');
+  const first = parts[0]?.[0] ?? '';
+  const second = parts[1]?.[0] ?? '';
+  
+  return (first + second).toUpperCase() || 'NN';
+}

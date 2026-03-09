@@ -19,7 +19,7 @@ export function App() {
 
   const pageMaxWidth =
     pathname.startsWith("/admin/customers/details")
-      ? "lg"
+      ? "xl"
       : pathname.startsWith("/admin/customers")
       ? false
       : "xl";

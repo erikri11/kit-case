@@ -12,7 +12,7 @@ export function CustomerPaymentsCard({
   customer 
 }: CustomerPaymentsCardProps) {
 
-  const { t } = useTranslation('customers');
+  const { t } = useTranslation(['customers', 'common']);
   const paymentSummary = customer.paymentSummary;
 
   return (
@@ -23,7 +23,7 @@ export function CustomerPaymentsCard({
             <ShoppingCartIcon  />
           </Avatar>
         }
-        title={t('Payments')}
+        title={t('common:payments')}
       />
       <CardContent>
         <Box
@@ -42,28 +42,30 @@ export function CustomerPaymentsCard({
           >
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
-                Total orders
+                {t('customers:totalOrders')}
               </Typography>
               <Typography variant="h5">{paymentSummary.totalOrders}</Typography>
             </Stack>
               
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
-                Orders value
+                {t('customers:ordersValue')}
               </Typography>
               <Typography variant="h5">${paymentSummary.ordersValue.toFixed(2)}</Typography>
             </Stack>
 
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
-                Refunds
+                {t('customers:refundsValue')}
               </Typography>
               <Typography variant="h5">${paymentSummary.refundsValue.toFixed(2)}</Typography>
             </Stack>
           </Stack>
         </Box>
 
-        <CustomerDetailsGrid />
+        <CustomerDetailsGrid 
+          payments={customer.payments} 
+        />
       </CardContent>
     </Card>
   );

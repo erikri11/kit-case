@@ -4,15 +4,17 @@ import { Button, Divider, Stack, TextField } from '@mui/material';
 
 export interface BaseToolbarProps {
   quickFilter: string;
-  setQuickFilter: (value: string) => void;
   isAddButtonVisible?: boolean;
+  disableSearch?: boolean;
+  setQuickFilter: (value: string) => void;
   onAddButtonClick?: () => void;
 }
 
 export function BaseToolbar({ 
   quickFilter, 
-  setQuickFilter, 
   isAddButtonVisible, 
+  disableSearch,
+  setQuickFilter, 
   onAddButtonClick 
 }: BaseToolbarProps) {
   
@@ -27,15 +29,17 @@ export function BaseToolbar({
       spacing={{ xs: 1, md: 2 }} 
       sx={{ mb: 3 }}
     >
-      <TextField
-        label={t('common:search')}
-        type="search"
-        name='quickFilter'
-        variant='filled'
-        size="small"
-        onChange={search}
-        value={quickFilter}
-      />
+      {!disableSearch && (
+        <TextField
+          label={t('common:search')}
+          type="search"
+          name='quickFilter'
+          variant='filled'
+          size="small"
+          onChange={search}
+          value={quickFilter}
+        />
+      )}
       {isAddButtonVisible && 
         <>
           <Divider orientation="vertical" variant="middle" flexItem />

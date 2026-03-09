@@ -30,6 +30,7 @@ export function CustomerDetailsPage() {
         const data = await CustomersApi.getById(customerId);
         setCustomer(data);
       } catch (e) {
+        // TODO:: Handle error properly, e.g. show notification
         console.error('Failed to load customer', e);
         setCustomer(null);
       } finally {
@@ -57,19 +58,19 @@ export function CustomerDetailsPage() {
       />
 
       <Grid container spacing={4}>
-        <Grid size={{ xs: 12, md: 5 }}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <CustomerBasicDetailsCard 
             customer={customer} 
           />
         </Grid>
 
-        <Grid size={{ xs: 12, md: 7 }}>
+        <Grid size={{ xs: 12, md: 8 }}>
           <CustomerPaymentsCard 
             customer={customer} 
           />
         </Grid>
 
-        <Grid size={{ xs: 12, md: 5 }}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <CustomerSecurityCard 
             customerId={customer.id} 
           />
