@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import type { Customer } from "./customer.model";
 import { mockCustomers } from "./customer.mock";
-import { generateInitials } from "../../utils/generateInitials";
 import type { CustomerDetails } from "./customer.details.model";
 import { customerDetailsMock } from "./customer.details.mock";
 import { calculatePaymentSummary } from "../../utils/calculatePaymentSummary";
@@ -28,7 +27,7 @@ export function createCustomer(input: {
   const customer: Customer = {
     id: uuidv4(),
     name: name.trim(),
-    avatar: avatarUrl || generateInitials(name),
+    avatar: avatarUrl || undefined,
     email,
     phone,
     quota: 0,
@@ -71,7 +70,7 @@ export function updateCustomer(
   const updatedCustomer: Customer = {
     ...customers[customerIndex],
     name: name.trim(),
-    avatar: avatarUrl || generateInitials(name),
+    avatar: avatarUrl || undefined,
     email,
     phone,
     quota,
