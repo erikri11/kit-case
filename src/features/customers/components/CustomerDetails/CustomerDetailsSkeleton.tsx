@@ -25,7 +25,7 @@ export function CustomerDetailsSkeleton() {
       {/* Cards */}
       <Grid container spacing={4}>
         {/* Basic details */}
-        <Grid size={{ xs: 12, md: 5 }}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Card variant="outlined">
             <CardHeader
               avatar={
@@ -50,7 +50,7 @@ export function CustomerDetailsSkeleton() {
         </Grid>
 
         {/* Payments */}
-        <Grid size={{ xs: 12, md: 7 }}>
+        <Grid size={{ xs: 12, md: 8 }}>
           <Card variant="outlined">
             <CardHeader
               avatar={
@@ -61,13 +61,44 @@ export function CustomerDetailsSkeleton() {
               title={<Skeleton width={100} />}
             />
             <CardContent>
-              <Skeleton height={120} />
+              <Box
+                sx={{
+                  border: "1px solid",
+                  borderColor: "divider",
+                  borderRadius: 2,
+                  p: 2,
+                  mb: 3
+                }}
+              >
+                <Stack
+                  direction="row"
+                  divider={<Divider orientation="vertical" flexItem />}
+                  spacing={2}
+                  sx={{ justifyContent: "space-between" }}
+                >
+                  <Stack spacing={0.5}>
+                    <Skeleton width={100} height={16} />
+                    <Skeleton width={60} height={32} />
+                  </Stack>
+
+                  <Stack spacing={0.5}>
+                    <Skeleton width={100} height={16} />
+                    <Skeleton width={80} height={32} />
+                  </Stack>
+
+                  <Stack spacing={0.5}>
+                    <Skeleton width={100} height={16} />
+                    <Skeleton width={80} height={32} />
+                  </Stack>
+                </Stack>
+              </Box>
+              <Skeleton variant="rectangular" height={200} />
             </CardContent>
           </Card>
         </Grid>
 
         {/* Security */}
-        <Grid size={{ xs: 12, md: 5 }}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Card variant="outlined">
             <CardHeader
               avatar={

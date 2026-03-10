@@ -45,5 +45,6 @@
     "emailInvalid": "Ugyldig e-postformat",
     "phoneRequired": "Telefon er påkrevd",
     "phoneInvalid": "Ugyldig telefonformat"
-  }
+  },
+  "select": "Velg"
 }

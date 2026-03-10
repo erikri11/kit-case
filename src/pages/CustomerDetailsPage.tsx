@@ -58,19 +58,19 @@ export function CustomerDetailsPage() {
       />
 
       <Grid container spacing={4}>
-        <Grid size={{ xs: 12, md: 4 }}>
+        <Grid size={{ xs: 12, lg: 4 }}>
           <CustomerBasicDetailsCard 
             customer={customer} 
           />
         </Grid>
 
-        <Grid size={{ xs: 12, md: 8 }}>
+        <Grid size={{ xs: 12, lg: 8 }}>
           <CustomerPaymentsCard 
             customer={customer} 
           />
         </Grid>
 
-        <Grid size={{ xs: 12, md: 4 }}>
+        <Grid size={{ xs: 12, lg: 4 }}>
           <CustomerSecurityCard 
             customerId={customer.id} 
           />

@@ -35,8 +35,21 @@ export function CustomerPaymentsCard({
           }}
         >
           <Stack
-            direction="row"
-            divider={<Divider orientation="vertical" flexItem />}
+            direction={{ xs: 'column', md: 'row' }}
+            divider={
+              <>
+                <Divider
+                  orientation="vertical"
+                  flexItem
+                  sx={{ display: { xs: "none", md: "block" } }}
+                />
+                <Divider
+                  orientation="horizontal"
+                  flexItem
+                  sx={{ display: { xs: "block", md: "none" } }}
+                />
+              </>
+            }
             spacing={2}
             sx={{ justifyContent: "space-between"}}
           >
@@ -44,21 +57,30 @@ export function CustomerPaymentsCard({
               <Typography color="text.secondary">
                 {t('customers:totalOrders')}
               </Typography>
-              <Typography variant="h5">{paymentSummary.totalOrders}</Typography>
+              <Typography variant="h5">
+                {paymentSummary.totalOrders}
+              </Typography>
             </Stack>
               
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
                 {t('customers:ordersValue')}
               </Typography>
-              <Typography variant="h5">${paymentSummary.ordersValue.toFixed(2)}</Typography>
+              <Typography variant="h5">
+                ${paymentSummary.ordersValue.toFixed(2)}
+              </Typography>
             </Stack>
 
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
-                {t('customers:refundsValue')}
+                {t('customers:refunds')}
               </Typography>
-              <Typography variant="h5">${paymentSummary.refundsValue.toFixed(2)}</Typography>
+              <Typography 
+                variant="h5" 
+                sx={{ textAlign: { xs: 'left', md: 'right' } }}
+              >
+                ${paymentSummary.refundsValue.toFixed(2)}
+              </Typography>
             </Stack>
           </Stack>
         </Box>

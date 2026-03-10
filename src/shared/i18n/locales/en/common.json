@@ -46,7 +46,5 @@
     "phoneRequired": "Phone is required",
     "phoneInvalid": "Invalid phone format"
   },
-  "statusActive": "Aktiv",
-  "statusPending": "Venter",
-  "statusBlocked": "Blokkert"
+  "select": "Select"
 }

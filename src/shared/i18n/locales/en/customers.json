@@ -9,7 +9,7 @@
   },
   "totalOrders": "Total orders",
   "ordersValue": "Orders value",
-  "refundsValue": "Refunds value",
+  "refunds": "Refunds",
   "avatarUploadHint": "Min 400x400px, PNG or JPEG",
   "customerNotFound": "Customer not found",
   "customerNotFoundMessage": "The customer you are looking for does not exist or may have been removed.",

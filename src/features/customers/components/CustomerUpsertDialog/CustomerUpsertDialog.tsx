@@ -161,7 +161,7 @@ export function CustomerUpsertDialog({
               helperText={showEmailError && emailError ? t(emailError) : ''}
             />
           </Grid>
-          <Grid size={6}>
+          <Grid size={{ xs: 12, sm: 6 }}>
             <TextField 
               label="Phone" 
               variant="filled" 

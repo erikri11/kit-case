@@ -1,8 +1,7 @@
-import * as React from "react";
 import { useTranslation } from 'react-i18next';
 import { Avatar, Box, Button, Stack, Typography } from "@mui/material";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { resolveAvatarSrc } from "@features/customers/utils/resolveAvatarSrc";
 import type { UploadResponse } from "@features/customers/models/uploadResponse";
 import { API_BASE, API_PREFIX } from "@shared/config/api";
@@ -21,9 +20,9 @@ export function AvatarUpload({
   setAvatarUrl,
 }: AvatarUploadProps) {
 
-  const { t } = useTranslation('customers');
-  const fileInputRef = React.useRef<HTMLInputElement | null>(null);
-  const [isUploading, setIsUploading] = React.useState(false);
+  const { t } = useTranslation(['customers', 'common']);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   // Cleanup preview object URL when it changes/unmounts
   useEffect(() => {
@@ -65,7 +64,9 @@ export function AvatarUpload({
 
     // 1) Show preview immediately (replace previous preview safely)
     setAvatarPreview((prev: string | null) => {
-      if (prev?.startsWith("blob:")) URL.revokeObjectURL(prev);
+      if (prev?.startsWith("blob:")) {
+        URL.revokeObjectURL(prev);
+      }
       return URL.createObjectURL(file);
     });
 
@@ -89,7 +90,23 @@ export function AvatarUpload({
     fileInputRef.current?.click();
   }
 
+  function handleRemoveAvatar() {
+    setAvatarPreview((prev: string | null) => {
+      if (prev?.startsWith("blob:")) {
+        URL.revokeObjectURL(prev);
+      }
+      return null;
+    });
+
+    setAvatarUrl(null);
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  }
+
   const avatarSrc = resolveAvatarSrc(avatarUrl ?? avatarPreview);
+  const hasAvatar = Boolean(avatarSrc);
 
   return (
     <Stack 
@@ -124,15 +141,33 @@ export function AvatarUpload({
         <Typography variant="subtitle1">{t("common:avatar")}</Typography>
         <Typography variant="caption">{t("customers:avatarUploadHint")}</Typography>
 
-        <Button
-          color="inherit"
-          variant="outlined"
-          onClick={openFilePicker}
-          disabled={isUploading}
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={3}
+          sx={{ alignItems: { xs: "flex-start", sm: "center" } }}
         >
-          {/* TODO:: add LoadingButton */}
-          {isUploading ? t("Uploading...") : t("Select")}
-        </Button>
+          <Button
+            loading={isUploading}
+            loadingPosition="start"
+            color="inherit"
+            variant="outlined"
+            onClick={openFilePicker}
+            disabled={isUploading}
+          >
+            {hasAvatar ? t("common:change") : t("common:select")}
+          </Button>
+
+          {hasAvatar && (
+            <Button
+              color="error"
+              variant="outlined"
+              onClick={handleRemoveAvatar}
+              disabled={isUploading}
+            >
+              {t("common:remove")}
+            </Button>
+          )}
+        </Stack>
 
         <input
           ref={fileInputRef}
