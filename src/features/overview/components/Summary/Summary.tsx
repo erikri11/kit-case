@@ -8,13 +8,14 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import TrendDownIcon from "@mui/icons-material/TrendingDown";
 import TrendUpIcon from "@mui/icons-material/TrendingUp";
+import type { Trend } from "@features/overview/models/trend";
 
 export interface SummaryProps {
 	amount: number;
 	diff: number;
 	icon: React.ElementType;
 	title: string;
-	trend: "up" | "down";
+	trend: Trend;
 	sx?: object;
 }
 
@@ -26,7 +27,6 @@ export function Summary({
 	trend,
 	sx
 }: SummaryProps) {
-
 	const { i18n } = useTranslation();
 
 	const trendColor = trend === "up" ? "success.main" : "error.main";

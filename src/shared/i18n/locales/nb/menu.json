@@ -6,6 +6,7 @@
     "customers": "Kunder",
     "customers.list": "Kundeliste",
     "customers.create": "Opprett kunde",
-    "customers.details": "Kundedetaljer"
+    "customers.details": "Kundedetaljer",
+    "tasks": "Oppgaver"
   }
 }

@@ -13,14 +13,14 @@ export function useCustomerUpsertDialog(
   customerId?: string, 
   initialCustomer?: CustomerUpdate
 ) {
-  const { t } = useTranslation('customers');
+  const { t } = useTranslation("customers");
   const { setSnackbarMessage } = useSnackbar();
 
   const [name, setName] = useState<string>(initialCustomer?.name ?? '');
   const [email, setEmail] = useState<string>(initialCustomer?.email ?? '');
   const [phone, setPhone] = useState<string>(initialCustomer?.phone ?? '');
   const [quota, setQuota] = useState<number>(initialCustomer?.quota ?? 0);
-  const [status, setStatus] = useState<string>(initialCustomer?.status ?? t('customers:statusPending'));
+  const [status, setStatus] = useState<string>(initialCustomer?.status ?? t("customers:statusPending"));
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<FieldName, boolean>>({
@@ -45,7 +45,7 @@ export function useCustomerUpsertDialog(
     if (!canSubmit) return;
 
     try {
-      if (mode === 'add') {
+      if (mode === "add") {
          const payload: CustomerCreate = { 
           name: name.trim(),
           email: email.trim(),
@@ -59,13 +59,13 @@ export function useCustomerUpsertDialog(
           content: t("customers:snackbar.addSuccess"), 
           type: "success" 
         });
-      } else if (mode === 'edit' && customerId) {
+      } else if (mode === "edit" && customerId) {
         const payload: CustomerUpdate = {
           name: name.trim(),
           email: email.trim(),
           phone: phone.trim(),
           quota: quota,
-          status: status as CustomerUpdate['status'],
+          status: status as CustomerUpdate["status"],
           avatarUrl: avatarUrl ?? undefined,
         };
 
@@ -79,7 +79,7 @@ export function useCustomerUpsertDialog(
       onClose();
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error('Error updating customer:', errorMessage);
+      console.error("Error updating customer:", errorMessage);
 
       setSnackbarMessage({ 
         content: t("customers:snackbar.updateError"), 

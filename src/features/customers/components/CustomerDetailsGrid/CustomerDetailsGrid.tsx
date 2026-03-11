@@ -10,14 +10,14 @@ interface CustomerDetailsGridProps {
 export function CustomerDetailsGrid({ 
   payments
 }: CustomerDetailsGridProps) {
-  const { t } = useTranslation(['common', 'customers']);
+  const { t } = useTranslation(["common", "customers"]);
 
   const headers = createCustomerDetailsGridColumns({ 
     t
   });
 
   // TODO:: Remove after testing
-  console.log('Loaded payments:', payments);
+  console.log(`Loaded payments:`, payments);
 
   return (
     <DataGridTable

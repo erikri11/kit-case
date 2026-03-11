@@ -13,7 +13,6 @@ interface TaskCompletionChartProps {
 export function OverviewSignUpsChart({
   customers
 }: TaskCompletionChartProps) {
-
   const theme = useTheme();
   const { t } = useTranslation(['overview', 'customers']);
 

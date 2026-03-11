@@ -6,10 +6,10 @@ import { RoleEnum } from "@shared/types/roleEnum";
 import { useUserRights } from "@shared/context/userRights/useUserRights";
 
 const OverviewPage = lazy(() => import("@pages/OverviewPage"));
-const TasksPage = lazy(() => import("@pages/TasksPage"));
 // const Orders = lazy(() => import("@pages/Orders/Orders"));
 // const Products = lazy(() => import("@pages/Products/Products"));
 const CustomersRoutes = lazy(() => import("@pages/CustomersRoutes"));
+const TasksPage = lazy(() => import("@pages/TasksPage"));
 
 export function AppRoutes() {
   const { role } = useUserRights();
@@ -21,6 +21,7 @@ export function AppRoutes() {
         {createRoute('/admin/orders', <TasksPage />, [role], RoleEnum.ADMIN)}
         {createRoute('/admin/products', <TasksPage />, [role], RoleEnum.ADMIN)}
         {createRoute('/admin/customers/*', <CustomersRoutes />, [role], RoleEnum.ADMIN)}
+        {createRoute('/admin/tasks', <TasksPage />, [role], RoleEnum.ADMIN)}
         <Route path="*" element={<Navigate to="/overview" replace />} />
       </Routes>
     </Suspense>

@@ -5,5 +5,5 @@ export const dateRenderer = (params: ValueFormatterParams) => {
   const pv = params.value;
   if (!pv) return null;
   
-  return dayjs(pv).format('DD.MM.YYYY HH:mm');
+  return dayjs(pv).format("DD.MM.YYYY HH:mm");
 }

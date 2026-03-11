@@ -11,18 +11,18 @@ interface CustomerPaymentsCardProps {
 export function CustomerPaymentsCard({ 
   customer 
 }: CustomerPaymentsCardProps) {
-  const { t } = useTranslation(['customers', 'common']);
+  const { t } = useTranslation(["customers", "common"]);
   const paymentSummary = customer.paymentSummary;
 
   return (
     <Card variant="outlined">
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: 'primary.main' }}>
+          <Avatar sx={{ bgcolor: "primary.main" }}>
             <ShoppingCartIcon  />
           </Avatar>
         }
-        title={t('common:payments')}
+        title={t("common:payments")}
       />
       <CardContent>
         <Box
@@ -34,7 +34,7 @@ export function CustomerPaymentsCard({
           }}
         >
           <Stack
-            direction={{ xs: 'column', md: 'row' }}
+            direction={{ xs: "column", md: "row" }}
             divider={
               <>
                 <Divider
@@ -54,7 +54,7 @@ export function CustomerPaymentsCard({
           >
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
-                {t('customers:totalOrders')}
+                {t("customers:totalOrders")}
               </Typography>
               <Typography variant="h5">
                 {paymentSummary.totalOrders}
@@ -63,7 +63,7 @@ export function CustomerPaymentsCard({
               
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
-                {t('customers:ordersValue')}
+                {t("customers:ordersValue")}
               </Typography>
               <Typography variant="h5">
                 ${paymentSummary.ordersValue.toFixed(2)}
@@ -72,11 +72,11 @@ export function CustomerPaymentsCard({
 
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
-                {t('customers:refunds')}
+                {t("customers:refunds")}
               </Typography>
               <Typography 
                 variant="h5" 
-                sx={{ textAlign: { xs: 'left', md: 'right' } }}
+                sx={{ textAlign: { xs: "left", md: "right" } }}
               >
                 ${paymentSummary.refundsValue.toFixed(2)}
               </Typography>

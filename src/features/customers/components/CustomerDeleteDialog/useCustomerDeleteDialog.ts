@@ -7,7 +7,7 @@ export function useCustomerDeleteDialog(
   onClose: () => void, 
   customer?: Customer
 ) {
-  const { t } = useTranslation('customers');
+  const { t } = useTranslation("customers");
   const { setSnackbarMessage } = useSnackbar();
   
   const handleDeleteCustomer = async () => { 
@@ -22,7 +22,7 @@ export function useCustomerDeleteDialog(
       onClose();
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error('Error deleting customer:', errorMessage);
+      console.error("Failed to delete customer:", errorMessage);
 
       setSnackbarMessage({ 
         content: t("customers:snackbar.deleteError"), 

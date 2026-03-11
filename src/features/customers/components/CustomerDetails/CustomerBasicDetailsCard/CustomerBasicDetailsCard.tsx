@@ -10,32 +10,32 @@ interface CustomerBasicDetailsCardProps {
 export function CustomerBasicDetailsCard({ 
   customer 
 }: CustomerBasicDetailsCardProps) {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
   return (
     <Card variant="outlined">
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: 'primary.main' }}>
+          <Avatar sx={{ bgcolor: "primary.main" }}>
             <UserIcon />
           </Avatar>
         }
-        title={t('common:basicDetails')}
+        title={t("common:basicDetails")}
       />
       <CardContent>
         <Stack spacing={2}>
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t('common:customerId')}
+              {t("common:customerId")}
             </Typography>
-            <Chip label={customer.id} sx={{ alignSelf: 'flex-start' }} />
+            <Chip label={customer.id} sx={{ alignSelf: "flex-start" }} />
           </Stack>
 
           <Divider />
 
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t('common:name')} 
+              {t("common:name")} 
             </Typography>
             <Typography variant="body1">
               {customer.name}
@@ -46,7 +46,7 @@ export function CustomerBasicDetailsCard({
 
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t('common:email')} 
+              {t("common:email")} 
             </Typography>
             <Typography variant="body1">
               {customer.email}
@@ -57,7 +57,7 @@ export function CustomerBasicDetailsCard({
 
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t('common:phone')} 
+              {t("common:phone")} 
             </Typography>
             <Typography variant="body1">
               {customer.phone}
@@ -68,12 +68,12 @@ export function CustomerBasicDetailsCard({
           
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t('common:quota')} 
+              {t("common:quota")} 
             </Typography>
             <Stack
               direction="row"
               spacing={2}
-              sx={{ alignItems: 'center' }}
+              sx={{ alignItems: "center" }}
             >
               <LinearProgress
                 variant="determinate"

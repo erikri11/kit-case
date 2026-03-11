@@ -13,10 +13,10 @@ export function IconRenderer(params:
   return (
     <Box
       sx={{
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
+        height: "100%",
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "center",
       }}
     >
       <IconButton

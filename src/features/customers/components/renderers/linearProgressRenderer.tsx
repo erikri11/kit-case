@@ -10,17 +10,17 @@ export function LinearProgressRenderer (params: ICellRendererParams<number, unde
   return (
     <Box
       sx={{
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center'
+        height: "100%",
+        display: "flex",
+        justifyContent: "center"
       }}
     >
       <Stack
         direction="row"
         spacing={2}
         sx={{
-          width: '80%',
-          alignItems: 'center'
+          width: "80%",
+          alignItems: "center"
         }}
       >
         <LinearProgress

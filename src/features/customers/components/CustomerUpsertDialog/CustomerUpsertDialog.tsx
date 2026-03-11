@@ -71,9 +71,9 @@ export function CustomerUpsertDialog({
       }}
     >
       <DialogTitle>
-        {mode === 'add' ? t('customers:actions.add') : t('customers:actions.edit')}
+        {mode === "add" ? t("customers:actions.add") : t("customers:actions.edit")}
       </DialogTitle>
-      <DialogContent className='pt-3'>
+      <DialogContent className="pt-3">
         <Grid container spacing={2}>
           <AvatarUpload
             avatarPreview={avatarPreview}
@@ -138,10 +138,10 @@ export function CustomerUpsertDialog({
                   variant="filled" 
                   fullWidth
                 >
-                  <InputLabel>{t('customers:quota')}</InputLabel>
+                  <InputLabel>{t("customers:quota")}</InputLabel>
                   <Select
                     value={quota}
-                    label={t('customers:quota')}
+                    label={t("customers:quota")}
                     onChange={(e) => setQuota(e.target.value)}
                     renderValue={(value) => `${value}%`}
                   >
@@ -156,16 +156,16 @@ export function CustomerUpsertDialog({
                   variant="filled" 
                   fullWidth
                 >
-                  <InputLabel>{t('customers:status')}</InputLabel>
+                  <InputLabel>{t("customers:status")}</InputLabel>
                   <Select
                     value={status}
-                    label={t('customers:status')}
+                    label={t("customers:status")}
                     onChange={(e) => setStatus(e.target.value)}
                     renderValue={(value) => t(`customers:status${value}`)}
                   >
-                    <MenuItem value={'Active'}>{t('customers:statusActive')}</MenuItem>
-                    <MenuItem value={'Pending'}>{t('customers:statusPending')}</MenuItem>
-                    <MenuItem value={'Blocked'}>{t('customers:statusBlocked')}</MenuItem>
+                    <MenuItem value={"Active"}>{t("customers:statusActive")}</MenuItem>
+                    <MenuItem value={"Pending"}>{t("customers:statusPending")}</MenuItem>
+                    <MenuItem value={"Blocked"}>{t("customers:statusBlocked")}</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -178,14 +178,14 @@ export function CustomerUpsertDialog({
           variant="outlined" 
           onClick={onClose}
         >
-          {t('common:cancel')}
+          {t("common:cancel")}
         </Button>
         <Button 
           variant="contained" 
           onClick={handleUpsertCustomer} 
           disabled={!canSubmit}
         >
-          {mode === 'add' ? t('common:add') : t('common:save')}
+          {mode === "add" ? t("common:add") : t("common:save")}
         </Button>
       </DialogActions>
     </Dialog>

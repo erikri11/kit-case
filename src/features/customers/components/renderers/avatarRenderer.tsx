@@ -9,10 +9,10 @@ export function AvatarRenderer (params: ICellRendererParams<Customer, string>) {
   return (
     <Box
       sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
       }}
     >
       <Avatar
@@ -31,5 +31,5 @@ function getInitials(name: string): string {
   const first = parts[0]?.[0] ?? '';
   const second = parts[1]?.[0] ?? '';
   
-  return (first + second).toUpperCase() || 'NN';
+  return (first + second).toUpperCase() || "NN";
 }

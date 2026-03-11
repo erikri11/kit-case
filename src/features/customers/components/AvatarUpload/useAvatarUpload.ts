@@ -11,7 +11,7 @@ export function useAvatarUpload(
   setAvatarPreview: (v: string | null | ((prev: string | null) => string | null)) => void,
   setAvatarUrl: (v: string | null) => void
 ) {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   const { setSnackbarMessage } = useSnackbar();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -71,7 +71,7 @@ export function useAvatarUpload(
       setAvatarUrl(result.fullUrl);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error('Error uploading avatar:', errorMessage);
+      console.error("Error uploading avatar:", errorMessage);
 
       setSnackbarMessage({ 
         content: t("common:uploadAvatarFailed"),

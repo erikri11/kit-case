@@ -14,7 +14,7 @@ export function CustomerDetailsHeader({
   customer 
 }: CustomerDetailsHeaderProps) {
   const navigate = useNavigate();
-  const { t } = useTranslation(['customers', 'common']);
+  const { t } = useTranslation(["customers", "common"]);
 
   const avatarSrc = resolveAvatarSrc(customer.avatar);
 
@@ -25,11 +25,11 @@ export function CustomerDetailsHeader({
     <>
       <Box sx={{ mb: 4 }}>
         <Link
-          component='button'
-          type='button'
+          component="button"
+          type="button"
           color="text.primary"
           variant="subtitle2"
-          underline='hover'
+          underline="hover"
           onClick={() => navigate("/admin/customers/list")}
           sx={{ 
             alignItems: "center", 
@@ -39,7 +39,7 @@ export function CustomerDetailsHeader({
           }}
         >
         <ArrowBackIcon />
-        {t('common:customers')}
+        {t("common:customers")}
         </Link>
       </Box>
 

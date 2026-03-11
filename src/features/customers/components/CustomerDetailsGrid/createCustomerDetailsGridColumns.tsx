@@ -13,38 +13,38 @@ export function createCustomerDetailsGridColumns({
 
   return [
     {
-      field: 'amount',
-      headerName: t('common:amount'),
+      field: "amount",
+      headerName: t("common:amount"),
       minWidth: 140,
       flex: 1,
-      type: 'rightAligned',
+      type: "rightAligned",
     },
     {
-      field: 'currency',
-      headerName: t('common:currency'),
+      field: "currency",
+      headerName: t("common:currency"),
       minWidth: 120,
       flex: 1,
-      type: 'rightAligned',
+      type: "rightAligned",
     },
     {
-      field: 'invoiceId',
-      headerName: t('common:invoiceId'),
+      field: "invoiceId",
+      headerName: t("common:invoiceId"),
       minWidth: 160,
       flex: 1,
     },
     {
-      field: 'status',
-      headerName: t('common:status'),
+      field: "status",
+      headerName: t("common:status"),
       minWidth: 140,
       flex: 1,
     },
     {
-      field: 'createdAt',
-      headerName: t('common:createdAt'),
+      field: "createdAt",
+      headerName: t("common:createdAt"),
       minWidth: 180,
       flex: 1,
-      type: 'rightAligned',
+      type: "rightAligned",
       cellRenderer: dateRenderer
-    },
+    }
   ];
 }

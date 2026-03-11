@@ -28,73 +28,73 @@ export function createCustomerGridColumns({
   const editRenderer = CreateActionButtonRenderer({
     icon: EditIcon,
     iconButtonProps: { color: 'default' },
-    title: t('common:edit'),
+    title: t("common:edit"),
     onAction: onEdit
   });
 
   const deleteRenderer = CreateActionButtonRenderer({
     icon: DeleteIcon,
     iconButtonProps: { color: 'error' },
-    title: t('common:delete'),
+    title: t("common:delete"),
     onAction: onDelete
   });
 
   return [
     {
-      field: 'name',
-      headerName: t('common:name'),
+      field: "name",
+      headerName: t("common:name"),
       minWidth: 180,
       flex: 2
     },
     {
-      field: 'avatar',
-      headerName: t('common:avatar'),
+      field: "avatar",
+      headerName: t("common:avatar"),
       minWidth: 100,
       flex: 1,
       filter: false,
       cellRenderer: AvatarRenderer
     },
     {
-      field: 'email',
-      headerName: t('common:email'),
+      field: "email",
+      headerName: t("common:email"),
       minWidth: 180,
       flex: 2
     },
     {
-      field: 'phone',
-      headerName: t('common:phone'),
+      field: "phone",
+      headerName: t("common:phone"),
       minWidth: 140,
       flex: 2,
-      type: 'rightAligned'
+      type: "rightAligned"
     },
     {
-      field: 'quota',
-      headerName: t('common:quota'),
+      field: "quota",
+      headerName: t("common:quota"),
       minWidth: 140,
       flex: 2,
       cellRenderer: LinearProgressRenderer
     },
     {
-      field: 'status',
-      headerName: t('common:status'),
+      field: "status",
+      headerName: t("common:status"),
       minWidth: 160,
       flex: 1,
       cellRenderer: StatusChipRenderer,
       comparator: statusRankCompare
     },
     {
-      field: 'createdAt',
-      headerName: t('common:createdAt'),
+      field: "createdAt",
+      headerName: t("common:createdAt"),
       minWidth: 160,
       flex: 1,
-      type: 'rightAligned',
+      type: "rightAligned",
       cellRenderer: dateRenderer
     },
     {
       headerName: '',
       minWidth: 100,
       flex: 1,
-      type: 'rightAligned',
+      type: "rightAligned",
       filter: false,
       cellRenderer: editRenderer
     },
@@ -102,7 +102,7 @@ export function createCustomerGridColumns({
       headerName: '',
       minWidth: 100,
       flex: 1,
-      type: 'rightAligned',
+      type: "rightAligned",
       filter: false,
       cellRenderer: deleteRenderer
     },
@@ -110,7 +110,7 @@ export function createCustomerGridColumns({
       headerName: '',
       minWidth: 100,
       flex: 1,
-      type: 'rightAligned',
+      type: "rightAligned",
       filter: false,
       cellRenderer: IconRenderer,
       cellRendererParams: {

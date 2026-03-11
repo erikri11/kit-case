@@ -5,7 +5,7 @@ import type { SvgIconComponent } from '@mui/icons-material';
 
 interface ActionButtonRendererProps {
   icon: SvgIconComponent; 
-  iconButtonProps?: Omit<IconButtonProps, 'onClick' | 'children'>;
+  iconButtonProps?: Omit<IconButtonProps, "onClick" | "children">;
   title: string;
   onAction: (customer: Customer) => void;
 }
@@ -24,15 +24,15 @@ export function CreateActionButtonRenderer({
     return (
       <Box
         sx={{
-          height: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
         }}
       >
         <Tooltip title={title}>
           <IconButton 
-            size='small'
+            size="small"
             onClick={() => onAction(customer)}
             {...iconButtonProps}
           >

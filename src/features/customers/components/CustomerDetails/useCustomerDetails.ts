@@ -11,7 +11,7 @@ export function useCustomerDetails() {
   const [isLoading, setIsLoading] = useState(true);
 
   const { setSnackbarMessage } = useSnackbar();
-  const { t } = useTranslation('customers');
+  const { t } = useTranslation("customers");
 
   useEffect(() => {
     if (!customerId) {
@@ -28,7 +28,7 @@ export function useCustomerDetails() {
         setCustomer(data);
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : String(error);
-        console.error('Failed to load customer:', errorMessage);
+        console.error(`Failed to load customer: ${errorMessage}`);
 
         setSnackbarMessage({ 
           content: t("customers:snackbar.loadError"), 
