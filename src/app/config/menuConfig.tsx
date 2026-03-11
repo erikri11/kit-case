@@ -5,7 +5,7 @@ import WarehouseOutlinedIcon from '@mui/icons-material/WarehouseOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 
 export const menuItems: MenuItem[] = [
-  { textKey: 'menu.dashboard', url: '/dashboard', icon: <DashboardOutlinedIcon /> },
+  { textKey: 'menu.overview', url: '/overview', icon: <DashboardOutlinedIcon /> },
   { textKey: 'menu.orders', url: '/admin/orders', icon: <StoreOutlinedIcon /> },
   { textKey: 'menu.products', url: '/admin/products', icon: <WarehouseOutlinedIcon /> },
   { textKey: 'menu.customers', url: '/admin/customers', icon: <PeopleOutlinedIcon /> }

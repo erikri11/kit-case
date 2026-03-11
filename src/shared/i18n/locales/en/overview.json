@@ -1,0 +1,10 @@
+{
+  "pageTitle": {
+    "title": "Overview",
+    "subtitle": "Manage your overview effectively"
+  },
+  "barChartTitle": "Sign ups - by status",
+  "signUpsByStatus": {
+    "label": "Sign ups - by status"
+  }
+}

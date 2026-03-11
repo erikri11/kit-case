@@ -1,0 +1,10 @@
+{
+  "pageTitle": {
+    "title": "Oversikt",
+    "subtitle": "Administrer oversikten din effektivt"
+  },
+  "barChartTitle": "Registreringer - etter status",
+  "signUpsByStatus": {
+    "label": "Registreringer - etter status"
+  }
+}

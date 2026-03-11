@@ -7,6 +7,8 @@ import enError from '@shared/i18n/locales/en/error.json';
 import nbError from '@shared/i18n/locales/nb/error.json';
 import enMenu from '@shared/i18n/locales/en/menu.json';
 import nbMenu from '@shared/i18n/locales/nb/menu.json';
+import enOverview from '@shared/i18n/locales/en/overview.json';
+import nbOverview from '@shared/i18n/locales/nb/overview.json';
 import enTasks from '@shared/i18n/locales/en/tasks.json';
 import nbTasks from '@shared/i18n/locales/nb/tasks.json';
 import enOrders from '@shared/i18n/locales/en/orders.json';
@@ -35,8 +37,8 @@ i18n
         tasks: enTasks,
         orders: enOrders,
         products: enProducts,
-        customers: enCustomers
-       
+        customers: enCustomers,
+        overview: enOverview
       },
       nb: {
         common: nbCommon,
@@ -45,11 +47,12 @@ i18n
         tasks: nbTasks,
         orders: nbOrders,
         products: nbProducts,
-        customers: nbCustomers
+        customers: nbCustomers,
+        overview: nbOverview
       }
     },
     defaultNS: 'common',
-    ns: ['common', 'error', 'menu', 'tasks', 'orders', 'products', 'customers']
+    ns: ['common', 'error', 'menu', 'overview', 'tasks', 'orders', 'products', 'customers']
   });
 
 export default i18n;

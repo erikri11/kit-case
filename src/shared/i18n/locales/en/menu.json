@@ -1,6 +1,6 @@
 { 
   "menu": {
-    "dashboard": "Dashboard",
+    "overview": "Overview",
     "orders": "Orders",
     "products": "Products",
     "customers": "Customers",

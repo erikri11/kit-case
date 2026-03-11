@@ -17,7 +17,7 @@
   "confirmDeleteMessage": "Er du sikker på at du vil slette dette elementet?",
   "user": "Bruker",
   "administrator": "Administrator",
-  "goToDashboard": "Gå til dashbord",
+  "goToOverview": "Gå til oversikt",
   "goBack": "Gå tilbake",
   "id": "ID",
   "name": "Navn",
@@ -46,5 +46,7 @@
     "phoneRequired": "Telefon er påkrevd",
     "phoneInvalid": "Ugyldig telefonformat"
   },
-  "select": "Velg"
+  "select": "Velg",
+  "change": "Endre",
+  "remove": "Fjern"
 }
