@@ -2,8 +2,8 @@ import express from "express";
 import path from "path";
 import customersRouter from "./features/customers/customer.routes";
 import uploadRouter from "./features/uploads/upload.routes";
-import { corsLite } from "./features/middlewares/corsLite";
-import { errorHandler } from "./features/middlewares/errorHandler";
+import { corsLite } from "./middlewares/corsLite";
+import { errorHandler } from "./middlewares/errorHandler";
 import { API_PREFIX } from "./config/api";
 
 const app = express();
