@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { Grid } from '@mui/material';
 import { blue, green, orange } from '@mui/material/colors';
 import { PageTitle } from '../widgets/PageTitle/PageTitle';
-import { Summary } from '@features/dashboard/components/Summary/Summary';
+import { Summary } from '@features/overview/components/Summary/Summary';
 import ChecksListIcon from "@mui/icons-material/Checklist";
 import PeopleIcon from "@mui/icons-material/People";
 import WarningIcon  from "@mui/icons-material/Warning";
-import OverviewSignUpsChart from '@features/dashboard/components/OverviewSignUpsChart/OverviewSignUpsChart';
+import OverviewSignUpsChart from '@features/overview/components/OverviewSignUpsChart/OverviewSignUpsChart';
 import { useCustomers } from '@shared/hooks/useCustomers';
 
 export function OverviewPage() {

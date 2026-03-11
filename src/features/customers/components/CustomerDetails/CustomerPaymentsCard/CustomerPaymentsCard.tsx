@@ -11,7 +11,6 @@ interface CustomerPaymentsCardProps {
 export function CustomerPaymentsCard({ 
   customer 
 }: CustomerPaymentsCardProps) {
-
   const { t } = useTranslation(['customers', 'common']);
   const paymentSummary = customer.paymentSummary;
 

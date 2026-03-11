@@ -11,7 +11,6 @@ interface CustomerSecurityCardProps {
 export function CustomerSecurityCard({ 
   customerId 
 }: CustomerSecurityCardProps) {
-
   const { t } = useTranslation(['customers', 'common']);
   const navigate = useNavigate();
 

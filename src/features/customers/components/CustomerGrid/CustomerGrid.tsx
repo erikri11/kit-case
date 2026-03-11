@@ -1,16 +1,15 @@
 import { useState } from "react";
-import type { Customer } from "@features/customers/models/customer.model";
-
-import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useCustomers } from "@shared/hooks/useCustomers";
+import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
+import type { Customer } from "@features/customers/models/customer.model";
 import { createCustomerGridColumns } from "./createCustomerGridColumns";
 import { CustomerUpsertDialog } from "../CustomerUpsertDialog/CustomerUpsertDialog";
 import CustomerDeleteDialog from "../CustomerDeleteDialog/CustomerDeleteDialog";
-import { useNavigate } from "react-router-dom";
-import { useCustomers } from "@shared/hooks/useCustomers";
 
 export function CustomersGrid() {
-  const { t } = useTranslation(['common', 'customers']);
+  const { t } = useTranslation('common');
   const navigate = useNavigate();
   const customers = useCustomers();
 

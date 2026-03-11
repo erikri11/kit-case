@@ -13,7 +13,6 @@ interface CustomerDetailsHeaderProps {
 export function CustomerDetailsHeader({ 
   customer 
 }: CustomerDetailsHeaderProps) {
-
   const navigate = useNavigate();
   const { t } = useTranslation(['customers', 'common']);
 

@@ -10,8 +10,7 @@ interface CustomerBasicDetailsCardProps {
 export function CustomerBasicDetailsCard({ 
   customer 
 }: CustomerBasicDetailsCardProps) {
-
-  const { t } = useTranslation(['customers', 'common']);
+  const { t } = useTranslation('common');
 
   return (
     <Card variant="outlined">

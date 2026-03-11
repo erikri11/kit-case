@@ -48,5 +48,7 @@
   },
   "select": "Select",
   "change": "Change",
-  "remove": "Remove"
+  "remove": "Remove",
+  "pleaseSelectImage": "Please select an image (jpeg/png/webp/gif).",
+  "uploadAvatarFailed": "Failed to upload avatar"
 }

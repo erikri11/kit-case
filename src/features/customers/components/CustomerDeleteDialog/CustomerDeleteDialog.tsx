@@ -1,9 +1,7 @@
-import { useTranslation } from 'react-i18next';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@mui/material';
 import { theme } from '@shared/theme/mui/theme';
-import { useSnackbar } from '@shared/context/snackbar/useSnackbar';
 import type { Customer } from '@features/customers/models/customer.model';
-import { CustomersApi } from '@features/customers/api/customersApi';
+import { useCustomerDeleteDialog } from './useCustomerDeleteDialog';
 
 export interface CustomerDeleteDialogProps {
   open: boolean;
@@ -16,25 +14,13 @@ export function CustomerDeleteDialog({
   onClose,
   customer
 }: CustomerDeleteDialogProps) {
-
-  const { t } = useTranslation(['common', 'customers']);
-  const { setSnackbarMessage } = useSnackbar();
-  
-  const handleDeleteCustomer = async () => { 
-    try {
-      if (customer?.id) {
-        await CustomersApi.delete(customer.id);
-        // TODO:: Remove after testing
-        console.log('Deleting customer with id:', customer.id);
-        setSnackbarMessage({ content: t("customers:snackbar.deleteSuccess"), type: "success" });
-      }
-      onClose();
-    } catch (error) {
-      // TODO:: Remove after testing
-      console.error('Error deleting customer:', error);
-      setSnackbarMessage({ content: t("customers:snackbar.deleteError"), type: "error" });
-    }
-  };
+  const { 
+    t, 
+    handleDeleteCustomer 
+  } = useCustomerDeleteDialog(
+    onClose, 
+    customer
+  );
 
   return (
     <Dialog 

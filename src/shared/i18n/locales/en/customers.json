@@ -16,5 +16,13 @@
   "backToCustomers": "Back to customers",
   "statusActive": "Active",
   "statusPending": "Pending",
-  "statusBlocked": "Blocked"
+  "statusBlocked": "Blocked",
+  "snackbar": {
+    "addSuccess": "Customer has been added",
+    "updateSuccess": "Customer has been updated",
+    "updateError": "Error updating customer",
+    "deleteSuccess": "Customer has been deleted",
+    "deleteError": "Error deleting customer",
+    "loadError": "Error loading customer"
+  }
 }

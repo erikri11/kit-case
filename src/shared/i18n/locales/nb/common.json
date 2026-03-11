@@ -48,5 +48,7 @@
   },
   "select": "Velg",
   "change": "Endre",
-  "remove": "Fjern"
+  "remove": "Fjern",
+  "pleaseSelectImage": "Vennligst velg et bilde (jpeg/png/webp/gif).",
+  "uploadAvatarFailed": "Opplasting av avatar mislyktes"
 }

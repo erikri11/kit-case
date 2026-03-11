@@ -16,5 +16,13 @@
   "backToCustomers": "Tilbake til kunder",
   "statusActive": "Aktiv",
   "statusPending": "Venter",
-  "statusBlocked": "Blokkert"
+  "statusBlocked": "Blokkert",
+  "snackbar": {
+    "addSuccess": "Kunden har blitt lagt til",
+    "updateSuccess": "Kunden har blitt oppdatert",
+    "updateError": "Feil ved oppdatering av kunde",
+    "deleteSuccess": "Kunden har blitt slettet",
+    "deleteError": "Feil ved sletting av kunde",
+    "loadError": "Feil ved innlasting av kunde"
+  }
 }

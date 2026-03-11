@@ -1,12 +1,17 @@
 import { CustomersApi } from "@features/customers/api/customersApi";
 import type { CustomerDetails } from "@features/customers/models/customer.details.model";
+import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 export function useCustomerDetails() {
   const { customerId } = useParams<{ customerId: string }>();
   const [customer, setCustomer] = useState<CustomerDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const { setSnackbarMessage } = useSnackbar();
+  const { t } = useTranslation('customers');
 
   useEffect(() => {
     if (!customerId) {
@@ -21,19 +26,25 @@ export function useCustomerDetails() {
         await new Promise((resolve) => setTimeout(resolve, 2000)); 
         const data = await CustomersApi.getById(customerId);
         setCustomer(data);
-      } catch (e) {
-        // TODO:: Handle error properly, e.g. show notification
-        console.error('Failed to load customer', e);
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error('Failed to load customer:', errorMessage);
+
+        setSnackbarMessage({ 
+          content: t("customers:snackbar.loadError"), 
+          type: "error" 
+        });
+
         setCustomer(null);
       } finally {
         setIsLoading(false);
       }
     };
     loadCustomerDetails();
-  }, [customerId]);
+  }, [customerId, t, setSnackbarMessage]);
 
   return { 
     customer, 
     isLoading 
-  };
+  }
 }
