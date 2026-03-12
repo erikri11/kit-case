@@ -10,11 +10,11 @@ let customerDetails: CustomerDetails[] = [...customerDetailsMock];
 
 export function listCustomers(): Customer[] {
   return customers;
-}
+};
 
 export function getCustomer(id: string): CustomerDetails | null {
   return customerDetails.find((x) => x.id === id) ?? null;
-}
+};
 
 export function createCustomer(input: { 
   name: string; 
@@ -22,6 +22,7 @@ export function createCustomer(input: {
   phone?: string; 
   avatarUrl?: string 
 }): Customer {
+
   const { name, email, phone, avatarUrl } = input;
 
   const customer: Customer = {
@@ -46,7 +47,7 @@ export function createCustomer(input: {
   customerDetails.unshift(customerDetail);
 
   return customer;
-}
+};
 
 export function updateCustomer(
   id: string,
@@ -59,6 +60,7 @@ export function updateCustomer(
     avatarUrl?: string 
   }
 ): Customer | null {
+  
   const customerIndex = customers.findIndex((x) => x.id === id);
   if (customerIndex < 0) return null;
 
@@ -85,7 +87,7 @@ export function updateCustomer(
   };
 
    return updatedCustomer;
-}
+};
 
 export function deleteCustomer(id: string): boolean {
   const customersBefore = customers.length;
@@ -95,4 +97,4 @@ export function deleteCustomer(id: string): boolean {
   customerDetails = customerDetails.filter((x) => x.id !== id);
 
   return customers.length !== customersBefore || customerDetails.length !== detailsBefore;
-}
+};

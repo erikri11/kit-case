@@ -1,20 +1,30 @@
-import { Customer } from "./customer.model";
+import type { Customer, CustomerStatus } from "./customer.model";
 
-export function validateCreate(body: Customer) {
-  const { name, email, phone } = body ?? {};
-  if (typeof name !== 'string' || !name.trim()) return 'name is required';
-  if (typeof email !== 'string' || !email.trim()) return 'email is required';
-  if (typeof phone !== 'string' || !phone.trim()) return 'phone is required';
+const validStatuses: CustomerStatus[] = ["Active", "Pending", "Blocked"];
+
+export function validateCreate(body: unknown): string | null {
+  if (!body || typeof body !== "object") return "Invalid body";
+
+  const data = body as Partial<Customer>;
+  const { name, email, phone } = data;
+
+  if (!name || typeof name !== 'string' || !name.trim()) return 'Name is required';
+  if (!email || typeof email !== 'string' || !email.trim()) return 'Email is required';
+  if (!phone || typeof phone !== 'string' || !phone.trim()) return 'Phone is required';
   return null;
 }
 
-export function validateUpdate(body: Customer, partial = false) {
+export function validateUpdate(body: unknown, partial = false): string | null {
+  if (!body || typeof body !== "object") return "Invalid body";
   if (!partial) return validateCreate(body);
-  const { name, email, phone, quota, status } = body ?? {};
-  if ('name' in (body ?? {}) && (typeof name !== 'string' || !name.trim())) return 'name must be non-empty string';
-  if ('email' in (body ?? {}) && (typeof email !== 'string' || !email.trim())) return 'email must be non-empty string';
-  if ('phone' in (body ?? {}) && (typeof phone !== 'string' || !phone.trim())) return 'phone must be non-empty string';
-  if ('quota' in (body ?? {}) && (typeof quota !== 'number' || quota < 0)) return 'quota must be a non-negative number';
-  if ('status' in (body ?? {}) && (typeof status !== 'string' || !status.trim())) return 'status must be non-empty string';
+
+  const data = body as Partial<Customer>;
+  const { name, email, phone, quota, status } = data;
+
+  if (name !== undefined && (!name || typeof name !== "string" || !name.trim())) return "Name is required";
+  if (email !== undefined && (!email || typeof email !== "string" || !email.trim())) return "Email is required";
+  if (phone !== undefined && (!phone || typeof phone !== "string" || !phone.trim())) return "Phone is required";
+  if (quota !== undefined && (typeof quota !== "number" || quota < 0)) return "Quota must be a non-negative number";
+  if (status !== undefined && !validStatuses.includes(status)) return "Invalid status";
   return null;
 }

@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
-import customersRouter from "./features/customers/customer.routes";
+import customersRouter from "./features/customers/customer.route";
+import tasksRouter from "./features/tasks/task.route";
 import uploadRouter from "./features/uploads/upload.routes";
 import { corsLite } from "./middlewares/corsLite";
 import { errorHandler } from "./middlewares/errorHandler";
@@ -17,6 +18,7 @@ app.use(corsLite);
 app.use(express.json());
 
 app.use(`${API_PREFIX}/customers`, customersRouter);
+app.use(`${API_PREFIX}/tasks`, tasksRouter);
 app.use(`${API_PREFIX}`, uploadRouter);
 
 // centralized error handler (must be last)
