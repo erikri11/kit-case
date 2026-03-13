@@ -6,5 +6,8 @@
   "barChartTitle": "Sign ups - by status",
   "signUpsByStatus": {
     "label": "Sign ups - by status"
-  }
+  },
+  "tickets": "Tickets",
+  "signUps": "Sign ups",
+  "openIssues": "Open issues"
 }

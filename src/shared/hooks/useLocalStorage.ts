@@ -7,7 +7,7 @@ export function useLocalStorage<T>(key: string, initial: T) {
      const saved = localStorage.getItem(key);
       return saved ? (JSON.parse(saved) as T) : initial;
     } catch (error) {
-      console.error('Error reading from localStorage:', error);
+      console.error("Error reading from localStorage:", error);
       return initial;
     }
   });
@@ -16,7 +16,7 @@ export function useLocalStorage<T>(key: string, initial: T) {
     try {
       localStorage.setItem(key, JSON.stringify(storedValue));
     } catch (error) {
-      console.error('Error writing to localStorage:', error);
+      console.error("Error writing to localStorage:", error);
     }
   }, [key, storedValue]);
 
@@ -25,7 +25,7 @@ export function useLocalStorage<T>(key: string, initial: T) {
       localStorage.removeItem(key);
       setStoredValue(initial);
     } catch (error) {
-      console.error('Error removing from localStorage:', error);
+      console.error("Error removing from localStorage:", error);
     }
   };
 
@@ -34,7 +34,7 @@ export function useLocalStorage<T>(key: string, initial: T) {
       localStorage.clear();
       setStoredValue(initial);
     } catch (error) {
-      console.error('Error clearing localStorage:', error);
+      console.error("Error clearing localStorage:", error);
     }
   };
 

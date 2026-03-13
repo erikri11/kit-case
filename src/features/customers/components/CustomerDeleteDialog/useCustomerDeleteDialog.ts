@@ -1,4 +1,4 @@
-import { CustomersApi } from "@features/customers/api/customersApi";
+import { customerApi } from "@features/customers/api/customersApi";
 import type { Customer } from "@features/customers/models/customer.model";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { useTranslation } from "react-i18next";
@@ -13,7 +13,7 @@ export function useCustomerDeleteDialog(
   const handleDeleteCustomer = async () => { 
     try {
       if (customer?.id) {
-        await CustomersApi.delete(customer.id);
+        await customerApi.delete(customer.id);
         setSnackbarMessage({ 
           content: t("customers:snackbar.deleteSuccess"), 
           type: "success" 

@@ -33,7 +33,7 @@ export default function BaseTable<T>({
   );
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: "100%" }}>
       <AgGridReact<T>
         theme={agTheme}
         columnDefs={headers}
@@ -43,7 +43,7 @@ export default function BaseTable<T>({
         rowHeight={50}
         headerHeight={48}
         onGridReady={onGridReady}
-        domLayout={'autoHeight'}
+        domLayout={"autoHeight"}
         pagination={true}
         paginationPageSize={5}
         paginationPageSizeSelector={paginationPageSizeSelector}

@@ -4,7 +4,7 @@ import type { ICellRendererParams } from "ag-grid-enterprise";
 
 export function AvatarRenderer (params: ICellRendererParams<Customer, string>) {
   const avatar = params.value;
-  const name = params.data?.name ?? 'NN';
+  const name = params.data?.name ?? "NN";
 
   return (
     <Box

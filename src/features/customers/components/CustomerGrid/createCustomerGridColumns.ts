@@ -1,15 +1,15 @@
 import type { TFunction } from 'i18next';
 import type { ColDef } from 'ag-grid-enterprise';
 import type { Customer } from '@features/customers/models/customer.model';
-import { dateRenderer } from '../renderers/dateRenderer';
-import { StatusChipRenderer } from '../renderers/StatusChipRenderer';
-import { statusRankCompare } from '@features/customers/components/comparators/statusRankCompare';
+import { dateRenderer } from '../../../../shared/renderers/dateRenderer';
+import { CustomerStatusChipRenderer } from '../renderers/CustomerStatusChipRenderer';
+import { customerStatusRankCompare } from '@features/customers/components/comparators/customerStatusRankCompare';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { AvatarRenderer } from '../renderers/AvatarRenderer';
 import { IconRenderer } from '../renderers/IconRenderer';
 import { LinearProgressRenderer } from '../renderers/LinearProgressRenderer';
-import { CreateActionButtonRenderer } from '../renderers/CreateActionButtonRenderer';
+import { createActionButtonRenderer } from '../../../../shared/renderers/createActionButtonRenderer';
 
 interface ColumnArgsProps {
   t: TFunction;
@@ -25,14 +25,14 @@ export function createCustomerGridColumns({
   onOpenDetails
 }: ColumnArgsProps): ColDef<Customer>[] {
 
-  const editRenderer = CreateActionButtonRenderer({
+  const editRenderer = createActionButtonRenderer<Customer>({
     icon: EditIcon,
     iconButtonProps: { color: 'default' },
     title: t("common:edit"),
     onAction: onEdit
   });
 
-  const deleteRenderer = CreateActionButtonRenderer({
+  const deleteRenderer = createActionButtonRenderer<Customer>({
     icon: DeleteIcon,
     iconButtonProps: { color: 'error' },
     title: t("common:delete"),
@@ -79,8 +79,8 @@ export function createCustomerGridColumns({
       headerName: t("common:status"),
       minWidth: 160,
       flex: 1,
-      cellRenderer: StatusChipRenderer,
-      comparator: statusRankCompare
+      cellRenderer: CustomerStatusChipRenderer,
+      comparator: customerStatusRankCompare
     },
     {
       field: "createdAt",

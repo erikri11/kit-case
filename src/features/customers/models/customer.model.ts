@@ -11,10 +11,10 @@ export interface Customer {
 }
 
 export type CustomerStatus = "Active" | "Pending" | "Blocked";
+export type CustomerFieldName = "name" | "email" | "phone";
 
 // POST payload: server sets id, avatarUrl, createdAt
 export type CustomerCreate = Omit<Customer, "id" | "quota" | "status" | "createdAt">;
 
 // PUT payload: partial update, and still server-owned fields cannot be changed
 export type CustomerUpdate = Partial<Omit<Customer, "id" | "createdAt">>;
-

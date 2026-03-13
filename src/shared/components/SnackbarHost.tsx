@@ -9,13 +9,13 @@ export function SnackbarHost() {
       open={!!snackbarMessage}
       autoHideDuration={snackbarMessage?.duration ?? 3000}
       onClose={() => setSnackbarMessage(undefined)}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
     >
       <Alert 
         variant="filled"
         onClose={() => setSnackbarMessage(undefined)} 
-        severity={(snackbarMessage?.type as AlertColor) ?? 'info'} 
-        sx={{ minWidth: '250px' }}
+        severity={(snackbarMessage?.type as AlertColor) ?? "info"} 
+        sx={{ minWidth: "250px" }}
        >
         {snackbarMessage?.content}
       </Alert>

@@ -17,8 +17,8 @@ export function AppProviders(props: AppProvidersProps) {
   const [snackbarMessage, setSnackbarMessage] = useState<SnackbarMessage | undefined>(undefined);
   const { i18n } = useTranslation();
 
-  const lang = i18n.language.split('-')[0];
-  const locale = lang === 'nb' ? nb : enUS;
+  const lang = i18n.language.split("-")[0];
+  const locale = lang === "nb" ? nb : enUS;
 
   const snackbarHandlingValue = useMemo(() => 
     ({ snackbarMessage, setSnackbarMessage }),

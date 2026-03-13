@@ -2,16 +2,14 @@ import { Avatar, Button, Card, CardContent, CardHeader, Stack, Typography } from
 import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { CustomersApi } from "@features/customers/api/customersApi";
+import { customerApi } from "@features/customers/api/customersApi";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 
 interface CustomerSecurityCardProps {
   customerId: string;
 }
 
-export function CustomerSecurityCard({ 
-  customerId 
-}: CustomerSecurityCardProps) {
+export function CustomerSecurityCard({ customerId }: CustomerSecurityCardProps) {
   const navigate = useNavigate();
   const { t } = useTranslation(["customers", "common"]);
   const { setSnackbarMessage } = useSnackbar();
@@ -34,7 +32,7 @@ export function CustomerSecurityCard({
             sx={{ alignSelf: "flex-start" }}
             onClick={async () => {
               try {
-                await CustomersApi.delete(customerId);
+                await customerApi.delete(customerId);
                 setSnackbarMessage({ 
                   content: t("customers:snackbar.deleteSuccess"), 
                   type: "success" 

@@ -10,16 +10,16 @@ import { MenuGroupItem } from "./MenuGroupItem";
 export function PersistentDrawerContent(props: PersistentDrawerProps) {
   const { role } = useUserRights();
   const location = useLocation();
-  const { t } = useTranslation('menu');
+  const { t } = useTranslation(["menu", "overview"]);
 
    if (!role) return null;
    const pathname = location.pathname;
 
   return (
     <Box sx={{ 
-      height: '100%', 
-      display: 'flex', 
-      flexDirection: 'column' 
+      height: "100%", 
+      display: "flex", 
+      flexDirection: "column" 
       }}
     >
       <Toolbar />
@@ -28,9 +28,9 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
         subheader={
           <ListSubheader 
             component="div" 
-            sx={{ display: { xs: 'block', sm: 'none' } }}
+            sx={{ display: { xs: "block", sm: "none" } }}
           >
-            Navigasjon
+            {t("common:navigation")}
           </ListSubheader>
         }
       >
@@ -60,7 +60,7 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
             <Fragment key={key}>
               {checkMenuAccess(
                 <ListItemButton
-                  component={item.url ? Link : 'button'}
+                  component={item.url ? Link : "button"}
                   to={item.url ?? undefined}
                   selected={Boolean(isActive)}
                 >
@@ -68,7 +68,7 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
                   <ListItemText 
                     primary={t(item.textKey)} 
                     slotProps={{
-                        primary: { variant: 'menu' }
+                        primary: { variant: "menu" }
                     }}
                   />
                 </ListItemButton>,

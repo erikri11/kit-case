@@ -14,27 +14,27 @@ interface AppHeaderProps {
 }
 
 export function AppHeader(props: AppHeaderProps) {
-  const { t } = useTranslation('common'); 
+  const { t } = useTranslation("common"); 
   const { role, setRole } = useUserRights();
   const { mode, systemMode, setMode } = useColorScheme();
   if (!mode) return null;
 
   const effectiveMode =
-    mode === 'system' ? systemMode : mode;
+    mode === "system" ? systemMode : mode;
 
   const handleToggle = () => {
-    if (mode === 'system') {
-      setMode('dark');
-    } else if (mode === 'dark') {
-      setMode('light');
+    if (mode === "system") {
+      setMode("dark");
+    } else if (mode === "dark") {
+      setMode("light");
     } else {
-      setMode('system');
+      setMode("system");
     }
   };
 
   const renderIcon = () => {
-    if (mode === 'system') return <BrightnessAuto />;
-    return effectiveMode === 'dark'
+    if (mode === "system") return <BrightnessAuto />;
+    return effectiveMode === "dark"
       ? <Brightness7 />
       : <Brightness4 />;
   };
@@ -55,34 +55,38 @@ export function AppHeader(props: AppHeaderProps) {
           color="inherit"
           edge="start"
           onClick={props.onMenuClick}
-          sx={{ mr: 2, display: { sm: 'none' } }}
+          sx={{ mr: 2, display: { sm: "none" } }}
         >
           <MenuIcon />
         </IconButton>
 
-        <Typography variant="h1" component="div" sx={{ flexGrow: 1 }}>
+        <Typography 
+          variant="h1" 
+          component="div" 
+          sx={{ flexGrow: 1 }}
+        >
           Demo Soft
         </Typography>
 
         <Select
           aria-label="Select role"
           variant="filled"
-          size='small'
+          size="small"
           value={role}
           onChange={handleRoleChange}
           sx={{ 
             mr: 2, 
             minWidth: 140, 
-            display: { xs: 'none', sm: 'flex' },
-            backgroundColor: 'rgba(255, 255, 255, 0.15)',
-            color: 'inherit',
-            '& .MuiSvgIcon-root': {
-              color: 'inherit',
+            display: { xs: "none", sm: "flex" },
+            backgroundColor: "rgba(255, 255, 255, 0.15)",
+            color: "inherit",
+            "& .MuiSvgIcon-root": {
+              color: "inherit",
             }
           }}
         >
-          <MenuItem value={RoleEnum.USER}>{t('common:user')}</MenuItem>
-          <MenuItem value={RoleEnum.ADMIN}>{t('common:administrator')}</MenuItem>
+          <MenuItem value={RoleEnum.USER}>{t("common:user")}</MenuItem>
+          <MenuItem value={RoleEnum.ADMIN}>{t("common:administrator")}</MenuItem>
         </Select>
         
         <LanguageToggle />

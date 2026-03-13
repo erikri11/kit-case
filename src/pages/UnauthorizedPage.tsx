@@ -4,7 +4,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useTranslation } from 'react-i18next';
 
 export function UnauthorizedPage() {
-  const { t } = useTranslation(['common', 'error']); 
+  const { t } = useTranslation(["common", "error"]); 
   const navigate = useNavigate();
 
   return (
@@ -39,15 +39,15 @@ export function UnauthorizedPage() {
         </Box>
 
         <Typography variant="h4" component="h1" gutterBottom>
-          {t('error:accessDenied')}
+          {t("error:accessDenied")}
         </Typography>
 
         <Typography variant="body1">
-          {t('error:youDoNotHavePermissionToViewThisPage')}
+          {t("error:youDoNotHavePermissionToViewThisPage")}
         </Typography>
 
         <Typography variant="body1" sx={{ mb: 3 }}>
-          {t('error:pleaseContactAnAdministratorIfYouBelieveThisIsAnError')}
+          {t("error:pleaseContactAnAdministratorIfYouBelieveThisIsAnError")}
         </Typography>
 
         <Button
@@ -55,10 +55,10 @@ export function UnauthorizedPage() {
           onClick={() => navigate("/overview")}
           sx={{ mr: 1 }}
         >
-          {t('common:goToOverview')}
+          {t("common:goToOverview")}
         </Button>
         <Button variant="text" onClick={() => navigate(-1)}>
-          {t('common:goBack')}
+          {t("common:goBack")}
         </Button>
       </Box>
     </Box>

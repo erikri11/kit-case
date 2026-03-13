@@ -25,7 +25,7 @@ i18n
   .use(LanguageDetector)
   .init({
     debug: false,
-    fallbackLng: 'en',
+    fallbackLng: "en",
     interpolation: {
       escapeValue: false
     },
@@ -51,8 +51,8 @@ i18n
         overview: nbOverview
       }
     },
-    defaultNS: 'common',
-    ns: ['common', 'error', 'menu', 'overview', 'tasks', 'orders', 'products', 'customers']
+    defaultNS: "common",
+    ns: ["common", "error", "menu", "overview", "tasks", "orders", "products", "customers"]
   });
 
 export default i18n;

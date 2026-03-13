@@ -9,6 +9,7 @@
   "dueDate": "Due Date",
   "priority": "Priority",
   "completed": "Completed",
+  "description": "Description",
   "high": "High",
   "medium": "Medium",
   "low": "Low",
@@ -50,5 +51,6 @@
   "change": "Change",
   "remove": "Remove",
   "pleaseSelectImage": "Please select an image (jpeg/png/webp/gif).",
-  "uploadAvatarFailed": "Failed to upload avatar"
+  "uploadAvatarFailed": "Failed to upload avatar",
+  "navigation": "Navigation"
 }

@@ -14,13 +14,8 @@ export function CustomerDeleteDialog({
   onClose,
   customer
 }: CustomerDeleteDialogProps) {
-  const { 
-    t, 
-    handleDeleteCustomer 
-  } = useCustomerDeleteDialog(
-    onClose, 
-    customer
-  );
+  
+  const {t, handleDeleteCustomer} = useCustomerDeleteDialog(onClose, customer);
 
   return (
     <Dialog 

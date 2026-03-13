@@ -1,7 +1,7 @@
 import { themeMaterial, colorSchemeDark, colorSchemeLight } from 'ag-grid-community';
 
-export function baseTableTheme(mode: 'light' | 'dark') {
-  const scheme = mode === 'dark' ? colorSchemeDark : colorSchemeLight;
+export function baseTableTheme(mode: "light" | "dark") {
+  const scheme = mode === "dark" ? colorSchemeDark : colorSchemeLight;
   let theme = themeMaterial.withPart(scheme);
 
   theme = theme.withParams({
@@ -10,9 +10,9 @@ export function baseTableTheme(mode: 'light' | 'dark') {
     headerColumnBorder: true,
     rowBorder: true,
     columnBorder: true,
-    fontFamily: 'Lato, sans-serif',
-    headerTextColor: mode === 'dark' ? '#FFF' : '#000',
-    rowHoverColor: mode === 'dark' ? '#333' : '#f5f5f5',
+    fontFamily: "Lato, sans-serif",
+    headerTextColor: mode === "dark" ? "#FFF" : "#000",
+    rowHoverColor: mode === "dark" ? "#333" : "#f5f5f5",
   });
 
   return theme;

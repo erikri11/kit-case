@@ -11,9 +11,7 @@ interface CustomersGridProps {
   customers: Customer[];
 }
 
-export function CustomersGrid({ 
-  customers 
-}: CustomersGridProps) {
+export function CustomersGrid({ customers }: CustomersGridProps) {
   const { t } = useTranslation("common");
   const navigate = useNavigate();
   
@@ -35,6 +33,7 @@ export function CustomersGrid({
         data={customers}
         headers={headers}
         isAddButtonVisible
+        addButtonLabel={t("customers:actions.add")}
         onAddButtonClick={() => setIsAddOpen(true)}
       />
 

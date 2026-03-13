@@ -1,18 +1,10 @@
 import type { CustomerStatus } from "./customer.model";
 import BlockIcon from "@mui/icons-material/Block";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
-import type { ChipProps } from "@mui/material";
-import type { ElementType } from "react";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import type { StatusConfigItem } from "@shared/types/statusConfigItem";
 
-export interface StatusConfigItem {
-  labelKey: string;
-  icon: ElementType;
-  color: ChipProps["color"];
-  rank: number;
-}
-
-export const STATUS_CONFIG: Record<CustomerStatus, StatusConfigItem> = {
+export const CUSTOMER_STATUS_CONFIG: Record<CustomerStatus, StatusConfigItem> = {
   Active: {
     labelKey: "customers:statusActive",
     icon: CheckCircleIcon,

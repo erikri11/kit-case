@@ -13,9 +13,9 @@ function toQuery(params?: QueryParams) {
   ).toString();
 
   return qs ? `?${qs}` : '';
-}
+};
 
-export const CustomersApi = {
+export const customerApi = {
   get: (params?: QueryParams) => (
     makeRequest<Customer[]>(`/customers${toQuery(params)}`)
   ),
@@ -24,21 +24,21 @@ export const CustomersApi = {
   ),
   post: (payload: CustomerCreate) => (
     makeRequest<Customer>(`/customers`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     })
   ),
   put: (id: string, payload: CustomerUpdate) => (
     makeRequest<Customer>(`/customers/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     })
   ),
   delete: (id: string) => (
     makeRequest<void>(`/customers/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     })
   )
 };

@@ -13,7 +13,7 @@ import { darkPalette, lightPalette } from './palette';
 
 export const theme = createTheme({
   cssVariables: {
-    colorSchemeSelector: 'class'
+    colorSchemeSelector: "class"
   },
   colorSchemes: {
     light: {
@@ -37,7 +37,7 @@ export const theme = createTheme({
     ...MuiButton,
     MuiDialogTitle: {
       defaultProps: {
-        variant: 'dialogTitle'
+        variant: "dialogTitle"
       }
     }
   } 

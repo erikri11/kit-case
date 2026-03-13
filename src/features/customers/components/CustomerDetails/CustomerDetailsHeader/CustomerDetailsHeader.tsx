@@ -4,21 +4,19 @@ import { Avatar, Box, Chip, Link, Stack, Typography } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { resolveAvatarSrc } from '@features/customers/utils/resolveAvatarSrc';
 import type { Customer } from "@features/customers/models/customer.model";
-import { STATUS_CONFIG } from '@features/customers/models/statusConfig';
+import { CUSTOMER_STATUS_CONFIG } from '@features/customers/models/customerStatusConfig.ts';
 
 interface CustomerDetailsHeaderProps {
   customer: Customer;
 }
 
-export function CustomerDetailsHeader({ 
-  customer 
-}: CustomerDetailsHeaderProps) {
+export function CustomerDetailsHeader({ customer }: CustomerDetailsHeaderProps) {
   const navigate = useNavigate();
   const { t } = useTranslation(["customers", "common"]);
 
   const avatarSrc = resolveAvatarSrc(customer.avatar);
 
-  const config = STATUS_CONFIG[customer.status];
+  const config = CUSTOMER_STATUS_CONFIG[customer.status];
   const Icon = config.icon;
 
   return (
@@ -72,7 +70,9 @@ export function CustomerDetailsHeader({
               flexWrap: "wrap" 
             }}
           >
-            <Typography variant="h4">{customer.name}</Typography>
+            <Typography variant="h4">
+              {customer.name}
+            </Typography>
             <Chip
               icon={<Icon />}
               label={t(config.labelKey)}

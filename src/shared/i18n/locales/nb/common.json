@@ -9,6 +9,7 @@
   "dueDate": "Forfallsdato",
   "priority": "Prioritet",
   "completed": "Fullført",
+  "description": "Beskrivelse",
   "high": "Høy",
   "medium": "Middels",
   "low": "Lav",
@@ -50,5 +51,6 @@
   "change": "Endre",
   "remove": "Fjern",
   "pleaseSelectImage": "Vennligst velg et bilde (jpeg/png/webp/gif).",
-  "uploadAvatarFailed": "Opplasting av avatar mislyktes"
+  "uploadAvatarFailed": "Opplasting av avatar mislyktes",
+  "navigation": "Navigasjon"
 }

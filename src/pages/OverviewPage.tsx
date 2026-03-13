@@ -10,14 +10,14 @@ import OverviewSignUpsChart from '@features/overview/components/OverviewSignUpsC
 import { useCustomers } from '@shared/hooks/useCustomers';
 
 export function OverviewPage() {
-  const { t } = useTranslation('overview');
+  const { t } = useTranslation("overview");
   const customers = useCustomers();
 
   return (
     <>
       <PageTitle 
-        title={t('overview:pageTitle.title')} 
-        subtitle={t('overview:pageTitle.subtitle')} 
+        title={t("overview:pageTitle.title")} 
+        subtitle={t("overview:pageTitle.subtitle")} 
       />
 
       <Grid container spacing={4}>
@@ -26,7 +26,7 @@ export function OverviewPage() {
             amount={31} 
             diff={15} 
             icon={ChecksListIcon} 
-            title="Tickets" 
+            title={t("overview:tickets")}
             trend="up" 
             sx={{ bgcolor: blue[500] }}
           />
@@ -37,7 +37,7 @@ export function OverviewPage() {
             amount={customers.length} 
             diff={5} 
             icon={PeopleIcon} 
-            title="Sign ups" 
+            title={t("overview:signUps")}
             trend="down" 
             sx={{ bgcolor: green[500] }}
           />
@@ -48,7 +48,7 @@ export function OverviewPage() {
             amount={21} 
             diff={12} 
             icon={WarningIcon} 
-            title="Open issues" 
+            title={t("overview:openIssues")} 
             trend="up" 
             sx={{ bgcolor: orange[500] }}
           />

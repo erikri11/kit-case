@@ -1,6 +1,6 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import type { CustomerUpdate } from "@features/customers/models/customer.model";
-import type { Mode } from "@features/customers/models/mode";
+import type { Mode } from "@shared/types/mode";
 import { AvatarUpload } from "../AvatarUpload/AvatarUpload";
 import { PhoneMaskInput } from "../PhoneMaskInput/PhoneMaskInput";
 import { useCustomerUpsertDialog } from "./useCustomerUpsertDialog";
@@ -20,6 +20,7 @@ export function CustomerUpsertDialog({
   initialCustomer,
   onClose
 }: CustomerUpsertDialogProps) {
+  
   const {
     t,
     name,

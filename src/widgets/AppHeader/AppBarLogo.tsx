@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 
 export function AppBarLogo() {
   const navigateWithQuery = useNavigateWithQuery();
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
   return (
     <IconButton
       edge="start"
-      onClick={() => navigateWithQuery('/overview')}
+      onClick={() => navigateWithQuery("/overview")}
       aria-label={t("common:goToOverview")}
       sx={{ mr: 1 }}
     >

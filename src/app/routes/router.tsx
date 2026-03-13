@@ -17,11 +17,11 @@ export function AppRoutes() {
   return (
     <Suspense fallback={<CenteredSpinner />}>
       <Routes>
-        {createRoute('/overview', <OverviewPage />, [role], RoleEnum.USER)}
-        {createRoute('/admin/orders', <TasksPage />, [role], RoleEnum.ADMIN)}
-        {createRoute('/admin/products', <TasksPage />, [role], RoleEnum.ADMIN)}
-        {createRoute('/admin/customers/*', <CustomersRoutes />, [role], RoleEnum.ADMIN)}
-        {createRoute('/admin/tasks', <TasksPage />, [role], RoleEnum.ADMIN)}
+        {createRoute("/overview", <OverviewPage />, [role], RoleEnum.USER)}
+        {createRoute("/admin/orders", <TasksPage />, [role], RoleEnum.ADMIN)}
+        {createRoute("/admin/products", <TasksPage />, [role], RoleEnum.ADMIN)}
+        {createRoute("/admin/customers/*", <CustomersRoutes />, [role], RoleEnum.ADMIN)}
+        {createRoute("/admin/tasks", <TasksPage />, [role], RoleEnum.ADMIN)}
         <Route path="*" element={<Navigate to="/overview" replace />} />
       </Routes>
     </Suspense>

@@ -4,9 +4,9 @@ export async function makeRequest<T>(
   path: string, 
   options?: RequestInit
 ): Promise<T> {
-  const method = (options?.method ?? 'GET').toUpperCase();
+  const method = (options?.method ?? "GET").toUpperCase();
   const headers = new Headers(options?.headers);
-  if (!headers.has('Accept')) headers.set('Accept', 'application/json');
+  if (!headers.has("Accept")) headers.set("Accept", "application/json");
 
   const result = await fetch(`${API_BASE}${API_PREFIX}${path}`, {
     ...options,
@@ -15,8 +15,8 @@ export async function makeRequest<T>(
   });
 
   if (!result.ok) {
-    const text = await result.text().catch(() => '');
-    throw new Error(`${result.status} ${result.statusText}${text ? ` - ${text}` : ''}`);
+    const text = await result.text().catch(() => "");
+    throw new Error(`${result.status} ${result.statusText}${text ? ` - ${text}` : ""}`);
   }
 
   // No Content - response have no body

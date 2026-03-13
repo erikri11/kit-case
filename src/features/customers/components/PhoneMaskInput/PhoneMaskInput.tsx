@@ -4,13 +4,17 @@ import type { InputBaseComponentProps } from "@mui/material/InputBase";
 
 interface PhoneMaskInputProps extends InputBaseComponentProps {
   name?: string;
-  onChange?: (event: { target: { name?: string; value: string } }) => void;
+  onChange?: (event: { 
+    target: { 
+      name?: string; 
+      value: string 
+    };
+  }) => void;
 }
 
 export const PhoneMaskInput = forwardRef<HTMLInputElement, PhoneMaskInputProps>(
-  function PhoneMaskInput(props, ref) {
-    const { onChange, name, ...other } = props;
-
+  function PhoneMaskInput({onChange, name, ...other}, ref) {
+    
     return (
       <IMaskInput
         {...other}

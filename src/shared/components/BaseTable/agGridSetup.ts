@@ -8,5 +8,5 @@ export function setupAgGrid() {
   initialized = true;
 
   ModuleRegistry.registerModules([AllCommunityModule, SetFilterModule]);
-  LicenseManager.setLicenseKey('LICENSE_KEY_HERE');
+  LicenseManager.setLicenseKey("LICENSE_KEY_HERE");
 }

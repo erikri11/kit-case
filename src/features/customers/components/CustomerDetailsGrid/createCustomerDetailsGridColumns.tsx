@@ -1,16 +1,14 @@
 import type { TFunction } from 'i18next';
 import type { ColDef } from 'ag-grid-enterprise';
 import type { CustomerPayment } from '@features/customers/models/customer.payment.model';
-import { dateRenderer } from '../renderers/dateRenderer';
+import { dateRenderer } from '../../../../shared/renderers/dateRenderer';
 
 interface ColumnArgsProps {
   t: TFunction;
 }
 
-export function createCustomerDetailsGridColumns({ 
-  t
-}: ColumnArgsProps): ColDef<CustomerPayment>[] {
-
+export function createCustomerDetailsGridColumns({ t }: ColumnArgsProps): ColDef<CustomerPayment>[] {
+  
   return [
     {
       field: "amount",

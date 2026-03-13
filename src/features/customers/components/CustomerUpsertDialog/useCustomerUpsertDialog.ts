@@ -1,11 +1,10 @@
-import { CustomersApi } from "@features/customers/api/customersApi";
-import type { CustomerCreate, CustomerUpdate } from "@features/customers/models/customer.model";
-import type { FieldName } from "@features/customers/models/fieldName";
-import type { Mode } from "@features/customers/models/mode";
-import { validateEmail, validateName, validatePhone } from "@features/customers/validation/validateCustomer";
-import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { customerApi } from "@features/customers/api/customersApi";
+import type { CustomerCreate, CustomerFieldName, CustomerStatus, CustomerUpdate } from "@features/customers/models/customer.model";
+import { validateEmail, validateName, validatePhone } from "@features/customers/validation/validateCustomer";
+import type { Mode } from "@shared/types/mode";
+import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 
 export function useCustomerUpsertDialog(
   mode: Mode,
@@ -20,10 +19,10 @@ export function useCustomerUpsertDialog(
   const [email, setEmail] = useState<string>(initialCustomer?.email ?? '');
   const [phone, setPhone] = useState<string>(initialCustomer?.phone ?? '');
   const [quota, setQuota] = useState<number>(initialCustomer?.quota ?? 0);
-  const [status, setStatus] = useState<string>(initialCustomer?.status ?? t("customers:statusPending"));
+  const [status, setStatus] = useState<CustomerStatus>(initialCustomer?.status ?? "Pending");
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
-  const [touched, setTouched] = useState<Record<FieldName, boolean>>({
+  const [touched, setTouched] = useState<Record<CustomerFieldName, boolean>>({
     name: false, 
     email: false, 
     phone: false 
@@ -53,13 +52,15 @@ export function useCustomerUpsertDialog(
           avatarUrl: avatarUrl ?? undefined,
         };
 
-        await CustomersApi.post(payload);
+        await customerApi.post(payload);
 
         setSnackbarMessage({ 
           content: t("customers:snackbar.addSuccess"), 
           type: "success" 
         });
-      } else if (mode === "edit" && customerId) {
+      } else if (mode === "edit") {
+        if (!customerId) return;
+        
         const payload: CustomerUpdate = {
           name: name.trim(),
           email: email.trim(),
@@ -69,7 +70,7 @@ export function useCustomerUpsertDialog(
           avatarUrl: avatarUrl ?? undefined,
         };
 
-        await CustomersApi.put(customerId, payload);
+        await customerApi.put(customerId, payload);
         
         setSnackbarMessage({ 
           content: t("customers:snackbar.updateSuccess"), 

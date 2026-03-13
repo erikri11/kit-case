@@ -6,5 +6,8 @@
   "barChartTitle": "Registreringer - etter status",
   "signUpsByStatus": {
     "label": "Registreringer - etter status"
-  }
+  },
+  "tickets": "Billetter",
+  "signUps": "Registreringer",
+  "openIssues": "Åpne saker"
 }

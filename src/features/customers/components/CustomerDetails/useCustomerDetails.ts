@@ -1,4 +1,4 @@
-import { CustomersApi } from "@features/customers/api/customersApi";
+import { customerApi } from "@features/customers/api/customersApi";
 import type { CustomerDetails } from "@features/customers/models/customer.details.model";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { useEffect, useState } from "react";
@@ -6,12 +6,12 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 export function useCustomerDetails() {
+  const { t } = useTranslation("customers");
+  const { setSnackbarMessage } = useSnackbar();
+  
   const { customerId } = useParams<{ customerId: string }>();
   const [customer, setCustomer] = useState<CustomerDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  const { setSnackbarMessage } = useSnackbar();
-  const { t } = useTranslation("customers");
 
   useEffect(() => {
     if (!customerId) {
@@ -24,7 +24,7 @@ export function useCustomerDetails() {
         setIsLoading(true);
         // TODO:: Simulate loading delay, remove after testing
         await new Promise((resolve) => setTimeout(resolve, 2000)); 
-        const data = await CustomersApi.getById(customerId);
+        const data = await customerApi.getById(customerId);
         setCustomer(data);
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : String(error);

@@ -7,6 +7,7 @@ export interface DataGridTableProps<T> {
   data: T[];
   headers: ColDef<T>[];
   isAddButtonVisible?: boolean;
+  addButtonLabel?: string;
   disableSearch?: boolean;
   onAddButtonClick?: () => void;
 }
@@ -15,15 +16,16 @@ export function DataGridTable<T>({
   data, 
   headers, 
   isAddButtonVisible, 
+  addButtonLabel,
   disableSearch,
   onAddButtonClick,
 }: DataGridTableProps<T>) {
-  
+
   const [gridApi, setGridApi] = useState<GridApi | null>(null);
   const [quickFilter, setQuickFilter] = useState<string>("");
 
   useEffect(() => {
-    gridApi?.setGridOption('quickFilterText', (quickFilter ?? '').trim());
+    gridApi?.setGridOption("quickFilterText", (quickFilter ?? "").trim());
   }, [quickFilter, gridApi]);
   
   return (
@@ -31,6 +33,7 @@ export function DataGridTable<T>({
       <BaseToolbar 
         quickFilter={quickFilter}
         setQuickFilter={setQuickFilter}
+        addButtonLabel={addButtonLabel}
         isAddButtonVisible={isAddButtonVisible}
         onAddButtonClick={onAddButtonClick}
         disableSearch={disableSearch}

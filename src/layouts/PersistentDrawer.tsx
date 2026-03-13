@@ -26,10 +26,10 @@ export function PersistentDrawer(props: PersistentDrawerProps) {
         onClose={props.onClose}
         ModalProps={{ keepMounted: true }}
         sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': {
+          display: { xs: "block", sm: "none" },
+          "& .MuiDrawer-paper": {
             width: DRAWER_WIDTH,
-            boxSizing: 'border-box'
+            boxSizing: "border-box"
           }
         }}
       >
@@ -41,10 +41,10 @@ export function PersistentDrawer(props: PersistentDrawerProps) {
         variant="permanent"
         open
         sx={{
-          display: { xs: 'none', sm: 'block' },
-          '& .MuiDrawer-paper': {
+          display: { xs: "none", sm: "block" },
+          "& .MuiDrawer-paper": {
             width: DRAWER_WIDTH,
-            boxSizing: 'border-box'
+            boxSizing: "border-box"
           }
         }}
       >

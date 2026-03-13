@@ -16,7 +16,7 @@ interface MenuGroupItemProps {
 export function MenuGroupItem({ item, role }: MenuGroupItemProps) {
   const [userOpen, setUserOpen] = useState(false);
   const location = useLocation();
-  const { t } = useTranslation('menu');
+  const { t } = useTranslation("menu");
 
   const pathname = location.pathname;
   const isParentActive = pathname === item.url || pathname.startsWith(`${item.url}/`);
@@ -34,7 +34,7 @@ export function MenuGroupItem({ item, role }: MenuGroupItemProps) {
         <ListItemText 
           primary={t(item.textKey)} 
           slotProps={{
-            primary: { variant: 'menu' }
+            primary: { variant: "menu" }
           }}
         />
         {open ? <ExpandLess /> : <ExpandMore />}
@@ -52,7 +52,7 @@ export function MenuGroupItem({ item, role }: MenuGroupItemProps) {
               <Fragment key={childKey}>
                 {checkMenuAccess(
                   <ListItemButton
-                    component={child.url ? Link : 'button'}
+                    component={child.url ? Link : "button"}
                     to={child.url ?? undefined}
                     sx={{ pl: 6 }}
                     selected={isSelectedPath(pathname, child.url)}
@@ -61,7 +61,7 @@ export function MenuGroupItem({ item, role }: MenuGroupItemProps) {
                     <ListItemText 
                       primary={t(child.textKey)}  
                       slotProps={{
-                        primary: { variant: 'menu' }
+                        primary: { variant: "menu" }
                       }}
                     />
                   </ListItemButton>,

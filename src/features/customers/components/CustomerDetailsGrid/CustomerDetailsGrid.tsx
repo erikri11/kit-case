@@ -7,14 +7,10 @@ interface CustomerDetailsGridProps {
    payments: CustomerPayment[];
 }
 
-export function CustomerDetailsGrid({ 
-  payments
-}: CustomerDetailsGridProps) {
+export function CustomerDetailsGrid({ payments}: CustomerDetailsGridProps) {
   const { t } = useTranslation(["common", "customers"]);
 
-  const headers = createCustomerDetailsGridColumns({ 
-    t
-  });
+  const headers = createCustomerDetailsGridColumns({ t });
 
   // TODO:: Remove after testing
   console.log(`Loaded payments:`, payments);

@@ -2,7 +2,7 @@ import { useMemo, useState, useCallback, type ReactNode } from 'react';
 import { UserRightsContext } from './UserRightsContext';
 import { RoleEnum } from '@shared/types/roleEnum';
 
-const STORAGE_KEY = 'demo.role';
+const STORAGE_KEY = "demo.role";
 const initialRole = RoleEnum.USER;
 
 export interface UserRightsProviderProps {
@@ -10,6 +10,7 @@ export interface UserRightsProviderProps {
 }
 
 export function UserRightsProvider({ children }: UserRightsProviderProps) {
+  
   const [role, setRoleState] = useState<RoleEnum>(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored && Object.values(RoleEnum).includes(stored as RoleEnum)) {

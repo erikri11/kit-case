@@ -3,17 +3,28 @@
     "title": "Oppgaver",
     "subtitle": "Administrer oppgavene dine effektivt"
   },
-  "tasksByPriority": {
-    "header": "Oppgaver etter prioritet",
-    "high": "Høy",
-    "medium": "Middels",
-    "low": "Lav"
-  },
-  "selectAPriority": "Velg en prioritet",
   "snackbar": {
     "addSuccess": "Oppgave lagt til",
     "editSuccess": "Oppgave oppdatert",
     "deleteSuccess": "Oppgave slettet",
-    "deleteError": "Feil ved sletting av oppgave"
+    "deleteError": "Feil ved sletting av oppgave",
+    "updateSuccess": "Oppgave oppdatert",
+    "addError": "Feil ved oppretting av oppgave",
+    "updateError": "Feil ved oppdatering av oppgave"
+  },
+  "action": {
+    "add": "Legg til oppgave",
+    "edit": "Rediger oppgave",
+    "delete": "Slett oppgave"
+  },
+  "status": {
+    "todo": "Å gjøre",
+    "inProgress": "Under arbeid",
+    "done": "Ferdig"
+  },
+  "priority": {
+    "low": "Lav",
+    "medium": "Middels",
+    "high": "Høy"
   }
 }
