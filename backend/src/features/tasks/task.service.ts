@@ -17,17 +17,15 @@ export function createTask(input: {
   description?: string;
   priority: Task["priority"];
   status: Task["status"];
-  customerId?: string;
 }): Task {
-  const { title, description, customerId } = input;
+  const { title, description, priority } = input;
 
   const task: Task = {
     id: uuidv4(),
     title: title.trim(),
     description: description?.trim() || undefined,
-    priority: "Low",
+    priority,
     status: "Todo",
-    customerId,
     createdAt: new Date(),
     dueDate: new Date()
   };
@@ -44,14 +42,14 @@ export function updateTask(
     description?: string;
     priority: Task["priority"];
     status: Task["status"];
-    customerId?: string;
+    dueDate: Date;
   }
 ): Task | null {
 
   const index = tasks.findIndex((x) => x.id === id);
   if (index < 0) return null;
 
-  const { title, description, priority, status, customerId } = input;
+  const { title, description, priority, status, dueDate } = input;
 
   const updatedTask: Task = {
     ...tasks[index],
@@ -59,7 +57,7 @@ export function updateTask(
     description: description?.trim() || undefined,
     priority,
     status,
-    customerId
+    dueDate: dueDate
   };
 
   tasks[index] = updatedTask;

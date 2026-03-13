@@ -8,7 +8,6 @@ export const mockTasks: Task[] = [
     description: "Call customer and verify setup",
     priority: "High",
     status: "Todo",
-    customerId: "customer-1",
     dueDate: dayjs().add(12, "day").toDate(),
     createdAt: new Date()
   },
@@ -18,7 +17,6 @@ export const mockTasks: Task[] = [
     description: "Check latest contract details",
     priority: "Medium",
     status: "InProgress",
-    customerId: "customer-2",
     dueDate: dayjs().add(14, "day").toDate(),
     createdAt: new Date()
   },
@@ -27,7 +25,6 @@ export const mockTasks: Task[] = [
     title: "Send welcome email",
     priority: "Low",
     status: "Done",
-    customerId: "customer-3",
     dueDate: dayjs().add(16, "day").toDate(),
     createdAt: new Date()
   }

@@ -4,7 +4,6 @@ export interface Task {
   description?: string;
   priority: TaskPriority;
   status: TaskStatus;
-  customerId?: string;
   dueDate: Date;
   createdAt: Date;
 }
