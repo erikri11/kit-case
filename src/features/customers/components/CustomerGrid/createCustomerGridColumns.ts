@@ -28,27 +28,27 @@ export function createCustomerGridColumns({
   const editRenderer = createActionButtonRenderer<Customer>({
     icon: EditIcon,
     iconButtonProps: { color: 'default' },
-    title: t("common:edit"),
+    title: t("common:actions.edit"),
     onAction: onEdit
   });
 
   const deleteRenderer = createActionButtonRenderer<Customer>({
     icon: DeleteIcon,
     iconButtonProps: { color: 'error' },
-    title: t("common:delete"),
+    title: t("common:actions.delete"),
     onAction: onDelete
   });
 
   return [
     {
       field: "name",
-      headerName: t("common:name"),
+      headerName: t("common:labels.name"),
       minWidth: 180,
       flex: 2
     },
     {
       field: "avatar",
-      headerName: t("common:avatar"),
+      headerName: t("common:labels.avatar"),
       minWidth: 100,
       flex: 1,
       filter: false,
@@ -56,27 +56,27 @@ export function createCustomerGridColumns({
     },
     {
       field: "email",
-      headerName: t("common:email"),
+      headerName: t("common:labels.email"),
       minWidth: 180,
       flex: 2
     },
     {
       field: "phone",
-      headerName: t("common:phone"),
+      headerName: t("common:labels.phone"),
       minWidth: 140,
       flex: 2,
       type: "rightAligned"
     },
     {
       field: "quota",
-      headerName: t("common:quota"),
+      headerName: t("common:labels.quota"),
       minWidth: 140,
       flex: 2,
       cellRenderer: LinearProgressRenderer
     },
     {
       field: "status",
-      headerName: t("common:status"),
+      headerName: t("common:labels.status"),
       minWidth: 160,
       flex: 1,
       cellRenderer: CustomerStatusChipRenderer,
@@ -84,7 +84,7 @@ export function createCustomerGridColumns({
     },
     {
       field: "createdAt",
-      headerName: t("common:createdAt"),
+      headerName: t("common:labels.createdAt"),
       minWidth: 160,
       flex: 1,
       type: "rightAligned",

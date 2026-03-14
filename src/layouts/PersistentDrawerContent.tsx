@@ -30,7 +30,7 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
             component="div" 
             sx={{ display: { xs: "block", sm: "none" } }}
           >
-            {t("common:navigation")}
+            {t("common:labels.navigation")}
           </ListSubheader>
         }
       >

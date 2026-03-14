@@ -60,7 +60,7 @@ export function AvatarUpload({
         </Avatar>
       </Box>
       <Stack spacing={1} sx={{ alignItems: "flex-start" }}>
-        <Typography variant="subtitle1">{t("common:avatar")}</Typography>
+        <Typography variant="subtitle1">{t("common:labels.avatar")}</Typography>
         <Typography variant="caption">{t("customers:avatarUploadHint")}</Typography>
 
         <Stack
@@ -76,7 +76,7 @@ export function AvatarUpload({
             onClick={openFilePicker}
             disabled={isUploading}
           >
-            {hasAvatar ? t("common:change") : t("common:select")}
+            {hasAvatar ? t("common:actions.change") : t("common:actions.select")}
           </Button>
 
           {hasAvatar && (
@@ -86,7 +86,7 @@ export function AvatarUpload({
               onClick={handleRemoveAvatar}
               disabled={isUploading}
             >
-              {t("common:remove")}
+              {t("common:actions.remove")}
             </Button>
           )}
         </Stack>

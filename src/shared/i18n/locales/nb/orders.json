@@ -2,15 +2,5 @@
   "pageTitle": {
     "title": "Ordre",
     "subtitle": "Administrer ordrene dine effektivt"
-  },
-  "customerName": "Kundenavn",
-  "totalAmount": "Totalbeløp",
-  "status": "Status",
-  "createdAt": "Opprettet den",
-  "ordersByStatus": {
-    "header": "Ordre etter status",
-    "pending": "Venter",
-    "completed": "Fullført",
-    "cancelled": "Avbrutt"
   }
 }

@@ -84,7 +84,7 @@ export function CustomerUpsertDialog({
           />
           <Grid size={12}>
             <TextField 
-              label="Name" 
+              label={t("common:labels.name")}
               variant="filled" 
               fullWidth 
               value={name}
@@ -94,12 +94,12 @@ export function CustomerUpsertDialog({
                 name: true 
               }))}
               error={showNameError}
-              helperText={showNameError && nameError ? t(nameError) : ''}
+              helperText={showNameError && nameError ? t(nameError) : ""}
             />
           </Grid>
           <Grid size={12}>
             <TextField 
-              label="Email" 
+              label={t("common:labels.email")}
               variant="filled" 
               fullWidth 
               value={email}
@@ -109,12 +109,12 @@ export function CustomerUpsertDialog({
                 email: true 
               }))}
               error={showEmailError}
-              helperText={showEmailError && emailError ? t(emailError) : ''}
+              helperText={showEmailError && emailError ? t(emailError) : ""}
             />
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
             <TextField 
-              label="Phone" 
+              label={t("common:labels.phone")}
               variant="filled" 
               fullWidth 
               value={phone}
@@ -124,7 +124,7 @@ export function CustomerUpsertDialog({
                 phone: true 
               }))}
               error={showPhoneError}
-              helperText={showPhoneError && phoneError ? t(phoneError) : ''}
+              helperText={showPhoneError && phoneError ? t(phoneError) : ""}
               slotProps={{
                 input: {
                   inputComponent: PhoneMaskInput
@@ -132,17 +132,17 @@ export function CustomerUpsertDialog({
               }}
             />
           </Grid>
-          {mode === 'edit' && (
+          {mode === "edit" && (
             <>
               <Grid size={6}>
                 <FormControl 
                   variant="filled" 
                   fullWidth
                 >
-                  <InputLabel>{t("customers:quota")}</InputLabel>
+                  <InputLabel>{t("common:labels.quota")}</InputLabel>
                   <Select
                     value={quota}
-                    label={t("customers:quota")}
+                    label={t("common:labels.quota")}
                     onChange={(e) => setQuota(e.target.value)}
                     renderValue={(value) => `${value}%`}
                   >
@@ -157,16 +157,16 @@ export function CustomerUpsertDialog({
                   variant="filled" 
                   fullWidth
                 >
-                  <InputLabel>{t("customers:status")}</InputLabel>
+                  <InputLabel>{t("common:labels.status")}</InputLabel>
                   <Select
                     value={status}
-                    label={t("customers:status")}
+                    label={t("common:labels.status")}
                     onChange={(e) => setStatus(e.target.value)}
-                    renderValue={(value) => t(`customers:status${value}`)}
+                    renderValue={(value) => t(`customers:status.${value}`)}
                   >
-                    <MenuItem value={"Active"}>{t("customers:statusActive")}</MenuItem>
-                    <MenuItem value={"Pending"}>{t("customers:statusPending")}</MenuItem>
-                    <MenuItem value={"Blocked"}>{t("customers:statusBlocked")}</MenuItem>
+                    <MenuItem value={"Active"}>{t("customers:status.Active")}</MenuItem>
+                    <MenuItem value={"Pending"}>{t("customers:status.Pending")}</MenuItem>
+                    <MenuItem value={"Blocked"}>{t("customers:status.Blocked")}</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -179,14 +179,14 @@ export function CustomerUpsertDialog({
           variant="outlined" 
           onClick={onClose}
         >
-          {t("common:cancel")}
+          {t("common:actions.cancel")}
         </Button>
         <Button 
           variant="contained" 
           onClick={handleUpsertCustomer} 
           disabled={!canSubmit}
         >
-          {mode === "add" ? t("common:add") : t("common:save")}
+          {mode === "add" ? t("common:actions.add") : t("common:actions.save")}
         </Button>
       </DialogActions>
     </Dialog>

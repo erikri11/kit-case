@@ -12,7 +12,7 @@ export function useCustomerUpsertDialog(
   customerId?: string, 
   initialCustomer?: CustomerUpdate
 ) {
-  const { t } = useTranslation("customers");
+  const { t } = useTranslation(["customers", "common"]);
   const { setSnackbarMessage } = useSnackbar();
 
   const [name, setName] = useState<string>(initialCustomer?.name ?? '');

@@ -7,16 +7,15 @@
     "add": "Legg til kunde",
     "edit": "Rediger kunde"
   },
-  "totalOrders": "Totale bestillinger",
-  "ordersValue": "Bestillingsverdi",
-  "refunds": "Refusjoner",
   "avatarUploadHint": "Min 400x400px, PNG eller JPEG",
   "customerNotFound": "Kunde ikke funnet",
   "customerNotFoundMessage": "Kunden du leter etter eksisterer ikke eller kan ha blitt fjernet.",
   "backToCustomers": "Tilbake til kunder",
-  "statusActive": "Aktiv",
-  "statusPending": "Venter",
-  "statusBlocked": "Blokkert",
+  "status": {
+    "Active": "Aktiv",
+    "Pending": "Venter",
+    "Blocked": "Blokkert"
+  },
   "snackbar": {
     "addSuccess": "Kunden har blitt lagt til",
     "updateSuccess": "Kunden har blitt oppdatert",

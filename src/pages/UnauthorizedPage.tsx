@@ -55,10 +55,10 @@ export function UnauthorizedPage() {
           onClick={() => navigate("/overview")}
           sx={{ mr: 1 }}
         >
-          {t("common:goToOverview")}
+          {t("common:actions.goToOverview")}
         </Button>
         <Button variant="text" onClick={() => navigate(-1)}>
-          {t("common:goBack")}
+          {t("common:actions.goBack")}
         </Button>
       </Box>
     </Box>

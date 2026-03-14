@@ -9,7 +9,7 @@ interface CustomerPaymentsCardProps {
 }
 
 export function CustomerPaymentsCard({ customer }: CustomerPaymentsCardProps) {
-  const { t } = useTranslation(["customers", "common"]);
+  const { t } = useTranslation("common");
   const paymentSummary = customer.paymentSummary;
 
   return (
@@ -20,7 +20,7 @@ export function CustomerPaymentsCard({ customer }: CustomerPaymentsCardProps) {
             <ShoppingCartIcon  />
           </Avatar>
         }
-        title={t("common:payments")}
+        title={t("common:labels.payments")}
       />
       <CardContent>
         <Box
@@ -52,7 +52,7 @@ export function CustomerPaymentsCard({ customer }: CustomerPaymentsCardProps) {
           >
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
-                {t("customers:totalOrders")}
+                {t("common:labels.totalOrders")}
               </Typography>
               <Typography variant="h5">
                 {paymentSummary.totalOrders}
@@ -61,7 +61,7 @@ export function CustomerPaymentsCard({ customer }: CustomerPaymentsCardProps) {
               
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
-                {t("customers:ordersValue")}
+                {t("common:labels.ordersValue")}
               </Typography>
               <Typography variant="h5">
                 ${paymentSummary.ordersValue.toFixed(2)}
@@ -70,7 +70,7 @@ export function CustomerPaymentsCard({ customer }: CustomerPaymentsCardProps) {
 
             <Stack spacing={0.5}>
               <Typography color="text.secondary">
-                {t("customers:refunds")}
+                {t("common:labels.refunds")}
               </Typography>
               <Typography 
                 variant="h5" 

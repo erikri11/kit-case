@@ -22,10 +22,10 @@ export function CustomerDeleteDialog({
       open={open} 
       onClose={onClose}
     >
-      <DialogTitle>{t("common:confirmDelete")}</DialogTitle>
+      <DialogTitle>{t("common:labels.confirmDelete")}</DialogTitle>
       <DialogContent>
         <Typography sx={{ mt: 1 }}>
-          {t("common:confirmDeleteMessage")}
+          {t("common:labels.confirmDeleteMessage")}
           </Typography>
         <Typography sx={{ mt: 1 }} color={theme.typography.subtitle2.color}>
           {customer?.name}
@@ -33,14 +33,14 @@ export function CustomerDeleteDialog({
       </DialogContent>
       <DialogActions>
         <Button variant="outlined" onClick={onClose}>
-          {t("common:cancel")}
+          {t("common:actions.cancel")}
         </Button>
         <Button 
           variant="contained" 
           color="error" 
           onClick={handleDeleteCustomer}
         >
-          {t("common:delete")}
+          {t("common:actions.delete")}
         </Button>
       </DialogActions>
     </Dialog>

@@ -22,7 +22,7 @@ export function CustomerSecurityCard({ customerId }: CustomerSecurityCardProps) 
             <PrivacyTipIcon  />
           </Avatar>
         }
-        title={t("common:security")}
+        title={t("common:labels.security")}
       />
       <CardContent>
         <Stack spacing={1}>
@@ -49,10 +49,10 @@ export function CustomerSecurityCard({ customerId }: CustomerSecurityCardProps) 
               }
             }}
           >
-            {t("common:deleteAccount")}
+            {t("common:actions.deleteAccount")}
           </Button>
           <Typography color="text.secondary" variant="body2">
-            {t("common:deleteAccountWarning")}
+            {t("common:labels.deleteAccountWarning")}
           </Typography>
         </Stack>
       </CardContent>

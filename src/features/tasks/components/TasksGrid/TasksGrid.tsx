@@ -31,7 +31,7 @@ export function TasksGrid({
         data={tasks} 
         headers={headers}
         isAddButtonVisible
-        addButtonLabel={t("tasks:action.add")}
+        addButtonLabel={t("tasks:actions.add")}
         onAddButtonClick={() => setIsAddOpen(true)}
       />
 

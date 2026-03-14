@@ -11,7 +11,7 @@ export function AppBarLogo() {
     <IconButton
       edge="start"
       onClick={() => navigateWithQuery("/overview")}
-      aria-label={t("common:goToOverview")}
+      aria-label={t("common:labels.goToOverview")}
       sx={{ mr: 1 }}
     >
       <Box

@@ -3,11 +3,13 @@
     "title": "Oversikt",
     "subtitle": "Administrer oversikten din effektivt"
   },
-  "barChartTitle": "Registreringer - etter status",
   "signUpsByStatus": {
     "label": "Registreringer - etter status"
   },
-  "tickets": "Billetter",
-  "signUps": "Registreringer",
-  "openIssues": "Åpne saker"
+  "labels": {
+    "barChartTitle": "Registreringer - etter status",
+    "tickets": "Billetter",
+    "signUps": "Registreringer",
+    "openIssues": "Åpne saker"
+  }
 }

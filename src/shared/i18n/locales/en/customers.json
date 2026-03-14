@@ -7,16 +7,15 @@
     "add": "Add customer",
     "edit": "Edit customer"
   },
-  "totalOrders": "Total orders",
-  "ordersValue": "Orders value",
-  "refunds": "Refunds",
   "avatarUploadHint": "Min 400x400px, PNG or JPEG",
   "customerNotFound": "Customer not found",
   "customerNotFoundMessage": "The customer you are looking for does not exist or may have been removed.",
   "backToCustomers": "Back to customers",
-  "statusActive": "Active",
-  "statusPending": "Pending",
-  "statusBlocked": "Blocked",
+  "status": {
+    "Active": "Active",
+    "Pending": "Pending",
+    "Blocked": "Blocked"
+  },
   "snackbar": {
     "addSuccess": "Customer has been added",
     "updateSuccess": "Customer has been updated",

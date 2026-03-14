@@ -18,13 +18,13 @@ export function CustomerBasicDetailsCard({ customer }: CustomerBasicDetailsCardP
             <UserIcon />
           </Avatar>
         }
-        title={t("common:basicDetails")}
+        title={t("common:labels.basicDetails")}
       />
       <CardContent>
         <Stack spacing={2}>
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t("common:customerId")}
+              {t("common:labels.customerId")}
             </Typography>
             <Chip label={customer.id} sx={{ alignSelf: "flex-start" }} />
           </Stack>
@@ -33,7 +33,7 @@ export function CustomerBasicDetailsCard({ customer }: CustomerBasicDetailsCardP
 
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t("common:name")} 
+              {t("common:labels.name")} 
             </Typography>
             <Typography variant="body1">
               {customer.name}
@@ -44,7 +44,7 @@ export function CustomerBasicDetailsCard({ customer }: CustomerBasicDetailsCardP
 
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t("common:email")} 
+              {t("common:labels.email")} 
             </Typography>
             <Typography variant="body1">
               {customer.email}
@@ -55,7 +55,7 @@ export function CustomerBasicDetailsCard({ customer }: CustomerBasicDetailsCardP
 
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t("common:phone")} 
+              {t("common:labels.phone")} 
             </Typography>
             <Typography variant="body1">
               {customer.phone}
@@ -66,7 +66,7 @@ export function CustomerBasicDetailsCard({ customer }: CustomerBasicDetailsCardP
           
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t("common:quota")} 
+              {t("common:labels.quota")} 
             </Typography>
             <Stack
               direction="row"

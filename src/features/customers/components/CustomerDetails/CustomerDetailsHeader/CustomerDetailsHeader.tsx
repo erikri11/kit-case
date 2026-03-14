@@ -12,7 +12,7 @@ interface CustomerDetailsHeaderProps {
 
 export function CustomerDetailsHeader({ customer }: CustomerDetailsHeaderProps) {
   const navigate = useNavigate();
-  const { t } = useTranslation(["customers", "common"]);
+  const { t } = useTranslation("menu");
 
   const avatarSrc = resolveAvatarSrc(customer.avatar);
 
@@ -37,7 +37,7 @@ export function CustomerDetailsHeader({ customer }: CustomerDetailsHeaderProps) 
           }}
         >
         <ArrowBackIcon />
-        {t("common:customers")}
+        {t("menu:customers")}
         </Link>
       </Box>
 

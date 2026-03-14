@@ -85,8 +85,8 @@ export function AppHeader(props: AppHeaderProps) {
             }
           }}
         >
-          <MenuItem value={RoleEnum.USER}>{t("common:user")}</MenuItem>
-          <MenuItem value={RoleEnum.ADMIN}>{t("common:administrator")}</MenuItem>
+          <MenuItem value={RoleEnum.USER}>{t("common:labels.user")}</MenuItem>
+          <MenuItem value={RoleEnum.ADMIN}>{t("common:labels.administrator")}</MenuItem>
         </Select>
         
         <LanguageToggle />

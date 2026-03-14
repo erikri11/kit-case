@@ -4,19 +4,19 @@ import type { TaskPriority } from "./task.model";
 
 export const TASK_PRIORITY_CONFIG: Record<TaskPriority, StatusConfigItem> = {
   Low: {
-    labelKey: "tasks:priority.low",
+    labelKey: "tasks:priority.Low",
     icon: PriorityHighIcon,
     color: "success",
     rank: 0
   },
   Medium: {
-    labelKey: "tasks:priority.medium",
+    labelKey: "tasks:priority.Medium",
     icon: PriorityHighIcon,
     color: "warning",
     rank: 1
   },
   High: {
-    labelKey: "tasks:priority.high",
+    labelKey: "tasks:priority.High",
     icon: PriorityHighIcon,
     color: "error",
     rank: 2

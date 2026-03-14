@@ -6,19 +6,19 @@ import type { TaskStatus } from "./task.model";
 
 export const TASK_STATUS_CONFIG: Record<TaskStatus, StatusConfigItem> = {
   Todo: {
-    labelKey: "tasks:status.todo",
+    labelKey: "tasks:status.Todo",
     icon: CircleIcon,
     color: "error",
     rank: 0
   },
   InProgress: {
-    labelKey: "tasks:status.inProgress",
+    labelKey: "tasks:status.InProgress",
     icon: HourglassEmptyIcon,
     color: "warning",
     rank: 1
   },
   Done: {
-    labelKey: "tasks:status.done",
+    labelKey: "tasks:status.Done",
     icon: CheckCircleIcon,
     color: "success",
     rank: 2

@@ -12,19 +12,19 @@
     "addError": "Error creating task",
     "updateError": "Error updating task"
   },
-  "action": {
+  "actions": {
     "add": "Add Task",
     "edit": "Edit Task",
     "delete": "Delete Task"
   },
   "status": {
-    "todo": "Todo",
-    "inProgress": "In Progress",
-    "done": "Done"
+    "Todo": "Todo",
+    "InProgress": "In Progress",
+    "Done": "Done"
   },
   "priority": {
-    "low": "Low",
-    "medium": "Medium",
-    "high": "High"
+    "Low": "Low",
+    "Medium": "Medium",
+    "High": "High"
   }
 }

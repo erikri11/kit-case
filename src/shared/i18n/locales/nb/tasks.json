@@ -12,19 +12,19 @@
     "addError": "Feil ved oppretting av oppgave",
     "updateError": "Feil ved oppdatering av oppgave"
   },
-  "action": {
+  "actions": {
     "add": "Legg til oppgave",
     "edit": "Rediger oppgave",
     "delete": "Slett oppgave"
   },
   "status": {
-    "todo": "Å gjøre",
-    "inProgress": "Under arbeid",
-    "done": "Ferdig"
+    "Todo": "Å gjøre",
+    "InProgress": "Under arbeid",
+    "Done": "Ferdig"
   },
   "priority": {
-    "low": "Lav",
-    "medium": "Middels",
-    "high": "Høy"
+    "Low": "Lav",
+    "Medium": "Middels",
+    "High": "Høy"
   }
 }

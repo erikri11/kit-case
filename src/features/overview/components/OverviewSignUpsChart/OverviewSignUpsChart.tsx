@@ -42,7 +42,7 @@ export function OverviewSignUpsChart({
             <BarChartIcon />
           </Avatar>
         }
-        title={t("overview:barChartTitle")}
+        title={t("overview:labels.barChartTitle")}
         subheader={new Date().toLocaleDateString()}
       />
       <CardContent>

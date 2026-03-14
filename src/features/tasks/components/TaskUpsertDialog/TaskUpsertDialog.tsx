@@ -101,13 +101,13 @@ export function TaskUpsertDialog({
       maxWidth="sm"
     >
       <DialogTitle>
-        {mode === "add" ? t("tasks:action.add") : t("tasks:action.edit")}
+        {mode === "add" ? t("tasks:actions.add") : t("tasks:actions.edit")}
       </DialogTitle>
       <DialogContent className="pt-3">
         <Grid container spacing={2}>
           <Grid size={12}>
             <TextField
-              label={t("common:title")}
+              label={t("common:labels.title")}
               variant="filled" 
               fullWidth
               value={title}
@@ -122,7 +122,7 @@ export function TaskUpsertDialog({
           </Grid>
           <Grid size={12}>
             <TextField
-              label={t("common:description")}
+              label={t("common:labels.description")}
               variant="filled" 
               fullWidth
               multiline
@@ -142,16 +142,16 @@ export function TaskUpsertDialog({
               variant="filled" 
               fullWidth
             >
-              <InputLabel>{t("common:priority")}</InputLabel>
+              <InputLabel>{t("common:labels.priority")}</InputLabel>
               <Select
                 value={priority}
-                label={t("common:priority")}
+                label={t("common:labels.priority")}
                 onChange={(e) => setPriority(e.target.value)}
-                renderValue={(value) => t(`common:priority${value}`)}
+                renderValue={(value) => t(`tasks:priority.${value}`)}
               >
-                <MenuItem value={"Low"}>{t("tasks:priority.low")}</MenuItem>
-                <MenuItem value={"Medium"}>{t("tasks:priority.medium")}</MenuItem>
-                <MenuItem value={"High"}>{t("tasks:priority.high")}</MenuItem>
+                <MenuItem value={"Low"}>{t("tasks:priority.Low")}</MenuItem>
+                <MenuItem value={"Medium"}>{t("tasks:priority.Medium")}</MenuItem>
+                <MenuItem value={"High"}>{t("tasks:priority.High")}</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -162,23 +162,23 @@ export function TaskUpsertDialog({
                   variant="filled" 
                   fullWidth
                 >
-                  <InputLabel>{t("common:status")}</InputLabel>
+                  <InputLabel>{t("common:labels.status")}</InputLabel>
                   <Select
                     value={status}
-                    label={t("common:status")}
+                    label={t("common:labels.status")}
                     onChange={(e) => setStatus(e.target.value)}
                     renderValue={(value) => t(`tasks:status.${value}`)}
                   >
-                    <MenuItem value={"Todo"}>{t("tasks:status.todo")}</MenuItem>
-                    <MenuItem value={"InProgress"}>{t("tasks:status.inProgress")}</MenuItem>
-                    <MenuItem value={"Done"}>{t("tasks:status.done")}</MenuItem>
+                    <MenuItem value={"Todo"}>{t("tasks:status.Todo")}</MenuItem>
+                    <MenuItem value={"InProgress"}>{t("tasks:status.InProgress")}</MenuItem>
+                    <MenuItem value={"Done"}>{t("tasks:status.Done")}</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
               <Grid size={6}>
                 <DatePicker
                   format="dd.MM.yyyy"
-                  label={t('common:dueDate')}
+                  label={t('common:labels.dueDate')}
                   value={dueDate}
                   onChange={(newDateValue: Date | null) => {
                     setDueDate(newDateValue ?? new Date());
@@ -199,14 +199,14 @@ export function TaskUpsertDialog({
           variant="outlined" 
           onClick={onClose}
         >
-          {t("common:cancel")}
+          {t("common:actions.cancel")}
         </Button>
         <Button 
           variant="contained" 
           onClick={handleUpsertTask} 
           disabled={!canSubmit}
         >
-          {mode === "add" ? t("common:add") : t("common:save")}
+          {mode === "add" ? t("common:actions.add") : t("common:actions.save")}
         </Button>
       </DialogActions>
     </Dialog>

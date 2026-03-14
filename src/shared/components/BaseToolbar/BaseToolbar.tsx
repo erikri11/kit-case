@@ -35,7 +35,7 @@ export function BaseToolbar({
     >
       {!disableSearch && (
         <TextField
-          label={t("common:search")}
+          label={t("common:labels.search")}
           type="search"
           name="quickFilter"
           variant="filled"

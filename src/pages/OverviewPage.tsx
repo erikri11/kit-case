@@ -26,7 +26,7 @@ export function OverviewPage() {
             amount={31} 
             diff={15} 
             icon={ChecksListIcon} 
-            title={t("overview:tickets")}
+            title={t("overview:labels.tickets")}
             trend="up" 
             sx={{ bgcolor: blue[500] }}
           />
@@ -37,7 +37,7 @@ export function OverviewPage() {
             amount={customers.length} 
             diff={5} 
             icon={PeopleIcon} 
-            title={t("overview:signUps")}
+            title={t("overview:labels.signUps")}
             trend="down" 
             sx={{ bgcolor: green[500] }}
           />
@@ -48,7 +48,7 @@ export function OverviewPage() {
             amount={21} 
             diff={12} 
             icon={WarningIcon} 
-            title={t("overview:openIssues")} 
+            title={t("overview:labels.openIssues")} 
             trend="up" 
             sx={{ bgcolor: orange[500] }}
           />

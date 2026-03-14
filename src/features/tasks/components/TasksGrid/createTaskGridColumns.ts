@@ -25,33 +25,33 @@ export function createTaskGridColumns({
   const editRenderer = createActionButtonRenderer<Task>({
     icon: EditIcon,
     iconButtonProps: { color: 'default' },
-    title: t("common:edit"),
+    title: t("common:actions.edit"),
     onAction: onEdit
   });
 
   const deleteRenderer = createActionButtonRenderer<Task>({
     icon: DeleteIcon,
     iconButtonProps: { color: 'error' },
-    title: t("common:delete"),
+    title: t("common:actions.delete"),
     onAction: onDelete
   });
 
   return [
     {
       field: "title",
-      headerName: t("common:title"),
+      headerName: t("common:labels.title"),
       minWidth: 180,
       flex: 2
     },
     {
       field: "description",
-      headerName: t("common:description"),
+      headerName: t("common:labels.description"),
       minWidth: 200,
       flex: 2
     },
     {
       field: "priority",
-      headerName: t("common:priority"),
+      headerName: t("common:labels.priority"),
       minWidth: 160,
       flex: 1,
       cellRenderer: PriorityChipRenderer,
@@ -59,7 +59,7 @@ export function createTaskGridColumns({
     },
     {
       field: "status",
-      headerName: t("common:status"),
+      headerName: t("common:labels.status"),
       minWidth: 160,
       flex: 1,
       cellRenderer: TaskStatusChipRenderer,
@@ -68,7 +68,7 @@ export function createTaskGridColumns({
     },
     {
       field: "createdAt",
-      headerName: t("common:createdAt"),
+      headerName: t("common:labels.createdAt"),
       minWidth: 160,
       flex: 1,
       type: "rightAligned",
@@ -76,7 +76,7 @@ export function createTaskGridColumns({
     },
     {
       field: "dueDate",
-      headerName: t("common:dueDate"),
+      headerName: t("common:labels.dueDate"),
       minWidth: 160,
       flex: 1,
       type: "rightAligned",
