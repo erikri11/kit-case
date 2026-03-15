@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import productsRouter from "./features/products/product.route";
 import customersRouter from "./features/customers/customer.route";
 import tasksRouter from "./features/tasks/task.route";
 import uploadRouter from "./features/uploads/upload.routes";
@@ -9,17 +10,18 @@ import { API_PREFIX } from "./config/api";
 
 const app = express();
 
-const uploadDir = path.join(process.cwd(), "uploads/avatars");
+const uploadsDir = path.resolve(process.cwd(), "uploads");
 
 // serve uploaded images
-app.use("/uploads/avatars", express.static(uploadDir));
+app.use("/uploads", express.static(uploadsDir));
 
 app.use(corsLite);
 app.use(express.json());
 
+app.use(`${API_PREFIX}/products`, productsRouter);
 app.use(`${API_PREFIX}/customers`, customersRouter);
 app.use(`${API_PREFIX}/tasks`, tasksRouter);
-app.use(`${API_PREFIX}`, uploadRouter);
+app.use(`${API_PREFIX}/uploads`, uploadRouter);
 
 // centralized error handler (must be last)
 app.use(errorHandler);

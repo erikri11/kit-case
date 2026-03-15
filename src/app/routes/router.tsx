@@ -6,8 +6,8 @@ import { RoleEnum } from "@shared/types/roleEnum";
 import { useUserRights } from "@shared/context/userRights/useUserRights";
 
 const OverviewPage = lazy(() => import("@pages/OverviewPage"));
-// const Orders = lazy(() => import("@pages/Orders/Orders"));
-// const Products = lazy(() => import("@pages/Products/Products"));
+const OrdersPage = lazy(() => import("@pages/OrdersPage"));
+const ProductPage = lazy(() => import("@pages/ProductPage"));
 const CustomersRoutes = lazy(() => import("@pages/CustomersRoutes"));
 const TasksPage = lazy(() => import("@pages/TasksPage"));
 
@@ -18,8 +18,8 @@ export function AppRoutes() {
     <Suspense fallback={<CenteredSpinner />}>
       <Routes>
         {createRoute("/overview", <OverviewPage />, [role], RoleEnum.USER)}
-        {createRoute("/admin/orders", <TasksPage />, [role], RoleEnum.ADMIN)}
-        {createRoute("/admin/products", <TasksPage />, [role], RoleEnum.ADMIN)}
+        {createRoute("/admin/orders", <OrdersPage />, [role], RoleEnum.ADMIN)}
+        {createRoute("/admin/products", <ProductPage />, [role], RoleEnum.ADMIN)}
         {createRoute("/admin/customers/*", <CustomersRoutes />, [role], RoleEnum.ADMIN)}
         {createRoute("/admin/tasks", <TasksPage />, [role], RoleEnum.ADMIN)}
         <Route path="*" element={<Navigate to="/overview" replace />} />

@@ -1,0 +1,89 @@
+import { v4 as uuidv4 } from "uuid";
+import { mockProducts } from "./product.mock";
+import { Product } from "./product.model";
+
+let products: Product[] = [...mockProducts];
+
+export function listProducts(): Product[] {
+  return products;
+};
+
+export function getProduct(id: string): Product | null {
+  return products.find((x) => x.id === id) ?? null;
+};
+
+export function createProduct(input: {
+  name: string;
+  image: string | null;
+  category: string;
+  type: string;
+  quantity: number;
+  currency: string;
+  price: number;
+  sku: string;
+  status: Product["status"];
+}): Product {
+  const { name, image, category, type, quantity, currency, price, sku, status } = input;
+
+  const product: Product = {
+    id: uuidv4(),
+    name: name.trim(),
+    image: image || null,
+    category: category,
+    type: type,
+    quantity: quantity,
+    currency: currency,
+    price: price,
+    sku: sku,
+    status: status || "Draft",
+    createdAt: new Date()
+  };
+
+  products.unshift(product);
+
+  return product;
+};
+
+export function updateProduct(
+  id: string,
+  input: {
+    name: string;
+    image: string | null;
+    category: string;
+    type: string;
+    quantity: number;
+    currency: string;
+    price: number;
+    sku: string;
+    status: Product["status"];
+  }
+): Product | null {
+
+  const index = products.findIndex((x) => x.id === id);
+  if (index < 0) return null;
+
+  const { name, image, category, type, quantity, currency, price, sku, status } = input;
+
+  const updatedProduct: Product = {
+    ...products[index],
+    name: name.trim(),
+    image: image || null,
+    category: category,
+    type: type,
+    quantity: quantity,
+    currency: currency,
+    price: price,
+    sku: sku,
+    status: status
+  };
+
+  products[index] = updatedProduct;
+
+  return updatedProduct;
+};
+
+export function deleteProduct(id: string): boolean {
+  const before = products.length;
+  products = products.filter((x) => x.id !== id);
+  return products.length !== before;
+};
