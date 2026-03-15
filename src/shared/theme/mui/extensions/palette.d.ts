@@ -5,16 +5,19 @@ import '@mui/material/Button';
 declare module "@mui/material/styles" {
   interface Palette {
     customGrey: Palette["primary"];
+    customTextGrey: Palette["primary"];
   }
 
   interface PaletteOptions {
     customGrey?: PaletteOptions["primary"];
+    customTextGrey?: PaletteOptions["primary"];
   }
 }
 
 // 2. Allow color on Button
 declare module "@mui/material/Button" {
   interface ButtonPropsColorOverrides {
-    grey: true;
+    customGrey: true;
+    customTextGrey: true;
   }
 }

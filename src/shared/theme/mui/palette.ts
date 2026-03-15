@@ -39,18 +39,30 @@ export const basePalette = {
 
 export const lightPalette = {
   customGrey: {
-    main: "#e0e0e0",
+    main: "#cfcfcf",
     light: "#e6e6e6",
-    dark: "#9c9c9c",
+    dark: "#9e9e9e",
     contrastText: "#000",
   },
+  customTextGrey: {
+    main: "#5f6368",
+    light: "#7a7d81",
+    dark: "#3f4246",
+    contrastText: "#000",
+  }
 };
 
 export const darkPalette = {
   customGrey: {
     main: "#424242",
     light: "#616161",
-    dark: "#212121",
+    dark: "#2b2b2b",
     contrastText: "#fff",
   },
+  customTextGrey: {
+    main: "#b0b3b8",
+    light: "#c7c9cc",
+    dark: "#8a8d91",
+    contrastText: "#fff",
+  }
 };

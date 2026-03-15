@@ -1,7 +1,7 @@
-import type { CustomerStatus } from "./customer.model";
-import BlockIcon from "@mui/icons-material/Block";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import BlockIcon from "@mui/icons-material/Block";
+import type { CustomerStatus } from "./customer.model";
 import type { StatusConfigItem } from "@shared/types/statusConfigItem";
 
 export const CUSTOMER_STATUS_CONFIG: Record<CustomerStatus, StatusConfigItem> = {

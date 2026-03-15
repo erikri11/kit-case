@@ -1,19 +1,19 @@
-import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CircleIcon from '@mui/icons-material/CircleOutlined';
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import type { StatusConfigItem } from "@shared/types/statusConfigItem";
 import type { TaskStatus } from "./task.model";
 
 export const TASK_STATUS_CONFIG: Record<TaskStatus, StatusConfigItem> = {
   Todo: {
     labelKey: "tasks:status.Todo",
-    icon: CircleIcon,
+    icon: RadioButtonUncheckedIcon,
     color: "error",
     rank: 0
   },
   InProgress: {
     labelKey: "tasks:status.InProgress",
-    icon: HourglassEmptyIcon,
+    icon: AutorenewIcon,
     color: "warning",
     rank: 1
   },

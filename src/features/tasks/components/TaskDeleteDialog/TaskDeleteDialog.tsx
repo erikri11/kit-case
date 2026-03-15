@@ -1,5 +1,4 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@mui/material';
-import { theme } from '@shared/theme/mui/theme';
 import type { Task } from '@features/tasks/models/task.model';
 import { useTaskDeleteDialog } from './useTaskDeleteDialog';
 
@@ -26,10 +25,10 @@ export function TaskDeleteDialog({
       <DialogContent>
         <Typography sx={{ mt: 1 }}>
           {t("common:labels.confirmDeleteMessage")}
-          </Typography>
-        <Typography sx={{ mt: 1 }} color={theme.typography.subtitle2.color}>
+        </Typography>
+        <Typography sx={{ mt: 1, color: 'customTextGrey.main' }} variant="subtitle2">
           {task?.title}
-          </Typography>
+        </Typography>
       </DialogContent>
       <DialogActions>
         <Button variant="outlined" onClick={onClose}>

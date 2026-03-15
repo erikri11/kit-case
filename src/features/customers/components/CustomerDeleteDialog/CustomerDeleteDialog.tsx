@@ -1,5 +1,4 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@mui/material';
-import { theme } from '@shared/theme/mui/theme';
 import type { Customer } from '@features/customers/models/customer.model';
 import { useCustomerDeleteDialog } from './useCustomerDeleteDialog';
 
@@ -27,7 +26,7 @@ export function CustomerDeleteDialog({
         <Typography sx={{ mt: 1 }}>
           {t("common:labels.confirmDeleteMessage")}
           </Typography>
-        <Typography sx={{ mt: 1 }} color={theme.typography.subtitle2.color}>
+        <Typography sx={{ mt: 1, color: 'customTextGrey.main' }} variant="subtitle2">
           {customer?.name}
           </Typography>
       </DialogContent>
