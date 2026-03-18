@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { mockProducts } from "./product.mock";
 import { Product } from "./product.model";
+import { generateSku } from "../../utils/generateSku";
 
 let products: Product[] = [...mockProducts];
 
@@ -20,10 +21,9 @@ export function createProduct(input: {
   quantity: number;
   currency: string;
   price: number;
-  sku: string;
   status: Product["status"];
 }): Product {
-  const { name, image, category, type, quantity, currency, price, sku, status } = input;
+  const { name, image, category, type, quantity, currency, price } = input;
 
   const product: Product = {
     id: uuidv4(),
@@ -34,8 +34,8 @@ export function createProduct(input: {
     quantity: quantity,
     currency: currency,
     price: price,
-    sku: sku,
-    status: status || "Draft",
+    sku: generateSku(),
+    status: "Draft",
     createdAt: new Date()
   };
 
@@ -54,7 +54,6 @@ export function updateProduct(
     quantity: number;
     currency: string;
     price: number;
-    sku: string;
     status: Product["status"];
   }
 ): Product | null {
@@ -62,19 +61,18 @@ export function updateProduct(
   const index = products.findIndex((x) => x.id === id);
   if (index < 0) return null;
 
-  const { name, image, category, type, quantity, currency, price, sku, status } = input;
+  const { name, image, category, type, quantity, currency, price, status } = input;
 
   const updatedProduct: Product = {
     ...products[index],
     name: name.trim(),
     image: image || null,
-    category: category,
-    type: type,
-    quantity: quantity,
-    currency: currency,
-    price: price,
-    sku: sku,
-    status: status
+    category,
+    type,
+    quantity,
+    currency,
+    price,
+    status
   };
 
   products[index] = updatedProduct;
