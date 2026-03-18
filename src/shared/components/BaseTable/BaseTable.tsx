@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import type { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import { useMemo, type ComponentType } from 'react';
+import type { ColDef, GridApi, GridReadyEvent, IDetailCellRendererParams } from 'ag-grid-community';
 import { AgGridReact } from 'ag-grid-react';
 import { Box } from '@mui/material';
 import { useAgTheme } from './useAgTheme';
@@ -11,25 +11,31 @@ setupAgGrid();
 interface BaseTableProps<T> {
   data: T[];
   headers: ColDef<T>[];
+  isPaginationEnabled?: boolean;
+  expandComponent?: ComponentType<IDetailCellRendererParams<T>>;
   setGridApi: (gridApi: GridApi | null) => void;
 }
 
 export default function BaseTable<T>({ 
   data, 
   headers, 
-  setGridApi 
+  isPaginationEnabled,
+  expandComponent,
+  setGridApi,
 }: BaseTableProps<T>) {
   const agTheme = useAgTheme();
   const onGridReady = (params: GridReadyEvent) => setGridApi(params.api);
 
-  const defaultColDef = useMemo<ColDef<T>>(
-    () => defaultColDefBase as ColDef<T>,
-    []
+  const defaultColDef = 
+    useMemo<ColDef<T>>(
+      () => defaultColDefBase as ColDef<T>,
+      []
   );
   
-  const paginationPageSizeSelector = useMemo<number[] | boolean>(
-    () => [...paginationPageSizeSelectorBase],
-    []
+  const paginationPageSizeSelector = 
+    useMemo<number[] | boolean>(
+      () => [...paginationPageSizeSelectorBase],
+      []
   );
 
   return (
@@ -44,9 +50,12 @@ export default function BaseTable<T>({
         headerHeight={48}
         onGridReady={onGridReady}
         domLayout={"autoHeight"}
-        pagination={true}
+        pagination={isPaginationEnabled}
         paginationPageSize={5}
         paginationPageSizeSelector={paginationPageSizeSelector}
+        masterDetail={!!expandComponent}
+        detailRowAutoHeight={true}
+        detailCellRenderer={expandComponent}
       />
     </Box>
   );

@@ -82,9 +82,12 @@ export function useCustomerUpsertDialog(
       const errorMessage = error instanceof Error ? error.message : String(error);
       console.error("Error updating customer:", errorMessage);
 
-      setSnackbarMessage({ 
-        content: t("customers:snackbar.updateError"), 
-        type: "error" 
+      setSnackbarMessage({
+        content:
+          mode === "add"
+            ? t("customers:snackbar.addError")
+            : t("customers:snackbar.updateError"),
+        type: "error"
       });
     }
   };

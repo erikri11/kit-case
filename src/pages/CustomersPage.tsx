@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { PageTitle } from '../widgets/PageTitle/PageTitle';
-import { CustomersGrid } from '@features/customers/components/CustomerGrid/CustomerGrid';
+import { CustomersGrid } from '@features/customers/components/CustomersGrid/CustomersGrid';
 import { useCustomers } from '@shared/hooks/useCustomers';
 
 export function CustomersPage() {

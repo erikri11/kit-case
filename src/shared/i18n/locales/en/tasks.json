@@ -5,12 +5,11 @@
   },
   "snackbar": {
     "addSuccess": "Task added successfully",
-    "editSuccess": "Task updated successfully",
-    "deleteSuccess": "Task deleted successfully",
-    "deleteError": "Error deleting task",
     "updateSuccess": "Task updated successfully",
+    "deleteSuccess": "Task deleted successfully",
     "addError": "Error creating task",
-    "updateError": "Error updating task"
+    "updateError": "Error updating task",
+    "deleteError": "Error deleting task"
   },
   "actions": {
     "add": "Add Task",

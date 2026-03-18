@@ -10,9 +10,7 @@ interface TasksGridProps {
   tasks: Task[];
 }
 
-export function TasksGrid({ 
-  tasks
-}: TasksGridProps) {
+export function TasksGrid({ tasks}: TasksGridProps) {
   const { t } = useTranslation();
 
   const [isAddOpen, setIsAddOpen] = useState(false);
@@ -27,10 +25,11 @@ export function TasksGrid({
 
   return (
     <>
-      <DataGridTable 
+      <DataGridTable<Task>
         data={tasks} 
         headers={headers}
         isAddButtonVisible
+        isPaginationEnabled
         addButtonLabel={t("tasks:actions.add")}
         onAddButtonClick={() => setIsAddOpen(true)}
       />

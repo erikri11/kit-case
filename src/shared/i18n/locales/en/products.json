@@ -2,5 +2,38 @@
   "pageTitle": {
     "title": "Products",
     "subtitle": "Manage your products efficiently"
+  },
+  "actions": {
+    "add": "Add product",
+    "edit": "Edit product"
+  },
+  "category": {
+    "Healthcare": "Healthcare",
+    "Makeup": "Makeup",
+    "Skincare": "Skincare"
+  },
+  "type": {
+    "Physical": "Physical",
+    "Digital": "Digital",
+    "Service": "Service"
+  },
+  "currency": {
+    "USD": "USD",
+    "EUR": "EUR",
+    "NOK": "NOK"
+  },
+  "status": {
+    "Draft": "Draft",
+    "Published": "Published"
+  },
+  "snackbar": {
+    "addSuccess": "Product added successfully",
+    "updateSuccess": "Product updated successfully",
+    "deleteSuccess": "Product deleted successfully",
+    "addError": "Failed to add product",
+    "updateError": "Failed to update product",
+    "deleteError": "Failed to delete product"
   }
 }
+
+

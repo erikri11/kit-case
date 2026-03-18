@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle,FormControl,Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
-import type { TaskCreate, TaskFieldName, TaskPriority, TaskStatus, TaskUpdate } from "@features/tasks/models/task.model";
+import type { Task, TaskCreate, TaskFieldName, TaskPriority, TaskStatus, TaskUpdate } from "@features/tasks/models/task.model";
 import { validateTitle } from "@features/tasks/validation/validateTask";
 import type { Mode } from "@shared/types/mode";
 import { taskApi } from "@features/tasks/api/taskApi";
@@ -11,7 +11,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 export interface TaskUpsertDialogProps {
   open: boolean;
   mode: Mode;
-  initialTask?: TaskUpdate;
+  initialTask?: Task;
   taskId?: string;
   onClose: () => void;
 }
@@ -49,8 +49,8 @@ export function TaskUpsertDialog({
            const payload: TaskCreate = { 
             title: title.trim(),
             description: description.trim(),
-            priority: priority,
-            status: status,
+            priority: "Low",
+            status: "Todo",
             dueDate: dueDate
           };
   
@@ -117,7 +117,7 @@ export function TaskUpsertDialog({
                 title: true 
               }))}
               error={showTitleError}
-              helperText={showTitleError ? titleError : ""}
+              helperText={showTitleError ? t(titleError) : ""}
             />
           </Grid>
           <Grid size={12}>

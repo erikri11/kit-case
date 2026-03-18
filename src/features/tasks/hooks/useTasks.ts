@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { Task } from "../models/task.model";
 import { taskApi } from "../api/taskApi";
 
-export function useTask() {
+export function useTasks() {
   const [tasks, setTasks] = useState<Task[]>([]);
     
     useEffect(() => {

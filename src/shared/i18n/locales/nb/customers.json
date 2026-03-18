@@ -17,10 +17,11 @@
     "Blocked": "Blokkert"
   },
   "snackbar": {
-    "addSuccess": "Kunden har blitt lagt til",
-    "updateSuccess": "Kunden har blitt oppdatert",
+    "addSuccess": "Kunde lagt til",
+    "updateSuccess": "Kunde oppdatert",
+    "deleteSuccess": "Kunde slettet",
+    "addError": "Feil ved oppretting av kunde",
     "updateError": "Feil ved oppdatering av kunde",
-    "deleteSuccess": "Kunden har blitt slettet",
     "deleteError": "Feil ved sletting av kunde",
     "loadError": "Feil ved innlasting av kunde"
   }

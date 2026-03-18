@@ -2,5 +2,36 @@
   "pageTitle": {
     "title": "Produkter",
     "subtitle": "Administrer produktene dine effektivt"
+  },
+  "actions": {
+    "add": "Legg til produkt",
+    "edit": "Rediger produkt"
+  },
+  "category": {
+    "Healthcare": "Helse",
+    "Makeup": "Sminke",
+    "Skincare": "Hudpleie"
+  },
+  "type": {
+    "Physical": "Fysisk",
+    "Digital": "Digital",
+    "Service": "Tjeneste"
+  },
+  "currency": {
+    "USD": "USD",
+    "EUR": "EUR",
+    "NOK": "NOK"
+  },
+  "status": {
+    "Draft": "Utkast",
+    "Published": "Publisert"
+  },
+  "snackbar": {
+    "addSuccess": "Produkt lagt til",
+    "updateSuccess": "Produkt oppdatert",
+    "deleteSuccess": "Produkt slettet",
+    "addError": "Feil ved oppretting av produkt",
+    "updateError": "Feil ved oppdatering av produkt",
+    "deleteError": "Feil ved sletting av produkt"
   }
 }

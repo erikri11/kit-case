@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import type { ColDef, GridApi } from 'ag-grid-community';
+import { useEffect, useState, type ComponentType } from 'react';
+import type { ColDef, GridApi, IDetailCellRendererParams } from 'ag-grid-community';
 import { BaseToolbar } from '../BaseToolbar/BaseToolbar';
 import BaseTable from '../BaseTable/BaseTable';
 
@@ -9,7 +9,9 @@ export interface DataGridTableProps<T> {
   isAddButtonVisible?: boolean;
   addButtonLabel?: string;
   disableSearch?: boolean;
+  expandComponent?: ComponentType<IDetailCellRendererParams<T>>;
   onAddButtonClick?: () => void;
+  isPaginationEnabled?: boolean;
 }
 
 export function DataGridTable<T>({ 
@@ -18,7 +20,9 @@ export function DataGridTable<T>({
   isAddButtonVisible, 
   addButtonLabel,
   disableSearch,
-  onAddButtonClick,
+  expandComponent,
+  isPaginationEnabled,
+  onAddButtonClick
 }: DataGridTableProps<T>) {
 
   const [gridApi, setGridApi] = useState<GridApi | null>(null);
@@ -43,6 +47,8 @@ export function DataGridTable<T>({
         setGridApi={setGridApi}
         data={data} 
         headers={headers}
+        expandComponent={expandComponent}
+        isPaginationEnabled={isPaginationEnabled}
       />
     </> 
   );

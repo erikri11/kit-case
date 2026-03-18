@@ -16,10 +16,11 @@ export function CustomerDetailsGrid({ payments}: CustomerDetailsGridProps) {
   console.log(`Loaded payments:`, payments);
 
   return (
-    <DataGridTable
+    <DataGridTable<CustomerPayment>
       data={payments}
       headers={headers}
-      disableSearch={true}
+      disableSearch
+      isPaginationEnabled={false}
     />
   );
 }

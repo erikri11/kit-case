@@ -29,10 +29,11 @@ export function CustomersGrid({ customers }: CustomersGridProps) {
   
   return (
     <>
-      <DataGridTable
+      <DataGridTable<Customer>
         data={customers}
         headers={headers}
         isAddButtonVisible
+        isPaginationEnabled
         addButtonLabel={t("customers:actions.add")}
         onAddButtonClick={() => setIsAddOpen(true)}
       />
