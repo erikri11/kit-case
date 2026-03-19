@@ -1,7 +1,7 @@
 export interface Product {
 	id: string;
 	name: string;
-	image: string | null;
+	image: ProductImage | null;
 	category: ProductCategory;
 	type: ProductType;
 	quantity: number;
@@ -10,6 +10,11 @@ export interface Product {
 	sku: string;
 	status: ProductStatus;
 	createdAt: Date;
+}
+
+export interface ProductImage {
+  url: string;
+  fileName: string;
 }
 
 export type ProductStatus = "Draft" | "Published";

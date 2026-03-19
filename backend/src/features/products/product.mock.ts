@@ -5,7 +5,10 @@ export const mockProducts: Product[] = [
 	{
 		id: uuidv4(),
 		name: "Soja & Co. Eucalyptus",
-		image: "/product/product-5.png",
+		image: { 
+			url: "/product/product-5.png",
+			fileName: "product-5.png"
+		},
 		category: "Skincare",
 		type: "Physical",
 		quantity: 10,
@@ -18,7 +21,10 @@ export const mockProducts: Product[] = [
 	{
 		id: uuidv4(),
 		name: "Necessaire Body Lotion",
-		image: "/product/product-4.png",
+		image: { 
+			url: "/product/product-4.png",
+			fileName: "product-4.png"
+		},
 		category: "Skincare",
 		type: "Physical",
 		quantity: 5,
@@ -31,7 +37,10 @@ export const mockProducts: Product[] = [
 	{
 		id: uuidv4(),
 		name: "Ritual of Sakura",
-		image: "/product/product-3.png",
+		image: { 
+			url: "/product/product-3.png",
+			fileName: "product-3.png"
+		},
 		category: "Skincare",
 		type: "Physical",
 		quantity: 8,
@@ -44,7 +53,10 @@ export const mockProducts: Product[] = [
 	{
 		id: uuidv4(),
 		name: "Lancome Rouge",
-		image: "/product/product-2.png",
+		image: { 
+			url: "/product/product-2.png",
+			fileName: "product-2.png"
+		},
 		category: "Makeup",
 		type: "Physical",
 		quantity: 0,
@@ -57,7 +69,10 @@ export const mockProducts: Product[] = [
 	{
 		id: uuidv4(),
 		name: "Erbology Aloe Vera",
-		image: "/product/product-1.png",
+		image: { 
+			url: "/product/product-1.png",
+			fileName: "product-1.png"
+		},
 		category: "Healthcare",
 		type: "Physical",
 		quantity: 10,
