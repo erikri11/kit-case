@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { mockProducts } from "./product.mock";
-import { Product } from "./product.model";
+import { Currency, Product, ProductCategory, ProductType } from "./product.model";
 import { generateSku } from "../../utils/generateSku";
 
 let products: Product[] = [...mockProducts];
@@ -28,11 +28,11 @@ export function createProduct(input: {
   const product: Product = {
     id: uuidv4(),
     name: name.trim(),
-    image: image || null,
-    category: category,
-    type: type,
+    image: image ?? null,
+    category: category as ProductCategory,
+    type: type as ProductType,
     quantity: quantity,
-    currency: currency,
+    currency: currency as Currency,
     price: price,
     sku: generateSku(),
     status: "Draft",
@@ -66,11 +66,11 @@ export function updateProduct(
   const updatedProduct: Product = {
     ...products[index],
     name: name.trim(),
-    image: image || null,
-    category,
-    type,
+    image: image ?? null,
+    category: category as ProductCategory,
+    type: type as ProductType,
     quantity,
-    currency,
+    currency: currency as Currency,
     price,
     status
   };

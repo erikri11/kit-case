@@ -33,7 +33,7 @@ export const mockProducts: Product[] = [
 		name: "Ritual of Sakura",
 		image: "/product/product-3.png",
 		category: "Skincare",
-		type: "Published",
+		type: "Physical",
 		quantity: 8,
 		currency: "USD",
 		price: 155,
