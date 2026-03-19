@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle,FormControl,FormHelperText,Grid, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle,FormControl,FormHelperText,Grid, InputLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
 import type { Mode } from "@shared/types/mode";
-import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
-import type { Currency, Product, ProductCategory, ProductCreate, ProductFieldName, ProductStatus, ProductType, ProductUpdate } from "@features/products/models/product.model";
-import { validateName, validatePrice, validateQuantity } from "@features/products/validation/validateProduct";
-import { productApi } from "@features/products/api/productApi";
+import type { Currency, Product, ProductCategory, ProductStatus, ProductType } from "@features/products/models/product.model";
+import { FileDropzone } from "@shared/utils/FileDropzone";
+import { resolveImageUrl } from "@shared/utils/resolveImageUrl";
+import { useProductUpsertDialog } from "./useProductUpsertDialog";
 
 export interface ProductUpsertDialogProps {
   open: boolean;
@@ -23,110 +21,48 @@ export function ProductUpsertDialog({
   onClose
 }: ProductUpsertDialogProps) {
 
-  const { t } = useTranslation(["products", "common"]);
-  const { setSnackbarMessage } = useSnackbar();
-
-  const [name, setName] = useState<string>(initialProduct?.name ?? "");
-  const [category, setCategory] = useState<ProductCategory | "">(initialProduct?.category ?? "");
-  const [type, setType] = useState<ProductType | "">(initialProduct?.type ?? "");
-  const [quantity, setQuantity] = useState<string>(initialProduct?.quantity != null ? String(initialProduct.quantity) : "");
-  const [currency, setCurrency] = useState<Currency | "">(initialProduct?.currency ?? "");
-  const [price, setPrice] = useState<string>(initialProduct?.price != null ? String(initialProduct.price) : "");
-  const sku = initialProduct?.sku ?? "";
-  const [status, setStatus] = useState<ProductStatus>(initialProduct?.status ?? "Draft");
-  const [submitted, setSubmitted] = useState<boolean>(false);
-  const [touched, setTouched] = useState<Record<ProductFieldName, boolean>>({ 
-    name: false, 
-    image: false, 
-    category: false, 
-    type: false, 
-    quantity: false, 
-    currency: false, 
-    price: false,
-    status: false 
+  const {
+    t,
+    name,
+    category,
+    type,
+    quantity,
+    currency,
+    price,
+    sku,
+    status,
+    nameError,
+    categoryError,
+    typeError,
+    quantityError,
+    currencyError,
+    priceError,
+    showNameError,
+    showCategoryError,
+    showTypeError,
+    showQuantityError,
+    showCurrencyError,
+    showPriceError,
+    image,
+    canSubmit,
+    setName,
+    setCategory,
+    setType,
+    setQuantity,
+    setCurrency,
+    setPrice,
+    setStatus,
+    setTouched,
+    handleUpsertProduct,
+    handleImageDrop,
+    handleImageRemove
+  } = useProductUpsertDialog({
+    mode, 
+    initialProduct,
+     productId, 
+     onClose
   });
-
-  const nameError = validateName(name);
-  const categoryError = !category ? "common:validation.categoryRequired" : undefined;
-  const typeError = !type ? "common:validation.typeRequired" : undefined;
-  const quantityError = validateQuantity(quantity);
-  const currencyError = !currency ? "common:validation.currencyRequired" : undefined;
-  const priceError = validatePrice(price);
-
-  const canSubmit = 
-    !nameError && 
-    !categoryError && 
-    !typeError && 
-    !quantityError && 
-    !currencyError && 
-    !priceError;
-  
-  const showNameError = !!nameError && (touched.name || submitted);
-  const showCategoryError = !!categoryError && (touched.category || submitted);
-  const showTypeError = !!typeError && (touched.type || submitted);
-  const showQuantityError = !!quantityError && (touched.quantity || submitted);
-  const showCurrencyError = !!currencyError && (touched.currency || submitted);
-  const showPriceError = !!priceError && (touched.price || submitted);
-
-  const handleUpsertProduct = async () => { 
-    setSubmitted(true);
-    if (!canSubmit) return;
-
-    try {
-      if (mode === "add") {
-          const payload: ProductCreate = { 
-          name: name.trim(),
-          image: null, 
-          category: category as ProductCategory,
-          type: type as ProductType, 
-          quantity: Number(quantity),
-          currency: currency as Currency,
-          price: Number(price),
-          status: "Draft"
-        };
-
-        await productApi.post(payload);
-
-        setSnackbarMessage({ 
-          content: t("products:snackbar.addSuccess"), 
-          type: "success" 
-        });
-      } else if (mode === "edit") {
-        if (!productId) return;
-
-        const payload: ProductUpdate = {
-          name: name.trim(),
-          image: null,
-          category: category as ProductCategory,
-          type: type as ProductType,
-          currency: currency as Currency,
-          price: Number(price),
-          quantity: Number(quantity),
-          status: status
-        };
-
-        await productApi.put(productId, payload);
-        
-        setSnackbarMessage({ 
-          content: t("products:snackbar.updateSuccess"), 
-          type: "success" 
-        });
-      }
-      onClose();
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error("Error updating product:", errorMessage);
-
-      setSnackbarMessage({
-      content:
-        mode === "add"
-          ? t("products:snackbar.addError")
-          : t("products:snackbar.updateError"),
-      type: "error"
-    });
-    }
-  };
-
+    
   return (
     <Dialog 
       open={open} 
@@ -298,7 +234,6 @@ export function ProductUpsertDialog({
                 <Select
                   value={status}
                   label={t("common:labels.status")}
-                  displayEmpty
                   renderValue={(value) => (
                     value ? t(`products:status.${value}`) : ""
                   )}
@@ -328,25 +263,32 @@ export function ProductUpsertDialog({
           {t("common:labels.images")}  
         </Typography>
 
-        {/* Image upload field to be implemented */}
-        {/* <Stack spacing={3}>
-          <Typography variant="h6">Images</Typography>
-          <Card sx={{ borderRadius: 1 }} variant="outlined">
-            <DataTable<Image> columns={getImageColumns({ onRemove: handleImageRemove })} rows={images} />
-            {images.length === 0 ? (
-              <Box sx={{ p: 1 }}>
-                <Typography align="center" color="text.secondary" variant="body2">
-                  No images
-                </Typography>
-              </Box>
-            ) : null}
-          </Card>
+        <Stack spacing={2}>
+          {image && (
+            <Stack spacing={1}>
+              <img
+                src={resolveImageUrl(image.url)}
+                alt={image.fileName}
+                style={{ width: 120, height: 120, objectFit: "cover", borderRadius: 8 }}
+              />
+              <Typography variant="body2">{image.fileName}</Typography>
+              <Button color="error" variant="outlined" onClick={handleImageRemove}>
+                {t("common:actions.remove")}
+              </Button>
+            </Stack>
+          )}
           <FileDropzone
-            accept={{ "image/*": [] }}
-            caption="(SVG, JPG, PNG, or gif maximum 900x400)"
+            accept={{
+              "image/png": [],
+              "image/jpeg": [],
+              "image/gif": [],
+              "image/svg+xml": []
+            }}
+            maxFiles={1}
+            caption="(SVG, JPG, PNG or GIF - max 900x400 px)"
             onDrop={handleImageDrop}
           />
-        </Stack> */}
+        </Stack>
 
         <Typography variant="h4" sx={{ mb: 3 }}>
           {t("common:labels.stockAndInventory")}  
@@ -400,79 +342,3 @@ export function ProductUpsertDialog({
     </Dialog>
   );
 }
-
-
-
-
-
-// function getImageColumns({ onRemove }: { onRemove?: (imageId: string) => void }): ColumnDef<Image>[] {
-// 	return [
-// 		{
-// 			formatter: (row): React.JSX.Element => {
-// 				return (
-// 					<Box
-// 						sx={{
-// 							backgroundImage: `url(${row.url})`,
-// 							backgroundPosition: "center",
-// 							backgroundSize: "cover",
-// 							bgcolor: "var(--mui-palette-background-level2)",
-// 							borderRadius: 1,
-// 							flex: "0 0 auto",
-// 							height: "40px",
-// 							width: "40px",
-// 						}}
-// 					/>
-// 				);
-// 			},
-// 			name: "Image",
-// 			width: "100px",
-// 		},
-// 		{ field: "fileName", name: "File name", width: "300px" },
-// 		{
-// 			formatter: (row): React.JSX.Element => (
-// 				<IconButton
-// 					onClick={() => {
-// 						onRemove?.(row.id);
-// 					}}
-// 				>
-// 					<TrashIcon />
-// 				</IconButton>
-// 			),
-// 			name: "Actions",
-// 			hideName: true,
-// 			width: "100px",
-// 			align: "right",
-// 		},
-// 	];
-// }
-
-
-
-
-
-// const handleImageDrop = React.useCallback(
-// 		async (files: File[]) => {
-// 			// Upload images to the server
-
-// 			const images = await Promise.all(
-// 				files.map(async (file) => {
-// 					const url = await fileToBase64(file);
-
-// 					return { id: `IMG-${Date.now()}`, url, fileName: file.name };
-// 				})
-// 			);
-
-// 			setValue("images", [...getValues("images"), ...images]);
-// 		},
-// 		[getValues, setValue]
-// 	);
-
-// 	const handleImageRemove = React.useCallback(
-// 		(imageId: string) => {
-// 			setValue(
-// 				"images",
-// 				getValues("images").filter((image) => image.id !== imageId)
-// 			);
-// 		},
-// 		[getValues, setValue]
-// 	);

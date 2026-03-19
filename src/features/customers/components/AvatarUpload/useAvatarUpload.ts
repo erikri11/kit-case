@@ -26,20 +26,20 @@ export function useAvatarUpload(
   }, [avatarPreview]);
 
   async function uploadAvatarApi(file: File): Promise<UploadResponse> {
-    const form = new FormData();
-    form.append("image", file);
+    const formData = new FormData();
+    formData.append("image", file);
 
-    const res = await fetch(`${API_BASE}${API_PREFIX}/uploads/avatar`, {
+    const response = await fetch(`${API_BASE}${API_PREFIX}/uploads/avatar`, {
       method: "POST",
-      body: form,
+      body: formData,
     });
 
-    if (!res.ok) {
-      const text = await res.text().catch(() => "");
+    if (!response.ok) {
+      const text = await response.text().catch(() => "");
       throw new Error(text || t("common:uploadAvatarFailed"));
     }
 
-    return res.json();
+    return response.json();
   };
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {

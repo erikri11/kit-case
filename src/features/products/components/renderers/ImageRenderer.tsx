@@ -1,6 +1,7 @@
-import type { Product } from "@features/products/models/product.model";
-import { Box, Stack } from "@mui/material";
 import type { ICellRendererParams } from "ag-grid-enterprise";
+import { Box, Stack } from "@mui/material";
+import { resolveImageUrl } from "@shared/utils/resolveImageUrl";
+import type { Product } from "@features/products/models/product.model";
 
 export function ImageRenderer(props: ICellRendererParams<Product, string | null>) {
     if (!props.value) return null;
@@ -17,7 +18,7 @@ export function ImageRenderer(props: ICellRendererParams<Product, string | null>
     >
       <Box
         sx={{
-          backgroundImage: `url(${props.value})`,
+          backgroundImage: `url(${resolveImageUrl(props.value)})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           borderRadius: 1,
