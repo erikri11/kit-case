@@ -1,9 +1,10 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle,FormControl,FormHelperText,Grid, InputLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
-import type { Mode } from "@shared/types/mode";
+import DeleteIcon from "@mui/icons-material/Delete";
 import type { Currency, Product, ProductCategory, ProductStatus, ProductType } from "@features/products/models/product.model";
+import { useProductUpsertDialog } from "./useProductUpsertDialog";
+import type { Mode } from "@shared/types/mode";
 import { FileDropzone } from "@shared/utils/FileDropzone";
 import { resolveImageUrl } from "@shared/utils/resolveImageUrl";
-import { useProductUpsertDialog } from "./useProductUpsertDialog";
 
 export interface ProductUpsertDialogProps {
   open: boolean;
@@ -77,7 +78,6 @@ export function ProductUpsertDialog({
         <Typography variant="h4" sx={{ mb: 3 }}>
           {t("common:labels.basicInformation")}  
         </Typography>
-
         <Grid container spacing={2} sx={{mb: 3}}>
           <Grid size={12}>
             <TextField
@@ -263,18 +263,31 @@ export function ProductUpsertDialog({
           {t("common:labels.images")}  
         </Typography>
 
-        <Stack spacing={2}>
+        <Stack spacing={2} sx={{mb: 3}}>
           {image && (
-            <Stack spacing={1}>
-              <img
-                src={resolveImageUrl(image.url)}
-                alt={image.fileName}
-                style={{ width: 120, height: 120, objectFit: "cover", borderRadius: 8 }}
-              />
-              <Typography variant="body2">{image.fileName}</Typography>
-              <Button color="error" variant="outlined" onClick={handleImageRemove}>
-                {t("common:actions.remove")}
-              </Button>
+            <Stack spacing={2}>
+              <Stack spacing={1}>
+                <img
+                  src={resolveImageUrl(image.url)}
+                  alt={image.fileName}
+                  style={{ width: 120, height: 120, objectFit: "cover", borderRadius: 8 }}
+                />
+                <Typography variant="body2">{image.fileName}</Typography>
+              </Stack>
+              <Stack 
+                spacing={1} 
+                direction="row"
+                justifyContent="flex-start" 
+              >
+                <Button 
+                  color="error" 
+                  variant="outlined" 
+                  onClick={handleImageRemove}
+                >
+                  <DeleteIcon sx={{ mr: 1 }} />
+                  {t("common:actions.remove")}
+                </Button>
+              </Stack>
             </Stack>
           )}
           <FileDropzone

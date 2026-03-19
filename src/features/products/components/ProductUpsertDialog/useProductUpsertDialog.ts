@@ -50,8 +50,8 @@ export function useProductUpsertDialog({
     initialProduct?.image
       ? {
           id: "existing-image",
-          url: initialProduct.image,
-          fileName: initialProduct.image.split("/").pop() ?? "Current image"
+          url: initialProduct.image.url,
+          fileName: initialProduct.image.fileName
         }
       : null
   );
@@ -87,19 +87,22 @@ export function useProductUpsertDialog({
     if (!canSubmit) return;
 
     try {
-      let imageUrl: string | null = initialProduct?.image ?? null;
+      let imageData: Product["image"] = initialProduct?.image ?? null;
 
-      if (image?.file) {
-        const uploadedImage = await productUploadApi(image.file);
-        imageUrl = uploadedImage.url;
-      } else if (!image) {
-        imageUrl = null;
-      }
+        if (image?.file) {
+          const uploadedImage = await productUploadApi(image.file);
+          imageData = {
+            url: uploadedImage.url,
+            fileName: uploadedImage.originalName,
+          };
+        } else if (!image) {
+          imageData = null;
+        }
 
       if (mode === "add") {
           const payload: ProductCreate = { 
           name: name.trim(),
-          image: imageUrl,
+          image: imageData,
           category: category as ProductCategory,
           type: type as ProductType, 
           quantity: Number(quantity),
@@ -119,7 +122,7 @@ export function useProductUpsertDialog({
 
         const payload: ProductUpdate = {
           name: name.trim(),
-          image: imageUrl,
+          image: imageData,
           category: category as ProductCategory,
           type: type as ProductType,
           currency: currency as Currency,

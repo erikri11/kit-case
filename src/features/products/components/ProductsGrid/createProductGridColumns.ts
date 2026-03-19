@@ -5,6 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { createActionButtonRenderer } from '@shared/renderers/createActionButtonRenderer';
 import type { Product } from '@features/products/models/product.model';
 import { ImageRenderer } from '../renderers/ImageRenderer';
+import { formatCurrency } from '@shared/utils/formatCurrency';
 
 interface ColumnArgsProps {
   t: TFunction;
@@ -45,7 +46,8 @@ export function createProductGridColumns({
       headerName: t("common:labels.image"),
       minWidth: 160,
       flex: 1,
-      cellRenderer: ImageRenderer
+      cellRenderer: ImageRenderer,
+      valueFormatter: () => ""
     },
     {
       field: "quantity",
@@ -59,7 +61,9 @@ export function createProductGridColumns({
       headerName: t("common:labels.price"),
       minWidth: 160,
       flex: 1,
-      type: "rightAligned"
+      type: "rightAligned",
+      valueFormatter: (params) =>
+        formatCurrency(params.value, params.data?.currency ?? "USD")
     },
     {
       field: "status",

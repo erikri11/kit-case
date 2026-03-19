@@ -5,12 +5,18 @@ import Typography from "@mui/material/Typography";
 import BackupOutlinedIcon from "@mui/icons-material/BackupOutlined";
 import type { DropzoneOptions} from "react-dropzone";
 import { useDropzone } from "react-dropzone";
+import { useTranslation } from "react-i18next";
 
 export interface FileDropzoneProps extends DropzoneOptions {
 	caption?: string;
 }
 
-export function FileDropzone({ caption, ...props }: FileDropzoneProps) {
+export function FileDropzone({ 
+  caption,
+   ...props 
+  }: FileDropzoneProps) {
+    
+  const { t } = useTranslation("common");
 	const { getRootProps, getInputProps, isDragActive } = useDropzone(props);
 
 	return (
@@ -54,9 +60,9 @@ export function FileDropzone({ caption, ...props }: FileDropzoneProps) {
                 variant="inherit"
                 sx={{ textDecoration: "underline" }} 
               >
-								Click to upload
+								{t("common:actions.clickToUpload")}
 							</Typography>{" "}
-							or drag and drop
+							{t("common:actions.orDragAndDrop")}
 						</Typography>
 						{caption ? (
 							<Typography color="text.secondary" variant="body2">

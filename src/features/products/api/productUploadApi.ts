@@ -8,7 +8,7 @@ export async function productUploadApi(file: File): Promise<UploadResponse> {
 
   const response = await fetch(`${API_BASE}${API_PREFIX}/uploads/product`, {
     method: "POST",
-    body: formData,
+    body: formData
   });
 
   if (!response.ok) {

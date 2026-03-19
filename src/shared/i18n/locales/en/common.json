@@ -74,6 +74,8 @@
     "deleteAccount": "Delete account",
     "select": "Select",
     "change": "Change",
-    "remove": "Remove"
+    "remove": "Remove",
+    "clickToUpload": "Click to upload",
+    "orDragAndDrop": "or drag and drop"
   }
 }

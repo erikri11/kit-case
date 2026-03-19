@@ -74,6 +74,8 @@
     "deleteAccount": "Slett konto",
     "select": "Velg",
     "change": "Endre",
-    "remove": "Fjern"
+    "remove": "Fjern",
+    "clickToUpload": "Klikk for å laste opp",
+    "orDragAndDrop": "eller dra og slipp"
   }
 }
