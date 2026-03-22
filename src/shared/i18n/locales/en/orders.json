@@ -2,5 +2,16 @@
   "pageTitle": {
     "title": "Orders",
     "subtitle": "Manage your orders efficiently"
+  },
+  "actions": {
+    "add": "Add Order",
+    "edit": "Edit Order",
+    "delete": "Delete Order"
+  },
+  "status": {
+    "Pending": "Pending",
+    "Completed": "Completed",
+    "Rejected": "Rejected",
+    "Canceled": "Canceled"
   }
 }

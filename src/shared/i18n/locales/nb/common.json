@@ -61,7 +61,10 @@
     "pricing": "Prissetting",
     "images": "Bilder",
     "stockAndInventory": "Lager og inventar",
-    "stockKeepingUnit": "Lagerbeholdningsenhet (SKU)"
+    "stockKeepingUnit": "Lagerbeholdningsenhet (SKU)",
+    "customer": "Kunde",
+    "order": "Bestilling",
+    "paymentMethod": "Betalingsmetode"
   },
   "actions": {
     "edit": "Rediger",

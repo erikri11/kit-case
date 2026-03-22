@@ -4,12 +4,15 @@
     "subtitle": "Administrer oversikten din effektivt"
   },
   "signUpsByStatus": {
-    "label": "Registreringer - etter status"
+    "label": "Etter status"
   },
   "labels": {
-    "barChartTitle": "Registreringer - etter status",
+     "barChartTitle": "Kunder registreringer",
     "tickets": "Billetter",
     "signUps": "Registreringer",
     "openIssues": "Åpne saker"
-  }
+  },
+  "increase": "økning",
+  "decrease": "nedgang",
+  "vsLastMonth": "sammenlignet med forrige måned"
 }

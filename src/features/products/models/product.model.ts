@@ -24,7 +24,7 @@ export type ProductType = "Physical" | "Digital" | "Service";
 
 export type ProductFieldName = keyof Omit<Product, "id" | "sku" | "createdAt">;
 
-// POST payload: server sets id, createdAt
+// POST payload: server sets id, sku, createdAt
 export type ProductCreate = Omit<Product, "id" | "sku" | "createdAt">;
 
 // PUT payload: partial update, and still server-owned fields cannot be changed

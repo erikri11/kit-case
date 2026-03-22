@@ -4,7 +4,7 @@ import { Avatar, Box, Chip, Link, Stack, Typography } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { resolveAvatarSrc } from '@features/customers/utils/resolveAvatarSrc';
 import type { Customer } from "@features/customers/models/customer.model";
-import { CUSTOMER_STATUS_CONFIG } from '@features/customers/models/customerStatusConfig.ts';
+import { CUSTOMER_STATUS_CONFIG } from '@features/customers/models/customerStatusConfig';
 
 interface CustomerDetailsHeaderProps {
   customer: Customer;

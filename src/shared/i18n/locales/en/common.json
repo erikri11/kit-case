@@ -61,7 +61,10 @@
     "pricing": "Pricing",
     "images": "Images",
     "stockAndInventory": "Stock and Inventory",
-    "stockKeepingUnit": "Stock keeping unit (SKU)"
+    "stockKeepingUnit": "Stock keeping unit (SKU)",
+    "customer": "Customer",
+    "order": "Order",
+    "paymentMethod": "Payment method"
   },
   "actions": {
     "edit": "Edit",

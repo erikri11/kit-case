@@ -29,9 +29,9 @@ export function OverviewSignUpsChart({
   }, [customers]);
 
   const labels = [
-    t("customers:statusActive"),
-    t("customers:statusPending"),
-    t("customers:statusBlocked")
+    t("customers:status.Active"),
+    t("customers:status.Pending"),
+    t("customers:status.Blocked")
   ];
 
   return (

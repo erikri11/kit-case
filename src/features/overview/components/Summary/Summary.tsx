@@ -27,7 +27,8 @@ export function Summary({
 	trend,
 	sx
 }: SummaryProps) {
-	const { i18n } = useTranslation();
+
+	const { t, i18n } = useTranslation("common");
 
 	const trendColor = trend === "up" ? "success.main" : "error.main";
 	const percentFormatter = new Intl.NumberFormat(i18n.language, {
@@ -82,7 +83,7 @@ export function Summary({
 						>
 							{percentFormatter.format(diff / 100)}
 						</Typography>{" "}
-						{trend === "up" ? "increase" : "decrease"} vs last month
+						{trend === "up" ? t('overview:increase') : t('overview:decrease')} {t('overview:vsLastMonth')}
 					</Typography>
 				</Stack>
 			</Box>

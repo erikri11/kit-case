@@ -4,12 +4,15 @@
     "subtitle": "Manage your overview effectively"
   },
   "signUpsByStatus": {
-    "label": "Sign ups - by status"
+    "label": "By status"
   },
   "labels": {
-    "barChartTitle": "Sign ups - by status",
+    "barChartTitle": "Customers sign ups",
     "tickets": "Tickets",
     "signUps": "Sign ups",
     "openIssues": "Open issues"
-  }
+  },
+  "increase": "increase",
+  "decrease": "decrease",
+  "vsLastMonth": "vs last month"
 }

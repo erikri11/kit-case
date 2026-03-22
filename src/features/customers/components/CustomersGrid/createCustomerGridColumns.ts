@@ -6,10 +6,10 @@ import { CustomerStatusChipRenderer } from '../renderers/CustomerStatusChipRende
 import { customerStatusRankCompare } from '@features/customers/components/comparators/customerStatusRankCompare';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { AvatarRenderer } from '../renderers/AvatarRenderer';
 import { IconRenderer } from '../renderers/IconRenderer';
 import { LinearProgressRenderer } from '../renderers/LinearProgressRenderer';
 import { createActionButtonRenderer } from '../../../../shared/renderers/createActionButtonRenderer';
+import { CustomerRenderer } from '@shared/renderers/CustomerRenderer';
 
 interface ColumnArgsProps {
   t: TFunction;
@@ -42,23 +42,10 @@ export function createCustomerGridColumns({
   return [
     {
       field: "name",
-      headerName: t("common:labels.name"),
-      minWidth: 180,
-      flex: 2
-    },
-    {
-      field: "avatar",
-      headerName: t("common:labels.avatar"),
-      minWidth: 100,
-      flex: 1,
-      filter: false,
-      cellRenderer: AvatarRenderer
-    },
-    {
-      field: "email",
-      headerName: t("common:labels.email"),
-      minWidth: 180,
-      flex: 2
+      headerName: t("common:labels.customer"),
+      minWidth: 350,
+      flex: 4,
+      cellRenderer: CustomerRenderer
     },
     {
       field: "phone",
