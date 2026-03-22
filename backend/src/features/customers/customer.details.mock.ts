@@ -58,7 +58,6 @@ export const customerDetailsMock: CustomerDetails[] = [
     payments: [],
     paymentSummary: calculatePaymentSummary([])
   },
-
   {
     id: customerIds.penjani,
     name: "Penjani Inyene",
@@ -71,7 +70,6 @@ export const customerDetailsMock: CustomerDetails[] = [
     payments: penjaniPayments,
     paymentSummary: calculatePaymentSummary(penjaniPayments)
   },
-
   {
     id: customerIds.carson,
     name: "Carson Darrin",
@@ -84,7 +82,6 @@ export const customerDetailsMock: CustomerDetails[] = [
     payments: carsonPayments,
     paymentSummary: calculatePaymentSummary(carsonPayments)
   },
-
   {
     id: customerIds.siegbert,
     name: "Siegbert Gottfried",
@@ -97,7 +94,6 @@ export const customerDetailsMock: CustomerDetails[] = [
     payments: [],
     paymentSummary: calculatePaymentSummary([])
   },
-
   {
     id: customerIds.miron,
     name: "Miron Vitold",

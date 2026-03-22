@@ -1,8 +1,9 @@
 import express from "express";
 import path from "path";
-import productsRouter from "./features/products/product.route";
-import customersRouter from "./features/customers/customer.route";
-import tasksRouter from "./features/tasks/task.route";
+import productRouter from "./features/products/product.route";
+import customerRouter from "./features/customers/customer.route";
+import taskRouter from "./features/tasks/task.route";
+import orderRouter from "./features/orders/order.route";
 import uploadRouter from "./features/uploads/upload.routes";
 import { corsLite } from "./middlewares/corsLite";
 import { errorHandler } from "./middlewares/errorHandler";
@@ -18,9 +19,10 @@ app.use("/uploads", express.static(uploadsDir));
 app.use(corsLite);
 app.use(express.json());
 
-app.use(`${API_PREFIX}/products`, productsRouter);
-app.use(`${API_PREFIX}/customers`, customersRouter);
-app.use(`${API_PREFIX}/tasks`, tasksRouter);
+app.use(`${API_PREFIX}/products`, productRouter);
+app.use(`${API_PREFIX}/customers`, customerRouter);
+app.use(`${API_PREFIX}/tasks`, taskRouter);
+app.use(`${API_PREFIX}/orders`, orderRouter);
 app.use(`${API_PREFIX}/uploads`, uploadRouter);
 
 // centralized error handler (must be last)

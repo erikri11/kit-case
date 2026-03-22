@@ -10,12 +10,12 @@ export interface Product {
 	sku: string;
 	status: ProductStatus;
 	createdAt: Date;
-}
+};
 
 export interface ProductImage {
   url: string;
   fileName: string;
-}
+};
 
 export type ProductStatus = "Draft" | "Published";
 export type ProductCategory = "Healthcare" | "Makeup" | "Skincare";
