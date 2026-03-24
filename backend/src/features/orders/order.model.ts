@@ -3,7 +3,6 @@ export interface Order {
 	name: string;
   email: string;
 	avatar?: string;
-	avatarUrl?: string;
   paymentMethod: OrderPaymentMethod;
 	currency: string;
 	totalAmount: number;

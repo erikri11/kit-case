@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { mockProducts } from "./product.mock";
-import { Currency, Product, ProductCategory, ProductImage, ProductType } from "./product.model";
+import { Currency, Product, ProductCategory, ProductType } from "./product.model";
 import { generateSku } from "../../utils/generateSku";
 
 let products: Product[] = [...mockProducts];
@@ -14,16 +14,25 @@ export function getProduct(id: string): Product | null {
 };
 
 export function createProduct(input: {
-  name: string;
-  image: ProductImage | null;
-  category: string;
-  type: string;
-  quantity: number;
-  currency: string;
-  price: number;
+  name: Product["name"];
+  image: Product["image"];
+  category: Product["category"];
+  type: Product["type"];
+  quantity: Product["quantity"];
+  currency: Product["currency"];
+  price: Product["price"];
   status: Product["status"];
 }): Product {
-  const { name, image, category, type, quantity, currency, price } = input;
+  
+  const { 
+    name, 
+    image, 
+    category, 
+    type, 
+    quantity, 
+    currency, 
+    price 
+  } = input;
 
   const product: Product = {
     id: uuidv4(),
@@ -47,13 +56,13 @@ export function createProduct(input: {
 export function updateProduct(
   id: string,
   input: {
-    name: string;
-    image: ProductImage | null;
-    category: string;
-    type: string;
-    quantity: number;
-    currency: string;
-    price: number;
+    name: Product["name"];
+    image: Product["image"];
+    category: Product["category"];
+    type: Product["type"];
+    quantity: Product["quantity"];
+    currency: Product["currency"];
+    price: Product["price"];
     status: Product["status"];
   }
 ): Product | null {
@@ -61,7 +70,16 @@ export function updateProduct(
   const index = products.findIndex((x) => x.id === id);
   if (index < 0) return null;
 
-  const { name, image, category, type, quantity, currency, price, status } = input;
+  const { 
+    name, 
+    image, 
+    category, 
+    type, 
+    quantity, 
+    currency, 
+    price, 
+    status 
+  } = input;
 
   const updatedProduct: Product = {
     ...products[index],

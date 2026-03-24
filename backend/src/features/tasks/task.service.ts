@@ -18,7 +18,12 @@ export function createTask(input: {
   priority: Task["priority"];
   status: Task["status"];
 }): Task {
-  const { title, description, priority } = input;
+
+  const { 
+    title, 
+    description, 
+    priority 
+  } = input;
 
   const task: Task = {
     id: uuidv4(),
@@ -49,7 +54,13 @@ export function updateTask(
   const index = tasks.findIndex((x) => x.id === id);
   if (index < 0) return null;
 
-  const { title, description, priority, status, dueDate } = input;
+  const { 
+    title, 
+    description, 
+    priority, 
+    status, 
+    dueDate 
+  } = input;
 
   const updatedTask: Task = {
     ...tasks[index],

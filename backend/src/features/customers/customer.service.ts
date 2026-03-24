@@ -20,15 +20,20 @@ export function createCustomer(input: {
   name: Customer["name"]; 
   email: Customer["email"]; 
   phone?: Customer["phone"]; 
-  avatarUrl?: Customer["avatar"] 
+  avatar?: Customer["avatar"] 
 }): Customer {
 
-  const { name, email, phone, avatarUrl } = input;
+  const { 
+    name, 
+    email, 
+    phone, 
+    avatar 
+  } = input;
 
   const customer: Customer = {
     id: uuidv4(),
     name: name.trim(),
-    avatar: avatarUrl || undefined,
+    avatar: avatar || undefined,
     email,
     phone,
     quota: 0,
@@ -57,7 +62,7 @@ export function updateCustomer(
     phone?: Customer["phone"]; 
     quota: Customer["quota"]; 
     status: Customer["status"]; 
-    avatarUrl?: Customer["avatar"] 
+    avatar?: Customer["avatar"] 
   }
 ): Customer | null {
   
@@ -67,12 +72,19 @@ export function updateCustomer(
   const detailsIndex = customerDetails.findIndex((x) => x.id === id);
   if (detailsIndex < 0) return null;
 
-  const { name, email, phone, quota, status, avatarUrl } = input;
+  const { 
+    name, 
+    email, 
+    phone, 
+    quota, 
+    status, 
+    avatar 
+  } = input;
 
   const updatedCustomer: Customer = {
     ...customers[customerIndex],
     name: name.trim(),
-    avatar: avatarUrl || undefined,
+    avatar: avatar || undefined,
     email,
     phone,
     quota,

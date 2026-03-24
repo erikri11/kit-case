@@ -3,7 +3,6 @@ export interface Customer {
 	name: string;
   email: string;
 	avatar?: string;
-	avatarUrl?: string;
 	phone?: string;
 	quota: number;
 	status: CustomerStatus;

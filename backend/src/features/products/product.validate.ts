@@ -29,6 +29,7 @@ export function validateCreate(body: unknown): string | null {
   if (currency !== undefined && typeof currency !== "string") return "Currency must be a string";
   if (price !== undefined && typeof price !== "number") return "Price must be a number";
   if (!validStatuses.includes(status as ProductStatus)) return "Invalid status";
+
   return null;
 };
 
@@ -51,5 +52,6 @@ export function validateUpdate(body: unknown, partial = false): string | null {
   if (currency !== undefined && typeof currency !== "string") return "Currency must be a string";
   if (price !== undefined && typeof price !== "number") return "Price must be a number";
   if (status !== undefined && !validStatuses.includes(status)) return "Invalid status";
+  
   return null;
 };

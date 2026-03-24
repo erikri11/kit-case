@@ -50,11 +50,11 @@ export const mockOrders: Order[] = [
 		orderNumber: "ORD-1003",
 		issueDate: new Date()
 	},
-		{
-			id: uuidv4(),
-			avatar: "/avatar/avatar-2.png",
-      name: "Siegbert Gottfried", 
-      email: "siegbert.gottfried@domain.com",
+	{
+		id: uuidv4(),
+		avatar: "/avatar/avatar-2.png",
+		name: "Siegbert Gottfried", 
+		email: "siegbert.gottfried@domain.com",
 		paymentMethod: { 
 			type: "GooglePay" 
 		},
@@ -67,9 +67,9 @@ export const mockOrders: Order[] = [
 	},
 	{
 		id: uuidv4(), 
-			avatar: "/avatar/avatar-1.png",
-      name: "Miron Vitold", 
-      email: "miron.vitold@domain.com",
+		avatar: "/avatar/avatar-1.png",
+		name: "Miron Vitold", 
+		email: "miron.vitold@domain.com",
 		paymentMethod: { 
 			type: "Amex", 
 			last4: "1234" 
