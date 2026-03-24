@@ -33,8 +33,8 @@ export function TaskUpsertDialog({
   const [status, setStatus] = useState<TaskStatus>(initialTask?.status ?? "Todo");
   const [dueDate, setDueDate] = useState<Date>(initialTask?.dueDate ? new Date(initialTask.dueDate) : new Date());
   const [touched, setTouched] = useState<Record<TaskFieldName, boolean>>({ title: false });
-
   const [submitted, setSubmitted] = useState<boolean>(false);
+  
   const titleError = validateTitle(title);
   const canSubmit = !titleError;
   

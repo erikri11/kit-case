@@ -33,11 +33,11 @@ export function useCustomerUpsertDialog(
   const emailError = validateEmail(email);
   const phoneError = validatePhone(phone);
   
-  const canSubmit = !nameError && !emailError && !phoneError;
-
   const showNameError = !!nameError && (touched.name || submitted);
   const showEmailError = !!emailError && (touched.email || submitted);
   const showPhoneError = !!phoneError && (touched.phone || submitted);
+
+  const canSubmit = !nameError && !emailError && !phoneError;
 
   const handleUpsertCustomer = async () => { 
     setSubmitted(true);

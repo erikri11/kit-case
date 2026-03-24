@@ -1,20 +1,30 @@
-import type { Order } from "@features/orders/models/order.model";
+import type { Order, OrderPaymentMethod } from "@features/orders/models/order.model";
 import { Avatar, Stack, Typography } from "@mui/material";
 import type { ICellRendererParams } from "ag-grid-enterprise";
 
+function getPaymentMethodThumbnail(type?: OrderPaymentMethod["type"]): string {
+  switch (type) {
+    case "Visa":
+      return "/payment-methods/visa.png";
+    case "MasterCard":
+      return "/payment-methods/mastercard.png";
+    case "Amex":
+      return "/payment-methods/amex.png";
+    case "ApplePay":
+      return "/payment-methods/applepay.png";
+    case "GooglePay":
+      return "/payment-methods/googlepay.png";
+    default:
+      return "";
+  }
+}
+
 export function PaymentMethodRenderer(params: ICellRendererParams<Order, string>) {
   const paymentMethod = params.data?.paymentMethod;
-  const thumbnail = params.data?.thumbnail ?? "";
+  const thumbnail = getPaymentMethodThumbnail(paymentMethod?.type);
 
   return (
-    <Stack
-      direction="row"
-      spacing={2}
-      sx={{
-        alignItems: "center",
-        height: "100%"
-      }}
-    >
+    <Stack direction="row" spacing={2} sx={{ alignItems: "center", height: "100%" }}>
       <Avatar
         sx={{
           bgcolor: "background.paper",

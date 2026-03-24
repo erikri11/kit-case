@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { createOrderGridColumns } from "./createOrderGridColumns";
 import { OrderUpsertDialog } from "../OrderUpsertDialog/OrderUpsertDialog";
+import { OrderDeleteDialog } from "../OrderDeleteDialog/OrderDeleteDialog";
 
 interface OrdersGridProps {
   orders: Order[];
@@ -38,6 +39,24 @@ export function OrdersGrid({ orders }: OrdersGridProps) {
           open
           mode="add"
           onClose={() => setIsAddOpen(false)}
+        />
+      )}
+
+      {updateOrder && (
+        <OrderUpsertDialog
+          open
+          mode="edit"
+          initialOrder={updateOrder}
+          orderId={updateOrder.id}
+          onClose={() => setUpdateOrder(undefined)}
+        />
+      )}
+
+      {deleteOrder && (
+        <OrderDeleteDialog
+          open
+          order={deleteOrder}
+          onClose={() => setDeleteOrder(undefined)}
         />
       )}
     </>

@@ -10,7 +10,7 @@ export interface Order {
 	status: OrderStatus;
 	createdAt: Date;
 	orderNumber: string;
-	thumbnail?: string;
+	issueDate: Date;
 }
 
 export type OrderPaymentMethod = {
@@ -19,6 +19,7 @@ export type OrderPaymentMethod = {
 }
 
 export type OrderStatus = "Pending" | "Completed" | "Canceled" | "Rejected";
+export type OrderFieldName = "customerId" | "paymentMethod";
 
 // POST payload: server sets id, createdAt, orderNumber
 export type OrderCreate = Omit<Order, "id" | "createdAt" | "orderNumber">;

@@ -4,12 +4,12 @@ import type { ICellRendererParams } from "ag-grid-enterprise";
 import dayjs from "dayjs";
 
 export function OrderRenderer(params: ICellRendererParams<Order, string>) {
-  const createdAt = params.data?.createdAt ?? new Date();
+  const issueDate = params.data?.issueDate ?? new Date();
   const currency = params.data?.currency ?? "USD";
   const totalAmount = params.data?.totalAmount ?? 0;
   const orderNumber = params.data?.orderNumber ?? "UNKNOWN";
 
-  const date = dayjs(createdAt);
+  const date = dayjs(issueDate);
 
   const formattedAmount= new Intl.NumberFormat("en-US", { 
     style: "currency", 

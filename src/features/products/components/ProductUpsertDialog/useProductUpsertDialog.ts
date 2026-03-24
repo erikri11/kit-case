@@ -65,20 +65,20 @@ export function useProductUpsertDialog({
   const currencyError = !currency ? "common:validation.currencyRequired" : undefined;
   const priceError = validatePrice(price);
 
-  const canSubmit = 
-    !nameError && 
-    !categoryError && 
-    !typeError && 
-    !quantityError && 
-    !currencyError && 
-    !priceError;
-  
   const showNameError = !!nameError && (touched.name || submitted);
   const showCategoryError = !!categoryError && (touched.category || submitted);
   const showTypeError = !!typeError && (touched.type || submitted);
   const showQuantityError = !!quantityError && (touched.quantity || submitted);
   const showCurrencyError = !!currencyError && (touched.currency || submitted);
   const showPriceError = !!priceError && (touched.price || submitted);
+
+   const canSubmit = 
+    !nameError && 
+    !categoryError && 
+    !typeError && 
+    !quantityError && 
+    !currencyError && 
+    !priceError;
 
   // ---------------- SUBMIT ----------------
 

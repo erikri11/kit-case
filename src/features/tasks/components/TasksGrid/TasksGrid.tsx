@@ -59,7 +59,6 @@ export function TasksGrid({ tasks}: TasksGridProps) {
           onClose={() => setDeleteTask(undefined)}
         />
       )}
-
     </>
   );
 }
