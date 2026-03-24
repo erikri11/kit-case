@@ -37,3 +37,5 @@ export function CustomerNotFound() {
     </Box>
   );
 }
+
+export default CustomerNotFound;

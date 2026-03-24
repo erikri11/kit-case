@@ -62,3 +62,5 @@ export function OrdersGrid({ orders }: OrdersGridProps) {
     </>
   );
 }
+
+export default OrdersGrid;

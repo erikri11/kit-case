@@ -275,3 +275,5 @@ export function OrderUpsertDialog({
     </Dialog>
   );
 }
+
+export default OrderUpsertDialog;

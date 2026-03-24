@@ -41,3 +41,5 @@ export function AppProviders(props: AppProvidersProps) {
     </LocalizationProvider>
   );
 }
+
+export default AppProviders;

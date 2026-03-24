@@ -91,3 +91,5 @@ export function CustomerBasicDetailsCard({
     </Card>
   );
 }
+
+export default CustomerBasicDetailsCard;

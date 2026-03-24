@@ -212,3 +212,5 @@ export function TaskUpsertDialog({
     </Dialog>
   );
 }
+
+export default TaskUpsertDialog;

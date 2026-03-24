@@ -16,7 +16,7 @@ interface BaseTableProps<T> {
   setGridApi: (gridApi: GridApi | null) => void;
 }
 
-export default function BaseTable<T>({ 
+export function BaseTable<T>({ 
   data, 
   headers, 
   isPaginationEnabled,
@@ -61,3 +61,5 @@ export default function BaseTable<T>({
     </Box>
   );
 }
+
+export default BaseTable;

@@ -13,3 +13,5 @@ export function CenteredSpinner() {
     </Box>
   );
 }
+
+export default CenteredSpinner;

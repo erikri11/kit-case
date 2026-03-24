@@ -39,3 +39,5 @@ export function UserRightsProvider({
     </UserRightsContext.Provider>
   );
 }
+
+export default UserRightsProvider;

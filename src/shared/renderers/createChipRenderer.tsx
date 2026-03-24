@@ -37,3 +37,5 @@ export function createChipRenderer<TRow, TValue extends string>(
     );
   };
 }
+
+export default createChipRenderer;

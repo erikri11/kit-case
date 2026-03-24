@@ -355,3 +355,5 @@ export function ProductUpsertDialog({
     </Dialog>
   );
 }
+
+export default ProductUpsertDialog;

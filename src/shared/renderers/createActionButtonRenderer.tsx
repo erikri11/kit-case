@@ -43,3 +43,5 @@ export function createActionButtonRenderer<T>({
     );
   };
 }
+
+export default createActionButtonRenderer;

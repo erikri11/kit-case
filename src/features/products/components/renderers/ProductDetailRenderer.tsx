@@ -86,3 +86,5 @@ export function ProductDetailRenderer(props: IDetailCellRendererParams<Product>)
     </Box>
   );
 }
+
+export default ProductDetailRenderer;

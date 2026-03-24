@@ -1,13 +1,20 @@
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
-import type { PersistentDrawerProps } from "./PersistentDrawer";
 import { useTranslation } from "react-i18next";
 import { Box, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Toolbar } from "@mui/material";
 import { checkMenuAccess } from "@app/routes/access";
 import { useUserRights } from "@shared/context/userRights/useUserRights";
 import { MenuGroupItem } from "./MenuGroupItem";
+import type { MenuItem } from "@shared/types/menu";
 
-export function PersistentDrawerContent(props: PersistentDrawerProps) {
+interface PersistentDrawerContentProps{
+  menuItems: MenuItem[];
+}
+
+export function PersistentDrawerContent({ 
+  menuItems 
+}: PersistentDrawerContentProps) {
+
   const { role } = useUserRights();
   const location = useLocation();
   const { t } = useTranslation(["menu", "overview"]);
@@ -34,7 +41,7 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
           </ListSubheader>
         }
       >
-        {props.menuItems.map((item) => {
+        {menuItems.map((item) => {
           const key = item.url ?? item.textKey;
           const hasChildren = Boolean(item.items?.length);
 
@@ -82,3 +89,5 @@ export function PersistentDrawerContent(props: PersistentDrawerProps) {
     </Box>
   );
 }
+
+export default PersistentDrawerContent;

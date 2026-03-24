@@ -23,3 +23,5 @@ export function AppBarLogo() {
     </IconButton>
   );
 }
+
+export default AppBarLogo;

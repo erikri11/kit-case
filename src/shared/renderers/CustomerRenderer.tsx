@@ -13,3 +13,5 @@ export function CustomerRenderer(params: ICellRendererParams<Customer, string>) 
     />
   );
 }
+
+export default CustomerRenderer;

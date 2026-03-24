@@ -92,4 +92,6 @@ export function CustomerDetailsHeader({
     </>
   );
 }
+
+export default CustomerDetailsHeader;
   

@@ -33,3 +33,5 @@ export const PhoneMaskInput = forwardRef<HTMLInputElement, PhoneMaskInputProps>(
     );
   }
 );
+
+export default PhoneMaskInput;

@@ -121,3 +121,5 @@ export function CustomerDetailsSkeleton() {
     </>
   );
 }
+
+export default CustomerDetailsSkeleton;

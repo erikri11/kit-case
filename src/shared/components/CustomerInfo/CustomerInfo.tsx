@@ -35,3 +35,5 @@ export function CustomerInfo({
     </Stack>
   );
 }
+
+export default CustomerInfo;

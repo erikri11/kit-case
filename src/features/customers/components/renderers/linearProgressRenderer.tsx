@@ -35,3 +35,5 @@ export function LinearProgressRenderer (params: ICellRendererParams<number, unde
     </Box>
   );
 };
+
+export default LinearProgressRenderer;

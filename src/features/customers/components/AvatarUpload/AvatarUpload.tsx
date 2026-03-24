@@ -103,3 +103,5 @@ export function AvatarUpload({
     </Stack>
   );
 }
+
+export default AvatarUpload;

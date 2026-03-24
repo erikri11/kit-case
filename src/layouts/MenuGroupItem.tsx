@@ -80,3 +80,5 @@ export function MenuGroupItem({
     </>
   );
 }
+
+export default MenuGroupItem;

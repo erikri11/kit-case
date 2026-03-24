@@ -62,3 +62,5 @@ export function TasksGrid({ tasks}: TasksGridProps) {
     </>
   );
 }
+
+export default TasksGrid;

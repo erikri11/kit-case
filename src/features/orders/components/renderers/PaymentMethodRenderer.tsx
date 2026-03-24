@@ -47,3 +47,5 @@ export function PaymentMethodRenderer(params: ICellRendererParams<Order, string>
     </Stack>
   );
 }
+
+export default PaymentMethodRenderer;

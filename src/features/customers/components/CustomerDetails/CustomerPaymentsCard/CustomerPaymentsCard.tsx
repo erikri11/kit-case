@@ -92,3 +92,5 @@ export function CustomerPaymentsCard({
     </Card>
   );
 }
+
+export default CustomerPaymentsCard;

@@ -62,3 +62,5 @@ export function CustomerSecurityCard({
     </Card>
   );
 }
+
+export default CustomerSecurityCard;

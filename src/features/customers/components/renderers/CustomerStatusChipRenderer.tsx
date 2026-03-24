@@ -4,4 +4,5 @@ import { CUSTOMER_STATUS_CONFIG } from "@features/customers/models/customerStatu
 
 export const CustomerStatusChipRenderer =
   createChipRenderer<Customer, CustomerStatus>(CUSTOMER_STATUS_CONFIG);
-  
+
+export default CustomerStatusChipRenderer;

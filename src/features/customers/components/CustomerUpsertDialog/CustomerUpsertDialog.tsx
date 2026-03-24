@@ -192,3 +192,5 @@ export function CustomerUpsertDialog({
     </Dialog>
   );
 }
+
+export default CustomerUpsertDialog;

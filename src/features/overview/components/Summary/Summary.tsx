@@ -90,3 +90,5 @@ export function Summary({
 		</Card>
 	);
 }
+
+export default Summary;

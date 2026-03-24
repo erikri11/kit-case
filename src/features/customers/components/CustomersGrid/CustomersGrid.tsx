@@ -69,3 +69,5 @@ export function CustomersGrid({
     </>
   );
 }
+
+export default CustomersGrid;

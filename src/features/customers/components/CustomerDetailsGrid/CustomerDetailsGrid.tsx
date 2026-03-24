@@ -27,3 +27,5 @@ export function CustomerDetailsGrid({
     />
   );
 }
+
+export default CustomerDetailsGrid;

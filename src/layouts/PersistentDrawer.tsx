@@ -9,7 +9,12 @@ export interface PersistentDrawerProps {
   menuItems: MenuItem[];
 }
 
-export function PersistentDrawer(props: PersistentDrawerProps) {
+export function PersistentDrawer({
+  mobileOpen, 
+  onClose, 
+  menuItems
+}: PersistentDrawerProps) {
+
   return (
     <Box
       aria-label="sidebar navigation"
@@ -22,8 +27,8 @@ export function PersistentDrawer(props: PersistentDrawerProps) {
       {/* Temporary drawer on mobile */}
       <Drawer
         variant="temporary"
-        open={props.mobileOpen}
-        onClose={props.onClose}
+        open={mobileOpen}
+        onClose={onClose}
         ModalProps={{ keepMounted: true }}
         sx={{
           display: { xs: "block", sm: "none" },
@@ -33,7 +38,9 @@ export function PersistentDrawer(props: PersistentDrawerProps) {
           }
         }}
       >
-        <PersistentDrawerContent {...props} />
+        <PersistentDrawerContent 
+          menuItems={menuItems} 
+        />
       </Drawer>
 
       {/* Permanent drawer on desktop */}
@@ -48,8 +55,12 @@ export function PersistentDrawer(props: PersistentDrawerProps) {
           }
         }}
       >
-        <PersistentDrawerContent {...props} />
+        <PersistentDrawerContent 
+          menuItems={menuItems} 
+        />
       </Drawer>
     </Box>
   );
 }
+
+export default PersistentDrawer;

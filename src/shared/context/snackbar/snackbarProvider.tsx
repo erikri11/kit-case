@@ -14,3 +14,5 @@ export function SnackbarProvider({ children }: { children: ReactNode }) {
     {children}
     </SnackbarContext.Provider>;
 }
+
+export default SnackbarProvider;

@@ -91,3 +91,5 @@ export function ImageRenderer(props: ICellRendererParams<Product, ProductImage |
     </>
   );
 }
+
+export default ImageRenderer;

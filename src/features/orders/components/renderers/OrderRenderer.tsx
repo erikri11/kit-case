@@ -70,3 +70,5 @@ export function OrderRenderer(params: ICellRendererParams<Order, string>) {
     </Stack>
   );
 }
+
+export default OrderRenderer;
