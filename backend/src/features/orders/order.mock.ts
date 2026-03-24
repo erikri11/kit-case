@@ -16,7 +16,7 @@ export const mockOrders: Order[] = [
 		status: "Pending",
 		createdAt: new Date(),
 		orderNumber: "ORD-1001",
-		thumbnail: "/payment/payment-method-3.png"
+		issueDate: new Date()
 	},
 	{
 		id: uuidv4(),
@@ -31,7 +31,7 @@ export const mockOrders: Order[] = [
 		status: "Completed",
 		createdAt: new Date(),
 		orderNumber: "ORD-1002",
-		thumbnail: "/payment/payment-method-4.png"
+		issueDate: new Date()
 
 	},
 	{
@@ -48,7 +48,7 @@ export const mockOrders: Order[] = [
 		status: "Canceled",
 		createdAt: new Date(),
 		orderNumber: "ORD-1003",
-		thumbnail: "/payment/payment-method-2.png"
+		issueDate: new Date()
 	},
 		{
 			id: uuidv4(),
@@ -63,8 +63,7 @@ export const mockOrders: Order[] = [
 		status: "Rejected",
 		createdAt: new Date(),
 		orderNumber: "ORD-1004",
-		thumbnail: "/payment/payment-method-5.png"
-
+		issueDate: new Date()
 	},
 	{
 		id: uuidv4(), 
@@ -80,6 +79,6 @@ export const mockOrders: Order[] = [
 		status: "Completed",
 		createdAt: new Date(),
 		orderNumber: "ORD-1005",
-		thumbnail: "/payment/payment-method-3.png"
+		issueDate: new Date()
 	}
 ];

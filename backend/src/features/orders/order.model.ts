@@ -10,7 +10,7 @@ export interface Order {
 	status: OrderStatus;
 	createdAt: Date;
 	orderNumber: string;
-	thumbnail?: string;
+	issueDate: Date;
 }
 
 export type OrderPaymentMethod = {

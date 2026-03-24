@@ -17,10 +17,10 @@ export function getCustomer(id: string): CustomerDetails | null {
 };
 
 export function createCustomer(input: { 
-  name: string; 
-  email: string; 
-  phone?: string; 
-  avatarUrl?: string 
+  name: Customer["name"]; 
+  email: Customer["email"]; 
+  phone?: Customer["phone"]; 
+  avatarUrl?: Customer["avatar"] 
 }): Customer {
 
   const { name, email, phone, avatarUrl } = input;
@@ -52,12 +52,12 @@ export function createCustomer(input: {
 export function updateCustomer(
   id: string,
   input: { 
-    name: string; 
-    email: string; 
-    phone?: string; 
-    quota: number; 
+    name: Customer["name"]; 
+    email: Customer["email"]; 
+    phone?: Customer["phone"]; 
+    quota: Customer["quota"]; 
     status: Customer["status"]; 
-    avatarUrl?: string 
+    avatarUrl?: Customer["avatar"] 
   }
 ): Customer | null {
   
