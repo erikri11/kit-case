@@ -9,7 +9,10 @@ interface CustomerSecurityCardProps {
   customerId: string;
 }
 
-export function CustomerSecurityCard({ customerId }: CustomerSecurityCardProps) {
+export function CustomerSecurityCard({ 
+  customerId 
+}: CustomerSecurityCardProps) {
+  
   const navigate = useNavigate();
   const { t } = useTranslation(["customers", "common"]);
   const { setSnackbarMessage } = useSnackbar();

@@ -4,17 +4,18 @@ import { useAvatarUpload } from "./useAvatarUpload";
 
 interface AvatarUploadProps {
   avatarPreview: string | null;
-  avatarUrl: string | null;
+  avatar: string | null;
   setAvatarPreview: (v: string | null | ((prev: string | null) => string | null)) => void;
-  setAvatarUrl: (v: string | null) => void;
+  setAvatar: (v: string | null) => void;
 }
 
 export function AvatarUpload({
   avatarPreview,
-  avatarUrl,
+  avatar,
   setAvatarPreview,
-  setAvatarUrl
+  setAvatar
 }: AvatarUploadProps) {
+
   const {
     t,
     avatarSrc,
@@ -26,9 +27,9 @@ export function AvatarUpload({
     handleFileChange
   } = useAvatarUpload(
     avatarPreview,  
-    avatarUrl, 
+    avatar,
     setAvatarPreview, 
-    setAvatarUrl
+    setAvatar
   );
 
   return (

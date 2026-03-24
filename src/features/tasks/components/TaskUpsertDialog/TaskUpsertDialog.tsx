@@ -41,57 +41,57 @@ export function TaskUpsertDialog({
   const showTitleError = !!titleError && (touched.title || submitted);
 
   const handleUpsertTask = async () => { 
-      setSubmitted(true);
-      if (!canSubmit) return;
+    setSubmitted(true);
+    if (!canSubmit) return;
   
-      try {
-        if (mode === "add") {
-           const payload: TaskCreate = { 
-            title: title.trim(),
-            description: description.trim(),
-            priority: "Low",
-            status: "Todo",
-            dueDate: dueDate
-          };
-  
-          await taskApi.post(payload);
-  
-          setSnackbarMessage({ 
-            content: t("tasks:snackbar.addSuccess"), 
-            type: "success" 
-          });
-        } else if (mode === "edit") {
-          if (!taskId) return;
+    try {
+      if (mode === "add") {
+          const payload: TaskCreate = { 
+          title: title.trim(),
+          description: description.trim(),
+          priority: "Low",
+          status: "Todo",
+          dueDate: dueDate
+        };
 
-          const payload: TaskUpdate = {
-            title: title.trim(),
-            description: description.trim(),
-            priority: priority,
-            status: status,
-            dueDate: dueDate
-          };
-  
-          await taskApi.put(taskId, payload);
-          
-          setSnackbarMessage({ 
-            content: t("tasks:snackbar.updateSuccess"), 
-            type: "success" 
-          });
-        }
-        onClose();
-      } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : String(error);
-        console.error("Error updating task:", errorMessage);
-  
-        setSnackbarMessage({
+        await taskApi.post(payload);
+
+        setSnackbarMessage({ 
+          content: t("tasks:snackbar.addSuccess"), 
+          type: "success" 
+        });
+      } else if (mode === "edit") {
+        if (!taskId) return;
+
+        const payload: TaskUpdate = {
+          title: title.trim(),
+          description: description.trim(),
+          priority: priority,
+          status: status,
+          dueDate: dueDate
+        };
+
+        await taskApi.put(taskId, payload);
+        
+        setSnackbarMessage({ 
+          content: t("tasks:snackbar.updateSuccess"), 
+          type: "success" 
+        });
+      }
+      onClose();
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error("Error updating task:", errorMessage);
+
+      setSnackbarMessage({
         content:
           mode === "add"
             ? t("tasks:snackbar.addError")
             : t("tasks:snackbar.updateError"),
         type: "error"
       });
-      }
-    };
+    }
+  };
 
   return (
     <Dialog 

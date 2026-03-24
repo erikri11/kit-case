@@ -28,7 +28,7 @@ export function CustomerUpsertDialog({
     phone,
     quota,
     status,
-    avatarUrl,
+    avatar,
     avatarPreview,
     canSubmit,
     nameError,
@@ -42,7 +42,7 @@ export function CustomerUpsertDialog({
     setPhone,
     setQuota,
     setStatus,
-    setAvatarUrl,
+    setAvatar,
     setAvatarPreview,
     setTouched,
     handleUpsertCustomer
@@ -65,7 +65,7 @@ export function CustomerUpsertDialog({
             const existingAvatar = (
               initialCustomer as CustomerUpdate 
                 & { avatar?: string | null })?.avatar ?? null;
-            setAvatarUrl(existingAvatar);
+            setAvatar(existingAvatar);
             setAvatarPreview(null);
           }
         }
@@ -79,8 +79,8 @@ export function CustomerUpsertDialog({
           <AvatarUpload
             avatarPreview={avatarPreview}
             setAvatarPreview={setAvatarPreview}
-            avatarUrl={avatarUrl}
-            setAvatarUrl={setAvatarUrl}
+            avatar={avatar}
+            setAvatar={setAvatar}
           />
           <Grid size={12}>
             <TextField 

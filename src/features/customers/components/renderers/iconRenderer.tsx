@@ -5,10 +5,11 @@ import type { Customer } from "@features/customers/models/customer.model";
 
 export function IconRenderer(params: 
   ICellRendererParams<Customer> & { 
-  onOpenDetails: (customer: Customer) => void 
+    onOpenDetails: (customer: Customer) => void
   }) {
-    const customer = params.data;
-    if (!customer) return null;
+
+  const customer = params.data;
+  if (!customer) return null;
   
   return (
     <Box

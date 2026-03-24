@@ -7,6 +7,7 @@ export function useCustomerDeleteDialog(
   onClose: () => void, 
   customer?: Customer
 ) {
+  
   const { t } = useTranslation("customers");
   const { setSnackbarMessage } = useSnackbar();
   

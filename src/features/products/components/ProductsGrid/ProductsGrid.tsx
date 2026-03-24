@@ -22,7 +22,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
     t,
     onEdit: setUpdateProduct,
     onDelete: setDeleteProduct
-    });
+  });
 
   return (
     <>

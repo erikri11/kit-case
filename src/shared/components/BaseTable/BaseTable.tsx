@@ -23,6 +23,7 @@ export default function BaseTable<T>({
   expandComponent,
   setGridApi,
 }: BaseTableProps<T>) {
+  
   const agTheme = useAgTheme();
   const onGridReady = (params: GridReadyEvent) => setGridApi(params.api);
 

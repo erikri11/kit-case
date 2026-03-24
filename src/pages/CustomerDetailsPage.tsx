@@ -10,13 +10,8 @@ import { useCustomerDetails } from '@features/customers/components/CustomerDetai
 export function CustomerDetailsPage() {
   const { customer, isLoading } = useCustomerDetails();
 
-  if (isLoading) {
-    return <CustomerDetailsSkeleton />;
-  }
-
-  if (!customer) {
-    return <CustomerNotFound />;
-  }
+  if (isLoading) return <CustomerDetailsSkeleton />;
+  if (!customer) return <CustomerNotFound />;
 
   return (
     <>

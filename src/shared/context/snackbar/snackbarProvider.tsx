@@ -10,5 +10,7 @@ export function SnackbarProvider({ children }: { children: ReactNode }) {
     [snackbarMessage]
   );
 
-  return <SnackbarContext.Provider value={value}>{children}</SnackbarContext.Provider>;
+  return <SnackbarContext.Provider value={value}>
+    {children}
+    </SnackbarContext.Provider>;
 }

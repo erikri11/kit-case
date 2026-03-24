@@ -10,7 +10,10 @@ interface CustomerDetailsHeaderProps {
   customer: Customer;
 }
 
-export function CustomerDetailsHeader({ customer }: CustomerDetailsHeaderProps) {
+export function CustomerDetailsHeader({ 
+  customer 
+}: CustomerDetailsHeaderProps) {
+  
   const navigate = useNavigate();
   const { t } = useTranslation("menu");
 

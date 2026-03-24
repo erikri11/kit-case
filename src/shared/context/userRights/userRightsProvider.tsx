@@ -9,13 +9,17 @@ export interface UserRightsProviderProps {
   children: ReactNode;
 }
 
-export function UserRightsProvider({ children }: UserRightsProviderProps) {
+export function UserRightsProvider({ 
+  children 
+}: UserRightsProviderProps) {
   
   const [role, setRoleState] = useState<RoleEnum>(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
+
     if (stored && Object.values(RoleEnum).includes(stored as RoleEnum)) {
       return stored as RoleEnum;
     }
+    
     return initialRole;
   });
 

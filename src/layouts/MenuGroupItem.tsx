@@ -13,7 +13,11 @@ interface MenuGroupItemProps {
   role: RoleEnum;
 }
 
-export function MenuGroupItem({ item, role }: MenuGroupItemProps) {
+export function MenuGroupItem({ 
+  item, 
+  role 
+}: MenuGroupItemProps) {
+  
   const [userOpen, setUserOpen] = useState(false);
   const location = useLocation();
   const { t } = useTranslation("menu");

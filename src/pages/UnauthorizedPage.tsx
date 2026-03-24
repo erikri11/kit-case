@@ -30,7 +30,7 @@ export function UnauthorizedPage() {
             justifyContent: "center",
             width: 72,
             height: 72,
-            borderRadius: 50,
+            borderRadius: "50%",
             mb: 2,
             border: (theme) => `2px solid ${theme.palette.error.main}`,
           }}
@@ -42,11 +42,11 @@ export function UnauthorizedPage() {
           {t("error:accessDenied")}
         </Typography>
 
-        <Typography variant="body1">
+        <Typography variant="body1" sx={{mb: 1}}>
           {t("error:youDoNotHavePermissionToViewThisPage")}
         </Typography>
 
-        <Typography variant="body1" sx={{ mb: 3 }}>
+        <Typography variant="body2" sx={{ mb: 3 }}>
           {t("error:pleaseContactAnAdministratorIfYouBelieveThisIsAnError")}
         </Typography>
 
@@ -57,7 +57,8 @@ export function UnauthorizedPage() {
         >
           {t("common:actions.goToOverview")}
         </Button>
-        <Button variant="text" onClick={() => navigate(-1)}>
+
+        <Button variant="text" onClick={() => navigate(-1) || navigate("/overview")}>
           {t("common:actions.goBack")}
         </Button>
       </Box>

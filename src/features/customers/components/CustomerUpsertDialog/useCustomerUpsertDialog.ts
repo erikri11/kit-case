@@ -12,6 +12,7 @@ export function useCustomerUpsertDialog(
   customerId?: string, 
   initialCustomer?: CustomerUpdate
 ) {
+
   const { t } = useTranslation(["customers", "common"]);
   const { setSnackbarMessage } = useSnackbar();
 
@@ -20,15 +21,15 @@ export function useCustomerUpsertDialog(
   const [phone, setPhone] = useState<string>(initialCustomer?.phone ?? '');
   const [quota, setQuota] = useState<number>(initialCustomer?.quota ?? 0);
   const [status, setStatus] = useState<CustomerStatus>(initialCustomer?.status ?? "Pending");
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [avatar, setAvatar] = useState<string | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState<boolean>(false);
   const [touched, setTouched] = useState<Record<CustomerFieldName, boolean>>({
     name: false, 
     email: false, 
     phone: false 
   });
-  const [submitted, setSubmitted] = useState<boolean>(false);
-
+ 
   const nameError = validateName(name);
   const emailError = validateEmail(email);
   const phoneError = validatePhone(phone);
@@ -49,7 +50,7 @@ export function useCustomerUpsertDialog(
           name: name.trim(),
           email: email.trim(),
           phone: phone.trim(),
-          avatarUrl: avatarUrl ?? undefined,
+          avatar: avatar ?? undefined,
         };
 
         await customerApi.post(payload);
@@ -67,7 +68,7 @@ export function useCustomerUpsertDialog(
           phone: phone.trim(),
           quota: quota,
           status: status as CustomerUpdate["status"],
-          avatarUrl: avatarUrl ?? undefined,
+          avatar: avatar ?? undefined,
         };
 
         await customerApi.put(customerId, payload);
@@ -99,7 +100,7 @@ export function useCustomerUpsertDialog(
     phone,
     quota,
     status,
-    avatarUrl,
+    avatar,
     avatarPreview,
     canSubmit,
     nameError,
@@ -113,7 +114,7 @@ export function useCustomerUpsertDialog(
     setPhone,
     setQuota,
     setStatus,
-    setAvatarUrl,
+    setAvatar,
     setAvatarPreview,
     setTouched,
     handleUpsertCustomer

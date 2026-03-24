@@ -11,7 +11,10 @@ interface CustomersGridProps {
   customers: Customer[];
 }
 
-export function CustomersGrid({ customers }: CustomersGridProps) {
+export function CustomersGrid({ 
+  customers 
+}: CustomersGridProps) {
+  
   const { t } = useTranslation("common");
   const navigate = useNavigate();
   

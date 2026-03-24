@@ -7,7 +7,9 @@ interface ColumnArgsProps {
   t: TFunction;
 }
 
-export function createCustomerDetailsGridColumns({ t }: ColumnArgsProps): ColDef<CustomerPayment>[] {
+export function createCustomerDetailsGridColumns({ 
+  t 
+}: ColumnArgsProps): ColDef<CustomerPayment>[] {
   
   return [
     {

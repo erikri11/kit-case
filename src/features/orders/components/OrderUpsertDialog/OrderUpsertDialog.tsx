@@ -24,6 +24,7 @@ export function OrderUpsertDialog({
   orderId,
   onClose
 }: OrderUpsertDialogProps) {
+  
   const { t } = useTranslation(["orders", "common", "validation"]);
   const { setSnackbarMessage } = useSnackbar();
   const customers = useCustomers();
@@ -69,7 +70,6 @@ export function OrderUpsertDialog({
           name: selectedCustomer?.name ?? "",
           email: selectedCustomer?.email ?? "",
           avatar: selectedCustomer?.avatar,
-          avatarUrl: selectedCustomer?.avatarUrl,
           currency: "USD",
           totalAmount: 0,
           status,
@@ -90,7 +90,6 @@ export function OrderUpsertDialog({
           name: selectedCustomer?.name ?? initialOrder?.name,
           email: selectedCustomer?.email ?? initialOrder?.email,
           avatar: selectedCustomer?.avatar ?? initialOrder?.avatar,
-          avatarUrl: selectedCustomer?.avatarUrl ?? initialOrder?.avatarUrl,
           issueDate,
           paymentMethod,
           status

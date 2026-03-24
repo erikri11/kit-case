@@ -7,10 +7,11 @@ import { useTranslation } from "react-i18next";
 
 export function useAvatarUpload(
   avatarPreview: string | null,
-  avatarUrl: string | null,
+  avatar: string | null,
   setAvatarPreview: (v: string | null | ((prev: string | null) => string | null)) => void,
-  setAvatarUrl: (v: string | null) => void
+  setAvatar: (v: string | null) => void
 ) {
+  
   const { t } = useTranslation("common");
   const { setSnackbarMessage } = useSnackbar();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -68,7 +69,7 @@ export function useAvatarUpload(
     try {
       setIsUploading(true);
       const result = await uploadAvatarApi(file);
-      setAvatarUrl(result.fullUrl);
+      setAvatar(result.fullUrl);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
       console.error("Error uploading avatar:", errorMessage);
@@ -78,7 +79,7 @@ export function useAvatarUpload(
         type: "error" 
       });
 
-      setAvatarUrl(null);
+      setAvatar(null);
     } finally {
       setIsUploading(false);
       e.target.value = "";
@@ -97,14 +98,14 @@ export function useAvatarUpload(
       return null;
     });
 
-    setAvatarUrl(null);
+    setAvatar(null);
 
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
   };
 
-  const avatarSrc = resolveAvatarSrc(avatarUrl ?? avatarPreview);
+  const avatarSrc = resolveAvatarSrc(avatar ?? avatarPreview);
   const hasAvatar = Boolean(avatarSrc);
 
   return {

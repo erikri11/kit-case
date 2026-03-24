@@ -14,6 +14,7 @@ export interface ChipConfigItem {
 export function createChipRenderer<TRow, TValue extends string>(
   configMap: Record<TValue, ChipConfigItem>
 ) {
+  
   return function ChipRenderer(params: ICellRendererParams<TRow, TValue>) {
     const { t } = useTranslation();
 

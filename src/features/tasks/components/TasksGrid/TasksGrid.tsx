@@ -21,7 +21,7 @@ export function TasksGrid({ tasks}: TasksGridProps) {
     t,
     onEdit: setUpdateTask,
     onDelete: setDeleteTask
-    });
+  });
 
   return (
     <>

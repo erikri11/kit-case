@@ -7,7 +7,10 @@ interface CustomerBasicDetailsCardProps {
   customer: Customer;
 }
 
-export function CustomerBasicDetailsCard({ customer }: CustomerBasicDetailsCardProps) {
+export function CustomerBasicDetailsCard({ 
+  customer 
+}: CustomerBasicDetailsCardProps) {
+  
   const { t } = useTranslation("common");
 
   return (

@@ -17,7 +17,7 @@ export function ProductPage() {
        <ProductsGrid 
           products={products}
        />
-  </>
+    </>
   );
 }
 

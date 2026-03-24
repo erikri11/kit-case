@@ -4,14 +4,12 @@ interface CustomerInfoProps {
   name: string;
   email: string;
   avatar?: string;
-  avatarUrl?: string;
 };
 
 export function CustomerInfo({ 
   name, 
   email, 
-  avatar, 
-  avatarUrl
+  avatar
  }: CustomerInfoProps) {
 
   return (
@@ -23,7 +21,7 @@ export function CustomerInfo({
         height: "100%" 
         }}
       >
-      <Avatar src={avatar ?? avatarUrl}>
+      <Avatar src={avatar}>
         {!avatar && name?.charAt(0).toUpperCase()}
       </Avatar>
 

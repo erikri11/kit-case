@@ -25,7 +25,7 @@ export function ProductDeleteDialog({
   const { t } = useTranslation(["common", "products"]);
   const { setSnackbarMessage } = useSnackbar();
   
- const handleDeleteProduct = async () => { 
+  const handleDeleteProduct = async () => { 
     try {
       if (product?.id) {
         await productApi.delete(product.id);

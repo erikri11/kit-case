@@ -7,6 +7,7 @@ export function useTaskDeleteDialog(
   onClose: () => void, 
   task?: Task
 ) {
+  
   const { t } = useTranslation(["common", "tasks"]);
   const { setSnackbarMessage } = useSnackbar();
 

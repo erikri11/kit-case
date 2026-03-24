@@ -8,7 +8,6 @@ export function CustomerRenderer(params: ICellRendererParams<Customer, string>) 
   return (
     <CustomerInfo
       avatar={params.data.avatar}
-      avatarUrl={params.data.avatarUrl}
       name={params.data.name}
       email={params.data.email}
     />
