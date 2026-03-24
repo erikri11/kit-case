@@ -17,7 +17,7 @@ export function OrderDeleteDialog({
 }: OrderDeleteDialogProps) {
 
   const { t } = useTranslation("orders");
-   const { setSnackbarMessage } = useSnackbar();
+  const { setSnackbarMessage } = useSnackbar();
 
   const handleDeleteOrder = async () => {
     try {

@@ -14,7 +14,13 @@ export function TaskDeleteDialog({
   task
 }: TaskDeleteDialogProps) {
   
-  const { t, handleDeleteTask } = useTaskDeleteDialog(onClose, task);
+  const { 
+    t, 
+    handleDeleteTask 
+  } = useTaskDeleteDialog(
+    onClose, 
+    task
+  );
 
   return (
     <Dialog 

@@ -1,4 +1,5 @@
-export type QueryParams = Record<
+export type QueryParams = 
+Record<
   string, 
   string | number | boolean | null | undefined
 >;

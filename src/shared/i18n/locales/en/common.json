@@ -64,7 +64,8 @@
     "stockKeepingUnit": "Stock keeping unit (SKU)",
     "customer": "Customer",
     "order": "Order",
-    "paymentMethod": "Payment method"
+    "paymentMethod": "Payment method",
+    "issueDate": "Issue date"
   },
   "actions": {
     "edit": "Edit",

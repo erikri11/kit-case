@@ -1,14 +1,6 @@
-import { useTranslation } from 'react-i18next';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@mui/material';
-import { productApi } from '@features/products/api/productApi';
 import type { Product } from '@features/products/models/product.model';
-import { useSnackbar } from '@shared/context/snackbar/useSnackbar';
-
-export interface TaskDeleteDialogProps {
-  open: boolean;
-  onClose: () => void;
-  product?: Product;
-}
+import { useProductDeleteDialog } from './useProductDeleteDialog';
 
 export interface ProductDeleteDialogProps {
   open: boolean;
@@ -22,29 +14,13 @@ export function ProductDeleteDialog({
   product
 }: ProductDeleteDialogProps) {
 
-  const { t } = useTranslation(["common", "products"]);
-  const { setSnackbarMessage } = useSnackbar();
-  
-  const handleDeleteProduct = async () => { 
-    try {
-      if (product?.id) {
-        await productApi.delete(product.id);
-        setSnackbarMessage({ 
-          content: t("products:snackbar.deleteSuccess"), 
-          type: "success" 
-        });
-      }
-      onClose();
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error("Failed to delete product:", errorMessage);
-
-      setSnackbarMessage({ 
-        content: t("products:snackbar.deleteError"), 
-        type: "error" 
-      });
-    }
-  };
+  const { 
+    t, 
+    handleDeleteProduct 
+  } = useProductDeleteDialog({
+    product,
+    onClose
+  });
 
   return (
     <Dialog 

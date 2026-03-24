@@ -13,5 +13,12 @@
     "Completed": "Fullført",
     "Rejected": "Avvist",
     "Canceled": "Avlyst"
+  },
+  "paymentMethod": {
+    "Amex": "American Express",
+    "ApplePay": "Apple Pay",
+    "GooglePay": "Google Pay",
+    "MasterCard": "MasterCard",
+    "Visa": "Visa"
   }
 }

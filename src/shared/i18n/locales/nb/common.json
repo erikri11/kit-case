@@ -64,7 +64,8 @@
     "stockKeepingUnit": "Lagerbeholdningsenhet (SKU)",
     "customer": "Kunde",
     "order": "Bestilling",
-    "paymentMethod": "Betalingsmetode"
+    "paymentMethod": "Betalingsmetode",
+    "issueDate": "Utstedelsesdato"
   },
   "actions": {
     "edit": "Rediger",

@@ -18,6 +18,5 @@ declare module "@mui/material/styles" {
 declare module "@mui/material/Button" {
   interface ButtonPropsColorOverrides {
     customGrey: true;
-    customTextGrey: true;
   }
 }

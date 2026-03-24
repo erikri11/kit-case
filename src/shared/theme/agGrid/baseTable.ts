@@ -17,3 +17,4 @@ export function baseTableTheme(mode: "light" | "dark") {
 
   return theme;
 }
+

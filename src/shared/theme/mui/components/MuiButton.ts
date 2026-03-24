@@ -11,7 +11,7 @@ export const MuiButton: Components<Theme> = {
     variants: [
       // contained grey
       {
-        props: { variant: "contained", color: "grey" },
+        props: { variant: "contained", color: "customGrey" },
         style: ({ theme }) => ({
           backgroundColor: theme.palette.customGrey.main,
           color: theme.palette.customGrey.contrastText,
@@ -22,7 +22,7 @@ export const MuiButton: Components<Theme> = {
       },
       // outlined grey
       {
-        props: { variant: "outlined", color: "grey" },
+        props: { variant: "outlined", color: "customGrey" },
         style: ({ theme }) => ({
           borderColor: theme.palette.customGrey.main,
           color: theme.palette.customGrey.main,
@@ -33,7 +33,7 @@ export const MuiButton: Components<Theme> = {
       },
       // text grey
       {
-        props: { variant: "text", color: "grey" },
+        props: { variant: "text", color: "customGrey" },
         style: ({ theme }) => ({
           color: theme.palette.customGrey.main,
           "&:hover": {

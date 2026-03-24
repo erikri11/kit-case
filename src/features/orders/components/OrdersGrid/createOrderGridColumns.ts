@@ -38,14 +38,14 @@ export function createOrderGridColumns({
 
   return [
     {
-      field: "createdAt",
+      field: "issueDate",
       headerName: t("common:labels.order"),
       minWidth: 250,
       flex: 2,
       cellRenderer: OrderRenderer
     },
     {
-      field: "paymentMethod",
+      field: "paymentMethod.type",
       headerName: t("common:labels.paymentMethod"),
       minWidth: 200,
       flex: 2,

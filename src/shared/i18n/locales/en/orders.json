@@ -13,5 +13,12 @@
     "Completed": "Completed",
     "Rejected": "Rejected",
     "Canceled": "Canceled"
+  },
+  "paymentMethod": {
+    "Amex": "American Express",
+    "ApplePay": "Apple Pay",
+    "GooglePay": "Google Pay",
+    "MasterCard": "MasterCard",
+    "Visa": "Visa"
   }
 }
