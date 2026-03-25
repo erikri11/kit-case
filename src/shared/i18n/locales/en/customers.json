@@ -11,11 +11,6 @@
   "customerNotFound": "Customer not found",
   "customerNotFoundMessage": "The customer you are looking for does not exist or may have been removed.",
   "backToCustomers": "Back to customers",
-  "status": {
-    "Active": "Active",
-    "Pending": "Pending",
-    "Blocked": "Blocked"
-  },
   "snackbar": {
     "addSuccess": "Customer added successfully",
     "updateSuccess": "Customer updated successfully",
@@ -24,5 +19,18 @@
     "updateError": "Failed to update customer",
     "deleteError": "Failed to delete customer",
     "loadError": "Failed to load customer"
+  },
+  "status": {
+    "payments": {
+      "Completed": "Completed",
+      "Pending": "Pending",
+      "Failed": "Failed",
+      "Refunded": "Refunded"
+    },
+    "customers": {
+      "Active": "Active",
+      "Pending": "Pending",
+      "Blocked": "Blocked"
+    }
   }
 }

@@ -7,7 +7,7 @@ export const customerPaymentsMock: CustomerPayment[] = [
     currency: "USD",
     amount: 500,
     invoiceId: "INV-001",
-    status: "completed",
+    status: "Completed",
     createdAt: new Date(),
   },
   {
@@ -16,7 +16,7 @@ export const customerPaymentsMock: CustomerPayment[] = [
     currency: "USD",
     amount: 250,
     invoiceId: "INV-002",
-    status: "pending",
+    status: "Pending",
     createdAt: new Date(),
   },
   {
@@ -25,7 +25,7 @@ export const customerPaymentsMock: CustomerPayment[] = [
     currency: "USD",
     amount: 120,
     invoiceId: "INV-003",
-    status: "refunded",
+    status: "Refunded",
     createdAt: new Date(),
   },
   {
@@ -34,7 +34,7 @@ export const customerPaymentsMock: CustomerPayment[] = [
     currency: "EUR",
     amount: 820,
     invoiceId: "INV-004",
-    status: "completed",
+    status: "Completed",
     createdAt: new Date(),
   },
   {
@@ -43,7 +43,7 @@ export const customerPaymentsMock: CustomerPayment[] = [
     currency: "USD",
     amount: 1200,
     invoiceId: "INV-005",
-    status: "completed",
+    status: "Completed",
     createdAt: new Date(),
   },
 ];

@@ -9,4 +9,4 @@ export interface CustomerPayment {
 }
 
 export type PaymentCurrency = "USD" | "EUR" | "NOK";
-export type PaymentStatus = "completed" | "pending" | "failed" | "refunded";
+export type PaymentStatus = "Completed" | "Pending" | "Failed" | "Refunded";
