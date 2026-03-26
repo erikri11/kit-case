@@ -162,11 +162,11 @@ export function CustomerUpsertDialog({
                     value={status}
                     label={t("common:labels.status")}
                     onChange={(e) => setStatus(e.target.value)}
-                    renderValue={(value) => t(`customers:status.${value}`)}
+                    renderValue={(value) => t(`customers:status.customers.${value}`)}
                   >
-                    <MenuItem value={"Active"}>{t("customers:status.Active")}</MenuItem>
-                    <MenuItem value={"Pending"}>{t("customers:status.Pending")}</MenuItem>
-                    <MenuItem value={"Blocked"}>{t("customers:status.Blocked")}</MenuItem>
+                    <MenuItem value={"Active"}>{t("customers:status.customers.Active")}</MenuItem>
+                    <MenuItem value={"Pending"}>{t("customers:status.customers.Pending")}</MenuItem>
+                    <MenuItem value={"Blocked"}>{t("customers:status.customers.Blocked")}</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>

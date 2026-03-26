@@ -17,7 +17,9 @@
     "quantityRequired": "Quantity is required",
     "quantityInvalid": "Invalid quantity format",
     "skuRequired": "SKU is required",
-    "skuInvalid": "Invalid SKU format"
+    "skuInvalid": "Invalid SKU format",
+    "customerRequired": "Customer is required",
+    "paymentMethodRequired": "Payment method is required"
   },
   "pleaseSelectImage": "Please select an image (jpeg/png/webp/gif).",
   "uploadAvatarFailed": "Failed to upload avatar",

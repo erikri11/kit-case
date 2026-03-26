@@ -17,7 +17,9 @@
     "quantityRequired": "Antall er påkrevd",
     "quantityInvalid": "Ugyldig antallformat",
     "skuRequired": "SKU er påkrevd",
-    "skuInvalid": "Ugyldig SKU-format"
+    "skuInvalid": "Ugyldig SKU-format",
+    "customerRequired": "Kunde er påkrevd",
+    "paymentMethodRequired": "Betalingsmetode er påkrevd"
   },
   "pleaseSelectImage": "Vennligst velg et bilde (jpeg/png/webp/gif).",
   "uploadAvatarFailed": "Opplasting av avatar mislyktes",

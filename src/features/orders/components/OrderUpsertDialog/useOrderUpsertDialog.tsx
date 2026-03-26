@@ -43,8 +43,8 @@ export function useOrderUpsertDialog({
     paymentMethod: false
   });
 
-  const customerError = !customerId ? "validation:required.customerRequired" : undefined;
-  const paymentMethodError = !paymentMethod ? "validation:required.paymentMethodRequired" : undefined;
+  const customerError = !customerId ? t("common:validation.customerRequired") : undefined;
+  const paymentMethodError = !paymentMethod ? t("common:validation.paymentMethodRequired") : undefined;
 
   const showCustomerError = !!customerError && (touched.customerId || submitted);
   const showPaymentMethodError = !!paymentMethodError && (touched.paymentMethod || submitted);

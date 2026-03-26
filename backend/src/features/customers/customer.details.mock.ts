@@ -42,6 +42,33 @@ const carsonPayments: CustomerPayment[] = [
     invoiceId: "INV-004",
     status: "Completed",
     createdAt: new Date()
+  },
+  {
+    id: "pay-005",
+    customerId: customerIds.carson,
+    currency: "EUR",
+    amount: 820,
+    invoiceId: "INV-005",
+    status: "Completed",
+    createdAt: new Date()
+  },
+  {
+    id: "pay-006",
+    customerId: customerIds.carson,
+    currency: "EUR",
+    amount: 540,
+    invoiceId: "INV-006",
+    status: "Refunded",
+    createdAt: new Date()
+  },
+  {
+    id: "pay-007",
+    customerId: customerIds.carson,
+    currency: "EUR",
+    amount: 255,
+    invoiceId: "INV-007",
+    status: "Pending",
+    createdAt: new Date()
   }
 ];
 

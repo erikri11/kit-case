@@ -1,9 +1,9 @@
 export interface CustomerPayment {
   id: string;
   customerId: string;
+  invoiceId: string;
   currency: PaymentCurrency;
   amount: number;
-  invoiceId: string;
   status: PaymentStatus;
   createdAt: Date;
 }

@@ -13,7 +13,14 @@ export function listCustomers(): Customer[] {
 };
 
 export function getCustomer(id: string): CustomerDetails | null {
-  return customerDetails.find((x) => x.id === id) ?? null;
+  const customer = customerDetails.find((x) => x.id === id);
+
+  if (!customer) return null;
+
+  return {
+    ...customer,
+    paymentSummary: calculatePaymentSummary(customer.payments)
+  };
 };
 
 export function createCustomer(input: { 
@@ -95,7 +102,8 @@ export function updateCustomer(
 
    customerDetails[detailsIndex] = {
     ...customerDetails[detailsIndex],
-    ...updatedCustomer
+    ...updatedCustomer,
+    paymentSummary: calculatePaymentSummary(customerDetails[detailsIndex].payments)
   };
 
    return updatedCustomer;
