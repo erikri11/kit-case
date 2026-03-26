@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import type { Task } from "./task.model";
+import type { Task, TaskCreate, TaskUpdate } from "./task.model";
 import { mockTasks } from "./task.mock";
 
 let tasks: Task[] = [...mockTasks];
@@ -12,27 +12,15 @@ export function getTask(id: string): Task | null {
   return tasks.find((x) => x.id === id) ?? null;
 };
 
-export function createTask(input: {
-  title: string;
-  description?: string;
-  priority: Task["priority"];
-  status: Task["status"];
-}): Task {
-
-  const { 
-    title, 
-    description, 
-    priority 
-  } = input;
-
+export function createTask(input: TaskCreate): Task {
   const task: Task = {
     id: uuidv4(),
-    title: title.trim(),
-    description: description?.trim() || undefined,
-    priority,
+    title: input.title.trim(),
+    description: input.description?.trim() || undefined,
+    priority: input.priority,
     status: "Todo",
     createdAt: new Date(),
-    dueDate: new Date()
+    dueDate: new Date(input.dueDate)
   };
 
   tasks.unshift(task);
@@ -40,35 +28,17 @@ export function createTask(input: {
   return task;
 };
 
-export function updateTask(
-  id: string,
-  input: {
-    title: string;
-    description?: string;
-    priority: Task["priority"];
-    status: Task["status"];
-    dueDate: Date;
-  }
-): Task | null {
-
+export function updateTask(id: string, input: TaskUpdate): Task | null {
   const index = tasks.findIndex((x) => x.id === id);
   if (index < 0) return null;
 
-  const { 
-    title, 
-    description, 
-    priority, 
-    status, 
-    dueDate 
-  } = input;
-
   const updatedTask: Task = {
     ...tasks[index],
-    title: title.trim(),
-    description: description?.trim() || undefined,
-    priority,
-    status,
-    dueDate: dueDate
+    title: input.title.trim(),
+    description: input.description?.trim() || undefined,
+    priority: input.priority,
+    status: input.status,
+    dueDate: new Date(input.dueDate)
   };
 
   tasks[index] = updatedTask;

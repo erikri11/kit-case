@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { mockProducts } from "./product.mock";
-import { Currency, Product, ProductCategory, ProductType } from "./product.model";
+import { Currency, Product, ProductCategory, ProductCreate, ProductType } from "./product.model";
 import { generateSku } from "../../utils/generateSku";
 
 let products: Product[] = [...mockProducts];
@@ -13,36 +13,19 @@ export function getProduct(id: string): Product | null {
   return products.find((x) => x.id === id) ?? null;
 };
 
-export function createProduct(input: {
-  name: Product["name"];
-  image: Product["image"];
-  category: Product["category"];
-  type: Product["type"];
-  quantity: Product["quantity"];
-  currency: Product["currency"];
-  price: Product["price"];
-  status: Product["status"];
-}): Product {
-  
-  const { 
-    name, 
-    image, 
-    category, 
-    type, 
-    quantity, 
-    currency, 
-    price 
-  } = input;
+// export type ProductCreate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "sku" | "status">;
+// export type ProductUpdate = ProductCreate;
 
+export function createProduct(input: ProductCreate): Product {
   const product: Product = {
     id: uuidv4(),
-    name: name.trim(),
-    image: image ?? null,
-    category: category as ProductCategory,
-    type: type as ProductType,
-    quantity: quantity,
-    currency: currency as Currency,
-    price: price,
+    name: input.name.trim(),
+    image: input.image ?? null,
+    category: input.category as ProductCategory,
+    type: input.type as ProductType,
+    quantity: input.quantity,
+    currency: input.currency as Currency,
+    price: input.price,
     sku: generateSku(),
     status: "Draft",
     createdAt: new Date()
@@ -53,44 +36,20 @@ export function createProduct(input: {
   return product;
 };
 
-export function updateProduct(
-  id: string,
-  input: {
-    name: Product["name"];
-    image: Product["image"];
-    category: Product["category"];
-    type: Product["type"];
-    quantity: Product["quantity"];
-    currency: Product["currency"];
-    price: Product["price"];
-    status: Product["status"];
-  }
-): Product | null {
-
+export function updateProduct(id: string, input: ProductCreate): Product | null {
   const index = products.findIndex((x) => x.id === id);
   if (index < 0) return null;
 
-  const { 
-    name, 
-    image, 
-    category, 
-    type, 
-    quantity, 
-    currency, 
-    price, 
-    status 
-  } = input;
-
   const updatedProduct: Product = {
     ...products[index],
-    name: name.trim(),
-    image: image ?? null,
-    category: category as ProductCategory,
-    type: type as ProductType,
-    quantity,
-    currency: currency as Currency,
-    price,
-    status
+    name: input.name.trim(),
+    image: input.image ?? null,
+    category: input.category as ProductCategory,
+    type: input.type as ProductType,
+    quantity: input.quantity,
+    currency: input.currency as Currency,
+    price: input.price,
+    status: input.status
   };
 
   products[index] = updatedProduct;

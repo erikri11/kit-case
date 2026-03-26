@@ -11,7 +11,7 @@ const penjaniPayments: CustomerPayment[] = [
     amount: 500,
     invoiceId: "INV-001",
     status: "Completed",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-24T19:26:34.456Z"),
   },
   {
     id: "pay-002",
@@ -20,7 +20,7 @@ const penjaniPayments: CustomerPayment[] = [
     amount: 250,
     invoiceId: "INV-002",
     status: "Pending",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-25T20:31:32.456Z")
   },
   {
     id: "pay-003",
@@ -29,7 +29,7 @@ const penjaniPayments: CustomerPayment[] = [
     amount: 120,
     invoiceId: "INV-003",
     status: "Refunded",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-26T21:32:33.456Z")
   }
 ];
 
@@ -41,7 +41,7 @@ const carsonPayments: CustomerPayment[] = [
     amount: 820,
     invoiceId: "INV-004",
     status: "Completed",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-27T22:33:34.456Z")
   },
   {
     id: "pay-005",
@@ -50,7 +50,7 @@ const carsonPayments: CustomerPayment[] = [
     amount: 820,
     invoiceId: "INV-005",
     status: "Completed",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-28T23:34:35.456Z")
   },
   {
     id: "pay-006",
@@ -59,7 +59,7 @@ const carsonPayments: CustomerPayment[] = [
     amount: 540,
     invoiceId: "INV-006",
     status: "Refunded",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-29T00:35:36.456Z")
   },
   {
     id: "pay-007",
@@ -68,7 +68,7 @@ const carsonPayments: CustomerPayment[] = [
     amount: 255,
     invoiceId: "INV-007",
     status: "Pending",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-30T01:36:37.456Z")
   }
 ];
 
@@ -81,7 +81,7 @@ export const customerDetailsMock: CustomerDetails[] = [
     phone: "(815) 704-0045",
     quota: 50,
     status: "Active",
-    createdAt: new Date(),
+    createdAt: new Date("2026-03-24T19:26:34.456Z"),
     payments: [],
     paymentSummary: calculatePaymentSummary([])
   },
@@ -93,7 +93,7 @@ export const customerDetailsMock: CustomerDetails[] = [
     phone: "(803) 937-8925",
     quota: 100,
     status: "Active",
-    createdAt: new Date(),
+    createdAt: new Date("2026-03-25T20:31:32.456Z"),
     payments: penjaniPayments,
     paymentSummary: calculatePaymentSummary(penjaniPayments)
   },
@@ -105,7 +105,7 @@ export const customerDetailsMock: CustomerDetails[] = [
     phone: "(715) 278-5041",
     quota: 50,
     status: "Blocked",
-    createdAt: new Date(),
+    createdAt: new Date("2026-03-26T21:32:33.456Z"),
     payments: carsonPayments,
     paymentSummary: calculatePaymentSummary(carsonPayments)
   },
@@ -117,7 +117,7 @@ export const customerDetailsMock: CustomerDetails[] = [
     phone: "(603) 766-0431",
     quota: 0,
     status: "Pending",
-    createdAt: new Date(),
+    createdAt: new Date("2026-03-27T22:33:34.456Z"),
     payments: [],
     paymentSummary: calculatePaymentSummary([])
   },
@@ -129,7 +129,7 @@ export const customerDetailsMock: CustomerDetails[] = [
     phone: "(425) 434-5535",
     quota: 50,
     status: "Active",
-    createdAt: new Date(),
+    createdAt: new Date("2026-03-28T23:34:35.456Z"),
     payments: [],
     paymentSummary: calculatePaymentSummary([])
   }

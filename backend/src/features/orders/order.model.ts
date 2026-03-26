@@ -1,10 +1,10 @@
+import { Currency } from "../products/product.model";
+
 export interface Order {
   id: string;
-	name: string;
-  email: string;
-	avatar?: string;
+	customerId: string;
   paymentMethod: OrderPaymentMethod;
-	currency: string;
+	currency: Currency;
 	totalAmount: number;
 	status: OrderStatus;
 	createdAt: Date;
@@ -18,3 +18,6 @@ export type OrderPaymentMethod = {
 }
 
 export type OrderStatus = "Pending" | "Completed" | "Canceled" | "Rejected";
+
+export type OrderCreate = Pick<Order, "customerId" | "paymentMethod" | "currency" | "totalAmount" | "status" | "issueDate">;
+export type OrderUpdate = Pick<Order, "customerId" | "paymentMethod" | "status" | "issueDate">;

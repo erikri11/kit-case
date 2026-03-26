@@ -1,9 +1,9 @@
+import { generateProductNumber } from "../../utils/generateProductNumber";
 import { Product } from "./product.model";
-import { v4 as uuidv4 } from "uuid";
 
 export const mockProducts: Product[] = [
 	{
-		id: uuidv4(),
+		id: generateProductNumber(),
 		name: "Soja & Co. Eucalyptus",
 		image: { 
 			url: "/product/product-5.png",
@@ -19,7 +19,7 @@ export const mockProducts: Product[] = [
 		createdAt: new Date()
 	},
 	{
-		id: uuidv4(),
+		id: generateProductNumber(),
 		name: "Necessaire Body Lotion",
 		image: { 
 			url: "/product/product-4.png",
@@ -35,7 +35,7 @@ export const mockProducts: Product[] = [
 		createdAt: new Date()
 	},
 	{
-		id: uuidv4(),
+		id: generateProductNumber(),
 		name: "Ritual of Sakura",
 		image: { 
 			url: "/product/product-3.png",
@@ -51,7 +51,7 @@ export const mockProducts: Product[] = [
 		createdAt: new Date()
 	},
 	{
-		id: uuidv4(),
+		id: generateProductNumber(),
 		name: "Lancome Rouge",
 		image: { 
 			url: "/product/product-2.png",
@@ -67,7 +67,7 @@ export const mockProducts: Product[] = [
 		createdAt: new Date()
 	},
 	{
-		id: uuidv4(),
+		id: generateProductNumber(),
 		name: "Erbology Aloe Vera",
 		image: { 
 			url: "/product/product-1.png",

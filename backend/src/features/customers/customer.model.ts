@@ -10,3 +10,7 @@ export interface Customer {
 }
 
 export type CustomerStatus = "Active" | "Pending" | "Blocked";
+
+export type CustomerCreate = Pick<Customer, "name" | "email" | "phone" | "avatar">;
+export type CustomerUpdate = Pick<Customer, "name" | "email" | "phone" | "avatar" | "quota" | "status">;
+

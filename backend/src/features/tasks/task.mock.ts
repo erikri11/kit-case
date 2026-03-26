@@ -1,9 +1,9 @@
+import { generateTaskNumber } from "../../utils/generateTaskNumber";
 import { Task } from "./task.model";
-import { v4 as uuidv4 } from "uuid";
 
 export const mockTasks: Task[] = [
   {
-    id: uuidv4(),
+    id: generateTaskNumber(),
     title: "Follow up customer onboarding",
     description: "Call customer and verify setup",
     priority: "High",
@@ -12,7 +12,7 @@ export const mockTasks: Task[] = [
     createdAt: new Date()
   },
   {
-    id: uuidv4(),
+    id: generateTaskNumber(),
     title: "Review contract",
     description: "Check latest contract details",
     priority: "Medium",
@@ -21,7 +21,7 @@ export const mockTasks: Task[] = [
     createdAt: new Date()
   },
   {
-    id: uuidv4(),
+    id: generateTaskNumber(),
     title: "Send welcome email",
     priority: "Low",
     status: "Done",
@@ -29,7 +29,7 @@ export const mockTasks: Task[] = [
     createdAt: new Date()
   },
   {
-    id: uuidv4(),
+    id: generateTaskNumber(),
     title: "Prepare product demo",
     description: "Create demo environment and test data",
     priority: "High",
@@ -38,7 +38,7 @@ export const mockTasks: Task[] = [
     createdAt: new Date()
   },
   {
-    id: uuidv4(),
+    id: generateTaskNumber(),
     title: "Update documentation",
     description: "Add latest feature updates to docs",
     priority: "Low",

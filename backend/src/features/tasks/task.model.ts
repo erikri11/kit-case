@@ -10,3 +10,6 @@ export interface Task {
 
 export type TaskPriority = 'Low' | 'Medium' | 'High';
 export type TaskStatus = "Todo" | "InProgress" | "Done";
+
+export type TaskCreate = Pick<Task, "title" | "description" | "priority" | "status" | "dueDate">;
+export type TaskUpdate = TaskCreate;

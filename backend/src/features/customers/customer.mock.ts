@@ -10,7 +10,7 @@ export const mockCustomers: Customer[] = [
     phone: "(815) 704-0045",
     quota: 50,
     status: "Active",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-24T19:26:34.456Z")
   },
   {
     id: customerIds.penjani,
@@ -20,7 +20,7 @@ export const mockCustomers: Customer[] = [
     phone: "(803) 937-8925",
     quota: 100,
     status: "Active",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-25T20:31:32.456Z")
   },
   {
     id: customerIds.carson,
@@ -30,7 +30,7 @@ export const mockCustomers: Customer[] = [
     phone: "(715) 278-5041",
     quota: 50,
     status: "Blocked",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-26T21:32:33.456Z")
   },
   {
     id: customerIds.siegbert,
@@ -40,7 +40,7 @@ export const mockCustomers: Customer[] = [
     phone: "(603) 766-0431",
     quota: 0,
     status: "Pending",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-27T22:33:34.456Z")
   },
   {
     id: customerIds.miron,
@@ -50,6 +50,6 @@ export const mockCustomers: Customer[] = [
     phone: "(425) 434-5535",
     quota: 50,
     status: "Active",
-    createdAt: new Date()
+    createdAt: new Date("2026-03-28T23:34:35.456Z")
   }
 ];

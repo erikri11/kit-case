@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import type { Customer } from "./customer.model";
+import type { Customer, CustomerCreate, CustomerUpdate } from "./customer.model";
 import { mockCustomers } from "./customer.mock";
 import type { CustomerDetails } from "./customer.details.model";
 import { customerDetailsMock } from "./customer.details.mock";
@@ -23,26 +23,13 @@ export function getCustomer(id: string): CustomerDetails | null {
   };
 };
 
-export function createCustomer(input: { 
-  name: Customer["name"]; 
-  email: Customer["email"]; 
-  phone?: Customer["phone"]; 
-  avatar?: Customer["avatar"] 
-}): Customer {
-
-  const { 
-    name, 
-    email, 
-    phone, 
-    avatar 
-  } = input;
-
+export function createCustomer(input: CustomerCreate): Customer { 
   const customer: Customer = {
     id: uuidv4(),
-    name: name.trim(),
-    avatar: avatar || undefined,
-    email,
-    phone,
+    name: input.name.trim(),
+    email: input.email,
+    phone: input.phone,
+    avatar: input.avatar || undefined,
     quota: 0,
     status: "Pending",
     createdAt: new Date()
@@ -61,41 +48,21 @@ export function createCustomer(input: {
   return customer;
 };
 
-export function updateCustomer(
-  id: string,
-  input: { 
-    name: Customer["name"]; 
-    email: Customer["email"]; 
-    phone?: Customer["phone"]; 
-    quota: Customer["quota"]; 
-    status: Customer["status"]; 
-    avatar?: Customer["avatar"] 
-  }
-): Customer | null {
-  
+export function updateCustomer(id: string, input: CustomerUpdate): Customer | null { 
   const customerIndex = customers.findIndex((x) => x.id === id);
   if (customerIndex < 0) return null;
 
   const detailsIndex = customerDetails.findIndex((x) => x.id === id);
   if (detailsIndex < 0) return null;
 
-  const { 
-    name, 
-    email, 
-    phone, 
-    quota, 
-    status, 
-    avatar 
-  } = input;
-
   const updatedCustomer: Customer = {
     ...customers[customerIndex],
-    name: name.trim(),
-    avatar: avatar || undefined,
-    email,
-    phone,
-    quota,
-    status
+    name: input.name.trim(),
+    email: input.email,
+    phone: input.phone,
+    avatar: input.avatar || undefined,
+    quota: input.quota,
+    status: input.status
   };
 
   customers[customerIndex] = updatedCustomer;
