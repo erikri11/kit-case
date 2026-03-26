@@ -13,9 +13,6 @@ export function getProduct(id: string): Product | null {
   return products.find((x) => x.id === id) ?? null;
 };
 
-// export type ProductCreate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "sku" | "status">;
-// export type ProductUpdate = ProductCreate;
-
 export function createProduct(input: ProductCreate): Product {
   const product: Product = {
     id: uuidv4(),

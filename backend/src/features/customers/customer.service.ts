@@ -4,6 +4,7 @@ import { mockCustomers } from "./customer.mock";
 import type { CustomerDetails } from "./customer.details.model";
 import { customerDetailsMock } from "./customer.details.mock";
 import { calculatePaymentSummary } from "../../utils/calculatePaymentSummary";
+import { generateCustomerNumber } from "../../utils/generateCustomerNumber";
 
 let customers: Customer[] = [...mockCustomers];
 let customerDetails: CustomerDetails[] = [...customerDetailsMock];
@@ -26,6 +27,7 @@ export function getCustomer(id: string): CustomerDetails | null {
 export function createCustomer(input: CustomerCreate): Customer { 
   const customer: Customer = {
     id: uuidv4(),
+    customerNumber: generateCustomerNumber(),
     name: input.name.trim(),
     email: input.email,
     phone: input.phone,

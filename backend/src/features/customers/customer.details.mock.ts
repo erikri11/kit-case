@@ -75,6 +75,7 @@ const carsonPayments: CustomerPayment[] = [
 export const customerDetailsMock: CustomerDetails[] = [
   {
     id: customerIds.fran,
+    customerNumber: "CUST-0001",
     name: "Fran Perez",
     avatar: "/avatar/avatar-5.png",
     email: "fran.perez@domain.com",
@@ -87,6 +88,7 @@ export const customerDetailsMock: CustomerDetails[] = [
   },
   {
     id: customerIds.penjani,
+    customerNumber: "CUST-0002",
     name: "Penjani Inyene",
     avatar: "/avatar/avatar-4.png",
     email: "penjani.inyene@domain.com",
@@ -99,6 +101,7 @@ export const customerDetailsMock: CustomerDetails[] = [
   },
   {
     id: customerIds.carson,
+    customerNumber: "CUST-0003",
     name: "Carson Darrin",
     avatar: "/avatar/avatar-3.png",
     email: "carson.darrin@domain.com",
@@ -111,6 +114,7 @@ export const customerDetailsMock: CustomerDetails[] = [
   },
   {
     id: customerIds.siegbert,
+    customerNumber: "CUST-0004",
     name: "Siegbert Gottfried",
     avatar: "/avatar/avatar-2.png",
     email: "siegbert.gottfried@domain.com",
@@ -123,6 +127,7 @@ export const customerDetailsMock: CustomerDetails[] = [
   },
   {
     id: customerIds.miron,
+    customerNumber: "CUST-0005",
     name: "Miron Vitold",
     avatar: "/avatar/avatar-1.png",
     email: "miron.vitold@domain.com",

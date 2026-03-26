@@ -1,13 +1,12 @@
+import { BaseEntity } from "../../shared/types/BaseEntity";
 import { Currency } from "../products/product.model";
 
-export interface Order {
-  id: string;
+export interface Order extends BaseEntity {
 	customerId: string;
   paymentMethod: OrderPaymentMethod;
 	currency: Currency;
 	totalAmount: number;
 	status: OrderStatus;
-	createdAt: Date;
 	orderNumber: string;
 	issueDate: Date;
 }

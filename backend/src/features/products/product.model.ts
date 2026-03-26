@@ -1,5 +1,6 @@
-export interface Product {
-	id: string;
+import { BaseEntity } from "../../shared/types/BaseEntity";
+
+export interface Product extends BaseEntity {
 	name: string;
 	image: ProductImage | null;
 	category: ProductCategory;
@@ -9,7 +10,6 @@ export interface Product {
 	price: number;
 	sku: string;
 	status: ProductStatus;
-	createdAt: Date;
 };
 
 export interface ProductImage {
