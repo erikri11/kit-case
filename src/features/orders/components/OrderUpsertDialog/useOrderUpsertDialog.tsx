@@ -47,12 +47,10 @@ export function useOrderUpsertDialog({
 
   const canSubmit = !customerError && !paymentMethodError;
 
-  const selectedCustomer = customers.find((c) => c.id === customerId);
-
   const handleUpsertOrder = async () => {
     setSubmitted(true);
 
-    if (!canSubmit || !paymentMethod || !selectedCustomer) return;
+    if (!canSubmit || !paymentMethod) return;
 
     try {
       if (mode === "add") {

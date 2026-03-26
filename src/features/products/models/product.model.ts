@@ -22,9 +22,7 @@ export type ProductCategory = "Healthcare" | "Makeup" | "Skincare";
 export type Currency = "USD" | "EUR" | "NOK";
 export type ProductType = "Physical" | "Digital" | "Service";
 
-// Utgår??
-export type ProductFieldName = keyof Omit<Product, "id" | "sku" | "createdAt">;
-
 export type ProductCreate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "sku" | "status">;
 export type ProductUpdate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "sku" | "status">;
 
+export type ProductFieldName = keyof Omit<Product, "id" | "sku" | "createdAt">;

@@ -67,7 +67,8 @@
     "customer": "Customer",
     "order": "Order",
     "paymentMethod": "Payment method",
-    "issueDate": "Issue date"
+    "issueDate": "Issue date",
+    "customerNumber": "Customer number"
   },
   "actions": {
     "edit": "Edit",

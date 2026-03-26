@@ -27,9 +27,9 @@ export function CustomerBasicDetailsCard({
         <Stack spacing={2}>
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              {t("common:labels.customerId")}
+              {t("common:labels.customerNumber")}
             </Typography>
-            <Chip label={customer.id} sx={{ alignSelf: "flex-start" }} />
+            <Chip label={customer.customerNumber} sx={{ alignSelf: "flex-start" }} />
           </Stack>
 
           <Divider />

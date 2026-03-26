@@ -12,8 +12,7 @@ export interface Task extends BaseEntity {
 export type TaskPriority = "Low" | "Medium" | "High";
 export type TaskStatus = "Todo" | "InProgress" | "Done";
 
-// Utgår??
-export type TaskFieldName = "title";
-
 export type TaskCreate = Pick<Task, "title" | "description" | "priority" | "status" | "dueDate">;
 export type TaskUpdate = Pick<Task, "title" | "description" | "priority" | "status" | "dueDate">;
+
+export type TaskFieldName = "title";
