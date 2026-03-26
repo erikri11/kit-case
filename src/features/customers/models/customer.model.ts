@@ -1,19 +1,18 @@
-export interface Customer {
-  id: string;
+import type { BaseEntity } from "@shared/types/baseEntity";
+
+export interface Customer extends BaseEntity {
 	name: string;
   email: string;
 	avatar?: string;
-	phone: string;
+	phone?: string;
 	quota: number;
 	status: CustomerStatus;
-	createdAt: string;
 }
 
 export type CustomerStatus = "Active" | "Pending" | "Blocked";
+
+// Utgår??
 export type CustomerFieldName = "name" | "email" | "phone";
 
-// POST payload: server sets id, quota, status, createdAt
-export type CustomerCreate = Omit<Customer, "id" | "quota" | "status" | "createdAt">;
-
-// PUT payload: partial update, and still server-owned fields cannot be changed
-export type CustomerUpdate = Partial<Omit<Customer, "id" | "createdAt">>;
+export type CustomerCreate = Pick<Customer, "name" | "email" | "phone" | "avatar">;
+export type CustomerUpdate = Pick<Customer, "name" | "email" | "phone" | "avatar" | "quota" | "status">;

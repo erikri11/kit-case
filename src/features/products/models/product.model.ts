@@ -1,5 +1,6 @@
-export interface Product {
-	id: string;
+import type { BaseEntity } from "@shared/types/baseEntity";
+
+export interface Product extends BaseEntity {
 	name: string;
 	image: ProductImage | null;
 	category: ProductCategory;
@@ -9,7 +10,6 @@ export interface Product {
 	price: number;
 	sku: string;
 	status: ProductStatus;
-	createdAt: Date;
 }
 
 export interface ProductImage {
@@ -22,10 +22,9 @@ export type ProductCategory = "Healthcare" | "Makeup" | "Skincare";
 export type Currency = "USD" | "EUR" | "NOK";
 export type ProductType = "Physical" | "Digital" | "Service";
 
+// Utgår??
 export type ProductFieldName = keyof Omit<Product, "id" | "sku" | "createdAt">;
 
-// POST payload: server sets id, sku, createdAt
-export type ProductCreate = Omit<Product, "id" | "sku" | "createdAt">;
+export type ProductCreate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "sku" | "status">;
+export type ProductUpdate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "sku" | "status">;
 
-// PUT payload: partial update, and still server-owned fields cannot be changed
-export type ProductUpdate = Partial<Omit<Product, "id" | "sku" | "createdAt">>;

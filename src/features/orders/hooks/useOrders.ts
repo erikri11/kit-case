@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import type { Order } from "../models/order.model";
 import { orderApi } from "../api/orderApi";
+import type { OrderDetails } from "../models/order.details.model";
 
 export function useOrders() {
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [orders, setOrders] = useState<OrderDetails[]>([]);
     
     useEffect(() => {
       const loadOrders = async () => {

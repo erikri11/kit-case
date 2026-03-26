@@ -1,21 +1,21 @@
-import type { Order } from "@features/orders/models/order.model";
 import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { createOrderGridColumns } from "./createOrderGridColumns";
 import { OrderUpsertDialog } from "../OrderUpsertDialog/OrderUpsertDialog";
 import { OrderDeleteDialog } from "../OrderDeleteDialog/OrderDeleteDialog";
+import type { OrderDetails } from "@features/orders/models/order.details.model";
 
 interface OrdersGridProps {
-  orders: Order[];
+  orders: OrderDetails[];
 }
 
 export function OrdersGrid({ orders }: OrdersGridProps) {
   const { t } = useTranslation("orders");
 
   const [isAddOpen, setIsAddOpen] = useState(false);
-  const [updateOrder, setUpdateOrder] = useState<Order | undefined>();
-  const [deleteOrder, setDeleteOrder] = useState<Order | undefined>();
+  const [updateOrder, setUpdateOrder] = useState<OrderDetails | undefined>();
+  const [deleteOrder, setDeleteOrder] = useState<OrderDetails | undefined>();
 
   const headers = createOrderGridColumns({ 
     t,
@@ -25,7 +25,7 @@ export function OrdersGrid({ orders }: OrdersGridProps) {
 
   return (
     <>
-      <DataGridTable<Order>
+      <DataGridTable<OrderDetails>
         data={orders} 
         headers={headers}
         isAddButtonVisible

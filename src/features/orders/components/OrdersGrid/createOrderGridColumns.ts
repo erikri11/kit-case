@@ -3,33 +3,33 @@ import type { ColDef } from 'ag-grid-enterprise';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { createActionButtonRenderer } from '@shared/renderers/createActionButtonRenderer';
-import type { Order } from '@features/orders/models/order.model';
 import { OrderRenderer } from '../renderers/OrderRenderer';
 import { PaymentMethodRenderer } from '../renderers/PaymentMethodRenderer';
-import { CustomerRenderer } from '../../../../shared/renderers/CustomerRenderer';
 import { OrderStatusChipRenderer } from '../renderers/OrderStatusChipRenderer';
 import { orderStatusRankCompare } from '../comparators/orderStatusRankCompare';
+import type { OrderDetails } from '@features/orders/models/order.details.model';
+import OrderCustomerRenderer from '../renderers/OrderCustomerRenderer';
 
 interface ColumnArgsProps {
   t: TFunction;
-  onEdit: (order: Order) => void;
-  onDelete: (order: Order) => void;
+  onEdit: (order: OrderDetails) => void;
+  onDelete: (order: OrderDetails) => void;
 }
 
 export function createOrderGridColumns({ 
   t,
   onEdit,
   onDelete
-}: ColumnArgsProps): ColDef<Order>[] {
+}: ColumnArgsProps): ColDef<OrderDetails>[] {
 
-  const editRenderer = createActionButtonRenderer<Order>({
+  const editRenderer = createActionButtonRenderer<OrderDetails>({
     icon: EditIcon,
     iconButtonProps: { color: 'default' },
     title: t("common:actions.edit"),
     onAction: onEdit
   });
 
-  const deleteRenderer = createActionButtonRenderer<Order>({
+  const deleteRenderer = createActionButtonRenderer<OrderDetails>({
     icon: DeleteIcon,
     iconButtonProps: { color: 'error' },
     title: t("common:actions.delete"),
@@ -52,11 +52,11 @@ export function createOrderGridColumns({
       cellRenderer: PaymentMethodRenderer
     },
     {
-      field: "name",
+      field: "customer.name",
       headerName: t("common:labels.customer"),
       minWidth: 350,
       flex: 4,
-      cellRenderer: CustomerRenderer
+      cellRenderer: OrderCustomerRenderer
     },
     {
       field: "status",

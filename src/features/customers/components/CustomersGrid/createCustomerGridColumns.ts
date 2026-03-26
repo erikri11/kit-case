@@ -9,7 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { IconRenderer } from '../renderers/IconRenderer';
 import { LinearProgressRenderer } from '../renderers/LinearProgressRenderer';
 import { createActionButtonRenderer } from '../../../../shared/renderers/createActionButtonRenderer';
-import { CustomerRenderer } from '@shared/renderers/CustomerRenderer';
+import { CustomerRenderer } from '@features/customers/components/renderers/CustomerRenderer';
 
 interface ColumnArgsProps {
   t: TFunction;

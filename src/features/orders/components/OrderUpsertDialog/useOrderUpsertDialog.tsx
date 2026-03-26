@@ -23,12 +23,8 @@ export function useOrderUpsertDialog({
   const { setSnackbarMessage } = useSnackbar();
   const customers = useCustomers();
 
-  const matchedCustomer = customers.find(
-    (c) => c.name === initialOrder?.name && c.email === initialOrder?.email
-  );
-
   const [customerIdOverride, setCustomerIdOverride] = useState<string | undefined>(undefined);
-  const customerId = customerIdOverride ?? matchedCustomer?.id ?? "";
+  const customerId = customerIdOverride ?? initialOrder?.customerId ?? "";
 
   const [issueDate, setIssueDate] = useState<Date>(
     initialOrder?.issueDate ? new Date(initialOrder.issueDate) : new Date()
@@ -61,9 +57,7 @@ export function useOrderUpsertDialog({
     try {
       if (mode === "add") {
         const payload: OrderCreate = {
-          name: selectedCustomer?.name ?? "",
-          email: selectedCustomer?.email ?? "",
-          avatar: selectedCustomer?.avatar,
+          customerId,
           currency: "USD",
           totalAmount: 0,
           status,
@@ -81,9 +75,7 @@ export function useOrderUpsertDialog({
         if (!orderId) return;
 
         const payload: OrderUpdate = {
-          name: selectedCustomer?.name ?? initialOrder?.name,
-          email: selectedCustomer?.email ?? initialOrder?.email,
-          avatar: selectedCustomer?.avatar ?? initialOrder?.avatar,
+          customerId,
           issueDate,
           paymentMethod,
           status
