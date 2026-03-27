@@ -14,6 +14,10 @@ export interface OrderUpsertDialogProps {
   onClose: () => void;
 }
 
+function resolveSelectedValue(options: { id: string }[], id: string): string {
+  return options.some((option) => option.id === id) ? id : "";
+}
+
 export function OrderUpsertDialog({
   open,
   mode,
@@ -47,6 +51,8 @@ export function OrderUpsertDialog({
     onClose
   }); 
 
+  const selectedCustomerId = resolveSelectedValue(customers, customerId);
+
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle>
@@ -63,7 +69,7 @@ export function OrderUpsertDialog({
             <FormControl variant="filled" fullWidth error={showCustomerError}>
               <InputLabel>{t("common:labels.customer")}</InputLabel>
               <Select
-                value={customerId}
+                value={selectedCustomerId}
                 label={t("common:labels.customer")}
                 displayEmpty
                 renderValue={(value) => {
@@ -71,7 +77,7 @@ export function OrderUpsertDialog({
                   return selected?.name ?? "";
                 }}
                 onChange={(e) => {
-                  setCustomerIdOverride(e.target.value);
+                  setCustomerIdOverride(e.target.value as string);
                   setTouched((prev) => ({
                     ...prev,
                     customerId: true
@@ -91,7 +97,7 @@ export function OrderUpsertDialog({
                 ))}
               </Select>
               <FormHelperText>
-                {showCustomerError && customerError ? t(customerError) : ""}
+                {showCustomerError && customerError ? customerError : ""}
               </FormHelperText>
             </FormControl>
           </Grid>
@@ -164,7 +170,7 @@ export function OrderUpsertDialog({
                 <MenuItem value="Visa">{t("orders:paymentMethod.Visa")}</MenuItem>
               </Select>
               <FormHelperText>
-                {showPaymentMethodError && paymentMethodError ? t(paymentMethodError) : ""}
+                {showPaymentMethodError && paymentMethodError ? paymentMethodError : ""}
               </FormHelperText>
             </FormControl>
           </Grid>

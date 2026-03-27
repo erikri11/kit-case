@@ -55,6 +55,12 @@ export function createCustomerGridColumns({
       type: "rightAligned"
     },
     {
+      field: "company",
+      headerName: t("common:labels.company"),
+      minWidth: 200,
+      flex: 2
+    },
+    {
       field: "quota",
       headerName: t("common:labels.quota"),
       minWidth: 140,

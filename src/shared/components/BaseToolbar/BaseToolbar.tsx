@@ -42,6 +42,7 @@ export function BaseToolbar({
           size="small"
           onChange={handleSearchChange}
           value={quickFilter}
+          sx={{ minWidth: 300 }}
         />
       )}
       {isAddButtonVisible && 

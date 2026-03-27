@@ -26,6 +26,7 @@ export function CustomerUpsertDialog({
     name,
     email,
     phone,
+    company,
     quota,
     status,
     avatar,
@@ -40,6 +41,7 @@ export function CustomerUpsertDialog({
     setName,
     setEmail,
     setPhone,
+    setCompany,
     setQuota,
     setStatus,
     setAvatar,
@@ -132,8 +134,39 @@ export function CustomerUpsertDialog({
               }}
             />
           </Grid>
+
+
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <TextField 
+              label={t("common:labels.company")}
+              variant="filled" 
+              fullWidth 
+              value={company ?? ""}
+              onChange={(e) => setCompany(e.target.value)}
+            />
+          </Grid>
+
+
           {mode === "edit" && (
             <>
+               <Grid size={6}>
+                <FormControl 
+                  variant="filled" 
+                  fullWidth
+                >
+                  <InputLabel>{t("common:labels.status")}</InputLabel>
+                  <Select
+                    value={status}
+                    label={t("common:labels.status")}
+                    onChange={(e) => setStatus(e.target.value)}
+                    renderValue={(value) => t(`customers:status.customers.${value}`)}
+                  >
+                    <MenuItem value={"Active"}>{t("customers:status.customers.Active")}</MenuItem>
+                    <MenuItem value={"Pending"}>{t("customers:status.customers.Pending")}</MenuItem>
+                    <MenuItem value={"Blocked"}>{t("customers:status.customers.Blocked")}</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
               <Grid size={6}>
                 <FormControl 
                   variant="filled" 
@@ -149,24 +182,6 @@ export function CustomerUpsertDialog({
                     <MenuItem value={0}>0%</MenuItem>
                     <MenuItem value={50}>50%</MenuItem>
                     <MenuItem value={100}>100%</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid size={6}>
-                <FormControl 
-                  variant="filled" 
-                  fullWidth
-                >
-                  <InputLabel>{t("common:labels.status")}</InputLabel>
-                  <Select
-                    value={status}
-                    label={t("common:labels.status")}
-                    onChange={(e) => setStatus(e.target.value)}
-                    renderValue={(value) => t(`customers:status.customers.${value}`)}
-                  >
-                    <MenuItem value={"Active"}>{t("customers:status.customers.Active")}</MenuItem>
-                    <MenuItem value={"Pending"}>{t("customers:status.customers.Pending")}</MenuItem>
-                    <MenuItem value={"Blocked"}>{t("customers:status.customers.Blocked")}</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>

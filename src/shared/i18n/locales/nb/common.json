@@ -68,7 +68,9 @@
     "order": "Bestilling",
     "paymentMethod": "Betalingsmetode",
     "issueDate": "Utstedelsesdato",
-    "customerNumber": "Kundenummer"
+    "customerNumber": "Kundenummer",
+    "orderNumber": "Bestillingsnummer",
+    "company": "Firma"
   },
   "actions": {
     "edit": "Rediger",

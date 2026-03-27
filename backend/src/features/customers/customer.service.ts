@@ -31,6 +31,7 @@ export function createCustomer(input: CustomerCreate): Customer {
     name: input.name.trim(),
     email: input.email,
     phone: input.phone,
+    company: input.company || undefined,
     avatar: input.avatar || undefined,
     quota: 0,
     status: "Pending",
@@ -63,6 +64,7 @@ export function updateCustomer(id: string, input: CustomerUpdate): Customer | nu
     email: input.email,
     phone: input.phone,
     avatar: input.avatar || undefined,
+    company: input.company || undefined,
     quota: input.quota,
     status: input.status
   };

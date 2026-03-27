@@ -19,6 +19,7 @@ export function useCustomerUpsertDialog(
   const [name, setName] = useState<string>(initialCustomer?.name ?? '');
   const [email, setEmail] = useState<string>(initialCustomer?.email ?? '');
   const [phone, setPhone] = useState<string>(initialCustomer?.phone ?? '');
+  const [company, setCompany] = useState<string | null>(initialCustomer?.company ?? null);
   const [quota, setQuota] = useState<number>(initialCustomer?.quota ?? 0);
   const [status, setStatus] = useState<CustomerStatus>(initialCustomer?.status ?? "Pending");
   const [avatar, setAvatar] = useState<string | null>(null);
@@ -50,6 +51,7 @@ export function useCustomerUpsertDialog(
           name: name.trim(),
           email: email.trim(),
           phone: phone.trim(),
+          company: company?.trim() ?? undefined,
           avatar: avatar ?? undefined,
         };
 
@@ -66,9 +68,10 @@ export function useCustomerUpsertDialog(
           name: name.trim(),
           email: email.trim(),
           phone: phone.trim(),
+          company: company?.trim() ?? undefined,
           quota: quota,
           status: status as CustomerUpdate["status"],
-          avatar: avatar ?? undefined,
+          avatar: avatar ?? undefined
         };
 
         await customerApi.put(customerId, payload);
@@ -98,6 +101,7 @@ export function useCustomerUpsertDialog(
     name,
     email,
     phone,
+    company,
     quota,
     status,
     avatar,
@@ -112,6 +116,7 @@ export function useCustomerUpsertDialog(
     setName,
     setEmail,
     setPhone,
+    setCompany,
     setQuota,
     setStatus,
     setAvatar,

@@ -7,8 +7,8 @@ import BallotOutlinedIcon from '@mui/icons-material/BallotOutlined';
 
 export const menuItems: MenuItem[] = [
   { textKey: "menu.overview", url: "/overview", icon: <DashboardOutlinedIcon /> },
-  { textKey: "menu.orders", url: "/admin/orders", icon: <StoreOutlinedIcon /> },
-  { textKey: "menu.products", url: "/admin/products", icon: <WarehouseOutlinedIcon /> },
   { textKey: "menu.customers", url: "/admin/customers", icon: <PeopleOutlinedIcon /> },
+  { textKey: "menu.products", url: "/admin/products", icon: <WarehouseOutlinedIcon /> },
+  { textKey: "menu.orders", url: "/admin/orders", icon: <StoreOutlinedIcon /> },
   { textKey: "menu.tasks", url: "/admin/tasks", icon: <BallotOutlinedIcon /> }
 ];

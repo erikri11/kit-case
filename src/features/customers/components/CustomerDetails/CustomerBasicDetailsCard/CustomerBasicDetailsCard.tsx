@@ -65,6 +65,21 @@ export function CustomerBasicDetailsCard({
             </Typography>
           </Stack>
 
+          {customer.company && (
+            <>
+              <Divider />
+
+              <Stack spacing={0.5}>
+                <Typography variant="body2" color="text.secondary">
+                  {t("common:labels.company")} 
+                </Typography>
+                <Typography variant="body1">
+                  {customer.company}
+                </Typography>
+              </Stack>
+            </>
+          )}
+
           <Divider />
           
           <Stack spacing={0.5}>
