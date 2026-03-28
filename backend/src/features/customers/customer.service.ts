@@ -3,8 +3,10 @@ import type { Customer, CustomerCreate, CustomerUpdate } from "./customer.model"
 import { mockCustomers } from "./customer.mock";
 import type { CustomerDetails } from "./customer.details.model";
 import { customerDetailsMock } from "./customer.details.mock";
-import { calculatePaymentSummary } from "../../utils/calculatePaymentSummary";
+import { calculatePaymentStats } from "../../utils/calculatePaymentStats";
 import { generateCustomerNumber } from "../../utils/generateCustomerNumber";
+import { listOrders } from "../orders/order.service";
+import { calculateOrderSummary } from "../../utils/calculateOrderSummary";
 
 let customers: Customer[] = [...mockCustomers];
 let customerDetails: CustomerDetails[] = [...customerDetailsMock];
@@ -18,9 +20,18 @@ export function getCustomer(id: string): CustomerDetails | null {
 
   if (!customer) return null;
 
+  const customerOrders = listOrders().filter((order) => order.customerId === id);
+  const orderSummary = calculateOrderSummary(customerOrders);
+  const paymentStats = calculatePaymentStats(customer.payments);
+
   return {
     ...customer,
-    paymentSummary: calculatePaymentSummary(customer.payments)
+    orders: customerOrders,
+    paymentSummary: {
+      totalOrders: orderSummary.totalOrders,
+      ordersValue: orderSummary.ordersValue,
+      refundsValue: paymentStats.refundsValue
+    }
   };
 };
 
@@ -43,7 +54,12 @@ export function createCustomer(input: CustomerCreate): Customer {
   const customerDetail: CustomerDetails = {
     ...customer,
     payments: [],
-    paymentSummary: calculatePaymentSummary([])
+    orders: [],
+    paymentSummary: {
+      totalOrders: 0,
+      ordersValue: 0,
+      refundsValue: 0
+    }
   };
 
   customerDetails.unshift(customerDetail);
@@ -73,8 +89,7 @@ export function updateCustomer(id: string, input: CustomerUpdate): Customer | nu
 
    customerDetails[detailsIndex] = {
     ...customerDetails[detailsIndex],
-    ...updatedCustomer,
-    paymentSummary: calculatePaymentSummary(customerDetails[detailsIndex].payments)
+    ...updatedCustomer
   };
 
    return updatedCustomer;
