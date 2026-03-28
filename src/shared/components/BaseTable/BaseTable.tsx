@@ -52,7 +52,7 @@ export function BaseTable<T>({
         onGridReady={onGridReady}
         domLayout={"autoHeight"}
         pagination={isPaginationEnabled}
-        paginationPageSize={5}
+        paginationPageSize={10}
         paginationPageSizeSelector={paginationPageSizeSelector}
         masterDetail={!!expandComponent}
         detailRowAutoHeight={true}

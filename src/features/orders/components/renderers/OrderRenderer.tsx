@@ -16,6 +16,7 @@ export function OrderRenderer(params: ICellRendererParams<Order, string>) {
     currency 
   }).format(totalAmount);
 
+  
   const productCount = 1;
   const productLabel = `${productCount} product${productCount === 1 ? "" : "s"}`;
 

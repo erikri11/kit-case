@@ -134,8 +134,6 @@ export function CustomerUpsertDialog({
               }}
             />
           </Grid>
-
-
           <Grid size={{ xs: 12, sm: 6 }}>
             <TextField 
               label={t("common:labels.company")}
@@ -145,8 +143,6 @@ export function CustomerUpsertDialog({
               onChange={(e) => setCompany(e.target.value)}
             />
           </Grid>
-
-
           {mode === "edit" && (
             <>
                <Grid size={6}>
