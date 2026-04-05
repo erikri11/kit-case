@@ -7,6 +7,7 @@ import { calculatePaymentStats } from "../../utils/calculatePaymentStats";
 import { generateCustomerNumber } from "../../utils/generateCustomerNumber";
 import { listOrders } from "../orders/order.service";
 import { calculateOrderSummary } from "../../utils/calculateOrderSummary";
+import { listCustomerPaymentsByCustomerId } from "./customer.payment.service";
 
 let customers: Customer[] = [...mockCustomers];
 let customerDetails: CustomerDetails[] = [...customerDetailsMock];
@@ -21,12 +22,15 @@ export function getCustomer(id: string): CustomerDetails | null {
   if (!customer) return null;
 
   const customerOrders = listOrders().filter((order) => order.customerId === id);
+  const customerPayments = listCustomerPaymentsByCustomerId(id);
+
   const orderSummary = calculateOrderSummary(customerOrders);
-  const paymentStats = calculatePaymentStats(customer.payments);
+  const paymentStats = calculatePaymentStats(customerPayments);
 
   return {
     ...customer,
     orders: customerOrders,
+    payments: customerPayments,
     paymentSummary: {
       totalOrders: orderSummary.totalOrders,
       ordersValue: orderSummary.ordersValue,
@@ -42,7 +46,7 @@ export function createCustomer(input: CustomerCreate): Customer {
     name: input.name.trim(),
     email: input.email,
     phone: input.phone,
-    company: input.company || undefined,
+    company: input.company || "",
     avatar: input.avatar || undefined,
     quota: 0,
     status: "Pending",
@@ -79,8 +83,8 @@ export function updateCustomer(id: string, input: CustomerUpdate): Customer | nu
     name: input.name.trim(),
     email: input.email,
     phone: input.phone,
+    company: input.company || "",
     avatar: input.avatar || undefined,
-    company: input.company || undefined,
     quota: input.quota,
     status: input.status
   };

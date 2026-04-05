@@ -1,5 +1,6 @@
 import { BaseEntity } from "../../shared/types/BaseEntity";
 import { Currency } from "../products/product.model";
+import { LineItem } from "./lineItem.model";
 
 export interface Order extends BaseEntity {
 	customerId: string;
@@ -9,6 +10,7 @@ export interface Order extends BaseEntity {
 	status: OrderStatus;
 	orderNumber: string;
 	issueDate: Date;
+	lineItems: LineItem[];
 }
 
 export type OrderPaymentMethod = {
@@ -16,7 +18,7 @@ export type OrderPaymentMethod = {
   last4?: string;
 }
 
-export type OrderStatus = "Pending" | "Completed" | "Canceled" | "Rejected";
+export type OrderStatus = "Pending" | "Completed" | "Refunded";
 
-export type OrderCreate = Pick<Order, "customerId" | "paymentMethod" | "currency" | "totalAmount" | "status" | "issueDate">;
-export type OrderUpdate = Pick<Order, "customerId" | "paymentMethod" | "status" | "issueDate">;
+export type OrderCreate = Pick<Order, "customerId" | "paymentMethod" | "currency" | "totalAmount" | "status" | "issueDate" | "lineItems">;
+export type OrderUpdate = Pick<Order, "customerId" | "paymentMethod" | "status" | "issueDate" | "lineItems">;

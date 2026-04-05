@@ -4,7 +4,7 @@ export function validateCreate(body: unknown): string | null {
   if (!body || typeof body !== "object") return "Invalid body";
 
   const data = body as Partial<Order>;
-  const { customerId, paymentMethod, status, issueDate } = data;
+  const { customerId, paymentMethod, issueDate } = data;
 
   if (!customerId || typeof customerId !== "string") return "Customer ID is required";
 
@@ -12,7 +12,6 @@ export function validateCreate(body: unknown): string | null {
   if (!paymentMethod.type || typeof paymentMethod.type !== "string") return "Payment method type is required";
   if (paymentMethod.last4 !== undefined && typeof paymentMethod.last4 !== "string") return "Payment method last4 must be a string";
 
-  if (!status || typeof status !== "string") return "Status is required";
   if (!issueDate) return "Issue date is required";
 
   return null;

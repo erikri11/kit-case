@@ -9,4 +9,4 @@ export interface CustomerPayment extends BaseEntity {
   status: PaymentStatus;
 }
 
-export type PaymentStatus = "Completed" | "Pending" | "Failed" | "Refunded";
+export type PaymentStatus = "Completed" | "Pending" | "Refunded";

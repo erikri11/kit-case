@@ -1,9 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 import type { Order, OrderCreate, OrderUpdate } from "./order.model";
+import type { OrderDetails } from "./order.details.model";
 import { mockOrders } from "./order.mock";
 import { generateOrderNumber } from "../../utils/generateOrderNumber";
-import { OrderDetails } from "./order.details.model";
 import { listCustomers } from "../customers/customer.service";
+import { createCustomerPayment, hasPaymentForInvoice, updatePaymentStatusByInvoice } from "../customers/customer.payment.service";
 
 let orders: Order[] = [...mockOrders];
 
@@ -23,6 +24,31 @@ function mapOrderToDetails(order: Order): OrderDetails | null {
   };
 }
 
+function syncPaymentWithOrder(order: Order) {
+  const paymentExists = hasPaymentForInvoice(order.orderNumber);
+
+  if (order.status === "Completed" && !paymentExists) {
+    createCustomerPayment({
+      customerId: order.customerId,
+      currency: order.currency,
+      amount: order.totalAmount,
+      invoiceId: order.orderNumber,
+      status: "Completed",
+      createdAt: order.createdAt
+    });
+    return;
+  }
+
+  if (order.status === "Refunded" && paymentExists) {
+    updatePaymentStatusByInvoice(order.orderNumber, "Refunded");
+    return;
+  }
+
+  if (order.status === "Completed" && paymentExists) {
+    updatePaymentStatusByInvoice(order.orderNumber, "Completed");
+  }
+}
+
 export function listOrders(): OrderDetails[] {
   return orders
     .map(mapOrderToDetails)
@@ -37,19 +63,24 @@ export function getOrder(id: string): OrderDetails | null {
 }
 
 export function createOrder(input: OrderCreate): OrderDetails | null {
+  const totalAmount = input.lineItems.reduce((sum, item) => sum + item.totalAmount, 0);
+
   const order: Order = {
     id: uuidv4(),
     customerId: input.customerId,
     paymentMethod: input.paymentMethod,
     currency: input.currency,
-    totalAmount: input.totalAmount,
-    status: input.status,
+    totalAmount,
+    status: "Pending",
     createdAt: new Date(),
     orderNumber: generateOrderNumber(),
-    issueDate: new Date(input.issueDate)
+    issueDate: new Date(input.issueDate),
+    lineItems: input.lineItems
   };
 
   orders.unshift(order);
+
+  syncPaymentWithOrder(order);
 
   return mapOrderToDetails(order);
 }
@@ -58,15 +89,21 @@ export function updateOrder(id: string, input: OrderUpdate): OrderDetails | null
   const index = orders.findIndex((x) => x.id === id);
   if (index < 0) return null;
 
+  const totalAmount = input.lineItems.reduce((sum, item) => sum + item.totalAmount, 0);
+
   const updatedOrder: Order = {
     ...orders[index],
     customerId: input.customerId,
     paymentMethod: input.paymentMethod,
     status: input.status,
-    issueDate: new Date(input.issueDate)
+    issueDate: new Date(input.issueDate),
+    lineItems: input.lineItems,
+    totalAmount
   };
 
   orders[index] = updatedOrder;
+
+  syncPaymentWithOrder(updatedOrder);
 
   return mapOrderToDetails(updatedOrder);
 }

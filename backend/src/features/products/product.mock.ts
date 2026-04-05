@@ -1,9 +1,9 @@
-import { generateProductNumber } from "../../utils/generateProductNumber";
 import { Product } from "./product.model";
 
 export const mockProducts: Product[] = [
 	{
-		id: generateProductNumber(),
+		id: "prod-0001",
+		productNumber: "PROD-0001",
 		name: "Soja & Co. Eucalyptus",
 		image: { 
 			url: "/product/product-5.png",
@@ -13,13 +13,14 @@ export const mockProducts: Product[] = [
 		type: "Physical",
 		quantity: 10,
 		currency: "USD",
-		price: 65.99,
+		price: 233.00,
 		sku: "592_LDKDI",
 		status: "Draft",
 		createdAt: new Date()
 	},
 	{
-		id: generateProductNumber(),
+		id: "prod-0002",
+		productNumber: "PROD-0002",
 		name: "Necessaire Body Lotion",
 		image: { 
 			url: "/product/product-4.png",
@@ -29,13 +30,14 @@ export const mockProducts: Product[] = [
 		type: "Physical",
 		quantity: 5,
 		currency: "USD",
-		price: 17.99,
+		price: 178.00,
 		sku: "321_UWEAJT",
 		status: "Published",
 		createdAt: new Date()
 	},
 	{
-		id: generateProductNumber(),
+		id: "prod-0003",
+		productNumber: "PROD-0003",
 		name: "Ritual of Sakura",
 		image: { 
 			url: "/product/product-3.png",
@@ -45,13 +47,14 @@ export const mockProducts: Product[] = [
 		type: "Physical",
 		quantity: 8,
 		currency: "USD",
-		price: 155,
+		price: 155.00,
 		sku: "211_QFEXJO",
 		status: "Draft",
 		createdAt: new Date()
 	},
 	{
-		id: generateProductNumber(),
+		id: "prod-0004",
+		productNumber: "PROD-0004",
 		name: "Lancome Rouge",
 		image: { 
 			url: "/product/product-2.png",
@@ -59,15 +62,16 @@ export const mockProducts: Product[] = [
 		},
 		category: "Makeup",
 		type: "Physical",
-		quantity: 0,
+		quantity: 11,
 		currency: "USD",
-		price: 95,
+		price: 195.00,
 		sku: "978_UBFGJC",
 		status: "Published",
 		createdAt: new Date()
 	},
 	{
-		id: generateProductNumber(),
+		id: "prod-0005",
+		productNumber: "PROD-0005",
 		name: "Erbology Aloe Vera",
 		image: { 
 			url: "/product/product-1.png",
@@ -77,9 +81,9 @@ export const mockProducts: Product[] = [
 		type: "Physical",
 		quantity: 10,
 		currency: "USD",
-		price: 24,
+		price: 245.00,
 		sku: "401_1BBXBK",
 		status: "Published",
 		createdAt: new Date()
-	},
+	}
 ];

@@ -1,6 +1,7 @@
 import { BaseEntity } from "../../shared/types/BaseEntity";
 
 export interface Product extends BaseEntity {
+	productNumber: string;
 	name: string;
 	image: ProductImage | null;
 	category: ProductCategory;
@@ -22,5 +23,5 @@ export type ProductCategory = "Healthcare" | "Makeup" | "Skincare";
 export type Currency = "USD" | "EUR" | "NOK";
 export type ProductType = "Physical" | "Digital" | "Service";
 
-export type ProductCreate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "sku" | "status">;
+export type ProductCreate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "status">;
 export type ProductUpdate = ProductCreate;

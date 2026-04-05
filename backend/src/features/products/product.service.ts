@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { mockProducts } from "./product.mock";
 import { Currency, Product, ProductCategory, ProductCreate, ProductType } from "./product.model";
 import { generateSku } from "../../utils/generateSku";
+import { generateProductNumber } from "../../utils/generateProductNumber";
 
 let products: Product[] = [...mockProducts];
 
@@ -16,6 +17,7 @@ export function getProduct(id: string): Product | null {
 export function createProduct(input: ProductCreate): Product {
   const product: Product = {
     id: uuidv4(),
+    productNumber: generateProductNumber(),
     name: input.name.trim(),
     image: input.image ?? null,
     category: input.category as ProductCategory,
