@@ -13,21 +13,22 @@ export const mockOrders: Order[] = [
     orderNumber: "ORD-1001",
     issueDate: new Date("2026-03-24T19:26:34.456Z"),
     lineItems: [
-    {
-      id: "line-001",
-      productId: "prod-0001",
-      productNumber: "PROD-0001",
-      productName: "Soja & Co. Eucalyptus",
-      productImage: {
-        url: "/product/product-5.png",
-        fileName: "product-5.png"
-      },
-      quantity: 2,
-      currency: "USD",
-      unitAmount: 233.00,
-      totalAmount: 466.00
-    }
-    ]
+      {
+        id: "line-001",
+        productId: "prod-0001",
+        productNumber: "PROD-0001",
+        productName: "Soja & Co. Eucalyptus",
+        productImage: {
+          url: "/product/product-5.png",
+          fileName: "product-5.png"
+        },
+        quantity: 2,
+        currency: "USD",
+        unitAmount: 233.00,
+        totalAmount: 466.00
+      }
+    ],
+      isMocked: true
   },
   {
     id: "order-0002",
@@ -54,7 +55,8 @@ export const mockOrders: Order[] = [
         unitAmount: 178.00,
         totalAmount: 356.00
       }
-    ]
+    ],
+      isMocked: true
   },
   {
     id: "order-0003",
@@ -81,7 +83,8 @@ export const mockOrders: Order[] = [
         unitAmount: 155.00,
         totalAmount: 155.00
       }
-    ]
+    ],
+      isMocked: true
   },
   {
     id: "order-0004",
@@ -108,7 +111,8 @@ export const mockOrders: Order[] = [
         unitAmount: 195.00,
         totalAmount: 390.00
       }
-    ]
+    ],
+      isMocked: true
   },
   {
     id: "order-0005",
@@ -135,7 +139,8 @@ export const mockOrders: Order[] = [
         unitAmount: 245.00,
         totalAmount: 490.00
       }
-    ]
+    ],
+      isMocked: true
   },
   {
     id: "order-0006",
@@ -162,7 +167,8 @@ export const mockOrders: Order[] = [
         unitAmount: 233.00,
         totalAmount: 466.00
       }
-    ]
+    ],
+      isMocked: true
   },
   {
     id: "order-0007",

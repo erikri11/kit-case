@@ -11,6 +11,7 @@ export interface Order extends BaseEntity {
 	orderNumber: string;
 	issueDate: Date;
 	lineItems: LineItem[];
+	isMocked?: boolean;
 }
 
 export type OrderPaymentMethod = {
