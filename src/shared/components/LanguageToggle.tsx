@@ -11,7 +11,7 @@ export function LanguageToggle() {
   };
 
   return (
-    <Tooltip title={currentLang === "en" ? "Norsk" : "English"}>
+    <Tooltip arrow title={currentLang === "en" ? "Norsk" : "English"}>
       <IconButton onClick={toggleLanguage} aria-label="Change language">
         <img
           src={currentLang === "en" ? "/flags/no.svg" : "/flags/gb.svg"}

@@ -1,6 +1,6 @@
 import { orderApi } from "@features/orders/api/orderApi";
 import type { LineItem } from "@features/orders/models/lineItem.model";
-import type { OrderStatus } from "@features/orders/models/order.constants";
+import { LOCKED_STATUSES, type OrderStatus } from "@features/orders/models/order.constants";
 import type { Order, OrderCreate, OrderFieldName, OrderPaymentMethod, OrderUpdate } from "@features/orders/models/order.model";
 import { createEmptyLineItem } from "@features/orders/utils/createEmptyLineItem";
 import { useProducts } from "@features/products/hooks/useProducts";
@@ -20,7 +20,8 @@ interface UseOrderUpsertDialogProps {
 export function useOrderUpsertDialog({ 
   mode, 
   initialOrder, 
-  orderId, onClose 
+  orderId, 
+  onClose 
 }: UseOrderUpsertDialogProps) {
   
   const { t } = useTranslation(["orders", "common", "products", "validation"]);
@@ -65,6 +66,16 @@ export function useOrderUpsertDialog({
     lineItems.length > 0 &&
     lineItems.every((item) => item.productId && item.quantity > 0);
 
+  const isMockOrder = Boolean(initialOrder?.isMocked);
+
+  const isOrderLocked =
+    mode === "edit" &&
+    initialOrder &&
+    LOCKED_STATUSES.includes(initialOrder.status);
+
+  const allProductsSelected =
+    lineItems.filter((item) => item.productId).length >= products.length;
+
   function addLineItem() {
     setLineItems((prev) => [...prev, createEmptyLineItem()]);
   };
@@ -76,6 +87,14 @@ export function useOrderUpsertDialog({
   function updateLineItemProduct(lineItemId: string, productId: string) {
     const product = products.find((p) => p.id === productId);
     if (!product) return;
+
+    const isAlreadySelectedOnAnotherLine = lineItems.some(
+      (item) => item.id !== lineItemId && item.productId === productId
+    );
+
+    if (isAlreadySelectedOnAnotherLine) {
+      return;
+    }
 
     setLineItems((prev) =>
       prev.map((item) =>
@@ -181,6 +200,9 @@ export function useOrderUpsertDialog({
     lineItems,
     products,
     totalAmount,
+    isMockOrder,
+    isOrderLocked,
+    allProductsSelected,
     addLineItem,
     removeLineItem,
     updateLineItemProduct,

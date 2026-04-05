@@ -7,12 +7,14 @@ interface ActionButtonRendererProps<T> {
   iconButtonProps?: Omit<IconButtonProps, "onClick" | "children">;
   title: string;
   onAction: (row: T) => void;
+  isDisabled?: (params: ICellRendererParams<T>) => boolean;
 }
 
 export function createActionButtonRenderer<T>({   
   icon: Icon,
   iconButtonProps,
   title,
+  isDisabled,
   onAction
 }: ActionButtonRendererProps<T>) {
 
@@ -29,10 +31,11 @@ export function createActionButtonRenderer<T>({
           alignItems: "center"
         }}
       >
-        <Tooltip title={title}>
+        <Tooltip arrow title={title}>
           <IconButton 
             size="small"
             onClick={() => onAction(row)}
+            disabled={isDisabled?.(params)}
             {...iconButtonProps}
           >
           <Icon />

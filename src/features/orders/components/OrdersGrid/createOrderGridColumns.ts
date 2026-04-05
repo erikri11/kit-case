@@ -33,6 +33,7 @@ export function createOrderGridColumns({
     icon: DeleteIcon,
     iconButtonProps: { color: 'error' },
     title: t("common:actions.delete"),
+    isDisabled: (params) => params.data?.status !== "Pending",
     onAction: onDelete
   });
 

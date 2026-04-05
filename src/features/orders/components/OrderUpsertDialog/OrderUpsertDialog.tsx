@@ -1,13 +1,15 @@
 import type {Order, OrderPaymentMethod} from "@features/orders/models/order.model";
 import { generateLast4 } from "@features/orders/utils/generateLast4";
-import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormHelperText, Grid, IconButton, InputLabel, MenuItem, Select, TextField, Typography} from "@mui/material";
+import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormHelperText, Grid, IconButton, InputLabel, MenuItem, Select, TextField, Tooltip, Typography} from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import type { Mode } from "@shared/types/mode";
 import { useOrderUpsertDialog } from "./useOrderUpsertDialog";
 import DeleteIcon from "@mui/icons-material/Delete";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import AddIcon from "@mui/icons-material/Add";
 import InputAdornment from '@mui/material/InputAdornment';
 import { ORDER_PAYMENT_METHODS, ORDER_STATUSES, type OrderStatus } from "@features/orders/models/order.constants";
+import { resolveSelectedValue } from "@features/orders/utils/resolveSelectedValue";
 
 export interface OrderUpsertDialogProps {
   open: boolean;
@@ -15,10 +17,6 @@ export interface OrderUpsertDialogProps {
   initialOrder?: Order;
   orderId?: string;
   onClose: () => void;
-}
-
-function resolveSelectedValue(options: { id: string }[], id: string): string {
-  return options.some((option) => option.id === id) ? id : "";
 }
 
 export function OrderUpsertDialog({
@@ -44,6 +42,9 @@ export function OrderUpsertDialog({
     lineItems,
     products,
     totalAmount,
+    isMockOrder,
+    isOrderLocked,
+    allProductsSelected,
     addLineItem,
     removeLineItem,
     updateLineItemProduct,
@@ -64,14 +65,27 @@ export function OrderUpsertDialog({
   const selectedCustomerId = resolveSelectedValue(customers, customerId);
 
   return (
-    <Dialog open={open} onClose={onClose} fullWidth maxWidth="md">
+    <Dialog 
+      open={open} 
+      onClose={onClose} 
+      fullWidth 
+      maxWidth="md"
+    >
       <DialogTitle>
         {mode === "add" ? t("orders:actions.add") : t("orders:actions.edit")}
       </DialogTitle>
 
       <DialogContent className="pt-3">
-        <Typography variant="h4" sx={{ mb: 3 }}>
+        <Typography 
+          variant="h4" 
+          sx={{ mb: 3, display: "flex", alignItems: "center", gap: 1 }}
+        >
           {t("common:labels.basicInformation")}
+          {isOrderLocked && (
+            <Tooltip arrow title={"Completed or refunded orders cannot be edited or deleted"}>
+              <InfoOutlinedIcon color="info" />
+            </Tooltip>
+          )}
         </Typography>
 
         <Grid container spacing={2}>
@@ -99,6 +113,7 @@ export function OrderUpsertDialog({
                     customerId: true
                   }))
                 }
+                disabled={isOrderLocked}
               >
                 {customers.map((c) => (
                   <MenuItem key={c.id} value={c.id}>
@@ -138,6 +153,7 @@ export function OrderUpsertDialog({
                 }
               }}
               sx={{ width: "100%" }}
+              disabled={isOrderLocked}
             />
           </Grid>
 
@@ -172,6 +188,7 @@ export function OrderUpsertDialog({
                     paymentMethod: true
                   }))
                 }
+                disabled={isOrderLocked}
               >
                 {ORDER_PAYMENT_METHODS.map((p) => (
                   <MenuItem key={p} value={p}>
@@ -196,14 +213,17 @@ export function OrderUpsertDialog({
                 disabled={mode === "add"}
               >
                 {ORDER_STATUSES.map((s) => {
-                  const isRefunded = s === "Refunded";
-                  const isCompleted = status === "Completed";
-                  
+                  const baseStatus = initialOrder?.status ?? status;
+
                   return (
                     <MenuItem 
                       key={s} 
                       value={s}
-                      disabled={(isRefunded && !isCompleted) || (s === "Pending" && isCompleted)}
+                      disabled={
+                        (baseStatus === "Completed" && s !== "Completed" && s !== "Refunded") ||
+                        (baseStatus === "Pending" && s !== "Pending" && s !== "Completed") ||
+                        (baseStatus === "Refunded" && s !== "Refunded")
+                      }
                     >
                       {t(`orders:status.${s}`)}
                     </MenuItem>
@@ -215,15 +235,29 @@ export function OrderUpsertDialog({
 
           <Grid size={{ md: 12, sm: 12, xs: 12 }}>
             <Box sx={{ mt: 2 }}>
-              <Typography variant="h4" sx={{ mb: 3 }}>
+              <Typography 
+                variant="h4" 
+                sx={{ mb: 3, display: "flex", alignItems: "center", gap: 1 }}
+              >
                 {t("common:labels.lineItems")}
+                {isOrderLocked && (
+                  <Tooltip arrow title={"Completed or refunded orders cannot be edited or deleted"}>
+                    <InfoOutlinedIcon color="info" />
+                  </Tooltip>
+                )}
               </Typography>
               
-              {lineItems.map((item) => (
-                <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
-                  <Grid size={{ md: 5, sm: 6, xs: 12 }}>
-                    <FormControl variant="filled" fullWidth>
-                      <InputLabel>{t("common:labels.product")}</InputLabel>
+              {lineItems.map((item) => {
+                const selectedProductIdsOnOtherLines = lineItems
+                  .filter((li) => li.id !== item.id)
+                  .map((li) => li.productId)
+                  .filter(Boolean);
+
+                return (
+                  <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
+                    <Grid size={{ md: 5, sm: 6, xs: 12 }}>
+                      <FormControl variant="filled" fullWidth>
+                        <InputLabel>{t("common:labels.product")}</InputLabel>
                       <Select
                         value={resolveSelectedValue(products, item.productId)}
                         label={t("common:labels.product")}
@@ -234,12 +268,20 @@ export function OrderUpsertDialog({
                         onChange={(e) =>
                           updateLineItemProduct(item.id, e.target.value as string)
                         }
+                        disabled={isMockOrder || isOrderLocked}
                       >
-                        {products.map((product) => (
-                          <MenuItem key={product.id} value={product.id}>
-                            {product.name}
-                          </MenuItem>
-                        ))}
+                        {products.map((product) => {
+                          const isSelectedOnAnotherLine = selectedProductIdsOnOtherLines.includes(product.id);
+                          return (
+                            <MenuItem 
+                              key={product.id} 
+                              value={product.id} 
+                              disabled={isSelectedOnAnotherLine}
+                            >
+                              {product.name}
+                            </MenuItem>
+                          );
+                        })}
                       </Select>
                     </FormControl>
                   </Grid>
@@ -257,6 +299,7 @@ export function OrderUpsertDialog({
                       slotProps={{
                         htmlInput: { min: 1 }
                       }}
+                      disabled={isMockOrder || isOrderLocked}
                     />
                   </Grid>
 
@@ -302,23 +345,25 @@ export function OrderUpsertDialog({
                       <IconButton
                         aria-label="remove line item"
                         onClick={() => removeLineItem(item.id)}
+                        disabled={isMockOrder || isOrderLocked}
                       >
                         <DeleteIcon />
                       </IconButton>
                     </Box>
                   </Grid>
                 </Grid>
-              ))}
+              )})}
 
               <Button
                 color="inherit"
                 variant="outlined"
                 startIcon={<AddIcon />}
                 onClick={addLineItem}
+                disabled={isMockOrder || isOrderLocked || allProductsSelected}
               >
                 {t("products:actions.add")}
               </Button>
-
+                
             </Box>
           </Grid>
 
