@@ -27,6 +27,7 @@ export function useProductUpsertDialog({
   // ---------------- STATE ----------------
 
   const [name, setName] = useState<string>(initialProduct?.name ?? "");
+  const [productNumber, setProductNumber] = useState<string>(initialProduct?.productNumber ?? "");
   const [category, setCategory] = useState<ProductCategory | "">(initialProduct?.category ?? "");
   const [type, setType] = useState<ProductType | "">(initialProduct?.type ?? "");
   const [quantity, setQuantity] = useState<string>(initialProduct?.quantity != null ? String(initialProduct.quantity) : "");
@@ -185,6 +186,7 @@ export function useProductUpsertDialog({
   return {
     t,
     name,
+    productNumber,
     category,
     type,
     quantity,
@@ -207,6 +209,7 @@ export function useProductUpsertDialog({
     image,
     canSubmit,
     setName,
+    setProductNumber,
     setCategory,
     setType,
     setQuantity,

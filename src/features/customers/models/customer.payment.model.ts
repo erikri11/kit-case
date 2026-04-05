@@ -1,4 +1,5 @@
 import type { Currency } from "@features/products/models/product.model";
+import type { PaymentStatus } from "./payment.constants";
 
 export interface CustomerPayment {
   id: string;
@@ -9,5 +10,3 @@ export interface CustomerPayment {
   status: PaymentStatus;
   createdAt: Date;
 }
-
-export type PaymentStatus = "Completed" | "Pending" | "Failed" | "Refunded";

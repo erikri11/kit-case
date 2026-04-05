@@ -1,5 +1,5 @@
 import { makeRequest } from '@shared/services/makeRequest';
-import type { QueryParams } from '@shared/types/QueryParams';
+import type { QueryParams } from '@shared/types/queryParams';
 import type { Customer, CustomerCreate, CustomerUpdate } from '../models/customer.model';
 import type { CustomerDetails } from '../models/customer.details.model';
 

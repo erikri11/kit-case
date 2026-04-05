@@ -25,6 +25,7 @@ export function ProductUpsertDialog({
   const {
     t,
     name,
+    productNumber,
     category,
     type,
     quantity,
@@ -47,6 +48,7 @@ export function ProductUpsertDialog({
     image,
     canSubmit,
     setName,
+    setProductNumber,
     setCategory,
     setType,
     setQuantity,
@@ -94,7 +96,20 @@ export function ProductUpsertDialog({
               helperText={showNameError && nameError ? t(nameError) : ""}
             />
           </Grid>
-
+          {mode === 'edit' && (
+            <Grid container size={12} spacing={2}>
+              <Grid size={6}>
+                <TextField
+                  label={t("common:labels.productNumber")}
+                  variant="filled"
+                  fullWidth
+                  value={productNumber}
+                  onChange={(e) => setProductNumber(e.target.value)}
+                  disabled
+                />
+              </Grid>
+            </Grid>
+          )}
           <Grid size={6}>
             <FormControl
               variant="filled"

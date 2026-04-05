@@ -12,7 +12,8 @@
     "Pending": "Pending",
     "Completed": "Completed",
     "Rejected": "Rejected",
-    "Canceled": "Canceled"
+    "Canceled": "Canceled",
+    "Refunded": "Refunded"
   },
   "paymentMethod": {
     "Amex": "American Express",
@@ -20,5 +21,17 @@
     "GooglePay": "Google Pay",
     "MasterCard": "MasterCard",
     "Visa": "Visa"
+  },
+  "snackbar": {
+    "addSuccess": "Order added successfully",
+    "updateSuccess": "Order updated successfully",
+    "deleteSuccess": "Order deleted successfully",
+    "addError": "Failed to add order",
+    "updateError": "Failed to update order",
+    "deleteError": "Failed to delete order",
+    "loadError": "Failed to load order"
   }
 }
+
+
+ 

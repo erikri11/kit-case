@@ -1,4 +1,5 @@
 import type { BaseEntity } from "@shared/types/baseEntity";
+import type { CustomerStatus } from "./customer.constants";
 
 export interface Customer extends BaseEntity {
 	customerNumber: string;
@@ -10,8 +11,6 @@ export interface Customer extends BaseEntity {
 	quota: number;
 	status: CustomerStatus;
 }
-
-export type CustomerStatus = "Active" | "Pending" | "Blocked";
 
 export type CustomerCreate = Pick<Customer, "name" | "email" | "phone" | "avatar" | "company">;
 export type CustomerUpdate = Pick<Customer, "name" | "email" | "phone" | "avatar" | "company" | "quota" | "status">;

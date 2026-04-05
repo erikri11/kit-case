@@ -40,9 +40,13 @@ export function createOrderGridColumns({
     {
       field: "issueDate",
       headerName: t("common:labels.order"),
-      minWidth: 250,
-      flex: 2,
-      cellRenderer: OrderRenderer
+      minWidth: 300,
+      flex: 4,
+      cellRenderer: 'agGroupCellRenderer',
+      cellRendererParams: {
+        innerRenderer: OrderRenderer
+      },
+      cellClass: "expandable-group-cell"
     },
     {
       field: "paymentMethod.type",

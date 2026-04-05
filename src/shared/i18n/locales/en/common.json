@@ -70,7 +70,12 @@
     "issueDate": "Issue date",
     "customerNumber": "Customer number",
     "orderNumber": "Order number",
-    "company": "Company"
+    "company": "Company",
+    "productNumber": "Product number",
+    "lineItems": "Line items",
+    "product": "Product",
+    "unit": "Unit",
+    "total": "Total"
   },
   "actions": {
     "edit": "Edit",

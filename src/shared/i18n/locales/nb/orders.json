@@ -12,7 +12,8 @@
     "Pending": "Venter",
     "Completed": "Fullført",
     "Rejected": "Avvist",
-    "Canceled": "Avlyst"
+    "Canceled": "Avlyst",
+    "Refunded": "Refundert"
   },
   "paymentMethod": {
     "Amex": "American Express",
@@ -20,5 +21,14 @@
     "GooglePay": "Google Pay",
     "MasterCard": "MasterCard",
     "Visa": "Visa"
+  },
+  "snackbar": {
+    "addSuccess": "Ordre lagt til",
+    "updateSuccess": "Ordre oppdatert",
+    "deleteSuccess": "Ordre slettet",
+    "addError": "Kunne ikke legge til ordre",
+    "updateError": "Kunne ikke oppdatere ordre",
+    "deleteError": "Kunne ikke slette ordre",
+    "loadError": "Kunne ikke laste ordre"
   }
 }

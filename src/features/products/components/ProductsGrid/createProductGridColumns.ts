@@ -39,7 +39,7 @@ export function createProductGridColumns({
       headerName: t("common:labels.name"),
       minWidth: 180,
       flex: 2,
-      cellRenderer: 'agGroupCellRenderer',
+      cellRenderer: 'agGroupCellRenderer'
     },
     {
       field: "image",

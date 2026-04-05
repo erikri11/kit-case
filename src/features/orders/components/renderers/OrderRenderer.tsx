@@ -1,9 +1,10 @@
 import type { Order } from "@features/orders/models/order.model";
+import { getTotalQuantity } from "@features/orders/utils/getTotalQuantity";
 import { Box, Stack, Typography } from "@mui/material";
 import type { ICellRendererParams } from "ag-grid-enterprise";
 import dayjs from "dayjs";
 
-export function OrderRenderer(params: ICellRendererParams<Order, string>) {
+export function OrderRenderer(params: ICellRendererParams<Order>) {
   const issueDate = params.data?.issueDate ?? new Date();
   const currency = params.data?.currency ?? "USD";
   const totalAmount = params.data?.totalAmount ?? 0;
@@ -16,8 +17,7 @@ export function OrderRenderer(params: ICellRendererParams<Order, string>) {
     currency 
   }).format(totalAmount);
 
-  
-  const productCount = 1;
+  const productCount = getTotalQuantity(params.data?.lineItems ?? []);
   const productLabel = `${productCount} product${productCount === 1 ? "" : "s"}`;
 
   return (

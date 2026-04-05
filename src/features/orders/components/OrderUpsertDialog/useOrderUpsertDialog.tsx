@@ -1,5 +1,9 @@
 import { orderApi } from "@features/orders/api/orderApi";
-import type { Order, OrderCreate, OrderFieldName, OrderPaymentMethod, OrderStatus, OrderUpdate } from "@features/orders/models/order.model";
+import type { LineItem } from "@features/orders/models/lineItem.model";
+import type { OrderStatus } from "@features/orders/models/order.constants";
+import type { Order, OrderCreate, OrderFieldName, OrderPaymentMethod, OrderUpdate } from "@features/orders/models/order.model";
+import { createEmptyLineItem } from "@features/orders/utils/createEmptyLineItem";
+import { useProducts } from "@features/products/hooks/useProducts";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { useCustomers } from "@shared/hooks/useCustomers";
 import type { Mode } from "@shared/types/mode";
@@ -19,21 +23,28 @@ export function useOrderUpsertDialog({
   orderId, onClose 
 }: UseOrderUpsertDialogProps) {
   
-  const { t } = useTranslation(["orders", "common", "validation"]);
+  const { t } = useTranslation(["orders", "common", "products", "validation"]);
   const { setSnackbarMessage } = useSnackbar();
   const customers = useCustomers();
+  const products = useProducts();
 
   const [customerIdOverride, setCustomerIdOverride] = useState<string | undefined>(undefined);
   const customerId = customerIdOverride ?? initialOrder?.customerId ?? "";
-
+  const [status, setStatus] = useState<OrderStatus>(initialOrder?.status ?? "Pending");
+  const [submitted, setSubmitted] = useState(false);
+  
   const [issueDate, setIssueDate] = useState<Date>(
     initialOrder?.issueDate ? new Date(initialOrder.issueDate) : new Date()
   );
+
   const [paymentMethod, setPaymentMethod] = useState<OrderPaymentMethod | undefined>(
     initialOrder?.paymentMethod
   );
-  const [status, setStatus] = useState<OrderStatus>(initialOrder?.status ?? "Pending");
-  const [submitted, setSubmitted] = useState(false);
+
+  const [lineItems, setLineItems] = useState<LineItem[]>(
+    initialOrder?.lineItems?.length ? initialOrder.lineItems : [createEmptyLineItem()]
+  );
+
   const [touched, setTouched] = useState<Record<OrderFieldName, boolean>>({
     customerId: false,
     paymentMethod: false
@@ -45,7 +56,59 @@ export function useOrderUpsertDialog({
   const showCustomerError = !!customerError && (touched.customerId || submitted);
   const showPaymentMethodError = !!paymentMethodError && (touched.paymentMethod || submitted);
 
-  const canSubmit = !customerError && !paymentMethodError;
+  const currency = lineItems[0]?.currency ?? "USD";
+  const totalAmount = lineItems.reduce((sum, item) => sum + item.totalAmount, 0);
+
+  const canSubmit = 
+    !customerError && 
+    !paymentMethodError &&
+    lineItems.length > 0 &&
+    lineItems.every((item) => item.productId && item.quantity > 0);
+
+  function addLineItem() {
+    setLineItems((prev) => [...prev, createEmptyLineItem()]);
+  };
+
+  function removeLineItem(id: string) {
+    setLineItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  function updateLineItemProduct(lineItemId: string, productId: string) {
+    const product = products.find((p) => p.id === productId);
+    if (!product) return;
+
+    setLineItems((prev) =>
+      prev.map((item) =>
+        item.id === lineItemId
+          ? {
+              ...item,
+              productId: product.id,
+              productNumber: product.productNumber,
+              productName: product.name,
+              productImage: product.image,
+              quantity: item.quantity || 1,
+              currency: product.currency,
+              unitAmount: product.price,
+              totalAmount: product.price * (item.quantity || 1)
+            }
+          : item
+      )
+    );
+  };
+
+  function updateLineItemQuantity(lineItemId: string, quantity: number) {
+    setLineItems((prev) =>
+      prev.map((item) =>
+        item.id === lineItemId
+          ? {
+              ...item,
+              quantity,
+              totalAmount: item.unitAmount * quantity
+            }
+          : item
+      )
+    );
+  };
 
   const handleUpsertOrder = async () => {
     setSubmitted(true);
@@ -56,11 +119,11 @@ export function useOrderUpsertDialog({
       if (mode === "add") {
         const payload: OrderCreate = {
           customerId,
-          currency: "USD",
-          totalAmount: 0,
-          status,
+          currency,
+          totalAmount,
           issueDate,
-          paymentMethod
+          paymentMethod,
+          lineItems
         };
 
         await orderApi.post(payload);
@@ -76,7 +139,8 @@ export function useOrderUpsertDialog({
           customerId,
           issueDate,
           paymentMethod,
-          status
+          status,
+          lineItems
         };
 
         await orderApi.put(orderId, payload);
@@ -114,6 +178,13 @@ export function useOrderUpsertDialog({
     customerError,
     paymentMethodError,
     canSubmit,
+    lineItems,
+    products,
+    totalAmount,
+    addLineItem,
+    removeLineItem,
+    updateLineItemProduct,
+    updateLineItemQuantity,
     handleUpsertOrder,
     setCustomerIdOverride,
     setIssueDate,

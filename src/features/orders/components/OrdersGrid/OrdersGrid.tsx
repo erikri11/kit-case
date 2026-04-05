@@ -5,6 +5,7 @@ import { createOrderGridColumns } from "./createOrderGridColumns";
 import { OrderUpsertDialog } from "../OrderUpsertDialog/OrderUpsertDialog";
 import { OrderDeleteDialog } from "../OrderDeleteDialog/OrderDeleteDialog";
 import type { OrderDetails } from "@features/orders/models/order.details.model";
+import OrderDetailRenderer from "../renderers/OrderDetailsRenderer";
 
 interface OrdersGridProps {
   orders: OrderDetails[];
@@ -32,6 +33,7 @@ export function OrdersGrid({ orders }: OrdersGridProps) {
         isPaginationEnabled
         addButtonLabel={t("orders:actions.add")}
         onAddButtonClick={() => setIsAddOpen(true)}
+        expandComponent={OrderDetailRenderer}
       />
 
       {isAddOpen && (

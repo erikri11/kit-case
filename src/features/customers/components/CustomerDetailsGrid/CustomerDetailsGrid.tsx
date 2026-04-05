@@ -12,18 +12,15 @@ export function CustomerDetailsGrid({
 }: CustomerDetailsGridProps) {
   
   const { t } = useTranslation(["common", "customers"]);
-
+  
   const headers = createCustomerDetailsGridColumns({ t });
-
-  // TODO:: Remove after testing
-  console.log(`Loaded payments:`, payments);
 
   return (
     <DataGridTable<CustomerPayment>
       data={payments}
       headers={headers}
       disableSearch
-      isPaginationEnabled={false}
+      isPaginationEnabled
     />
   );
 }

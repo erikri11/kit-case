@@ -70,7 +70,12 @@
     "issueDate": "Utstedelsesdato",
     "customerNumber": "Kundenummer",
     "orderNumber": "Bestillingsnummer",
-    "company": "Firma"
+    "company": "Firma",
+    "productNumber": "Produktnummer",
+    "lineItems": "Bestillingslinjer",
+    "product": "Produkt",
+    "unit": "Enhet",
+    "total": "Totalt"
   },
   "actions": {
     "edit": "Rediger",
