@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
 import type { OrderDetails } from "@features/orders/models/order.details.model";
 import { formatCurrency } from "@shared/utils/formatCurrency";
-import type { Currency } from "@features/products/models/product.model";
+import type { Currency } from "@features/products/models/product.constants";
 
 interface OrderDetailRow {
   product: string;

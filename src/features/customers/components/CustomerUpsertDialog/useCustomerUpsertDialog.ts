@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { customerApi } from "@features/customers/api/customersApi";
-import type { CustomerCreate, CustomerFieldName, CustomerStatus, CustomerUpdate } from "@features/customers/models/customer.model";
+import type { CustomerCreate, CustomerFieldName, CustomerUpdate } from "@features/customers/models/customer.model";
 import { validateEmail, validateName, validatePhone } from "@features/customers/validation/validateCustomer";
 import type { Mode } from "@shared/types/mode";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
+import type { CustomerStatus } from "@features/customers/models/customer.constants";
 
 export function useCustomerUpsertDialog(
   mode: Mode,
@@ -21,7 +22,7 @@ export function useCustomerUpsertDialog(
   const [phone, setPhone] = useState<string>(initialCustomer?.phone ?? '');
   const [company, setCompany] = useState<string | null>(initialCustomer?.company ?? null);
   const [quota, setQuota] = useState<number>(initialCustomer?.quota ?? 0);
-  const [status, setStatus] = useState<CustomerStatus>(initialCustomer?.status ?? "Pending");
+  const [status, setStatus] = useState<CustomerStatus>(initialCustomer?.status ?? "Active");
   const [avatar, setAvatar] = useState<string | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState<boolean>(false);

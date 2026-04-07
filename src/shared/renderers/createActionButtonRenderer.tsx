@@ -31,17 +31,22 @@ export function createActionButtonRenderer<T>({
           alignItems: "center"
         }}
       >
-        <Tooltip arrow title={title}>
-          <IconButton 
-            size="small"
-            onClick={() => onAction(row)}
-            disabled={isDisabled?.(params)}
-            {...iconButtonProps}
-          >
-          <Icon />
-          </IconButton>
+        <Tooltip 
+          arrow 
+          title={title}  
+          disableHoverListener={!title}
+        >
+          <span>
+            <IconButton 
+              size="small"
+              onClick={() => onAction(row)}
+              disabled={isDisabled?.(params)}
+              {...iconButtonProps}
+            >
+            <Icon />
+            </IconButton>
+          </span>
         </Tooltip>
-       
       </Box>
     );
   };

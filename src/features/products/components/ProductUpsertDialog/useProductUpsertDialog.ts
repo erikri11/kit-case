@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { productApi } from "@features/products/api/productApi";
-import type { Currency, Product, ProductCategory, ProductCreate, ProductFieldName, ProductStatus, ProductType, ProductUpdate } from "@features/products/models/product.model";
+import type { Product, ProductCreate, ProductFieldName, ProductUpdate } from "@features/products/models/product.model";
 import type { ProductImageState } from "@features/products/models/productImageState.model";
 import { validateName, validatePrice, validateQuantity } from "@features/products/validation/validateProduct";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import type { Mode } from "@shared/types/mode";
 import { productUploadApi } from "@features/products/api/productUploadApi";
+import type { Currency, ProductCategory, ProductStatus, ProductType } from "@features/products/models/product.constants";
 
 export interface ProductUpsertDialogProps {
   mode: Mode;

@@ -1,10 +1,11 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle,FormControl,FormHelperText,Grid, InputLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import type { Currency, Product, ProductCategory, ProductStatus, ProductType } from "@features/products/models/product.model";
+import type { Product } from "@features/products/models/product.model";
 import { useProductUpsertDialog } from "./useProductUpsertDialog";
 import type { Mode } from "@shared/types/mode";
 import { FileDropzone } from "@shared/utils/FileDropzone";
 import { resolveImageUrl } from "@shared/utils/resolveImageUrl";
+import { CURRENCIES, PRODUCT_CATEGORIES, PRODUCT_STATUSES, PRODUCT_TYPES, type Currency, type ProductCategory, type ProductStatus, type ProductType } from "@features/products/models/product.constants";
 
 export interface ProductUpsertDialogProps {
   open: boolean;
@@ -65,7 +66,9 @@ export function ProductUpsertDialog({
      productId, 
      onClose
   });
-    
+
+  const types = category ? PRODUCT_TYPES[category] : [];
+
   return (
     <Dialog 
       open={open} 
@@ -124,6 +127,7 @@ export function ProductUpsertDialog({
                 renderValue={(value) => (value ? t(`products:category.${value}`) : "")}
                 onChange={(e) => {
                   setCategory(e.target.value as ProductCategory | "");
+                  setType("");
                   setTouched((prev) => ({
                     ...prev,
                     category: true,
@@ -136,9 +140,11 @@ export function ProductUpsertDialog({
                   }))
                 }
               >
-                <MenuItem value={"Healthcare"}>{t("products:category.Healthcare")}</MenuItem>
-                <MenuItem value={"Makeup"}>{t("products:category.Makeup")}</MenuItem>
-                <MenuItem value={"Skincare"}>{t("products:category.Skincare")}</MenuItem>
+                {PRODUCT_CATEGORIES.map((s) => (
+                  <MenuItem  key={s} value={s}>
+                    {t(`products:category.${s}`)}
+                  </MenuItem>
+                ))}
               </Select>
               <FormHelperText>{showCategoryError && categoryError ? t(categoryError) : ""}</FormHelperText>
             </FormControl>
@@ -171,10 +177,13 @@ export function ProductUpsertDialog({
                     type: true
                   }))
                 }
+                disabled={!category}
               >
-                <MenuItem value={"Physical"}>{t("products:type.Physical")}</MenuItem>
-                <MenuItem value={"Digital"}>{t("products:type.Digital")}</MenuItem>
-                <MenuItem value={"Service"}>{t("products:type.Service")}</MenuItem>
+                {types.map((type) => (
+                  <MenuItem key={type} value={type}>
+                    {t(`products:type.${type}`)}
+                  </MenuItem>
+                ))}
               </Select>
               <FormHelperText>{showTypeError && typeError ? t(typeError) : ""}</FormHelperText>
             </FormControl>
@@ -214,9 +223,11 @@ export function ProductUpsertDialog({
                   }))
                 }
               >
-                <MenuItem value={"USD"}>{t("products:currency.USD")}</MenuItem>
-                <MenuItem value={"EUR"}>{t("products:currency.EUR")}</MenuItem>
-                <MenuItem value={"NOK"}>{t("products:currency.NOK")}</MenuItem>
+                {CURRENCIES.map((s) => (
+                  <MenuItem key={s} value={s}>
+                    {t(`products:currency.${s}`)}
+                  </MenuItem>
+                ))}
               </Select>
               <FormHelperText>{showCurrencyError && currencyError ? t(currencyError) : ""}</FormHelperText>
             </FormControl>
@@ -266,8 +277,11 @@ export function ProductUpsertDialog({
                     }))
                   }
                 >
-                  <MenuItem value={"Draft"}>{t("products:status.Draft")}</MenuItem>
-                  <MenuItem value={"Published"}>{t("products:status.Published")}</MenuItem>
+                  {PRODUCT_STATUSES.map((s) => (
+                  <MenuItem  key={s} value={s}>
+                    {t(`products:status.${s}`)}
+                  </MenuItem>
+                ))}
                 </Select>
               </FormControl>
             </Grid>

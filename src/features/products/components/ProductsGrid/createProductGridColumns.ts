@@ -6,6 +6,8 @@ import { createActionButtonRenderer } from '@shared/renderers/createActionButton
 import type { Product } from '@features/products/models/product.model';
 import { ImageRenderer } from '../renderers/ImageRenderer';
 import { formatCurrency } from '@shared/utils/formatCurrency';
+import ProductStatusChipRenderer from '../renderers/ProductStatusChipRenderer';
+import { productRankStatusesCompare } from '@features/products/comperators/productRankStatusesCompare';
 
 interface ColumnArgsProps {
   t: TFunction;
@@ -69,7 +71,9 @@ export function createProductGridColumns({
       field: "status",
       headerName: t("common:labels.status"),
       minWidth: 160,
-      flex: 1
+      flex: 1,
+      cellRenderer: ProductStatusChipRenderer,
+      comparator: productRankStatusesCompare
     },
     {
       headerName: '',

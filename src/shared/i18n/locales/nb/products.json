@@ -8,14 +8,17 @@
     "edit": "Rediger produkt"
   },
   "category": {
-    "Healthcare": "Helse",
-    "Makeup": "Sminke",
-    "Skincare": "Hudpleie"
+    "Smartphones": "Smarttelefoner",
+    "Computers": "Datamaskiner",
+    "Tablets": "Nettbrett"
   },
   "type": {
-    "Physical": "Fysisk",
-    "Digital": "Digital",
-    "Service": "Tjeneste"
+    "Flagship": "Flaggskip",
+    "Budget": "Budsjett",
+    "Laptop": "Bærbar",
+    "Desktop": "Stasjonær",
+    "Standard": "Standard",
+    "Pro": "Pro"
   },
   "currency": {
     "USD": "USD",

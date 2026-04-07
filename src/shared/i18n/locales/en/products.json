@@ -8,14 +8,17 @@
     "edit": "Edit product"
   },
   "category": {
-    "Healthcare": "Healthcare",
-    "Makeup": "Makeup",
-    "Skincare": "Skincare"
+    "Smartphones": "Smartphones",
+    "Computers": "Computers",
+    "Tablets": "Tablets"
   },
   "type": {
-    "Physical": "Physical",
-    "Digital": "Digital",
-    "Service": "Service"
+    "Flagship": "Flagship",
+    "Budget": "Budget",
+    "Laptop": "Laptop",
+    "Desktop": "Desktop",
+    "Standard": "Standard",
+    "Pro": "Pro"
   },
   "currency": {
     "USD": "USD",
@@ -35,5 +38,3 @@
     "deleteError": "Failed to delete product"
   }
 }
-
-

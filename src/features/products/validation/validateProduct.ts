@@ -2,7 +2,7 @@ export const validateName = (name: string) => {
   const value = name.trim();
 
   if (!value) return "common:validation.nameRequired";
-  if (!/^[A-Za-zÀ-ÖØ-öø-ÿ' .&-]+$/.test(value)) return "common:validation.nameInvalid";
+  if (!/^[A-Za-zÀ-ÖØ-öø-ÿ0-9' .&-]+$/.test(value)) return "common:validation.nameInvalid";
 
   return undefined;
 };

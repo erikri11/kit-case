@@ -3,4 +3,4 @@ export interface ProductImageState {
   url: string;
   fileName: string;
   file?: File;
-};
+}

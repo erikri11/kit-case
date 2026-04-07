@@ -48,7 +48,7 @@ export function ProductDetailRenderer(props: IDetailCellRendererParams<Product>)
           size="small" 
           variant="outlined" 
           icon={product.status === "Draft" ? <AccessTimeIcon /> : <CheckCircleIcon />}
-          color={product.status === "Draft" ? "default" : "success"}
+          color={product.status === "Draft" ? "warning" : "success"}
         /> 
       )
     }
