@@ -3,13 +3,13 @@ import type { ColDef } from 'ag-grid-enterprise';
 import type { Customer } from '@features/customers/models/customer.model';
 import { dateRenderer } from '../../../../shared/renderers/dateRenderer';
 import { CustomerStatusChipRenderer } from '../renderers/CustomerStatusChipRenderer';
-import { customerStatusRankCompare } from '@features/customers/components/comparators/customerStatusRankCompare';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconRenderer } from '../renderers/IconRenderer';
 import { LinearProgressRenderer } from '../renderers/LinearProgressRenderer';
 import { createActionButtonRenderer } from '../../../../shared/renderers/createActionButtonRenderer';
 import { CustomerRenderer } from '@features/customers/components/renderers/CustomerRenderer';
+import { customerRankStatusesCompare } from '../comparators/customerRankStatusesCompare';
 
 interface ColumnArgsProps {
   t: TFunction;
@@ -73,7 +73,7 @@ export function createCustomerGridColumns({
       minWidth: 160,
       flex: 1,
       cellRenderer: CustomerStatusChipRenderer,
-      comparator: customerStatusRankCompare
+      comparator: customerRankStatusesCompare
     },
     {
       field: "createdAt",

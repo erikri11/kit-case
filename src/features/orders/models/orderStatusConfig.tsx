@@ -1,10 +1,8 @@
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ScheduleIcon from "@mui/icons-material/Schedule";
-import BlockIcon from "@mui/icons-material/Block";
-import CancelIcon from "@mui/icons-material/Cancel";
 import UndoIcon from "@mui/icons-material/Undo";
 import type { StatusConfigItem } from "@shared/types/statusConfigItem";
-import type { OrderStatus } from "./order.model";
+import type { OrderStatus } from "./order.constants";
 
 export const ORDER_STATUS_CONFIG: Record<OrderStatus, StatusConfigItem> = {
   Completed: {
@@ -19,22 +17,10 @@ export const ORDER_STATUS_CONFIG: Record<OrderStatus, StatusConfigItem> = {
     color: "warning",
     rank: 1
   },
-  Rejected: {
-    labelKey: "orders:status.Rejected",
-    icon: BlockIcon,
-    color: "error",
-    rank: 2
-  },
-  Canceled: {
-    labelKey: "orders:status.Canceled",
-    icon: CancelIcon,
-    color: "error",
-    rank: 3
-  },
   Refunded: {
     labelKey: "orders:status.Refunded",
     icon: UndoIcon,
     color: "info",
-    rank: 4
+    rank: 2
   }
 };

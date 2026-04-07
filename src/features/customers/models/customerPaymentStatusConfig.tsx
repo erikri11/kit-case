@@ -2,9 +2,9 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import ReplayIcon from "@mui/icons-material/Replay";
 import type { StatusConfigItem } from "@shared/types/statusConfigItem";
-import type { PaymentStatus } from "./payment.constants";
+import type { PaymentStatus } from "./customer.payment.constants";
 
-export const PAYMENT_STATUS_CONFIG: Record<PaymentStatus, StatusConfigItem> = {
+export const CUSTOMER_PAYMENT_STATUS_CONFIG: Record<PaymentStatus, StatusConfigItem> = {
   Completed: {
     labelKey: "customers:status.payments.Completed",
     icon: CheckCircleIcon,

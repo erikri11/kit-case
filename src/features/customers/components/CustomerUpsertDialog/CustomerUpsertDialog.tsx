@@ -4,6 +4,7 @@ import type { Mode } from "@shared/types/mode";
 import { AvatarUpload } from "../AvatarUpload/AvatarUpload";
 import { PhoneMaskInput } from "../PhoneMaskInput/PhoneMaskInput";
 import { useCustomerUpsertDialog } from "./useCustomerUpsertDialog";
+import { CUSTOMER_STATUSES } from "@features/customers/models/customer.constants";
 
 export interface CustomerUpsertDialogProps {
   open: boolean;
@@ -157,9 +158,11 @@ export function CustomerUpsertDialog({
                     onChange={(e) => setStatus(e.target.value)}
                     renderValue={(value) => t(`customers:status.customers.${value}`)}
                   >
-                    <MenuItem value={"Active"}>{t("customers:status.customers.Active")}</MenuItem>
-                    <MenuItem value={"Pending"}>{t("customers:status.customers.Pending")}</MenuItem>
-                    <MenuItem value={"Blocked"}>{t("customers:status.customers.Blocked")}</MenuItem>
+                  {CUSTOMER_STATUSES.map((s) => (
+                    <MenuItem  key={s} value={s}>
+                      {t(`customers:status.customers.${s}`)}
+                    </MenuItem>
+                  ))}
                   </Select>
                 </FormControl>
               </Grid>

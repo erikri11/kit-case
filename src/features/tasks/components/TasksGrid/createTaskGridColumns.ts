@@ -7,8 +7,8 @@ import { createActionButtonRenderer } from '@shared/renderers/createActionButton
 import { dateRenderer } from '@shared/renderers/dateRenderer';
 import { TaskStatusChipRenderer } from '../renderers/TaskStatusChipRenderer';
 import { PriorityChipRenderer } from '../renderers/PriorityChipRenderer';
-import { priorityRankCompare } from '../comparators/priorityRankCompare';
-import { taskStatusRankCompare } from '../comparators/taskStatusRankCompare';
+import { taskRankStatusesCompare } from '@features/tasks/comparators/taskRankStatusesCompare';
+import { taskPriorityStatusesCompare } from '@features/tasks/comparators/taskPriorityStatusesRankCompare';
 
 interface ColumnArgsProps {
   t: TFunction;
@@ -55,7 +55,7 @@ export function createTaskGridColumns({
       minWidth: 160,
       flex: 1,
       cellRenderer: PriorityChipRenderer,
-      comparator: priorityRankCompare
+      comparator: taskPriorityStatusesCompare
     },
     {
       field: "status",
@@ -63,7 +63,7 @@ export function createTaskGridColumns({
       minWidth: 160,
       flex: 1,
       cellRenderer: TaskStatusChipRenderer,
-      comparator: taskStatusRankCompare
+      comparator: taskRankStatusesCompare
       
     },
     {

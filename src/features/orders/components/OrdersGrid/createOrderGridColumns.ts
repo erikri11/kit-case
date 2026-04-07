@@ -6,7 +6,7 @@ import { createActionButtonRenderer } from '@shared/renderers/createActionButton
 import { OrderRenderer } from '../renderers/OrderRenderer';
 import { PaymentMethodRenderer } from '../renderers/PaymentMethodRenderer';
 import { OrderStatusChipRenderer } from '../renderers/OrderStatusChipRenderer';
-import { orderStatusRankCompare } from '../comparators/orderStatusRankCompare';
+import { orderRankStatusesCompare } from '../comparators/orderRankStatusesCompare';
 import type { OrderDetails } from '@features/orders/models/order.details.model';
 import OrderCustomerRenderer from '../renderers/OrderCustomerRenderer';
 
@@ -69,7 +69,7 @@ export function createOrderGridColumns({
       minWidth: 160,
       flex: 1,
       cellRenderer: OrderStatusChipRenderer,
-      comparator: orderStatusRankCompare
+      comparator: orderRankStatusesCompare
     },
     {
       headerName: '',

@@ -14,5 +14,9 @@
   },
   "increase": "increase",
   "decrease": "decrease",
-  "vsLastMonth": "vs last month"
+  "vsLastMonth": "vs last month",
+  "status": {
+      "Active": "Active",
+      "Blocked": "Blocked"
+  }
 }

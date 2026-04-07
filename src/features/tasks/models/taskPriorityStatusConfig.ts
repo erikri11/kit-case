@@ -3,7 +3,7 @@ import FlagIcon from "@mui/icons-material/Flag";
 import type { StatusConfigItem } from "@shared/types/statusConfigItem";
 import type { TaskPriority } from "./task.model";
 
-export const TASK_PRIORITY_CONFIG: Record<TaskPriority, StatusConfigItem> = {
+export const TASK_PRIORITY_STATUS_CONFIG: Record<TaskPriority, StatusConfigItem> = {
   Low: {
     labelKey: "tasks:priority.Low",
     icon: OutlinedFlagIcon,
