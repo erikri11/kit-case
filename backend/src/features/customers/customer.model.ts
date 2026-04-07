@@ -11,7 +11,7 @@ export interface Customer extends BaseEntity {
 	status: CustomerStatus;
 }
 
-export type CustomerStatus = "Active" | "Pending" | "Blocked";
+export type CustomerStatus = "Active" | "Blocked";
 
 export type CustomerCreate = Pick<Customer, "name" | "email" | "phone" | "avatar" | "company">;
 export type CustomerUpdate = Pick<Customer, "name" | "email" | "phone" | "avatar" | "company" | "quota" | "status">;

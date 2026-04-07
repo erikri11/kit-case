@@ -35,7 +35,7 @@ export const mockCustomers: Customer[] = [
     phone: "(715) 278-5041",
     company: "",
     quota: 50,
-    status: "Blocked",
+    status: "Active",
     createdAt: new Date("2026-03-26T21:32:33.456Z")
   },
   {
@@ -47,7 +47,7 @@ export const mockCustomers: Customer[] = [
     phone: "(603) 766-0431",
     company: "",
     quota: 0,
-    status: "Pending",
+    status: "Active",
     createdAt: new Date("2026-03-27T22:33:34.456Z")
   },
   {

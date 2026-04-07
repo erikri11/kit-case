@@ -1,6 +1,6 @@
 import type { Customer, CustomerStatus } from "./customer.model";
 
-const validStatuses: CustomerStatus[] = ["Active", "Pending", "Blocked"];
+const validStatuses: CustomerStatus[] = ["Active", "Blocked"];
 
 export function validateCreate(body: unknown): string | null {
   if (!body || typeof body !== "object") return "Invalid body";

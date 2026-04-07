@@ -49,7 +49,7 @@ export function createCustomer(input: CustomerCreate): Customer {
     company: input.company || "",
     avatar: input.avatar || undefined,
     quota: 0,
-    status: "Pending",
+    status: "Active",
     createdAt: new Date()
   };
 
