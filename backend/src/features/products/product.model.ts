@@ -11,17 +11,17 @@ export interface Product extends BaseEntity {
 	price: number;
 	sku: string;
 	status: ProductStatus;
-};
+}
 
 export interface ProductImage {
   url: string;
   fileName: string;
-};
+}
 
 export type ProductStatus = "Draft" | "Published";
-export type ProductCategory = "Healthcare" | "Makeup" | "Skincare";
+export type ProductCategory =  "Smartphones" | "Computers" | "Tablets";
 export type Currency = "USD" | "EUR" | "NOK";
-export type ProductType = "Physical" | "Digital" | "Service";
+export type ProductType = "Flagship" | "Budget" | "Laptop" | "Desktop" | "Standard" | "Pro";
 
 export type ProductCreate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "status">;
 export type ProductUpdate = ProductCreate;
