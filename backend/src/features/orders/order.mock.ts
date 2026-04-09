@@ -7,7 +7,7 @@ export const mockOrders: Order[] = [
     customerId: customerIds.fran,
     paymentMethod: { type: "Amex", last4: "1234" },
     currency: "USD",
-    totalAmount: 466.00,
+    totalAmount: 1060.00,
     status: "Pending",
     createdAt: new Date("2026-03-24T19:26:34.456Z"),
     orderNumber: "ORD-1001",
@@ -17,15 +17,15 @@ export const mockOrders: Order[] = [
         id: "line-001",
         productId: "prod-0001",
         productNumber: "PROD-0001",
-        productName: "Soja & Co. Eucalyptus",
+        productName: "Apple iPhone 14 Pro Max - 256 GB - Black",
         productImage: {
-          url: "/product/product-5.png",
-          fileName: "product-5.png"
+          url: "/products/product-1.png",
+          fileName: "product-1.png"
         },
         quantity: 2,
         currency: "USD",
-        unitAmount: 233.00,
-        totalAmount: 466.00
+        unitAmount: 530.00,
+        totalAmount: 1060.00
       }
     ],
       isMocked: true
@@ -35,7 +35,7 @@ export const mockOrders: Order[] = [
     customerId: customerIds.penjani,
     paymentMethod: { type: "ApplePay" },
     currency: "USD",
-    totalAmount: 356.00,
+    totalAmount: 530.00,
     status: "Pending",
     createdAt: new Date("2026-03-24T19:26:34.456Z"),
     orderNumber: "ORD-1002",
@@ -45,15 +45,15 @@ export const mockOrders: Order[] = [
         id: "line-002",
         productId: "prod-0002",
         productNumber: "PROD-0002",
-        productName: "Necessaire Body Lotion",
+        productName: "Apple iPhone 14 Pro Max - 256 GB - White",
         productImage: {
-          url: "/product/product-4.png",
-          fileName: "product-4.png"
+          url: "/products/product-2.png",
+          fileName: "product-2.png"
         },
-        quantity: 2,
+        quantity: 1,
         currency: "USD",
-        unitAmount: 178.00,
-        totalAmount: 356.00
+        unitAmount: 530.00,
+        totalAmount: 530.00
       }
     ],
       isMocked: true
@@ -63,7 +63,7 @@ export const mockOrders: Order[] = [
     customerId: customerIds.carson,
     paymentMethod: { type: "Visa", last4: "5678" },
     currency: "USD",
-    totalAmount: 155.00,
+    totalAmount: 530.00,
     status: "Pending",
     createdAt: new Date("2026-03-24T19:26:34.456Z"),
     orderNumber: "ORD-1003",
@@ -73,15 +73,15 @@ export const mockOrders: Order[] = [
         id: "line-003",
         productId: "prod-0003",
         productNumber: "PROD-0003",
-        productName: "Ritual of Sakura",
+        productName: "Apple iPhone 14 Pro Max - 256 GB - Gold",
         productImage: {
-          url: "/product/product-3.png",
+          url: "/products/product-3.png",
           fileName: "product-3.png"
         },
         quantity: 1,
         currency: "USD",
-        unitAmount: 155.00,
-        totalAmount: 155.00
+        unitAmount: 530.00,
+        totalAmount: 530.00
       }
     ],
       isMocked: true
@@ -91,7 +91,7 @@ export const mockOrders: Order[] = [
     customerId: customerIds.siegbert,
     paymentMethod: { type: "GooglePay" },
     currency: "USD",
-    totalAmount: 390.00,
+    totalAmount: 530.00,
     status: "Pending",
     createdAt: new Date("2026-03-24T19:26:34.456Z"),
     orderNumber: "ORD-1004",
@@ -101,15 +101,15 @@ export const mockOrders: Order[] = [
         id: "line-004",
         productId: "prod-0004",
         productNumber: "PROD-0004",
-        productName: "Lancome Rouge",
+        productName: "Apple iPhone 14 Pro Max - 256 GB - Purple",
         productImage: {
-          url: "/product/product-2.png",
-          fileName: "product-2.png"
+          url: "/products/product-4.png",
+          fileName: "product-4.png"
         },
-        quantity: 2,
+        quantity: 1,
         currency: "USD",
-        unitAmount: 195.00,
-        totalAmount: 390.00
+        unitAmount: 530.00,
+        totalAmount: 530.00
       }
     ],
       isMocked: true
@@ -119,7 +119,7 @@ export const mockOrders: Order[] = [
     customerId: customerIds.miron,
     paymentMethod: { type: "Amex", last4: "1234" },
     currency: "USD",
-    totalAmount: 490.00,
+    totalAmount: 530.00,
     status: "Pending",
     createdAt: new Date("2026-03-24T19:26:34.456Z"),
     orderNumber: "ORD-1005",
@@ -129,15 +129,15 @@ export const mockOrders: Order[] = [
         id: "line-005",
         productId: "prod-0005",
         productNumber: "PROD-0005",
-        productName: "Erbology Aloe Vera",
+        productName: "Samsung Galaxy S22 Ultra - 256 GB - Black",
         productImage: {
-          url: "/product/product-1.png",
-          fileName: "product-1.png"
+          url: "/products/product-5.png",
+          fileName: "product-5.png"
         },
-        quantity: 2,
+        quantity: 1,
         currency: "USD",
-        unitAmount: 245.00,
-        totalAmount: 490.00
+        unitAmount: 530.00,
+        totalAmount: 530.00
       }
     ],
       isMocked: true
@@ -147,7 +147,7 @@ export const mockOrders: Order[] = [
     customerId: customerIds.fran,
     paymentMethod: { type: "Amex", last4: "1234" },
     currency: "USD",
-    totalAmount: 466.00,
+    totalAmount: 530.00,
     status: "Pending",
     createdAt: new Date("2026-03-24T19:26:34.456Z"),
     orderNumber: "ORD-1006",
@@ -157,15 +157,15 @@ export const mockOrders: Order[] = [
         id: "line-006",
         productId: "prod-0001",
         productNumber: "PROD-0001",
-        productName: "Soja & Co. Eucalyptus",
+        productName: "Apple iPhone 14 Pro Max - 256 GB - Black",
         productImage: {
-          url: "/product/product-5.png",
-          fileName: "product-5.png"
+          url: "/products/product-1.png",
+          fileName: "product-1.png"
         },
-        quantity: 2,
+        quantity: 1,
         currency: "USD",
-        unitAmount: 233.00,
-        totalAmount: 466.00
+        unitAmount: 530.00,
+        totalAmount: 530.00
       }
     ],
       isMocked: true
@@ -175,7 +175,7 @@ export const mockOrders: Order[] = [
     customerId: customerIds.fran,
     paymentMethod: { type: "Amex", last4: "1234" },
     currency: "USD",
-    totalAmount: 466.00,
+    totalAmount: 530.00,
     status: "Pending",
     createdAt: new Date("2026-03-24T19:26:34.456Z"),
     orderNumber: "ORD-1007",
@@ -185,15 +185,15 @@ export const mockOrders: Order[] = [
         id: "line-007",
         productId: "prod-0001",
         productNumber: "PROD-0001",
-        productName: "Soja & Co. Eucalyptus",
+        productName: "Apple iPhone 14 Pro Max - 256 GB - Black",
         productImage: {
-          url: "/product/product-5.png",
-          fileName: "product-5.png"
+          url: "/products/product-1.png",
+          fileName: "product-1.png"
         },
-        quantity: 2,
+        quantity: 1,
         currency: "USD",
-        unitAmount: 233.00,
-        totalAmount: 466.00
+        unitAmount: 530.00,
+        totalAmount: 530.00
       }
     ]
   },

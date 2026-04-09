@@ -16,7 +16,7 @@ export const mockProducts: Product[] = [
 		price: 530.00,
 		sku: "592_LDKDI",
 		status: "Draft",
-		createdAt: new Date()
+		createdAt: new Date("2026-03-24T19:26:34.456Z")
 	},
 	{
 		id: "prod-0002",
@@ -33,7 +33,7 @@ export const mockProducts: Product[] = [
 		price: 530.00,
 		sku: "321_UWEAJT",
 		status: "Published",
-		createdAt: new Date()
+		createdAt: new Date("2026-03-24T19:26:34.456Z")
 	},
 	{
 		id: "prod-0003",
@@ -50,7 +50,7 @@ export const mockProducts: Product[] = [
 		price: 530.00,
 		sku: "211_QFEXJO",
 		status: "Draft",
-		createdAt: new Date()
+		createdAt: new Date("2026-03-24T19:26:34.456Z")
 	},
 	{
 		id: "prod-0004",
@@ -67,7 +67,7 @@ export const mockProducts: Product[] = [
 		price: 530.00,
 		sku: "978_UBFGJC",
 		status: "Published",
-		createdAt: new Date()
+		createdAt: new Date("2026-03-24T19:26:34.456Z")
 	},
 	{
 		id: "prod-0005",
@@ -84,7 +84,7 @@ export const mockProducts: Product[] = [
 		price: 330.00,
 		sku: "742_KJH92P",
 		status: "Published",
-		createdAt: new Date()
+		createdAt: new Date("2026-03-24T19:26:34.456Z")
 	},
 	{
 		id: "prod-0006",
@@ -101,7 +101,7 @@ export const mockProducts: Product[] = [
 		price: 330.00,
 		sku: "118_XQ7MZA",
 		status: "Published",
-		createdAt: new Date()
+		createdAt: new Date("2026-03-24T19:26:34.456Z")
 	},
 	{
 		id: "prod-0007",
@@ -118,7 +118,7 @@ export const mockProducts: Product[] = [
 		price: 330.00,
 		sku: "401_1BBXBK",
 		status: "Published",
-		createdAt: new Date()
+		createdAt: new Date("2026-03-24T19:26:34.456Z")
 	},
 	{
 		id: "prod-0008",
@@ -135,6 +135,6 @@ export const mockProducts: Product[] = [
 		price: 330.00,
 		sku: "563_PL9TWD",
 		status: "Published",
-		createdAt: new Date()
+		createdAt: new Date("2026-03-24T19:26:30.456Z")
 	}
 ];
