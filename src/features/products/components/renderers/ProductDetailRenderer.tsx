@@ -1,8 +1,6 @@
 import { useMemo, type ReactNode } from "react";
 import type { ColDef, ICellRendererParams, IDetailCellRendererParams } from "ag-grid-enterprise";
-import { Box, Chip, Typography } from "@mui/material";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { Box, Typography } from "@mui/material";
 import type { Product } from "@features/products/models/product.model";
 import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
 import { formatDate } from "@shared/utils/formatDate";
@@ -41,17 +39,7 @@ export function ProductDetailRenderer(props: IDetailCellRendererParams<Product>)
   const detailsData: ProductDetailRow[] = [
     { label: "Category", value: product.category },
     { label: "Type", value: product.type },
-    { label: "Status", 
-      value: (
-        <Chip 
-          label={product.status} 
-          size="small" 
-          variant="outlined" 
-          icon={product.status === "Draft" ? <AccessTimeIcon /> : <CheckCircleIcon />}
-          color={product.status === "Draft" ? "warning" : "success"}
-        /> 
-      )
-    }
+    {label: "Product Number", value: product.productNumber }
   ];
 
   const stockAndInventoryData: ProductDetailRow[] = [

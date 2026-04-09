@@ -1,7 +1,7 @@
-import type { Currency } from "@features/products/models/product.model";
 import type { BaseEntity } from "@shared/types/baseEntity";
 import type { LineItem } from "./lineItem.model";
 import type { OrderStatus } from "./order.constants";
+import type { Currency } from "@features/products/models/product.constants";
 
 export interface Order extends BaseEntity {
 	customerId: string;
