@@ -1,3 +1,4 @@
+import { CustomerStatus } from "../customers/customer.model";
 import type { Order } from "./order.model";
 
 export interface OrderCustomerInfo {
@@ -5,6 +6,7 @@ export interface OrderCustomerInfo {
   name: string;
   email: string;
   avatar?: string;
+  status: CustomerStatus;
 }
 
 export interface OrderDetails extends Order {

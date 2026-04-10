@@ -19,7 +19,8 @@ function mapOrderToDetails(order: Order): OrderDetails | null {
       id: customer.id,
       name: customer.name,
       email: customer.email,
-      avatar: customer.avatar
+      avatar: customer.avatar,
+      status: customer.status
     }
   };
 }
