@@ -1,6 +1,7 @@
 import { makeRequest } from '@shared/services/makeRequest';
-import type { QueryParams } from '@shared/types/QueryParams';
 import type { Product, ProductCreate, ProductUpdate } from '../models/product.model';
+import type { QueryParams } from '@shared/types/queryParams';
+import type { ProductStatus } from '../models/product.constants';
 
 function toQuery(params?: QueryParams) {
   if (!params) return '';
@@ -33,6 +34,13 @@ export const productApi = {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
+    })
+  ),
+  patchStatus: (id: string, status: ProductStatus) => (
+    makeRequest<Product>(`/products/${id}/status`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status }),
     })
   ),
   delete: (id: string) => (

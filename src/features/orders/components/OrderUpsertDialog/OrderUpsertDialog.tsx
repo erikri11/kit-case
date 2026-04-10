@@ -274,18 +274,21 @@ export function OrderUpsertDialog({
                         }
                         disabled={isMockOrder || isOrderLocked}
                       >
-                        {products.map((product) => {
-                          const isSelectedOnAnotherLine = selectedProductIdsOnOtherLines.includes(product.id);
-                          return (
-                            <MenuItem 
-                              key={product.id} 
-                              value={product.id} 
-                              disabled={isSelectedOnAnotherLine}
-                            >
-                              {product.name}
-                            </MenuItem>
-                          );
-                        })}
+                        {products
+                          .filter((p) => p.status !== "Archived" && p.status !== "Draft")
+                          .map((p) => {
+                            const isSelectedOnAnotherLine = selectedProductIdsOnOtherLines.includes(p.id);
+                            return (
+                              <MenuItem 
+                                key={p.id} 
+                                value={p.id} 
+                                disabled={isSelectedOnAnotherLine}
+                              >
+                                {p.name}
+                              </MenuItem>
+                            );
+                          })
+                        }
                       </Select>
                     </FormControl>
                   </Grid>
@@ -348,8 +351,9 @@ export function OrderUpsertDialog({
                     >
                       <IconButton
                         aria-label="remove line item"
+                        color="error"
                         onClick={() => removeLineItem(item.id)}
-                        disabled={isMockOrder || isOrderLocked}
+                        disabled={isMockOrder || isOrderLocked || lineItems.length === 1}
                       >
                         <DeleteIcon />
                       </IconButton>

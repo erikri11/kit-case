@@ -27,7 +27,8 @@
   },
   "status": {
     "Draft": "Draft",
-    "Published": "Published"
+    "Published": "Published",
+    "Archived": "Archived"
   },
   "snackbar": {
     "addSuccess": "Product added successfully",

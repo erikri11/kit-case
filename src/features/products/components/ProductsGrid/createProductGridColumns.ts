@@ -8,23 +8,27 @@ import { ImageRenderer } from '../renderers/ImageRenderer';
 import { formatCurrency } from '@shared/utils/formatCurrency';
 import ProductStatusChipRenderer from '../renderers/ProductStatusChipRenderer';
 import { productRankStatusesCompare } from '@features/products/comperators/productRankStatusesCompare';
+import RestoreFromTrashIcon from '@mui/icons-material/RestoreFromTrash';
 
 interface ColumnArgsProps {
   t: TFunction;
   onEdit: (product: Product) => void;
   onDelete: (product: Product) => void;
+  onRestore: (product: Product) => void;
 }
 
 export function createProductGridColumns({ 
   t, 
   onEdit,
-  onDelete
+  onDelete,
+  onRestore
 }: ColumnArgsProps): ColDef<Product>[] {
 
   const editRenderer = createActionButtonRenderer<Product>({
     icon: EditIcon,
     iconButtonProps: { color: 'default' },
     title: t("common:actions.edit"),
+    isDisabled: (params) => params.data?.status === "Archived",
     onAction: onEdit
   });
 
@@ -32,21 +36,32 @@ export function createProductGridColumns({
     icon: DeleteIcon,
     iconButtonProps: { color: 'error' },
     title: t("common:actions.delete"),
+    isDisabled: (params) => params.data?.status === "Published",
+    isVisible: (params) => params.data?.status !== "Archived",
     onAction: onDelete
+  });
+
+  const restoreRenderer = createActionButtonRenderer<Product>({
+    icon: RestoreFromTrashIcon,
+    iconButtonProps: { color: "success" },
+    title: t("common:actions.restore"),
+    isDisabled: () => false,
+    isVisible: (params) => params.data?.status === "Archived",
+    onAction: onRestore
   });
 
   return [
     {
       field: "name",
       headerName: t("common:labels.name"),
-      minWidth: 180,
+      minWidth: 350,
       flex: 2,
       cellRenderer: 'agGroupCellRenderer'
     },
     {
       field: "image",
       headerName: t("common:labels.image"),
-      minWidth: 160,
+      minWidth: 150,
       flex: 1,
       cellRenderer: ImageRenderer,
       valueFormatter: () => ""
@@ -54,14 +69,14 @@ export function createProductGridColumns({
     {
       field: "quantity",
       headerName: t("common:labels.quantity"),
-      minWidth: 160,
+      minWidth: 150,
       flex: 1,
       type: "rightAligned"
     },
     {
       field: "price",
       headerName: t("common:labels.price"),
-      minWidth: 160,
+      minWidth: 150,
       flex: 1,
       type: "rightAligned",
       valueFormatter: (params) =>
@@ -70,7 +85,7 @@ export function createProductGridColumns({
     {
       field: "status",
       headerName: t("common:labels.status"),
-      minWidth: 160,
+      minWidth: 150,
       flex: 1,
       cellRenderer: ProductStatusChipRenderer,
       comparator: productRankStatusesCompare
@@ -90,6 +105,14 @@ export function createProductGridColumns({
       type: "rightAligned",
       filter: false,
       cellRenderer: deleteRenderer
+    },
+    {
+      headerName: '',
+      minWidth: 100,
+      flex: 1,
+      type: "rightAligned",
+      filter: false,
+      cellRenderer: restoreRenderer
     }
   ];
 }

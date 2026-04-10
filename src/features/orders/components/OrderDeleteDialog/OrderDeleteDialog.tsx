@@ -49,10 +49,16 @@ export function OrderDeleteDialog({
       <DialogContent>
         <Typography sx={{ mt: 1 }}>
           {t("common:labels.confirmDeleteMessage")}
-          </Typography>
-        <Typography sx={{ mt: 1, color: 'customTextGrey.main' }} variant="subtitle2">
-          {order?.name}
-          </Typography>
+        </Typography>
+        <Typography 
+          sx={{ mt: 1, color: 'customTextGrey.main' }} 
+          variant="subtitle2" 
+          component="ul"
+        >
+          {order?.lineItems.map((item) => (
+            <li key={item.productId}>{item.productName}</li>
+          ))}
+        </Typography>
       </DialogContent>
       <DialogActions>
         <Button variant="outlined" onClick={onClose}>

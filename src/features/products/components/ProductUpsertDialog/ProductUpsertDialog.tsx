@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle,FormControl,FormHelperText,Grid, InputLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle,FormControl,FormHelperText,Grid, InputLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import type { Product } from "@features/products/models/product.model";
 import { useProductUpsertDialog } from "./useProductUpsertDialog";
@@ -48,6 +48,8 @@ export function ProductUpsertDialog({
     showPriceError,
     image,
     canSubmit,
+    isPublished,
+    isArchived,
     setName,
     setProductNumber,
     setCategory,
@@ -95,6 +97,7 @@ export function ProductUpsertDialog({
                 ...prev, 
                 name: true 
               }))}
+              disabled={isArchived}
               error={showNameError}
               helperText={showNameError && nameError ? t(nameError) : ""}
             />
@@ -139,6 +142,7 @@ export function ProductUpsertDialog({
                     category: true,
                   }))
                 }
+                disabled={isPublished || isArchived}
               >
                 {PRODUCT_CATEGORIES.map((s) => (
                   <MenuItem  key={s} value={s}>
@@ -177,7 +181,7 @@ export function ProductUpsertDialog({
                     type: true
                   }))
                 }
-                disabled={!category}
+                disabled={!category || isPublished || isArchived}
               >
                 {types.map((type) => (
                   <MenuItem key={type} value={type}>
@@ -222,6 +226,7 @@ export function ProductUpsertDialog({
                     currency: true
                   }))
                 }
+                disabled={isPublished || isArchived}
               >
                 {CURRENCIES.map((s) => (
                   <MenuItem key={s} value={s}>
@@ -245,6 +250,7 @@ export function ProductUpsertDialog({
                 ...prev, 
                 price: true 
               }))}
+              disabled={isArchived}
               error={showPriceError}
               helperText={showPriceError && priceError ? t(priceError) : ""}
             />
@@ -312,6 +318,7 @@ export function ProductUpsertDialog({
                   color="error" 
                   variant="outlined" 
                   onClick={handleImageRemove}
+                  disabled={isArchived}
                 >
                   <DeleteIcon sx={{ mr: 1 }} />
                   {t("common:actions.remove")}
@@ -319,17 +326,26 @@ export function ProductUpsertDialog({
               </Stack>
             </Stack>
           )}
-          <FileDropzone
-            accept={{
-              "image/png": [],
-              "image/jpeg": [],
-              "image/gif": [],
-              "image/svg+xml": []
-            }}
-            maxFiles={1}
-            caption="(SVG, JPG, PNG or GIF - max 900x400 px)"
-            onDrop={handleImageDrop}
-          />
+          <Box
+            sx={
+              isArchived
+                ? { pointerEvents: "none", opacity: 0.5 }
+                : undefined
+            }
+          >
+            <FileDropzone
+              accept={{
+                "image/png": [],
+                "image/jpeg": [],
+                "image/gif": [],
+                "image/svg+xml": []
+              }}
+              maxFiles={1}
+              caption="(SVG, JPG, PNG or GIF - max 900x400 px)"
+              onDrop={handleImageDrop}
+              disabled={isArchived}
+            />
+          </Box>
         </Stack>
 
         <Typography variant="h4" sx={{ mb: 3 }}>
@@ -360,6 +376,7 @@ export function ProductUpsertDialog({
                 ...prev, 
                 quantity: true 
               }))}
+              disabled={isArchived}
               error={showQuantityError}
               helperText={showQuantityError && quantityError ? t(quantityError) : ""}
             />

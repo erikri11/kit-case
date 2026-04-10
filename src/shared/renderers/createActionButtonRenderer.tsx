@@ -8,6 +8,7 @@ interface ActionButtonRendererProps<T> {
   title: string;
   onAction: (row: T) => void;
   isDisabled?: (params: ICellRendererParams<T>) => boolean;
+  isVisible?: (params: ICellRendererParams<T>) => boolean;
 }
 
 export function createActionButtonRenderer<T>({   
@@ -15,12 +16,15 @@ export function createActionButtonRenderer<T>({
   iconButtonProps,
   title,
   isDisabled,
+  isVisible,
   onAction
 }: ActionButtonRendererProps<T>) {
 
   return (params: ICellRendererParams<T>) => {
     const row = params.data;
     if (!row) return null;
+
+    if (isVisible && !isVisible(params)) return null;
 
     return (
       <Box

@@ -6,6 +6,7 @@ import { createProductGridColumns } from "./createProductGridColumns";
 import { ProductDetailRenderer } from "../renderers/ProductDetailRenderer";
 import { ProductUpsertDialog } from "../ProductUpsertDialog/ProductUpsertDialog";
 import ProductDeleteDialog from "../ProductDeleteDialog/ProductDeleteDialog";
+import ProductRestoreDialog from "../ProductRestoreDialog/ProductRestoreDialog";
 
 interface ProductsGridProps {
   products: Product[];
@@ -17,11 +18,13 @@ export function ProductsGrid({ products }: ProductsGridProps) {
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [updateProduct, setUpdateProduct] = useState<Product | undefined>();
   const [deleteProduct, setDeleteProduct] = useState<Product | undefined>();
+  const [restoreProduct, setRestoreProduct] = useState<Product | undefined>();
 
   const headers = createProductGridColumns({ 
     t,
     onEdit: setUpdateProduct,
-    onDelete: setDeleteProduct
+    onDelete: setDeleteProduct,
+    onRestore: setRestoreProduct
   });
 
   return (
@@ -59,6 +62,14 @@ export function ProductsGrid({ products }: ProductsGridProps) {
           open
           product={deleteProduct}
           onClose={() => setDeleteProduct(undefined)}
+        />
+      )}
+      
+      {restoreProduct && (
+        <ProductRestoreDialog
+          open
+          product={restoreProduct}
+          onClose={() => setRestoreProduct(undefined)}
         />
       )}
     </>

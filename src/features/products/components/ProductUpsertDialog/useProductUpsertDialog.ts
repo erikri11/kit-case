@@ -58,6 +58,9 @@ export function useProductUpsertDialog({
       : null
   );
 
+  const isPublished = status === "Published";
+  const isArchived = status === "Archived";
+
   // ---------------- VALIDATION ----------------
 
   const nameError = validateName(name);
@@ -209,6 +212,8 @@ export function useProductUpsertDialog({
     showPriceError,
     image,
     canSubmit,
+    isPublished,
+    isArchived,
     setName,
     setProductNumber,
     setCategory,

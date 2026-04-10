@@ -31,7 +31,8 @@ export type Currency = typeof CURRENCIES[number];
 
 export const PRODUCT_STATUSES = [
   "Draft",
-  "Published"
+  "Published",
+  "Archived"
 ] as const;
 
 export type ProductStatus = typeof PRODUCT_STATUSES[number];

@@ -90,6 +90,7 @@
     "change": "Change",
     "remove": "Remove",
     "clickToUpload": "Click to upload",
-    "orDragAndDrop": "or drag and drop"
+    "orDragAndDrop": "or drag and drop",
+    "restore": "Restore"
   }
 }

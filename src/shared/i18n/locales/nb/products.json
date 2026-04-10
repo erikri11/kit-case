@@ -27,7 +27,8 @@
   },
   "status": {
     "Draft": "Utkast",
-    "Published": "Publisert"
+    "Published": "Publisert",
+    "Archived": "Arkivert"
   },
   "snackbar": {
     "addSuccess": "Produkt lagt til",
