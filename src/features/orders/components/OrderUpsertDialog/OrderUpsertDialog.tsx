@@ -116,7 +116,11 @@ export function OrderUpsertDialog({
                 disabled={isOrderLocked}
               >
                 {customers.map((c) => (
-                  <MenuItem key={c.id} value={c.id}>
+                  <MenuItem 
+                    key={c.id} 
+                    value={c.id} 
+                    disabled={c.status === "Blocked"}
+                  >
                     {c.name}
                   </MenuItem>
                 ))}

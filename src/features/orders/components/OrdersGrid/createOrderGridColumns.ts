@@ -26,6 +26,7 @@ export function createOrderGridColumns({
     icon: EditIcon,
     iconButtonProps: { color: 'default' },
     title: t("common:actions.edit"),
+    isDisabled: (params) => params.data?.customer?.status === "Blocked",
     onAction: onEdit
   });
 
