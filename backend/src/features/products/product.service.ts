@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { mockProducts } from "./product.mock";
-import { Currency, Product, ProductCategory, ProductCreate, ProductType } from "./product.model";
+import { Currency, Product, ProductCategory, ProductCreate, ProductStatus, ProductType } from "./product.model";
 import { generateSku } from "../../utils/generateSku";
 import { generateProductNumber } from "../../utils/generateProductNumber";
 
@@ -49,6 +49,26 @@ export function updateProduct(id: string, input: ProductCreate): Product | null 
     currency: input.currency as Currency,
     price: input.price,
     status: input.status
+  };
+
+  products[index] = updatedProduct;
+
+  return updatedProduct;
+};
+
+export function updateProductStatus(id: string, status: ProductStatus): Product | null {
+  const index = products.findIndex((x) => x.id === id);
+  if (index < 0) return null;
+
+  const currentProduct = products[index];
+
+  if (currentProduct.status === "Archived" && status !== "Draft") {
+    throw new Error("Archived products can only be restored to Draft");
+  }
+
+  const updatedProduct: Product = {
+    ...currentProduct,
+    status
   };
 
   products[index] = updatedProduct;

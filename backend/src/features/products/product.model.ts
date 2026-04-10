@@ -18,7 +18,7 @@ export interface ProductImage {
   fileName: string;
 }
 
-export type ProductStatus = "Draft" | "Published";
+export type ProductStatus = "Draft" | "Published" | "Archived";
 export type ProductCategory =  "Smartphones" | "Computers" | "Tablets";
 export type Currency = "USD" | "EUR" | "NOK";
 export type ProductType = "Flagship" | "Budget" | "Laptop" | "Desktop" | "Standard" | "Pro";

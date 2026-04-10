@@ -1,6 +1,6 @@
 import type { Product, ProductImage, ProductStatus } from "./product.model";
 
-const validStatuses: ProductStatus[] = ["Published", "Draft"];
+const validStatuses: ProductStatus[] = ["Published", "Draft", "Archived"];
 
 function isValidImage(image: unknown): image is ProductImage {
   if (!image || typeof image !== "object") return false;
@@ -51,5 +51,18 @@ export function validateUpdate(body: unknown, partial = false): string | null {
   if (currency !== undefined && typeof currency !== "string") return "Currency must be a string";
   if (price !== undefined && typeof price !== "number") return "Price must be a number";
   if (status !== undefined && !validStatuses.includes(status)) return "Invalid status";
+  return null;
+};
+
+export function validateStatusUpdate(body: unknown): string | null {
+  if (!body || typeof body !== "object") return "Invalid body";
+
+  const data = body as Partial<Pick<Product, "status">>;
+  const { status } = data;
+
+  if (!status || !validStatuses.includes(status)) {
+    return "Invalid status";
+  }
+
   return null;
 };
