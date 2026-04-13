@@ -5,6 +5,8 @@ import { mockOrders } from "./order.mock";
 import { generateOrderNumber } from "../../utils/generateOrderNumber";
 import { listCustomers } from "../customers/customer.service";
 import { createCustomerPayment, hasPaymentForInvoice, updatePaymentStatusByInvoice } from "../customers/customer.payment.service";
+import { Currency } from "../products/product.model";
+import { convertToBaseCurrency } from "../../utils/convertToBaseCurrency";
 
 let orders: Order[] = [...mockOrders];
 
@@ -64,13 +66,21 @@ export function getOrder(id: string): OrderDetails | null {
 }
 
 export function createOrder(input: OrderCreate): OrderDetails | null {
-  const totalAmount = input.lineItems.reduce((sum, item) => sum + item.totalAmount, 0);
+  const baseCurrency: Currency = "NOK";
+  
+  const totalAmount = input.lineItems.reduce((sum, item) => {
+    return sum + convertToBaseCurrency(
+      item.totalAmount,
+      item.currency,
+      baseCurrency
+    );
+  }, 0);
 
   const order: Order = {
     id: uuidv4(),
     customerId: input.customerId,
     paymentMethod: input.paymentMethod,
-    currency: input.currency,
+    currency: baseCurrency,
     totalAmount,
     status: "Pending",
     createdAt: new Date(),
@@ -90,7 +100,15 @@ export function updateOrder(id: string, input: OrderUpdate): OrderDetails | null
   const index = orders.findIndex((x) => x.id === id);
   if (index < 0) return null;
 
-  const totalAmount = input.lineItems.reduce((sum, item) => sum + item.totalAmount, 0);
+  const baseCurrency: Currency = "NOK";
+
+  const totalAmount = input.lineItems.reduce((sum, item) => {
+    return sum + convertToBaseCurrency(
+      item.totalAmount,
+      item.currency,
+      baseCurrency
+    );
+  }, 0);
 
   const updatedOrder: Order = {
     ...orders[index],
@@ -99,7 +117,8 @@ export function updateOrder(id: string, input: OrderUpdate): OrderDetails | null
     status: input.status,
     issueDate: new Date(input.issueDate),
     lineItems: input.lineItems,
-    totalAmount
+    totalAmount,
+    currency: baseCurrency
   };
 
   orders[index] = updatedOrder;

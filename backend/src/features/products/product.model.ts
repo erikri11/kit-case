@@ -20,7 +20,7 @@ export interface ProductImage {
 
 export type ProductStatus = "Draft" | "Published" | "Archived";
 export type ProductCategory =  "Smartphones" | "Computers" | "Tablets";
-export type Currency = "USD" | "EUR" | "NOK";
+export type Currency = "USD" | "NOK";
 export type ProductType = "Flagship" | "Budget" | "Laptop" | "Desktop" | "Standard" | "Pro";
 
 export type ProductCreate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "status">;

@@ -100,8 +100,9 @@ export const customerDetailsMock: CustomerDetails[] = [
     ],
     paymentSummary: {
       totalOrders: 3,
-      ordersValue: 1398.00,
-      refundsValue: 0
+      ordersValueBase: 1398.00,
+      refundsValueBase: 0,
+      baseCurrency: "NOK"
     }
   },
   {
@@ -147,8 +148,9 @@ export const customerDetailsMock: CustomerDetails[] = [
     ],
     paymentSummary: {
       totalOrders: 1,
-      ordersValue: 356.00,
-      refundsValue: 0
+      ordersValueBase: 356.00,
+      refundsValueBase: 356.00,
+      baseCurrency: "NOK"
     }
   },
   {
@@ -194,8 +196,9 @@ export const customerDetailsMock: CustomerDetails[] = [
     ],
     paymentSummary: {
       totalOrders: 1,
-      ordersValue: 155.00,
-      refundsValue: 0
+      ordersValueBase: 155.00,
+      refundsValueBase: 0,
+      baseCurrency: "NOK"
     }
   },
   {
@@ -241,8 +244,9 @@ export const customerDetailsMock: CustomerDetails[] = [
     ],
     paymentSummary: {
       totalOrders: 1,
-      ordersValue: 390.00,
-      refundsValue: 0
+      ordersValueBase: 390.00,
+      refundsValueBase: 0,
+      baseCurrency: "NOK"
     }
   },
   {
@@ -288,8 +292,9 @@ export const customerDetailsMock: CustomerDetails[] = [
     ],
     paymentSummary: {
       totalOrders: 1,
-      ordersValue: 490.00,
-      refundsValue: 0
+      ordersValueBase: 490.00,
+      refundsValueBase: 0,
+      baseCurrency: "NOK"
     }
   }
 ];

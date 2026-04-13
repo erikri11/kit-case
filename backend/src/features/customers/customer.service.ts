@@ -3,11 +3,12 @@ import type { Customer, CustomerCreate, CustomerUpdate } from "./customer.model"
 import { mockCustomers } from "./customer.mock";
 import type { CustomerDetails } from "./customer.details.model";
 import { customerDetailsMock } from "./customer.details.mock";
-import { calculatePaymentStats } from "../../utils/calculatePaymentStats";
 import { generateCustomerNumber } from "../../utils/generateCustomerNumber";
 import { listOrders } from "../orders/order.service";
-import { calculateOrderSummary } from "../../utils/calculateOrderSummary";
 import { listCustomerPaymentsByCustomerId } from "./customer.payment.service";
+import { Currency } from "../products/product.model";
+import { calculatePaymentStatsInBaseCurrency } from "../../utils/calculatePaymentStatsInBaseCurrency";
+import { calculateOrderSummaryInBaseCurrency } from "../../utils/calculateOrderSummaryInBaseCurrency";
 
 let customers: Customer[] = [...mockCustomers];
 let customerDetails: CustomerDetails[] = [...customerDetailsMock];
@@ -24,17 +25,27 @@ export function getCustomer(id: string): CustomerDetails | null {
   const customerOrders = listOrders().filter((order) => order.customerId === id);
   const customerPayments = listCustomerPaymentsByCustomerId(id);
 
-  const orderSummary = calculateOrderSummary(customerOrders);
-  const paymentStats = calculatePaymentStats(customerPayments);
+  const baseCurrency: Currency = "NOK";
+
+  const orderSummary = calculateOrderSummaryInBaseCurrency(
+    customerOrders,
+    baseCurrency
+  );
+
+  const paymentStats = calculatePaymentStatsInBaseCurrency(
+    customerPayments,
+    baseCurrency
+  );
 
   return {
     ...customer,
     orders: customerOrders,
     payments: customerPayments,
     paymentSummary: {
-      totalOrders: orderSummary.totalOrders,
-      ordersValue: orderSummary.ordersValue,
-      refundsValue: paymentStats.refundsValue
+     totalOrders: orderSummary.totalOrders,
+      ordersValueBase: orderSummary.ordersValueBase,
+      refundsValueBase: paymentStats.refundsValueBase,
+      baseCurrency
     }
   };
 };
@@ -61,8 +72,9 @@ export function createCustomer(input: CustomerCreate): Customer {
     orders: [],
     paymentSummary: {
       totalOrders: 0,
-      ordersValue: 0,
-      refundsValue: 0
+      ordersValueBase: 0,
+      refundsValueBase: 0,
+      baseCurrency: "NOK"
     }
   };
 
