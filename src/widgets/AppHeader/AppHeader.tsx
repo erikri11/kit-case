@@ -8,6 +8,7 @@ import { useUserRights } from '../../shared/context/userRights/useUserRights';
 import LanguageToggle from '@shared/components/LanguageToggle';
 import Select from '@shared/mui/Select/Select';
 import { RoleEnum } from '@shared/types/roleEnum';
+import CurrencyToggle from '@shared/components/CurrencyToggle/CurrencyToggle';
 
 interface AppHeaderProps {
   onMenuClick: () => void;
@@ -90,6 +91,7 @@ export function AppHeader(props: AppHeaderProps) {
         </Select>
         
         <LanguageToggle />
+        <CurrencyToggle />
 
         <IconButton
           aria-label="Toggle color scheme"

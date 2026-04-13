@@ -1,24 +1,36 @@
 import type { Order } from "@features/orders/models/order.model";
 import { getTotalQuantity } from "@features/orders/utils/getTotalQuantity";
 import { Box, Stack, Typography } from "@mui/material";
+import useCurrency from "@shared/context/currency/useCurrency";
+import { formatPrice } from "@shared/utils/formatPrice";
 import type { ICellRendererParams } from "ag-grid-enterprise";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
 
 export function OrderRenderer(params: ICellRendererParams<Order>) {
+  const { t, i18n } = useTranslation();
+  const { currency: displayCurrency } = useCurrency();
+
   const issueDate = params.data?.issueDate ?? new Date();
-  const currency = params.data?.currency ?? "USD";
+  const originalCurrency = params.data?.currency ?? "USD";
   const totalAmount = params.data?.totalAmount ?? 0;
-  const orderNumber = params.data?.orderNumber ?? "UNKNOWN";
+  const orderNumber = params.data?.orderNumber ?? t("common:labels.unknown");
 
   const date = dayjs(issueDate);
+  const language = i18n.language;
 
-  const formattedAmount= new Intl.NumberFormat("en-US", { 
-    style: "currency", 
-    currency 
-  }).format(totalAmount);
+  const formattedAmount = formatPrice(
+    totalAmount,
+    originalCurrency,
+    displayCurrency,
+    language
+  );
 
   const productCount = getTotalQuantity(params.data?.lineItems ?? []);
-  const productLabel = `${productCount} product${productCount === 1 ? "" : "s"}`;
+  const productLabel =
+    productCount === 1
+      ? `1 ${t("common:labels.product")}`
+      : `${productCount} ${t("common:labels.products")}`;
 
   return (
     <Stack
@@ -56,16 +68,11 @@ export function OrderRenderer(params: ICellRendererParams<Order>) {
 
       <Stack>
         <Typography color="text.secondary" variant="body2">
-          <Box component="span">
-            {orderNumber}
-          </Box>
+          <Box component="span">{orderNumber}</Box>
         </Typography>
 
         <Typography color="text.secondary" variant="body2">
-          {productLabel} •{" "}
-          <Box component="span">
-            {formattedAmount}
-          </Box>
+          {productLabel} • <Box component="span">{formattedAmount}</Box>
         </Typography>
       </Stack>
     </Stack>

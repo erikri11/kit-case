@@ -1,5 +1,8 @@
+import type { Currency } from "@features/products/models/product.constants";
+
 export interface CustomerPaymentSummary {
   totalOrders: number;
-  ordersValue: number;
-  refundsValue: number;
+  ordersValueBase: number;
+  refundsValueBase: number;
+  baseCurrency: Currency;
 }

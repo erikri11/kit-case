@@ -7,6 +7,8 @@ import { ProductDetailRenderer } from "../renderers/ProductDetailRenderer";
 import { ProductUpsertDialog } from "../ProductUpsertDialog/ProductUpsertDialog";
 import ProductDeleteDialog from "../ProductDeleteDialog/ProductDeleteDialog";
 import ProductRestoreDialog from "../ProductRestoreDialog/ProductRestoreDialog";
+import i18n from "@shared/i18n/i18n";
+import useCurrency from "@shared/context/currency/useCurrency";
 
 interface ProductsGridProps {
   products: Product[];
@@ -14,6 +16,7 @@ interface ProductsGridProps {
 
 export function ProductsGrid({ products }: ProductsGridProps) {
   const { t } = useTranslation();
+  const { currency: displayCurrency } = useCurrency();
 
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [updateProduct, setUpdateProduct] = useState<Product | undefined>();
@@ -22,6 +25,8 @@ export function ProductsGrid({ products }: ProductsGridProps) {
 
   const headers = createProductGridColumns({ 
     t,
+    language: i18n.language,
+    displayCurrency,
     onEdit: setUpdateProduct,
     onDelete: setDeleteProduct,
     onRestore: setRestoreProduct

@@ -22,7 +22,6 @@ export type ProductType = ProductTypeMap[ProductCategory];
 
 export const CURRENCIES = [
   "USD", 
-  "EUR", 
   "NOK"
 ] as const;
 

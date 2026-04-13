@@ -74,8 +74,13 @@
     "productNumber": "Product number",
     "lineItems": "Line items",
     "product": "Product",
+    "products": "Products",
     "unit": "Unit",
-    "total": "Total"
+    "total": "Total",
+    "unknown": "Unknown",
+    "Change language to": "Change language to",
+    "Norwegian": "Norwegian",
+    "English": "English"
   },
   "actions": {
     "edit": "Edit",

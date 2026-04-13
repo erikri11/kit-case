@@ -3,18 +3,20 @@ import { IconButton, Tooltip } from '@mui/material';
 import i18n from '@shared/i18n/i18n';
 
 export function LanguageToggle() {
+  const { t } = useTranslation("common");
   const { i18n: i18nInstance } = useTranslation();
-  const currentLang = i18nInstance.language?.startsWith("nb") ? "nb" : "en";
+  const currentLanguage = i18nInstance.language?.startsWith("nb") ? "nb" : "en";
+  const nextLanguage = currentLanguage === "en" ? "nb" : "en";
 
   const toggleLanguage = () => {
-    i18n.changeLanguage(currentLang === "en" ? "nb" : "en");
+    i18n.changeLanguage(nextLanguage);
   };
 
   return (
-    <Tooltip arrow title={currentLang === "en" ? "Norsk" : "English"}>
+    <Tooltip arrow title={t("Change language to") + " " + t(nextLanguage === "en" ? "English" : "Norwegian")}>
       <IconButton onClick={toggleLanguage} aria-label="Change language">
         <img
-          src={currentLang === "en" ? "/flags/no.svg" : "/flags/gb.svg"}
+          src={nextLanguage === "en" ? "/flags/gb.svg" : "/flags/no.svg"}
           alt="Language"
           width={24}
           height={24}

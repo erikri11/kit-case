@@ -3,17 +3,21 @@ import type { ColDef } from 'ag-grid-enterprise';
 import type { CustomerPayment } from '@features/customers/models/customer.payment.model';
 import { dateRenderer } from '../../../../shared/renderers/dateRenderer';
 import PaymentStatusChipRenderer from '../renderers/PaymentStatusChipRenderer';
-import { formatCurrency } from '@shared/utils/formatCurrency';
 import { customerPaymentRankStatusesCompare } from '../comparators/customerPaymentRankStatusesCompare';
+import type { Currency } from '@features/products/models/product.constants';
+import { formatPrice } from '@shared/utils/formatPrice';
 
 interface ColumnArgsProps {
   t: TFunction;
+  language: string;
+  displayCurrency: Currency;
 }
 
 export function createCustomerDetailsGridColumns({ 
-  t 
+  t,
+  language,
+  displayCurrency
 }: ColumnArgsProps): ColDef<CustomerPayment>[] {
-  
   return [
     {
       field: "amount",
@@ -22,7 +26,12 @@ export function createCustomerDetailsGridColumns({
       flex: 1,
       type: "rightAligned",
       valueFormatter: (params) =>
-        formatCurrency(params.value, params.data?.currency ?? "USD")
+        formatPrice(
+          params.value,
+          params.data?.currency ?? "USD",
+          displayCurrency,
+          language
+        )
     },
     {
       field: "invoiceId",

@@ -22,7 +22,6 @@
   },
   "currency": {
     "USD": "USD",
-    "EUR": "EUR",
     "NOK": "NOK"
   },
   "status": {

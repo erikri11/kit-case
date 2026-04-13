@@ -4,9 +4,11 @@ import { LOCKED_STATUSES, type OrderStatus } from "@features/orders/models/order
 import type { Order, OrderCreate, OrderFieldName, OrderPaymentMethod, OrderUpdate } from "@features/orders/models/order.model";
 import { createEmptyLineItem } from "@features/orders/utils/createEmptyLineItem";
 import { useProducts } from "@features/products/hooks/useProducts";
+import type { Currency } from "@features/products/models/product.constants";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { useCustomers } from "@shared/hooks/useCustomers";
 import type { Mode } from "@shared/types/mode";
+import { convertToBaseCurrency } from "@shared/utils/convertToBaseCurrency";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -57,8 +59,16 @@ export function useOrderUpsertDialog({
   const showCustomerError = !!customerError && (touched.customerId || submitted);
   const showPaymentMethodError = !!paymentMethodError && (touched.paymentMethod || submitted);
 
-  const currency = lineItems[0]?.currency ?? "USD";
-  const totalAmount = lineItems.reduce((sum, item) => sum + item.totalAmount, 0);
+  const baseCurrency: Currency = "NOK";
+
+  const totalAmount = lineItems.reduce((sum, item) => {
+    if (!item.currency) return sum;
+    return sum + convertToBaseCurrency(
+      item.totalAmount, 
+      item.currency, 
+      baseCurrency
+    );
+  }, 0);
 
   const canSubmit = 
     !customerError && 
@@ -138,7 +148,7 @@ export function useOrderUpsertDialog({
       if (mode === "add") {
         const payload: OrderCreate = {
           customerId,
-          currency,
+          currency: baseCurrency,
           totalAmount,
           issueDate,
           paymentMethod,
@@ -199,7 +209,6 @@ export function useOrderUpsertDialog({
     canSubmit,
     lineItems,
     products,
-    totalAmount,
     isMockOrder,
     isOrderLocked,
     allProductsSelected,

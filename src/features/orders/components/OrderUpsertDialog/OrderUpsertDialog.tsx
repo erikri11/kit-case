@@ -7,9 +7,13 @@ import { useOrderUpsertDialog } from "./useOrderUpsertDialog";
 import DeleteIcon from "@mui/icons-material/Delete";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import AddIcon from "@mui/icons-material/Add";
-import InputAdornment from '@mui/material/InputAdornment';
 import { ORDER_PAYMENT_METHODS, ORDER_STATUSES, type OrderStatus } from "@features/orders/models/order.constants";
 import { resolveSelectedValue } from "@features/orders/utils/resolveSelectedValue";
+import { useTranslation } from "react-i18next";
+import useCurrency from "@shared/context/currency/useCurrency";
+import { formatCurrency } from "@shared/utils/formatCurrency";
+import { convertToBaseCurrency } from "@shared/utils/convertToBaseCurrency";
+import { formatPrice } from "@shared/utils/formatPrice";
 
 export interface OrderUpsertDialogProps {
   open: boolean;
@@ -41,7 +45,6 @@ export function OrderUpsertDialog({
     canSubmit,
     lineItems,
     products,
-    totalAmount,
     isMockOrder,
     isOrderLocked,
     allProductsSelected,
@@ -63,6 +66,21 @@ export function OrderUpsertDialog({
   }); 
 
   const selectedCustomerId = resolveSelectedValue(customers, customerId);
+
+  const { i18n } = useTranslation();
+  const { currency: displayCurrency } = useCurrency();
+
+  const language = i18n.language;
+
+  const convertedOrderTotal = lineItems.reduce((sum, item) => {
+    if (!item.currency) return sum;
+    
+    return sum + convertToBaseCurrency(
+      item.totalAmount, 
+      item.currency, 
+      displayCurrency
+    );
+  }, 0);
 
   return (
     <Dialog 
@@ -312,31 +330,31 @@ export function OrderUpsertDialog({
 
                   <Grid size={{ md: 2, sm: 6, xs: 12 }}>
                     <TextField
-                      label={t("common:labels.unit")}
+                      label={`${t("common:labels.unit")} (${displayCurrency})`}
                       variant="filled"
                       fullWidth
-                      value={item.unitAmount.toFixed(2)}
+                      value={formatPrice(
+                        item.unitAmount,
+                        item.currency ?? "USD",
+                        displayCurrency,
+                        language
+                      )}
                       disabled
-                      slotProps={{
-                        input: {
-                          startAdornment: <InputAdornment position="start">$</InputAdornment>
-                        }
-                      }}
                     />
                   </Grid>
 
                   <Grid size={{ md: 2, sm: 6, xs: 12 }}>
                     <TextField
-                      label={t("common:labels.total")}
+                      label={`${t("common:labels.total")} (${displayCurrency})`}
                       variant="filled"
                       fullWidth
-                      value={item.totalAmount.toFixed(2)}
+                      value={formatPrice(
+                        item.totalAmount,
+                        item.currency ?? "USD",
+                        displayCurrency,
+                        language
+                      )}
                       disabled
-                      slotProps={{
-                        input: {
-                          startAdornment: <InputAdornment position="start">$</InputAdornment>
-                        }
-                      }}
                     />
                   </Grid>
 
@@ -371,13 +389,13 @@ export function OrderUpsertDialog({
               >
                 {t("products:actions.add")}
               </Button>
-                
             </Box>
           </Grid>
 
           <Grid size={12}>
             <Typography variant="h6" sx={{ mt: 2, textAlign: "right" }}>
-              {t("common:labels.total")}: ${totalAmount.toFixed(2)}
+              {t("common:labels.total")}:{" "}
+              {formatCurrency(convertedOrderTotal, displayCurrency, language)} {displayCurrency}
             </Typography>
           </Grid>
         </Grid>

@@ -3,8 +3,10 @@ import type { ColDef, IDetailCellRendererParams } from "ag-grid-enterprise";
 import { Box, Typography } from "@mui/material";
 import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
 import type { OrderDetails } from "@features/orders/models/order.details.model";
-import { formatCurrency } from "@shared/utils/formatCurrency";
 import type { Currency } from "@features/products/models/product.constants";
+import { useTranslation } from "react-i18next";
+import useCurrency from "@shared/context/currency/useCurrency";
+import { formatPrice } from "@shared/utils/formatPrice";
 
 interface OrderDetailRow {
   product: string;
@@ -16,9 +18,13 @@ interface OrderDetailRow {
 
 export function OrderDetailRenderer(props: IDetailCellRendererParams<OrderDetails>) {
   const order = props.data;
+  const { i18n } = useTranslation();
+  const { currency: displayCurrency } = useCurrency();
 
-  const columnDefs = useMemo<ColDef<OrderDetailRow>[]>(
-    () => [
+  const language = i18n.language;
+
+  const columnDefs = useMemo<ColDef<OrderDetailRow>[]>(() => {
+    return [
       {
         field: "product",
         headerName: "Product",
@@ -36,19 +42,31 @@ export function OrderDetailRenderer(props: IDetailCellRendererParams<OrderDetail
         headerName: "Unit Price",
         flex: 1,
         minWidth: 140,
-        valueFormatter: (params) =>
-          formatCurrency(params.value, params.data?.currency ?? "USD")
+        valueFormatter: (params) => (
+          formatPrice(
+            Number(params.value ?? 0),
+            params.data?.currency ?? "USD",
+            displayCurrency,
+            language
+          )
+        )
       },
       {
         field: "amount",
         headerName: "Amount",
         flex: 1,
         minWidth: 140,
-        valueFormatter: (params) =>
-          formatCurrency(params.value, params.data?.currency ?? "USD")
+         valueFormatter: (params) => (
+          formatPrice(
+            Number(params.value ?? 0),
+            params.data?.currency ?? "USD",
+            displayCurrency,
+            language
+          )
+        )
       }
-    ], []
-  );
+    ];
+  }, [displayCurrency, language]);
 
   if (!order) return null;
 

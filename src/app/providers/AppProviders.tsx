@@ -8,6 +8,7 @@ import { SnackbarHost } from '@shared/components/SnackbarHost';
 import { SnackbarContext } from '../../shared/context/snackbar/SnackbarContext';
 import type { SnackbarMessage } from '@shared/types/snackbar';
 import { UserRightsProvider } from '@shared/context/userRights/UserRightsProvider';
+import CurrencyProvider from '@shared/context/currency/CurrencyProvider';
 
 export interface AppProvidersProps {
   children: ReactNode;
@@ -33,9 +34,11 @@ export function AppProviders(props: AppProvidersProps) {
     >
       <UserRightsProvider>
         <SnackbarContext.Provider value={snackbarHandlingValue}>
-          <CssBaseline />
-          <SnackbarHost />
-          {props.children}
+          <CurrencyProvider>
+            <CssBaseline />
+            <SnackbarHost />
+            {props.children}
+          </CurrencyProvider>
         </SnackbarContext.Provider>
       </UserRightsProvider>
     </LocalizationProvider>

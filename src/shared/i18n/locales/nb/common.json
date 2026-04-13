@@ -42,7 +42,7 @@
     "customerId": "Kunde-ID",
     "basicDetails": "Grunnleggende detaljer",
     "payments": "Betalinger",
-    "totalOrders": "Totalt antall bestillinger",
+    "totalOrders": "Totale bestillinger",
     "ordersValue": "Bestillingsverdi",
     "refunds": "Refusjoner",
     "security": "Sikkerhet",
@@ -74,8 +74,13 @@
     "productNumber": "Produktnummer",
     "lineItems": "Bestillingslinjer",
     "product": "Produkt",
+    "products": "Produkter",
     "unit": "Enhet",
-    "total": "Totalt"
+    "total": "Totalt",
+    "unknown": "Ukjent",
+    "Change language to": "Bytt språk til",
+    "Norwegian": "Norsk",
+    "English": "Engelsk"
   },
   "actions": {
     "edit": "Rediger",

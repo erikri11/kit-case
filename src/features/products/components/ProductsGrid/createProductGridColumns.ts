@@ -5,13 +5,16 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { createActionButtonRenderer } from '@shared/renderers/createActionButtonRenderer';
 import type { Product } from '@features/products/models/product.model';
 import { ImageRenderer } from '../renderers/ImageRenderer';
-import { formatCurrency } from '@shared/utils/formatCurrency';
 import ProductStatusChipRenderer from '../renderers/ProductStatusChipRenderer';
 import { productRankStatusesCompare } from '@features/products/comperators/productRankStatusesCompare';
 import RestoreFromTrashIcon from '@mui/icons-material/RestoreFromTrash';
+import type { Currency } from '@features/products/models/product.constants';
+import { formatPrice } from '@shared/utils/formatPrice';
 
 interface ColumnArgsProps {
   t: TFunction;
+  language: string;
+  displayCurrency: Currency;
   onEdit: (product: Product) => void;
   onDelete: (product: Product) => void;
   onRestore: (product: Product) => void;
@@ -19,6 +22,8 @@ interface ColumnArgsProps {
 
 export function createProductGridColumns({ 
   t, 
+  language,
+  displayCurrency,
   onEdit,
   onDelete,
   onRestore
@@ -80,7 +85,12 @@ export function createProductGridColumns({
       flex: 1,
       type: "rightAligned",
       valueFormatter: (params) =>
-        formatCurrency(params.value, params.data?.currency ?? "USD")
+        formatPrice(
+          params.value,
+          params.data?.currency ?? "USD",
+          displayCurrency,
+          language
+        )
     },
     {
       field: "status",
