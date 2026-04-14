@@ -28,7 +28,7 @@ export function PaymentMethodRenderer(params: ICellRendererParams<Order, string>
       <Avatar
         sx={{
           bgcolor: "background.paper",
-          boxShadow: 4
+          boxShadow: 2
         }}
         src={thumbnail}
       />

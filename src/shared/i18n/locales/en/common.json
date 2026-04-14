@@ -88,7 +88,16 @@
     "currencies": {
       "NOK": "NOK",
       "USD": "USD"
-    }
+    },
+    "changeThemeTo": "Change theme to {{theme}}",
+    "themes": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "changeLanguage": "Change language",
+    "changeCurrency": "Change currency",
+    "toggleColorScheme": "Toggle color scheme"
   },
   "actions": {
     "edit": "Edit",

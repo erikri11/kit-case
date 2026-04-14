@@ -9,13 +9,14 @@ export function CurrencyToggle() {
   const nextCurrency = currency === "NOK" ? "USD" : "NOK";
 
   return (
-    <Tooltip arrow title={t("labels.changeCurrencyTo", {
+    <Tooltip arrow title={t("common:labels.changeCurrencyTo", {
       currency: t(nextCurrency === "NOK" 
-        ? "labels.currencies.NOK" 
-        : "labels.currencies.USD")
-      })}
+        ? "common:labels.currencies.NOK" 
+        : "common:labels.currencies.USD"
+      )
+    })}
     >
-      <IconButton onClick={toggleCurrency} aria-label="Change currency">
+      <IconButton onClick={toggleCurrency} aria-label={t("common:labels.changeCurrency")}>
         <img
           src={currency === "NOK" ? "/flags/us.svg" : "/flags/no.svg"}
           alt="Currency"

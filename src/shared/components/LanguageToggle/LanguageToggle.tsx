@@ -12,13 +12,13 @@ export function LanguageToggle() {
   };
 
   return (
-    <Tooltip arrow title={t("labels.changeLanguageTo", {
+    <Tooltip arrow title={t("common:labels.changeLanguageTo", {
       language: t(nextLanguage === "en" 
-        ? "labels.languages.english" 
-        : "labels.languages.norwegian")
+        ? "common:labels.languages.english" 
+        : "common:labels.languages.norwegian")
       })}
     >
-      <IconButton onClick={toggleLanguage} aria-label="Change language">
+      <IconButton onClick={toggleLanguage} aria-label={t("common:labels.changeLanguage")}>
         <img
           src={nextLanguage === "en" ? "/flags/gb.svg" : "/flags/no.svg"}
           alt="Language"

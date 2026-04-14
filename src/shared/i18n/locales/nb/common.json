@@ -88,7 +88,16 @@
     "currencies": {
       "NOK": "NOK",
       "USD": "USD"
-    }
+    },
+    "changeThemeTo": "Bytt tema til {{theme}}",
+    "themes": {
+      "light": "Lys",
+      "dark": "Mørk",
+      "system": "System"
+    },
+    "changeLanguage": "Bytt språk",
+    "changeCurrency": "Bytt valuta",
+    "toggleColorScheme": "Bytt fargeskjema"
   },
   "actions": {
     "edit": "Rediger",
