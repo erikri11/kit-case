@@ -78,9 +78,17 @@
     "unit": "Enhet",
     "total": "Totalt",
     "unknown": "Ukjent",
-    "Change language to": "Bytt språk til",
-    "Norwegian": "Norsk",
-    "English": "Engelsk"
+    "changeLanguageTo": "Bytt språk til {{language}}",
+    "languages": {
+      "norwegian": "Norsk",
+      "english": "Engelsk"
+    },
+    "role": "Rolle",
+    "changeCurrencyTo": "Bytt valuta til {{currency}}",
+    "currencies": {
+      "NOK": "NOK",
+      "USD": "USD"
+    }
   },
   "actions": {
     "edit": "Rediger",

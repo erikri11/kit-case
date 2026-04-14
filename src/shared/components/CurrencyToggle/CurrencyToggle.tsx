@@ -1,12 +1,20 @@
 import { IconButton, Tooltip } from "@mui/material";
 import useCurrency from "@shared/context/currency/useCurrency";
+import { useTranslation } from "react-i18next";
 
 export function CurrencyToggle() {
+  const { t } = useTranslation("common");
   const { currency, toggleCurrency } = useCurrency();
+
   const nextCurrency = currency === "NOK" ? "USD" : "NOK";
 
   return (
-    <Tooltip arrow title={`Change currency to ${nextCurrency}`}>
+    <Tooltip arrow title={t("labels.changeCurrencyTo", {
+      currency: t(nextCurrency === "NOK" 
+        ? "labels.currencies.NOK" 
+        : "labels.currencies.USD")
+      })}
+    >
       <IconButton onClick={toggleCurrency} aria-label="Change currency">
         <img
           src={currency === "NOK" ? "/flags/us.svg" : "/flags/no.svg"}

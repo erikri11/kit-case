@@ -1,14 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { AppBar, IconButton, MenuItem, Toolbar, Typography, type SelectChangeEvent } from '@mui/material';
-import { useColorScheme } from '@mui/material/styles';
+import { AppBar, FormControl, IconButton, InputLabel, MenuItem, Select, Toolbar, Typography, type SelectChangeEvent } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Brightness4, Brightness7, BrightnessAuto } from '@mui/icons-material';
 import { AppBarLogo } from './AppBarLogo';
 import { useUserRights } from '../../shared/context/userRights/useUserRights';
-import LanguageToggle from '@shared/components/LanguageToggle';
-import Select from '@shared/mui/Select/Select';
+import LanguageToggle from '@shared/components/LanguageToggle/LanguageToggle';
 import { RoleEnum } from '@shared/types/roleEnum';
 import CurrencyToggle from '@shared/components/CurrencyToggle/CurrencyToggle';
+import { ColorSchemeToggle } from '@shared/components/ColorSchemeToggle/ColorSchemeToggle';
 
 interface AppHeaderProps {
   onMenuClick: () => void;
@@ -17,31 +15,27 @@ interface AppHeaderProps {
 export function AppHeader(props: AppHeaderProps) {
   const { t } = useTranslation("common"); 
   const { role, setRole } = useUserRights();
-  const { mode, systemMode, setMode } = useColorScheme();
-  if (!mode) return null;
-
-  const effectiveMode =
-    mode === "system" ? systemMode : mode;
-
-  const handleToggle = () => {
-    if (mode === "system") {
-      setMode("dark");
-    } else if (mode === "dark") {
-      setMode("light");
-    } else {
-      setMode("system");
-    }
-  };
-
-  const renderIcon = () => {
-    if (mode === "system") return <BrightnessAuto />;
-    return effectiveMode === "dark"
-      ? <Brightness7 />
-      : <Brightness4 />;
-  };
 
   const handleRoleChange = (e: SelectChangeEvent) => {
-    setRole(e.target.value as unknown as RoleEnum);
+    setRole(e.target.value as RoleEnum);
+  };
+
+  const labelSx = {
+    color: "#fff",
+    "&.Mui-focused": { color: "#fff" },
+    "&.MuiFormLabel-filled": { color: "#fff" },
+    "&.MuiInputLabel-shrink": { color: "#fff" },
+  };
+
+  const selectSx = {
+    backgroundColor: "rgba(255, 255, 255, 0.12)",
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.18)",
+    },
+    color: "#fff",
+    "& .MuiSvgIcon-root": {
+      color: "inherit",
+    }
   };
 
   return (
@@ -69,38 +63,32 @@ export function AppHeader(props: AppHeaderProps) {
           Demo Soft
         </Typography>
 
-        <Select
-          aria-label="Select role"
-          variant="filled"
-          size="small"
-          value={role}
-          onChange={handleRoleChange}
-          sx={{ 
-            mr: 2, 
-            minWidth: 140, 
-            display: { xs: "none", sm: "flex" },
-            backgroundColor: "rgba(255, 255, 255, 0.15)",
-            color: "inherit",
-            "& .MuiSvgIcon-root": {
-              color: "inherit",
-            }
-          }}
+        <FormControl 
+          variant="filled" 
+          size="small" 
+          sx={{ mr: 2, minWidth: 140, display: { xs: "none", sm: "flex" } }}
         >
-          <MenuItem value={RoleEnum.USER}>{t("common:labels.user")}</MenuItem>
-          <MenuItem value={RoleEnum.ADMIN}>{t("common:labels.administrator")}</MenuItem>
-        </Select>
+          <InputLabel 
+            id="role-select-label"
+            sx={labelSx}
+          >
+            {t("common:labels.role")}
+          </InputLabel>
+          <Select
+            labelId="role-select-label"
+            aria-label="Select role"
+            value={role}
+            onChange={handleRoleChange}
+            sx={selectSx}
+          >
+            <MenuItem value={RoleEnum.USER}>{t("common:labels.user")}</MenuItem>
+            <MenuItem value={RoleEnum.ADMIN}>{t("common:labels.administrator")}</MenuItem>
+          </Select>
+        </FormControl>
         
         <LanguageToggle />
         <CurrencyToggle />
-
-        <IconButton
-          aria-label="Toggle color scheme"
-          color="inherit"
-          onClick={handleToggle}
-          sx={{ ml: 1 }}
-        >
-          {renderIcon()}
-        </IconButton>
+        <ColorSchemeToggle />
       </Toolbar>
     </AppBar>
   );

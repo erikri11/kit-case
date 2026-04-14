@@ -4,7 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { enUS, nb } from 'date-fns/locale';
 import { useTranslation } from 'react-i18next';
-import { SnackbarHost } from '@shared/components/SnackbarHost';
+import { SnackbarHost } from '@shared/components/SnackbarHost/SnackbarHost';
 import { SnackbarContext } from '../../shared/context/snackbar/SnackbarContext';
 import type { SnackbarMessage } from '@shared/types/snackbar';
 import { UserRightsProvider } from '@shared/context/userRights/UserRightsProvider';

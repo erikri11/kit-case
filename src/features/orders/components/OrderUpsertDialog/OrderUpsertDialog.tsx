@@ -73,7 +73,7 @@ export function OrderUpsertDialog({
       open={open} 
       onClose={onClose} 
       fullWidth 
-      maxWidth="md"
+      maxWidth="lg"
     >
       <DialogTitle>
         {mode === "add" ? t("orders:actions.add") : t("orders:actions.edit")}
@@ -94,7 +94,11 @@ export function OrderUpsertDialog({
 
         <Grid container spacing={2}>
           <Grid size={{ md: 5, sm: 6, xs: 12 }}>
-            <FormControl variant="filled" fullWidth error={showCustomerError}>
+            <FormControl 
+              variant="filled" 
+              fullWidth 
+              error={showCustomerError}
+            >
               <InputLabel>{t("common:labels.customer")}</InputLabel>
               <Select
                 value={selectedCustomerId}
@@ -279,14 +283,16 @@ export function OrderUpsertDialog({
                         disabled={isMockOrder || isOrderLocked}
                       >
                         {products
-                          .filter((p) => p.status !== "Archived" && p.status !== "Draft")
+                          .filter((p) => 
+                            p.status !== "Archived" && 
+                            p.status !== "Draft" &&
+                            !selectedProductIdsOnOtherLines.includes(p.id)
+                          )
                           .map((p) => {
-                            const isSelectedOnAnotherLine = selectedProductIdsOnOtherLines.includes(p.id);
                             return (
                               <MenuItem 
                                 key={p.id} 
                                 value={p.id} 
-                                disabled={isSelectedOnAnotherLine}
                               >
                                 {p.name}
                               </MenuItem>

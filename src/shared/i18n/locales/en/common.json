@@ -78,9 +78,17 @@
     "unit": "Unit",
     "total": "Total",
     "unknown": "Unknown",
-    "Change language to": "Change language to",
-    "Norwegian": "Norwegian",
-    "English": "English"
+    "changeLanguageTo": "Change language to {{language}}",
+    "languages": {
+      "norwegian": "Norwegian",
+      "english": "English"
+    },
+    "role": "Role",
+    "changeCurrencyTo": "Change currency to {{currency}}",
+    "currencies": {
+      "NOK": "NOK",
+      "USD": "USD"
+    }
   },
   "actions": {
     "edit": "Edit",
