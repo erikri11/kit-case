@@ -101,26 +101,26 @@ export function createProductGridColumns({
       comparator: productRankStatusesCompare
     },
     {
-      headerName: '',
+      headerName: t("common:actions.edit"),
       minWidth: 100,
       flex: 1,
-      type: "rightAligned",
+      headerClass: "ag-header-center",
       filter: false,
       cellRenderer: editRenderer
     },
     {
-      headerName: '',
+      headerName: t("common:actions.delete"),
       minWidth: 100,
       flex: 1,
-      type: "rightAligned",
+      headerClass: "ag-header-center",
       filter: false,
       cellRenderer: deleteRenderer
     },
     {
-      headerName: '',
+      headerName: t("common:actions.restore"),
       minWidth: 100,
       flex: 1,
-      type: "rightAligned",
+      headerClass: "ag-header-center",
       filter: false,
       cellRenderer: restoreRenderer
     }

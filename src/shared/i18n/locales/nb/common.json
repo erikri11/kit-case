@@ -104,6 +104,7 @@
     "remove": "Fjern",
     "clickToUpload": "Klikk for å laste opp",
     "orDragAndDrop": "eller dra og slipp",
-    "restore": "Gjenopprett"
+    "restore": "Gjenopprett",
+    "details": "Detaljer"
   }
 }

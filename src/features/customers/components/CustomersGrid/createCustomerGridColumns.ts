@@ -84,23 +84,23 @@ export function createCustomerGridColumns({
       cellRenderer: dateRenderer
     },
     {
-      headerName: '',
+      headerName: t("common:actions.edit"),
       minWidth: 100,
       flex: 1,
-      type: "rightAligned",
+      headerClass: "ag-header-center",
       filter: false,
       cellRenderer: editRenderer
     },
     {
-      headerName: '',
+      headerName: t("common:actions.delete"),
       minWidth: 100,
       flex: 1,
-      type: "rightAligned",
+      headerClass: "ag-header-center",
       filter: false,
       cellRenderer: deleteRenderer
     },
     {
-      headerName: '',
+      headerName: t("common:actions.details"),
       minWidth: 100,
       flex: 1,
       type: "rightAligned",

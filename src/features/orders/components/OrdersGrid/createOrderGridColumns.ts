@@ -73,18 +73,18 @@ export function createOrderGridColumns({
       comparator: orderRankStatusesCompare
     },
     {
-      headerName: '',
+      headerName: t("common:actions.edit"),
       minWidth: 100,
       flex: 1,
-      type: "rightAligned",
+      headerClass: "ag-header-center",
       filter: false,
       cellRenderer: editRenderer
     },
     {
-      headerName: '',
+      headerName: t("common:actions.delete"),
       minWidth: 100,
       flex: 1,
-      type: "rightAligned",
+      headerClass: "ag-header-center",
       filter: false,
       cellRenderer: deleteRenderer
     }
