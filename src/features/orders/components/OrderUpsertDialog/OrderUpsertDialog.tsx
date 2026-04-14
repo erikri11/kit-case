@@ -10,9 +10,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { ORDER_PAYMENT_METHODS, ORDER_STATUSES, type OrderStatus } from "@features/orders/models/order.constants";
 import { resolveSelectedValue } from "@features/orders/utils/resolveSelectedValue";
 import { useTranslation } from "react-i18next";
-import useCurrency from "@shared/context/currency/useCurrency";
 import { formatCurrency } from "@shared/utils/formatCurrency";
-import { convertToBaseCurrency } from "@shared/utils/convertToBaseCurrency";
 import { formatPrice } from "@shared/utils/formatPrice";
 
 export interface OrderUpsertDialogProps {
@@ -34,7 +32,6 @@ export function OrderUpsertDialog({
   const {
     t,
     customers,
-    customerId,
     issueDate,
     paymentMethod,
     status,
@@ -48,6 +45,9 @@ export function OrderUpsertDialog({
     isMockOrder,
     isOrderLocked,
     allProductsSelected,
+    selectedCustomerId,
+    convertedOrderTotal,
+    displayCurrency,
     addLineItem,
     removeLineItem,
     updateLineItemProduct,
@@ -65,22 +65,8 @@ export function OrderUpsertDialog({
     onClose
   }); 
 
-  const selectedCustomerId = resolveSelectedValue(customers, customerId);
-
   const { i18n } = useTranslation();
-  const { currency: displayCurrency } = useCurrency();
-
   const language = i18n.language;
-
-  const convertedOrderTotal = lineItems.reduce((sum, item) => {
-    if (!item.currency) return sum;
-    
-    return sum + convertToBaseCurrency(
-      item.totalAmount, 
-      item.currency, 
-      displayCurrency
-    );
-  }, 0);
 
   return (
     <Dialog 

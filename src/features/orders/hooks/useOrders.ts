@@ -18,6 +18,5 @@ export function useOrders() {
       loadOrders();
     }, []);
 
-
   return orders;
 }

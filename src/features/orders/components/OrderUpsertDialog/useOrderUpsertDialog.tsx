@@ -1,14 +1,15 @@
 import { orderApi } from "@features/orders/api/orderApi";
 import type { LineItem } from "@features/orders/models/lineItem.model";
-import { LOCKED_STATUSES, type OrderStatus } from "@features/orders/models/order.constants";
+import { BASE_CURRENCY, LOCKED_STATUSES, type OrderStatus } from "@features/orders/models/order.constants";
 import type { Order, OrderCreate, OrderFieldName, OrderPaymentMethod, OrderUpdate } from "@features/orders/models/order.model";
+import { calculateOrderTotal } from "@features/orders/utils/calculateOrderTotal";
 import { createEmptyLineItem } from "@features/orders/utils/createEmptyLineItem";
+import { resolveSelectedValue } from "@features/orders/utils/resolveSelectedValue";
 import { useProducts } from "@features/products/hooks/useProducts";
-import type { Currency } from "@features/products/models/product.constants";
+import useCurrency from "@shared/context/currency/useCurrency";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { useCustomers } from "@shared/hooks/useCustomers";
 import type { Mode } from "@shared/types/mode";
-import { convertToBaseCurrency } from "@shared/utils/convertToBaseCurrency";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -30,12 +31,13 @@ export function useOrderUpsertDialog({
   const { setSnackbarMessage } = useSnackbar();
   const customers = useCustomers();
   const products = useProducts();
+  const { currency: displayCurrency } = useCurrency();
 
   const [customerIdOverride, setCustomerIdOverride] = useState<string | undefined>(undefined);
   const customerId = customerIdOverride ?? initialOrder?.customerId ?? "";
   const [status, setStatus] = useState<OrderStatus>(initialOrder?.status ?? "Pending");
   const [submitted, setSubmitted] = useState(false);
-  
+
   const [issueDate, setIssueDate] = useState<Date>(
     initialOrder?.issueDate ? new Date(initialOrder.issueDate) : new Date()
   );
@@ -59,16 +61,10 @@ export function useOrderUpsertDialog({
   const showCustomerError = !!customerError && (touched.customerId || submitted);
   const showPaymentMethodError = !!paymentMethodError && (touched.paymentMethod || submitted);
 
-  const baseCurrency: Currency = "NOK";
-
-  const totalAmount = lineItems.reduce((sum, item) => {
-    if (!item.currency) return sum;
-    return sum + convertToBaseCurrency(
-      item.totalAmount, 
-      item.currency, 
-      baseCurrency
-    );
-  }, 0);
+  const selectedCustomerId = resolveSelectedValue(customers, customerId);
+  
+  const totalAmount = calculateOrderTotal(lineItems, BASE_CURRENCY);
+  const convertedOrderTotal = calculateOrderTotal(lineItems, displayCurrency);
 
   const canSubmit = 
     !customerError && 
@@ -148,7 +144,7 @@ export function useOrderUpsertDialog({
       if (mode === "add") {
         const payload: OrderCreate = {
           customerId,
-          currency: baseCurrency,
+          currency: BASE_CURRENCY,
           totalAmount,
           issueDate,
           paymentMethod,
@@ -198,7 +194,6 @@ export function useOrderUpsertDialog({
   return {
     t,
     customers,
-    customerId,
     issueDate,
     paymentMethod,
     status,
@@ -212,6 +207,9 @@ export function useOrderUpsertDialog({
     isMockOrder,
     isOrderLocked,
     allProductsSelected,
+    selectedCustomerId,
+    convertedOrderTotal,
+    displayCurrency,
     addLineItem,
     removeLineItem,
     updateLineItemProduct,

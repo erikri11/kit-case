@@ -17,10 +17,10 @@ interface OrderDetailRow {
 }
 
 export function OrderDetailRenderer(props: IDetailCellRendererParams<OrderDetails>) {
-  const order = props.data;
   const { i18n } = useTranslation();
   const { currency: displayCurrency } = useCurrency();
 
+  const order = props.data;
   const language = i18n.language;
 
   const columnDefs = useMemo<ColDef<OrderDetailRow>[]>(() => {

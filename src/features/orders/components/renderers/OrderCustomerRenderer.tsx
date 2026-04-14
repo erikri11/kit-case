@@ -3,9 +3,7 @@ import { Avatar, Stack, Typography } from "@mui/material";
 import type { OrderDetails } from "@features/orders/models/order.details.model";
 import { resolveAvatarSrc } from "@features/customers/utils/resolveAvatarSrc";
 
-export function OrderCustomerRenderer(
-  props: ICellRendererParams<OrderDetails>
-) {
+export function OrderCustomerRenderer(props: ICellRendererParams<OrderDetails>) {
   const customer = props.data?.customer;
 
   if (!customer) return null;

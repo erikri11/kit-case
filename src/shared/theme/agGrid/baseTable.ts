@@ -11,10 +11,9 @@ export function baseTableTheme(mode: "light" | "dark") {
     rowBorder: true,
     columnBorder: true,
     fontFamily: "Lato, sans-serif",
-    headerTextColor: mode === "dark" ? "#FFF" : "#000",
+    headerTextColor: mode === "dark" ? "#fff" : "#000",
     rowHoverColor: mode === "dark" ? "#333" : "#f5f5f5",
   });
 
   return theme;
 }
-

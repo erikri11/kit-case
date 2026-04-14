@@ -4,7 +4,7 @@ import type { Mode } from "@shared/types/mode";
 import { AvatarUpload } from "../AvatarUpload/AvatarUpload";
 import { PhoneMaskInput } from "../PhoneMaskInput/PhoneMaskInput";
 import { useCustomerUpsertDialog } from "./useCustomerUpsertDialog";
-import { CUSTOMER_STATUSES } from "@features/customers/models/customer.constants";
+import { CUSTOMER_QUOTAS, CUSTOMER_STATUSES } from "@features/customers/models/customer.constants";
 
 export interface CustomerUpsertDialogProps {
   open: boolean;
@@ -178,9 +178,11 @@ export function CustomerUpsertDialog({
                     onChange={(e) => setQuota(e.target.value)}
                     renderValue={(value) => `${value}%`}
                   >
-                    <MenuItem value={0}>0%</MenuItem>
-                    <MenuItem value={50}>50%</MenuItem>
-                    <MenuItem value={100}>100%</MenuItem>
+                    {CUSTOMER_QUOTAS.map((q) => (
+                      <MenuItem key={q} value={q}>
+                        {q}%
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </Grid>

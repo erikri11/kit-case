@@ -7,8 +7,8 @@ import { createActionButtonRenderer } from '@shared/renderers/createActionButton
 import { dateRenderer } from '@shared/renderers/dateRenderer';
 import { TaskStatusChipRenderer } from '../renderers/TaskStatusChipRenderer';
 import { PriorityChipRenderer } from '../renderers/PriorityChipRenderer';
-import { taskRankStatusesCompare } from '@features/tasks/comparators/taskRankStatusesCompare';
-import { taskPriorityStatusesCompare } from '@features/tasks/comparators/taskPriorityStatusesRankCompare';
+import { taskPriorityStatusesCompare } from '../comparators/taskPriorityStatusesRankCompare';
+import { taskRankStatusesCompare } from '../comparators/taskRankStatusesCompare';
 
 interface ColumnArgsProps {
   t: TFunction;

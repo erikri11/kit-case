@@ -18,4 +18,3 @@ declare module "@mui/material/Typography" {
     dialogTitle: true;
   }
 }
-
