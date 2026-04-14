@@ -6,7 +6,7 @@ export function updateStatus(req: Request, res: Response) {
   const { invoiceId, status } = req.body as {
     invoiceId?: string;
     status?: PaymentStatus;
-  };
+  }
 
   if (!invoiceId || !status) {
     return res.status(400).json({ error: "Missing invoiceId or status" });

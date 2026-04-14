@@ -5,8 +5,8 @@ import { mockOrders } from "./order.mock";
 import { generateOrderNumber } from "../../utils/generateOrderNumber";
 import { listCustomers } from "../customers/customer.service";
 import { createCustomerPayment, hasPaymentForInvoice, updatePaymentStatusByInvoice } from "../customers/customer.payment.service";
-import { Currency } from "../products/product.model";
 import { convertToBaseCurrency } from "../../utils/convertToBaseCurrency";
+import { BASE_CURRENCY } from "../../shared/models/constants/currency.constants";
 
 let orders: Order[] = [...mockOrders];
 
@@ -25,7 +25,7 @@ function mapOrderToDetails(order: Order): OrderDetails | null {
       status: customer.status
     }
   };
-}
+};
 
 function syncPaymentWithOrder(order: Order) {
   const paymentExists = hasPaymentForInvoice(order.orderNumber);
@@ -50,29 +50,29 @@ function syncPaymentWithOrder(order: Order) {
   if (order.status === "Completed" && paymentExists) {
     updatePaymentStatusByInvoice(order.orderNumber, "Completed");
   }
-}
+};
 
 export function listOrders(): OrderDetails[] {
   return orders
     .map(mapOrderToDetails)
     .filter((x): x is OrderDetails => x !== null);
-}
+};
 
 export function getOrder(id: string): OrderDetails | null {
   const order = orders.find((x) => x.id === id);
   if (!order) return null;
 
   return mapOrderToDetails(order);
-}
+};
 
 export function createOrder(input: OrderCreate): OrderDetails | null {
-  const baseCurrency: Currency = "NOK";
+  
   
   const totalAmount = input.lineItems.reduce((sum, item) => {
     return sum + convertToBaseCurrency(
       item.totalAmount,
       item.currency,
-      baseCurrency
+      BASE_CURRENCY
     );
   }, 0);
 
@@ -80,7 +80,7 @@ export function createOrder(input: OrderCreate): OrderDetails | null {
     id: uuidv4(),
     customerId: input.customerId,
     paymentMethod: input.paymentMethod,
-    currency: baseCurrency,
+    currency: BASE_CURRENCY,
     totalAmount,
     status: "Pending",
     createdAt: new Date(),
@@ -100,13 +100,11 @@ export function updateOrder(id: string, input: OrderUpdate): OrderDetails | null
   const index = orders.findIndex((x) => x.id === id);
   if (index < 0) return null;
 
-  const baseCurrency: Currency = "NOK";
-
   const totalAmount = input.lineItems.reduce((sum, item) => {
     return sum + convertToBaseCurrency(
       item.totalAmount,
       item.currency,
-      baseCurrency
+      BASE_CURRENCY
     );
   }, 0);
 
@@ -118,7 +116,7 @@ export function updateOrder(id: string, input: OrderUpdate): OrderDetails | null
     issueDate: new Date(input.issueDate),
     lineItems: input.lineItems,
     totalAmount,
-    currency: baseCurrency
+    currency: BASE_CURRENCY
   };
 
   orders[index] = updatedOrder;

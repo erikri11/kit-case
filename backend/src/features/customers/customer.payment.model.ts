@@ -1,4 +1,4 @@
-import { BaseEntity } from "../../shared/types/BaseEntity";
+import { BaseEntity } from "../../shared/models/baseEntity.model";
 import { Currency } from "../products/product.model";
 
 export interface CustomerPayment extends BaseEntity {

@@ -1,4 +1,4 @@
-import { BaseEntity } from "../../shared/types/BaseEntity";
+import { BaseEntity } from "../../shared/models/baseEntity.model";
 
 export interface Customer extends BaseEntity {
 	customerNumber: string;
