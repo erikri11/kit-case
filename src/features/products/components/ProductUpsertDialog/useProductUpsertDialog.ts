@@ -44,8 +44,7 @@ export function useProductUpsertDialog({
     type: false, 
     quantity: false, 
     currency: false, 
-    price: false,
-    status: false 
+    price: false
   });
 
   const [image, setImage] = useState<ProductImageState | null>(
@@ -77,13 +76,15 @@ export function useProductUpsertDialog({
   const showCurrencyError = !!currencyError && (touched.currency || submitted);
   const showPriceError = !!priceError && (touched.price || submitted);
 
-   const canSubmit = 
-    !nameError && 
-    !categoryError && 
-    !typeError && 
-    !quantityError && 
-    !currencyError && 
-    !priceError;
+  const hasValidationErrors =
+    !!nameError ||
+    !!categoryError ||
+    !!typeError ||
+    !!quantityError ||
+    !!currencyError ||
+    !!priceError;
+
+const canSubmit = !hasValidationErrors;
 
   // ---------------- SUBMIT ----------------
 
@@ -146,7 +147,7 @@ export function useProductUpsertDialog({
       onClose();
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error("Error updating product:", errorMessage);
+      console.error(`Error ${mode === "add" ? "adding" : "updating"} product:`, errorMessage);
 
       setSnackbarMessage({
       content:

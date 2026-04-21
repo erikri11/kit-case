@@ -22,4 +22,4 @@ export interface ProductImage {
 export type ProductCreate = Pick<Product, "name" | "image" | "category" | "type" | "quantity" | "currency" | "price" | "status">;
 export type ProductUpdate = ProductCreate;
 
-export type ProductFieldName = keyof Omit<Product, "id" | "productNumber" | "sku" | "createdAt">;
+export type ProductFieldName = keyof Omit<Product, "id" | "productNumber" | "sku" | "createdAt"| "status">;
