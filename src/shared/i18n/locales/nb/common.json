@@ -97,7 +97,9 @@
     },
     "changeLanguage": "Bytt språk",
     "changeCurrency": "Bytt valuta",
-    "toggleColorScheme": "Bytt fargeskjema"
+    "toggleColorScheme": "Bytt fargeskjema",
+    "confirmRestore": "Bekreft gjenoppretting",
+    "confirmRestoreMessage": "Er du sikker på at du vil gjenopprette dette elementet?"
   },
   "actions": {
     "edit": "Rediger",

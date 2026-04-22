@@ -35,6 +35,8 @@
     "deleteSuccess": "Product deleted successfully",
     "addError": "Failed to add product",
     "updateError": "Failed to update product",
-    "deleteError": "Failed to delete product"
+    "deleteError": "Failed to delete product",
+    "restoreSuccess": "Product restored successfully",
+    "restoreError": "Failed to restore product"
   }
 }

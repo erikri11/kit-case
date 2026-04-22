@@ -22,54 +22,22 @@ export function ProductUpsertDialog({
   productId,
   onClose
 }: ProductUpsertDialogProps) {
-
+  
   const {
     t,
-    name,
-    productNumber,
-    category,
-    type,
-    quantity,
-    currency,
-    price,
-    sku,
-    status,
-    nameError,
-    categoryError,
-    typeError,
-    quantityError,
-    currencyError,
-    priceError,
-    showNameError,
-    showCategoryError,
-    showTypeError,
-    showQuantityError,
-    showCurrencyError,
-    showPriceError,
+    form,
+    errors,
+    flags,
     image,
-    canSubmit,
-    isPublished,
-    isArchived,
-    setName,
-    setProductNumber,
-    setCategory,
-    setType,
-    setQuantity,
-    setCurrency,
-    setPrice,
-    setStatus,
-    setTouched,
-    handleUpsertProduct,
-    handleImageDrop,
-    handleImageRemove
+    actions
   } = useProductUpsertDialog({
-    mode, 
+    mode,
     initialProduct,
-     productId, 
-     onClose
+    productId,
+    onClose
   });
 
-  const types = category ? PRODUCT_TYPES[category] : [];
+  const types = form.category ? PRODUCT_TYPES[form.category] : [];
 
   return (
     <Dialog 
@@ -91,15 +59,15 @@ export function ProductUpsertDialog({
               label={t("common:labels.productName")}
               variant="filled" 
               fullWidth
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              onBlur={() => setTouched((prev) => ({ 
+              value={form.name}
+              onChange={(e) => actions.setName(e.target.value)}
+              onBlur={() => actions.setTouched((prev) => ({ 
                 ...prev, 
                 name: true 
               }))}
-              disabled={isArchived}
-              error={showNameError}
-              helperText={showNameError && nameError ? t(nameError) : ""}
+              disabled={flags.isArchived}
+              error={errors.showNameError}
+              helperText={errors.showNameError && errors.nameError ? t(errors.nameError) : ""}
             />
           </Grid>
           {mode === 'edit' && (
@@ -109,8 +77,7 @@ export function ProductUpsertDialog({
                   label={t("common:labels.productNumber")}
                   variant="filled"
                   fullWidth
-                  value={productNumber}
-                  onChange={(e) => setProductNumber(e.target.value)}
+                  value={form.productNumber}
                   disabled
                 />
               </Grid>
@@ -120,29 +87,29 @@ export function ProductUpsertDialog({
             <FormControl
               variant="filled"
               fullWidth
-              error={showCategoryError}
+              error={errors.showCategoryError}
             >
               <InputLabel>{t("common:labels.category")}</InputLabel>
               <Select
-                value={category}
+                value={form.category}
                 label={t("common:labels.category")}
                 displayEmpty
                 renderValue={(value) => (value ? t(`products:category.${value}`) : "")}
                 onChange={(e) => {
-                  setCategory(e.target.value as ProductCategory | "");
-                  setType("");
-                  setTouched((prev) => ({
+                  actions.setCategory(e.target.value as ProductCategory | "");
+                  actions.setType("");
+                  actions.setTouched((prev) => ({
                     ...prev,
                     category: true,
                   }));
                 }}
                 onClose={() =>
-                  setTouched((prev) => ({
+                  actions.setTouched((prev) => ({
                     ...prev,
                     category: true,
                   }))
                 }
-                disabled={isPublished || isArchived}
+                disabled={flags.isPublished || flags.isArchived}
               >
                 {PRODUCT_CATEGORIES.map((s) => (
                   <MenuItem  key={s} value={s}>
@@ -150,7 +117,7 @@ export function ProductUpsertDialog({
                   </MenuItem>
                 ))}
               </Select>
-              <FormHelperText>{showCategoryError && categoryError ? t(categoryError) : ""}</FormHelperText>
+              <FormHelperText>{errors.showCategoryError && errors.categoryError ? t(errors.categoryError) : ""}</FormHelperText>
             </FormControl>
           </Grid>
 
@@ -158,30 +125,30 @@ export function ProductUpsertDialog({
             <FormControl
               variant="filled"
               fullWidth
-              error={showTypeError}
+              error={errors.showTypeError}
             >
               <InputLabel>{t("common:labels.type")}</InputLabel>
               <Select
-                value={type}
+                value={form.type}
                 label={t("common:labels.type")}
                 displayEmpty
                 renderValue={(value) => (
                   value ? t(`products:type.${value}`) : ""
                 )}
                 onChange={(e) => {
-                  setType(e.target.value as ProductType | "");
-                  setTouched((prev) => ({
+                  actions.setType(e.target.value as ProductType | "");
+                  actions.setTouched((prev) => ({
                     ...prev,
                     type: true
                   }));
                 }}
                 onClose={() =>
-                  setTouched((prev) => ({
+                  actions.setTouched((prev) => ({
                     ...prev,
                     type: true
                   }))
                 }
-                disabled={!category || isPublished || isArchived}
+                disabled={!form.category || flags.isPublished || flags.isArchived}
               >
                 {types.map((type) => (
                   <MenuItem key={type} value={type}>
@@ -189,7 +156,7 @@ export function ProductUpsertDialog({
                   </MenuItem>
                 ))}
               </Select>
-              <FormHelperText>{showTypeError && typeError ? t(typeError) : ""}</FormHelperText>
+              <FormHelperText>{errors.showTypeError && errors.typeError ? t(errors.typeError) : ""}</FormHelperText>
             </FormControl>
           </Grid>
         </Grid>
@@ -203,30 +170,30 @@ export function ProductUpsertDialog({
             <FormControl 
               variant="filled" 
               fullWidth
-              error={showCurrencyError}
+              error={errors.showCurrencyError}
             >
               <InputLabel>{t("common:labels.currency")}</InputLabel>
               <Select
-                value={currency}
+                value={form.currency}
                 label={t("common:labels.currency")}
                 displayEmpty
                 renderValue={(value) => (
                   value ? t(`products:currency.${value}`) : ""
                 )}
                 onChange={(e) => {
-                  setCurrency(e.target.value as Currency | "");
-                  setTouched((prev) => ({
+                  actions.setCurrency(e.target.value as Currency | "");
+                  actions.setTouched((prev) => ({
                     ...prev,
                     currency: true
                   }));
                 }}
                 onClose={() =>
-                  setTouched((prev) => ({
+                  actions.setTouched((prev) => ({
                     ...prev,
                     currency: true
                   }))
                 }
-                disabled={isPublished || isArchived}
+                disabled={flags.isPublished || flags.isArchived}
               >
                 {CURRENCIES.map((s) => (
                   <MenuItem key={s} value={s}>
@@ -234,7 +201,7 @@ export function ProductUpsertDialog({
                   </MenuItem>
                 ))}
               </Select>
-              <FormHelperText>{showCurrencyError && currencyError ? t(currencyError) : ""}</FormHelperText>
+              <FormHelperText>{errors.showCurrencyError && errors.currencyError ? t(errors.currencyError) : ""}</FormHelperText>
             </FormControl>
           </Grid>
           
@@ -243,16 +210,16 @@ export function ProductUpsertDialog({
               label={t("common:labels.price")}
               variant="filled" 
               fullWidth
-              value={price}
+              value={form.price}
               type="number"
-              onChange={(e) => setPrice(e.target.value)}
-              onBlur={() => setTouched((prev) => ({ 
+              onChange={(e) => actions.setPrice(e.target.value)}
+              onBlur={() => actions.setTouched((prev) => ({ 
                 ...prev, 
                 price: true 
               }))}
-              disabled={isArchived}
-              error={showPriceError}
-              helperText={showPriceError && priceError ? t(priceError) : ""}
+              disabled={flags.isArchived}
+              error={errors.showPriceError}
+              helperText={errors.showPriceError && errors.priceError ? t(errors.priceError) : ""}
             />
           </Grid>
 
@@ -264,20 +231,20 @@ export function ProductUpsertDialog({
               >
                 <InputLabel>{t("common:labels.status")}</InputLabel>
                 <Select
-                  value={status}
+                  value={form.status}
                   label={t("common:labels.status")}
                   renderValue={(value) => (
                     value ? t(`products:status.${value}`) : ""
                   )}
                   onChange={(e) => {
-                    setStatus(e.target.value as ProductStatus);
-                    setTouched((prev) => ({
+                    actions.setStatus(e.target.value as ProductStatus);
+                    actions.setTouched((prev) => ({
                       ...prev,
                       status: true
                     }));
                   }}
                   onClose={() =>
-                    setTouched((prev) => ({
+                    actions.setTouched((prev) => ({
                       ...prev,
                       status: true
                     }))
@@ -317,8 +284,8 @@ export function ProductUpsertDialog({
                 <Button 
                   color="error" 
                   variant="outlined" 
-                  onClick={handleImageRemove}
-                  disabled={isArchived}
+                  onClick={actions.handleImageRemove}
+                  disabled={flags.isArchived}
                 >
                   <DeleteIcon sx={{ mr: 1 }} />
                   {t("common:actions.remove")}
@@ -328,7 +295,7 @@ export function ProductUpsertDialog({
           )}
           <Box
             sx={
-              isArchived
+              flags.isArchived
                 ? { pointerEvents: "none", opacity: 0.5 }
                 : undefined
             }
@@ -342,8 +309,8 @@ export function ProductUpsertDialog({
               }}
               maxFiles={1}
               caption="(SVG, JPG, PNG or GIF - max 900x400 px)"
-              onDrop={handleImageDrop}
-              disabled={isArchived}
+              onDrop={actions.handleImageDrop}
+              disabled={flags.isArchived}
             />
           </Box>
         </Stack>
@@ -359,7 +326,7 @@ export function ProductUpsertDialog({
                 label={t("common:labels.stockKeepingUnit")}
                 variant="filled" 
                 fullWidth
-                value={sku}
+                value={form.sku}
                 disabled
               />
             </Grid>
@@ -369,16 +336,16 @@ export function ProductUpsertDialog({
               label={t("common:labels.quantity")}
               variant="filled" 
               fullWidth
-              value={quantity}
+              value={form.quantity}
               type="number"
-              onChange={(e) => setQuantity(e.target.value)}
-              onBlur={() => setTouched((prev) => ({ 
+              onChange={(e) => actions.setQuantity(e.target.value)}
+              onBlur={() => actions.setTouched((prev) => ({ 
                 ...prev, 
                 quantity: true 
               }))}
-              disabled={isArchived}
-              error={showQuantityError}
-              helperText={showQuantityError && quantityError ? t(quantityError) : ""}
+              disabled={flags.isArchived}
+              error={errors.showQuantityError}
+              helperText={errors.showQuantityError && errors.quantityError ? t(errors.quantityError) : ""}
             />
           </Grid>
         </Grid>
@@ -392,8 +359,8 @@ export function ProductUpsertDialog({
         </Button>
         <Button 
           variant="contained" 
-          onClick={handleUpsertProduct} 
-          disabled={!canSubmit}
+          onClick={actions.handleUpsertProduct} 
+          disabled={!flags.canSubmit}
         >
           {mode === "add" ? t("common:actions.add") : t("common:actions.save")}
         </Button>

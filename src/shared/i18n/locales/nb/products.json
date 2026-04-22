@@ -35,6 +35,8 @@
     "deleteSuccess": "Produkt slettet",
     "addError": "Feil ved oppretting av produkt",
     "updateError": "Feil ved oppdatering av produkt",
-    "deleteError": "Feil ved sletting av produkt"
+    "deleteError": "Feil ved sletting av produkt",
+    "restoreSuccess": "Produkt gjenopprettet",
+    "restoreError": "Feil ved gjenoppretting av produkt"
   }
 }

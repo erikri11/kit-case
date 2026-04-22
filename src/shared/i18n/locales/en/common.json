@@ -97,7 +97,9 @@
     },
     "changeLanguage": "Change language",
     "changeCurrency": "Change currency",
-    "toggleColorScheme": "Toggle color scheme"
+    "toggleColorScheme": "Toggle color scheme",
+    "confirmRestore": "Confirm restore",
+    "confirmRestoreMessage": "Are you sure you want to restore this item?"
   },
   "actions": {
     "edit": "Edit",

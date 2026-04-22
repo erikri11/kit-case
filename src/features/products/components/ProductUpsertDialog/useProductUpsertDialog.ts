@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { productApi } from "@features/products/api/productApi";
 import type { Product, ProductCreate, ProductFieldName, ProductUpdate } from "@features/products/models/product.model";
-import type { ProductImageState } from "@features/products/models/productImageState.model";
 import { validateName, validatePrice, validateQuantity } from "@features/products/validation/validateProduct";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import type { Mode } from "@shared/types/mode";
 import { productUploadApi } from "@features/products/api/productUploadApi";
 import type { Currency, ProductCategory, ProductStatus, ProductType } from "@features/products/models/product.constants";
+import { useProductImage } from "./useProductImage";
 
 export interface ProductUpsertDialogProps {
   mode: Mode;
@@ -28,7 +28,7 @@ export function useProductUpsertDialog({
   // ---------------- STATE ----------------
 
   const [name, setName] = useState<string>(initialProduct?.name ?? "");
-  const [productNumber, setProductNumber] = useState<string>(initialProduct?.productNumber ?? "");
+  const productNumber = initialProduct?.productNumber ?? "";
   const [category, setCategory] = useState<ProductCategory | "">(initialProduct?.category ?? "");
   const [type, setType] = useState<ProductType | "">(initialProduct?.type ?? "");
   const [quantity, setQuantity] = useState<string>(initialProduct?.quantity != null ? String(initialProduct.quantity) : "");
@@ -47,15 +47,13 @@ export function useProductUpsertDialog({
     price: false
   });
 
-  const [image, setImage] = useState<ProductImageState | null>(
-    initialProduct?.image
-      ? {
-          id: "existing-image",
-          url: initialProduct.image.url,
-          fileName: initialProduct.image.fileName
-        }
-      : null
-  );
+  const { 
+    image, 
+    handleImageDrop, 
+    handleImageRemove 
+  } = useProductImage({ 
+    initialImage: initialProduct?.image ?? null
+  });
 
   const isPublished = status === "Published";
   const isArchived = status === "Archived";
@@ -159,73 +157,53 @@ const canSubmit = !hasValidationErrors;
     }
   };
 
-  // ---------------- IMAGE HANDLING ----------------
-
-  const handleImageDrop = async (files: File[]) => {
-    if (files.length === 0) return;
-
-    if (image?.file && image.url.startsWith("blob:")) {
-      URL.revokeObjectURL(image.url);
-    }
-
-    const file = files[0];
-    const previewUrl = URL.createObjectURL(file);
-
-    setImage({
-      id: `IMG-${Date.now()}`,
-      url: previewUrl,
-      fileName: file.name,
-      file
-    });
-  };
-
-  const handleImageRemove = () => {
-    if (image?.file && image.url.startsWith("blob:")) {
-      URL.revokeObjectURL(image.url);
-    }
-    setImage(null);
-  };
-
   // ---------------- RETURN ----------------
 
   return {
     t,
-    name,
-    productNumber,
-    category,
-    type,
-    quantity,
-    currency,
-    price,
-    sku,
-    status,
-    nameError,
-    categoryError,
-    typeError,
-    quantityError,
-    currencyError,
-    priceError,
-    showNameError,
-    showCategoryError,
-    showTypeError,
-    showQuantityError,
-    showCurrencyError,
-    showPriceError,
+    form: {
+      name,
+      productNumber,
+      category,
+      type,
+      quantity,
+      currency,
+      price,
+      sku,
+      status
+    },
+    errors: {
+      nameError,
+      categoryError,
+      typeError,
+      quantityError,
+      currencyError,
+      priceError,
+      showNameError,
+      showCategoryError,
+      showTypeError,
+      showQuantityError,
+      showCurrencyError,
+      showPriceError
+    },
+    flags: {
+      canSubmit,
+      isPublished,
+      isArchived
+    },
     image,
-    canSubmit,
-    isPublished,
-    isArchived,
-    setName,
-    setProductNumber,
-    setCategory,
-    setType,
-    setQuantity,
-    setCurrency,
-    setPrice,
-    setStatus,
-    setTouched,
-    handleUpsertProduct,
-    handleImageDrop,
-    handleImageRemove
+    actions: {
+      setName,
+      setCategory,
+      setType,
+      setQuantity,
+      setCurrency,
+      setPrice,
+      setStatus,
+      setTouched,
+      handleUpsertProduct,
+      handleImageDrop,
+      handleImageRemove
+    }
   };
 }
