@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { GoogleLogin } from "@react-oauth/google";
 import { useAuth } from "@shared/context/auth/useAuth";
 import { useTranslation } from "react-i18next";
@@ -30,7 +31,13 @@ export function SignupPage() {
   };
 
   return (
-    <div style={{ display: "grid", gap: 16, maxWidth: 420, margin: "80px auto" }}>
+    <Box sx={{ 
+      display: "grid",
+      justifyItems: "center",
+      maxWidth: 420, 
+      margin: "80px auto" 
+      }}
+    >
       <h1>{t("createAccount")}</h1>
       <p>{t("signUpWithGoogle")}</p>
 
@@ -41,7 +48,7 @@ export function SignupPage() {
         shape="circle"
         theme="filled_black"
       />
-    </div>
+    </Box>
   );
 }
 

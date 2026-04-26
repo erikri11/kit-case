@@ -1,9 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { createRoute } from "./createRoute";
 import { CenteredSpinner } from "@layouts/CenteredSpinner";
 import { RoleEnum } from "@shared/types/roleEnum";
-import { useUserRights } from "@shared/context/userRights/useUserRights";
 import { ProtectedRoute } from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
 
@@ -15,21 +13,66 @@ const TasksPage = lazy(() => import("@pages/TasksPage"));
 const SignupPage = lazy(() => import("@pages/auth/SignupPage"));
 
 export function AppRoutes() {
-  const { role } = useUserRights();
-
   return (
     <Suspense fallback={<CenteredSpinner />}>
       <Routes>
-        <Route path="/signup" element={ <PublicRoute><SignupPage /></PublicRoute>} />
-        <Route path="/" element={<Navigate to="/signup" replace />} />
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute>
+              <SignupPage />
+            </PublicRoute>
+          }
+        />
 
-        {createRoute("/overview",  <ProtectedRoute><OverviewPage /></ProtectedRoute>, [role], RoleEnum.USER)}
-        {createRoute("/admin/orders", <ProtectedRoute><OrdersPage /></ProtectedRoute>, [role], RoleEnum.ADMIN)}
-        {createRoute("/admin/products", <ProtectedRoute><ProductPage /></ProtectedRoute>, [role], RoleEnum.ADMIN)}
-        {createRoute("/admin/customers/*", <ProtectedRoute><CustomersRoutes /></ProtectedRoute>, [role], RoleEnum.ADMIN)}
-        {createRoute("/admin/tasks", <ProtectedRoute><TasksPage /></ProtectedRoute>, [role], RoleEnum.ADMIN)}
+        <Route path="/" element={<Navigate to="/overview" replace />} />
 
-        <Route path="*" element={<Navigate to="/signup" replace />} />
+        <Route
+          path="/overview"
+          element={
+            <ProtectedRoute allowedRoles={[RoleEnum.USER, RoleEnum.ADMIN]}>
+              <OverviewPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/orders"
+          element={
+            <ProtectedRoute allowedRoles={[RoleEnum.ADMIN]}>
+              <OrdersPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/products"
+          element={
+            <ProtectedRoute allowedRoles={[RoleEnum.ADMIN]}>
+              <ProductPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/customers/*"
+          element={
+            <ProtectedRoute allowedRoles={[RoleEnum.ADMIN]}>
+              <CustomersRoutes />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/tasks"
+          element={
+            <ProtectedRoute allowedRoles={[RoleEnum.ADMIN]}>
+              <TasksPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="*" element={<Navigate to="/overview" replace />} />
       </Routes>
     </Suspense>
   );
