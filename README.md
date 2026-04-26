@@ -1,17 +1,22 @@
 # Fullstack Web Application – Frontend & Backend
 
 Dette prosjektet består av en **frontend** og en **backend** som kjøres som
-**to separate applikasjoner**. Formålet er å vise **strukturert, vedlikeholdbar
-kode** og en **realistisk utviklingsflyt** slik man jobber i profesjonelle team.
+**to separate applikasjoner**. 
+
+Formålet er å vise:
+- Strukturert og skalerbar kode
+- En realistisk fullstack arkitektur
+- Moderne autentisering med Google
 
 ---
 
-## Oversikt
+## Funksjonalitet
 
-- Frontend: React + TypeScript  
-- Backend: Node.js + Express + TypeScript  
-- Frontend og backend startes separat  
-- Kommunikasjon via REST API  
+- Google autentisering (signup/login)
+- Beskyttede routes (ProtectedRoute)
+- Public/private routing
+- Enkel session-håndtering (localStorage)
+- REST API mellom frontend og backend
 
 ---
 
@@ -20,15 +25,15 @@ kode** og en **realistisk utviklingsflyt** slik man jobber i profesjonelle team.
 ### Frontend
 - React
 - TypeScript
-- Nx (brukes til frontend build og dev-server)
-- Komponentbasert arkitektur
-- Hooks-basert state-håndtering
+- Vite
+- MUI (Material UI)
+- Context API (Auth + state)
 
 ### Backend
 - Node.js
 - Express
 - TypeScript
-- REST API
+- Google OAuth (google-auth-library)
 
 ---
 
@@ -64,3 +69,6 @@ http://localhost:4000
 - Klar separasjon mellom frontend og backend
 - Sterk typing med TypeScript
 - Kode skrevet for å være lesbar og vedlikeholdbar over tid
+
+---
+
