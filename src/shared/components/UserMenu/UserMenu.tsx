@@ -24,7 +24,8 @@ export function UserMenu() {
 
   if (!user) return null;
 
-  console.log("UserMenu render with user:", user);
+  // Todo::
+  // console.log("UserMenu render with user:", user);
 
   return (
     <>
