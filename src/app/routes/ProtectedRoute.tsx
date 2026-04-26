@@ -3,6 +3,7 @@ import { useAuth } from "@shared/context/auth/useAuth";
 import type { RoleEnum } from "@shared/types/roleEnum";
 import { useUserRights } from "@shared/context/userRights/useUserRights";
 import UnauthorizedPage from "@pages/UnauthorizedPage";
+import { ROLE_HIERARCHY } from "@shared/constants/roleHierarchy";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -21,7 +22,14 @@ export function ProtectedRoute({
     return <Navigate to="/signup" replace />;
   }
 
-  if (allowedRoles && !allowedRoles.includes(role)) {
+  const hasAccess =
+    !allowedRoles ||
+    allowedRoles.some(
+      (allowedRole) =>
+        ROLE_HIERARCHY[role] >= ROLE_HIERARCHY[allowedRole]
+    );
+
+  if (!hasAccess) {
     return <UnauthorizedPage />;
   }
 

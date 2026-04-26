@@ -30,7 +30,7 @@ export function AppRoutes() {
         <Route
           path="/overview"
           element={
-            <ProtectedRoute allowedRoles={[RoleEnum.USER, RoleEnum.ADMIN]}>
+            <ProtectedRoute allowedRoles={[RoleEnum.USER]}>
               <OverviewPage />
             </ProtectedRoute>
           }
