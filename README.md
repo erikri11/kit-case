@@ -71,4 +71,3 @@ http://localhost:4000
 - Kode skrevet for å være lesbar og vedlikeholdbar over tid
 
 ---
-

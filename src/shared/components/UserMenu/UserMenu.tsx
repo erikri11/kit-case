@@ -2,8 +2,10 @@ import { Logout } from "@mui/icons-material";
 import { Avatar, Box, MenuItem, ListItemIcon, Menu, Tooltip, IconButton } from "@mui/material";
 import { useAuth } from "@shared/context/auth/useAuth";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export function UserMenu() {
+  const { t } = useTranslation("common");
   const { user, logout } = useAuth();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -24,13 +26,10 @@ export function UserMenu() {
 
   if (!user) return null;
 
-  // Todo::
-  // console.log("UserMenu render with user:", user);
-
   return (
     <>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <Tooltip title="Account settings">
+        <Tooltip title={t("common:labels.accountSettings")}>
           <IconButton
             onClick={handleClick}
             size="small"
@@ -55,34 +54,6 @@ export function UserMenu() {
         id="account-menu"
         open={open}
         onClose={handleClose}
-        slotProps={{
-          paper: {
-            elevation: 0,
-            sx: {
-              overflow: "visible",
-              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-              mt: 1.5,
-              "& .MuiAvatar-root": {
-                width: 32,
-                height: 32,
-                ml: -0.5,
-                mr: 1
-              },
-              "&::before": {
-                content: '""',
-                display: "block",
-                position: "absolute",
-                top: 0,
-                right: 14,
-                width: 10,
-                height: 10,
-                bgcolor: "background.paper",
-                transform: "translateY(-50%) rotate(45deg)",
-                zIndex: 0
-              }
-            }
-          }
-        }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
@@ -90,7 +61,7 @@ export function UserMenu() {
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
-          Logout
+          {t("common:labels.logout")}
         </MenuItem>
       </Menu>
     </>
