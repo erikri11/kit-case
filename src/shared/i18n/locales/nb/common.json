@@ -119,5 +119,7 @@
     "orDragAndDrop": "eller dra og slipp",
     "restore": "Gjenopprett",
     "details": "Detaljer"
-  }
+  },
+  "createAccount": "Opprett konto",
+  "signUpWithGoogle": "Registrer deg med Google for å fortsette."
 }

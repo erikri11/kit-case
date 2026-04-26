@@ -119,5 +119,7 @@
     "orDragAndDrop": "or drag and drop",
     "restore": "Restore",
     "details": "Details"
-  }
+  },
+  "createAccount": "Create account",
+  "signUpWithGoogle": "Sign up with Google to continue."
 }
