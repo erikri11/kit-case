@@ -7,8 +7,9 @@ import { useTranslation } from 'react-i18next';
 import { SnackbarHost } from '@shared/components/SnackbarHost/SnackbarHost';
 import { SnackbarContext } from '../../shared/context/snackbar/SnackbarContext';
 import type { SnackbarMessage } from '@shared/types/snackbar';
-import { UserRightsProvider } from '@shared/context/userRights/UserRightsProvider';
+import UserRightsProvider from '@shared/context/userRights/userRightsProvider';
 import CurrencyProvider from '@shared/context/currency/CurrencyProvider';
+import { AuthProvider } from '@shared/context/auth/AuthProvider';
 
 export interface AppProvidersProps {
   children: ReactNode;
@@ -32,15 +33,17 @@ export function AppProviders(props: AppProvidersProps) {
       adapterLocale={locale}
       key={locale.code}
     >
-      <UserRightsProvider>
-        <SnackbarContext.Provider value={snackbarHandlingValue}>
-          <CurrencyProvider>
-            <CssBaseline />
-            <SnackbarHost />
-            {props.children}
-          </CurrencyProvider>
-        </SnackbarContext.Provider>
-      </UserRightsProvider>
+      <AuthProvider>
+        <UserRightsProvider>
+          <SnackbarContext.Provider value={snackbarHandlingValue}>
+            <CurrencyProvider>
+              <CssBaseline />
+              <SnackbarHost />
+              {props.children}
+            </CurrencyProvider>
+          </SnackbarContext.Provider>
+        </UserRightsProvider>
+      </AuthProvider>
     </LocalizationProvider>
   );
 }

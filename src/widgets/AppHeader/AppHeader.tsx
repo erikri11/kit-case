@@ -7,6 +7,7 @@ import LanguageToggle from '@shared/components/LanguageToggle/LanguageToggle';
 import { RoleEnum } from '@shared/types/roleEnum';
 import CurrencyToggle from '@shared/components/CurrencyToggle/CurrencyToggle';
 import { ColorSchemeToggle } from '@shared/components/ColorSchemeToggle/ColorSchemeToggle';
+import { UserMenu } from '@shared/components/UserMenu/UserMenu';
 
 interface AppHeaderProps {
   onMenuClick: () => void;
@@ -89,6 +90,7 @@ export function AppHeader(props: AppHeaderProps) {
         <LanguageToggle />
         <CurrencyToggle />
         <ColorSchemeToggle />
+        <UserMenu />
       </Toolbar>
     </AppBar>
   );

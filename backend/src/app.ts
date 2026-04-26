@@ -9,6 +9,7 @@ import uploadRouter from "./features/uploads/upload.routes";
 import { corsLite } from "./middlewares/corsLite";
 import { errorHandler } from "./middlewares/errorHandler";
 import { API_PREFIX } from "./config/api";
+import authRouter from "./features/auth/auth.route";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use("/uploads", express.static(uploadsDir));
 app.use(corsLite);
 app.use(express.json());
 
+app.use(`${API_PREFIX}/auth`, authRouter);
 app.use(`${API_PREFIX}/products`, productRouter);
 app.use(`${API_PREFIX}/customers`, customerRouter);
 app.use(`${API_PREFIX}/tasks`, taskRouter);

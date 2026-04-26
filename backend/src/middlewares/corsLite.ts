@@ -12,6 +12,8 @@ export function corsLite(req: Request, res: Response, next: NextFunction) {
     res.header('Vary', 'Origin');
   }
 
+  res.header("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+
   // Allowed HTTP methods
   res.header(
     'Access-Control-Allow-Methods', 
