@@ -10,6 +10,7 @@ lerna-debug.log*
 # env files (IMPORTANT)
 .env
 .env.*
+!.env.example
 backend/.env
 
 # dependencies
