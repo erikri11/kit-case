@@ -59,7 +59,17 @@ export function AppHeader(props: AppHeaderProps) {
         <Typography 
           variant="h1" 
           component="div" 
-          sx={{ flexGrow: 1 }}
+          sx={{ 
+            flexGrow: 1,
+            visibility: {
+              xs: "hidden", 
+              sm: "visible"
+            },
+            typography: {
+              xs: "h3",
+              sm: "h1"
+            }
+          }}
         >
           Demo Soft
         </Typography>
@@ -67,7 +77,14 @@ export function AppHeader(props: AppHeaderProps) {
         <FormControl 
           variant="filled" 
           size="small" 
-          sx={{ mr: 2, minWidth: 140, display: { xs: "none", sm: "flex" } }}
+          sx={{ 
+            mr: 2, 
+            minWidth: 140, 
+            display: { 
+              xs: "none", 
+              sm: "flex" 
+            } 
+          }}
         >
           <InputLabel 
             id="role-select-label"
