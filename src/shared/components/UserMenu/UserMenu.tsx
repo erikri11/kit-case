@@ -1,5 +1,5 @@
 import { Logout } from "@mui/icons-material";
-import { Avatar, Box, MenuItem, ListItemIcon, Menu, Tooltip, IconButton } from "@mui/material";
+import { Avatar, Box, MenuItem, ListItemIcon, Menu, Tooltip, IconButton, Divider, Typography } from "@mui/material";
 import { useAuth } from "@shared/context/auth/useAuth";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -39,11 +39,11 @@ export function UserMenu() {
             aria-expanded={open ? "true" : undefined}
           >
             <Avatar
-              src={user.avatar}
-              alt={user.name}
+              src={user?.avatar}
+              alt={user?.name}
               sx={{ width: 32, height: 32 }}
             >
-              {user.name.charAt(0)}
+              {user?.name.charAt(0)}
             </Avatar>
           </IconButton>
         </Tooltip>
@@ -54,9 +54,31 @@ export function UserMenu() {
         id="account-menu"
         open={open}
         onClose={handleClose}
+        slotProps={{
+          paper: {
+            sx: {
+              minWidth: 150,
+              '& .MuiAvatar-root': {
+                width: 32,
+                height: 32,
+                ml: -0.5,
+                mr: 1,
+              }
+            }
+          }
+        }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
+        <MenuItem disabled>
+        <Box sx={{ px: 2, py: 1 }}>
+          <Typography>{user?.name}</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {user?.email}
+          </Typography>
+        </Box>
+        </MenuItem>
+        <Divider />
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
