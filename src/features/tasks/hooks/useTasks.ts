@@ -18,5 +18,12 @@ export function useTasks() {
     loadTasks();
   }, []);
 
-  return tasks;
+   const activeTasks = tasks.filter(
+    (task) => task.status === "Todo" || task.status === "InProgress"
+  ).length;
+
+  return { 
+    tasks, 
+    activeTasks 
+  };
 }

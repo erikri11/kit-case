@@ -5,7 +5,7 @@ import { useTasks } from '@features/tasks/hooks/useTasks';
 
 export function TasksPage() {
   const { t } = useTranslation("tasks");
-  const tasks = useTasks();
+  const { tasks } = useTasks();
 
   return (
     <>

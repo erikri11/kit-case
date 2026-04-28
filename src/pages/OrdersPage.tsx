@@ -5,7 +5,7 @@ import { useOrders } from '@features/orders/hooks/useOrders';
 
 export function OrdersPage() {
   const { t } = useTranslation("orders");
-  const orders = useOrders();
+  const { orders } = useOrders();
 
   return (
     <>

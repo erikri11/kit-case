@@ -18,5 +18,12 @@ export function useOrders() {
       loadOrders();
     }, []);
 
-  return orders;
+    const refundedOrders = orders.filter(
+      (order) => order.status === "Refunded"
+    ).length;
+
+  return { 
+    orders, 
+    refundedOrders 
+  };
 }

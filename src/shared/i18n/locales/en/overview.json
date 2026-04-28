@@ -8,9 +8,9 @@
   },
   "labels": {
     "barChartTitle": "Customers sign ups",
-    "tickets": "Tickets",
+    "openTasks": "Open tasks",
     "signUps": "Sign ups",
-    "openIssues": "Open issues"
+    "refundedOrders": "Refunded orders"
   },
   "increase": "increase",
   "decrease": "decrease",

@@ -8,9 +8,9 @@
   },
   "labels": {
      "barChartTitle": "Kunder registreringer",
-    "tickets": "Billetter",
+    "openTasks": "Åpne oppgaver",
     "signUps": "Registreringer",
-    "openIssues": "Åpne saker"
+    "refundedOrders": "Refundert ordre"
   },
   "increase": "økning",
   "decrease": "nedgang",

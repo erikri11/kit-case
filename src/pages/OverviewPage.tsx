@@ -8,10 +8,14 @@ import PeopleIcon from "@mui/icons-material/People";
 import WarningIcon  from "@mui/icons-material/Warning";
 import OverviewSignUpsChart from '@features/overview/components/OverviewSignUpsChart/OverviewSignUpsChart';
 import { useCustomers } from '@shared/hooks/useCustomers';
+import { useTasks } from '@features/tasks/hooks/useTasks';
+import { useOrders } from '@features/orders/hooks/useOrders';
 
 export function OverviewPage() {
   const { t } = useTranslation("overview");
   const customers = useCustomers();
+  const { activeTasks } = useTasks();
+  const { refundedOrders } = useOrders();
 
   return (
     <>
@@ -23,10 +27,10 @@ export function OverviewPage() {
       <Grid container spacing={4}>
         <Grid size={{xs: 12, md: 4}}>
           <Summary 
-            amount={31} 
+            amount={activeTasks}
             diff={15} 
             icon={ChecksListIcon} 
-            title={t("overview:labels.tickets")}
+            title={t("overview:labels.openTasks")}
             trend="up" 
             sx={{ bgcolor: blue[500] }}
           />
@@ -45,10 +49,10 @@ export function OverviewPage() {
 
         <Grid size={{xs: 12, md: 4}}>
           <Summary 
-            amount={21} 
+            amount={refundedOrders} 
             diff={12} 
             icon={WarningIcon} 
-            title={t("overview:labels.openIssues")} 
+            title={t("overview:labels.refundedOrders")} 
             trend="up" 
             sx={{ bgcolor: orange[500] }}
           />
