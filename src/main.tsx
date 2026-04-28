@@ -11,6 +11,7 @@ import '@shared/styles/global';
 import { theme } from '@shared/theme/mui/theme';
 import { AppProviders } from './app/providers/AppProviders';
 import App from './App';
+import ErrorBoundary from '@shared/components/ErrorBoundary/ErrorBoundary';
 
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
@@ -29,12 +30,13 @@ root.render(
         <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme} defaultMode="system">
           <AppProviders>
-            <App />
+            <ErrorBoundary>
+              <App />
+            </ErrorBoundary>
           </AppProviders>
         </ThemeProvider>
       </StyledEngineProvider>
       </GoogleOAuthProvider>
-      
     </BrowserRouter>
   </StrictMode>
 );

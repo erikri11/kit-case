@@ -15,10 +15,10 @@ export function ProtectedRoute({
   allowedRoles 
 }: ProtectedRouteProps) {
 
-  const { user } = useAuth();
+  const { isAuthenticated } = useAuth();
   const { role } = useUserRights();
 
-  if (!user) {
+  if (!isAuthenticated) {
     return <Navigate to="/signup" replace />;
   }
 

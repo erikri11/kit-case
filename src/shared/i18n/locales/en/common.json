@@ -118,7 +118,8 @@
     "clickToUpload": "Click to upload",
     "orDragAndDrop": "or drag and drop",
     "restore": "Restore",
-    "details": "Details"
+    "details": "Details",
+    "reload": "Reload"
   },
   "createAccount": "Create account",
   "signUpWithGoogle": "Sign up with Google to continue."

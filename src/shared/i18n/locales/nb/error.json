@@ -1,5 +1,7 @@
 {
   "accessDenied": "Tilgang nektet",
   "youDoNotHavePermissionToViewThisPage": "Du har ikke tillatelse til å se denne siden.",
-  "pleaseContactAnAdministratorIfYouBelieveThisIsAnError": "Vennligst kontakt en administrator hvis du mener dette er en feil."
+  "pleaseContactAnAdministratorIfYouBelieveThisIsAnError": "Vennligst kontakt en administrator hvis du mener dette er en feil.",
+  "somethingWentWrong": "Noe gikk galt",
+  "anUnexpectedErrorOccurred": "En uventet feil oppsto."
 }

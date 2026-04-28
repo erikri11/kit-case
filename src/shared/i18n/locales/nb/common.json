@@ -118,7 +118,8 @@
     "clickToUpload": "Klikk for å laste opp",
     "orDragAndDrop": "eller dra og slipp",
     "restore": "Gjenopprett",
-    "details": "Detaljer"
+    "details": "Detaljer",
+    "reload": "Last inn på nytt"
   },
   "createAccount": "Opprett konto",
   "signUpWithGoogle": "Registrer deg med Google for å fortsette."
