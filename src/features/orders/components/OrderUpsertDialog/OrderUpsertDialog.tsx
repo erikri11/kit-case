@@ -166,6 +166,7 @@ export function OrderUpsertDialog({
               }}
               sx={{ width: "100%" }}
               disabled={isOrderLocked}
+              disablePast
             />
           </Grid>
 
@@ -265,112 +266,113 @@ export function OrderUpsertDialog({
                   .map((li) => li.productId)
                   .filter(Boolean);
 
+                const availableProducts = products.filter(
+                  (p) =>
+                    p.status !== "Archived" &&
+                    p.status !== "Draft" &&
+                    !selectedProductIdsOnOtherLines.includes(p.id)
+                );
+
+                const selectedProductId = resolveSelectedValue(
+                  availableProducts,
+                  item.productId
+                );
+
                 return (
                   <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
                     <Grid size={{ md: 5, sm: 6, xs: 12 }}>
                       <FormControl variant="filled" fullWidth>
                         <InputLabel>{t("common:labels.product")}</InputLabel>
-                      <Select
-                        value={resolveSelectedValue(products, item.productId)}
-                        label={t("common:labels.product")}
-                        renderValue={(value) => {
-                          const selected = products.find((p) => p.id === value);
-                          return selected?.name ?? "";
-                        }}
+                        <Select
+                          value={selectedProductId}
+                          label={t("common:labels.product")}
+                          renderValue={(value) => {
+                            const selected = products.find((p) => p.id === value);
+                            return selected?.name ?? "";
+                          }}
+                          onChange={(e) =>
+                            updateLineItemProduct(item.id, e.target.value as string)
+                          }
+                          disabled={isMockOrder || isOrderLocked}
+                        >
+                          {availableProducts.map((p) => (
+                            <MenuItem key={p.id} value={p.id}>
+                              {p.name}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+
+                    <Grid size={{ md: 2, sm: 6, xs: 12 }}>
+                      <TextField
+                        label={t("common:labels.quantity")}
+                        variant="filled"
+                        fullWidth
+                        type="number"
+                        value={item.quantity}
                         onChange={(e) =>
-                          updateLineItemProduct(item.id, e.target.value as string)
+                          updateLineItemQuantity(item.id, Number(e.target.value))
                         }
+                        slotProps={{
+                          htmlInput: { min: 1 }
+                        }}
                         disabled={isMockOrder || isOrderLocked}
+                      />
+                    </Grid>
+
+                    <Grid size={{ md: 2, sm: 6, xs: 12 }}>
+                      <TextField
+                        label={`${t("common:labels.unit")} (${displayCurrency})`}
+                        variant="filled"
+                        fullWidth
+                        value={formatPrice(
+                          item.unitAmount,
+                          item.currency ?? "USD",
+                          displayCurrency,
+                          language
+                        )}
+                        disabled
+                      />
+                    </Grid>
+
+                    <Grid size={{ md: 2, sm: 6, xs: 12 }}>
+                      <TextField
+                        label={`${t("common:labels.total")} (${displayCurrency})`}
+                        variant="filled"
+                        fullWidth
+                        value={formatPrice(
+                          item.totalAmount,
+                          item.currency ?? "USD",
+                          displayCurrency,
+                          language
+                        )}
+                        disabled
+                      />
+                    </Grid>
+
+                    <Grid size={{ md: 1, sm: 6, xs: 12 }}>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: { xs: "flex-start", md: "center" },
+                          alignItems: "center",
+                          height: "100%"
+                        }}
                       >
-                        {products
-                          .filter((p) => 
-                            p.status !== "Archived" && 
-                            p.status !== "Draft" &&
-                            !selectedProductIdsOnOtherLines.includes(p.id)
-                          )
-                          .map((p) => {
-                            return (
-                              <MenuItem 
-                                key={p.id} 
-                                value={p.id} 
-                              >
-                                {p.name}
-                              </MenuItem>
-                            );
-                          })
-                        }
-                      </Select>
-                    </FormControl>
+                        <IconButton
+                          aria-label="remove line item"
+                          color="error"
+                          onClick={() => removeLineItem(item.id)}
+                          disabled={isMockOrder || isOrderLocked || lineItems.length === 1}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </Box>
+                    </Grid>
                   </Grid>
-
-                  <Grid size={{ md: 2, sm: 6, xs: 12 }}>
-                    <TextField
-                      label={t("common:labels.quantity")}
-                      variant="filled"
-                      fullWidth
-                      type="number"
-                      value={item.quantity}
-                      onChange={(e) =>
-                        updateLineItemQuantity(item.id, Number(e.target.value))
-                      }
-                      slotProps={{
-                        htmlInput: { min: 1 }
-                      }}
-                      disabled={isMockOrder || isOrderLocked}
-                    />
-                  </Grid>
-
-                  <Grid size={{ md: 2, sm: 6, xs: 12 }}>
-                    <TextField
-                      label={`${t("common:labels.unit")} (${displayCurrency})`}
-                      variant="filled"
-                      fullWidth
-                      value={formatPrice(
-                        item.unitAmount,
-                        item.currency ?? "USD",
-                        displayCurrency,
-                        language
-                      )}
-                      disabled
-                    />
-                  </Grid>
-
-                  <Grid size={{ md: 2, sm: 6, xs: 12 }}>
-                    <TextField
-                      label={`${t("common:labels.total")} (${displayCurrency})`}
-                      variant="filled"
-                      fullWidth
-                      value={formatPrice(
-                        item.totalAmount,
-                        item.currency ?? "USD",
-                        displayCurrency,
-                        language
-                      )}
-                      disabled
-                    />
-                  </Grid>
-
-                  <Grid size={{ md: 1, sm: 6, xs: 12 }}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: { xs: "flex-start", md: "center" },
-                        alignItems: "center",
-                        height: "100%"
-                      }}
-                    >
-                      <IconButton
-                        aria-label="remove line item"
-                        color="error"
-                        onClick={() => removeLineItem(item.id)}
-                        disabled={isMockOrder || isOrderLocked || lineItems.length === 1}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
-                    </Box>
-                  </Grid>
-                </Grid>
-              )})}
+                );
+              })}
 
               <Button
                 color="inherit"

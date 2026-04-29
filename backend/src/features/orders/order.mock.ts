@@ -9,9 +9,9 @@ export const mockOrders: Order[] = [
     currency: "USD",
     totalAmount: 1060.00,
     status: "Pending",
-    createdAt: new Date("2026-03-24T19:26:34.456Z"),
+    createdAt: new Date(),
     orderNumber: "ORD-1001",
-    issueDate: new Date("2026-03-24T19:26:34.456Z"),
+    issueDate: new Date(),
     lineItems: [
       {
         id: "line-001",
@@ -37,9 +37,9 @@ export const mockOrders: Order[] = [
     currency: "USD",
     totalAmount: 530.00,
     status: "Pending",
-    createdAt: new Date("2026-03-24T19:26:34.456Z"),
+    createdAt: new Date(),
     orderNumber: "ORD-1002",
-    issueDate: new Date("2026-03-24T19:26:34.456Z"),
+    issueDate: new Date(),
     lineItems: [
       {
         id: "line-002",
@@ -65,9 +65,9 @@ export const mockOrders: Order[] = [
     currency: "USD",
     totalAmount: 530.00,
     status: "Pending",
-    createdAt: new Date("2026-03-24T19:26:34.456Z"),
+    createdAt: new Date(),
     orderNumber: "ORD-1003",
-    issueDate: new Date("2026-03-24T19:26:34.456Z"),
+    issueDate: new Date(),
     lineItems: [
       {
         id: "line-003",
@@ -93,9 +93,9 @@ export const mockOrders: Order[] = [
     currency: "USD",
     totalAmount: 530.00,
     status: "Pending",
-    createdAt: new Date("2026-03-24T19:26:34.456Z"),
+    createdAt: new Date(),
     orderNumber: "ORD-1004",
-    issueDate: new Date("2026-03-24T19:26:34.456Z"),
+    issueDate: new Date(),
     lineItems: [
       {
         id: "line-004",
@@ -121,9 +121,9 @@ export const mockOrders: Order[] = [
     currency: "USD",
     totalAmount: 530.00,
     status: "Pending",
-    createdAt: new Date("2026-03-24T19:26:34.456Z"),
+    createdAt: new Date(),
     orderNumber: "ORD-1005",
-    issueDate: new Date("2026-03-24T19:26:34.456Z"),
+    issueDate: new Date(),
     lineItems: [
       {
         id: "line-005",
@@ -149,9 +149,9 @@ export const mockOrders: Order[] = [
     currency: "USD",
     totalAmount: 530.00,
     status: "Pending",
-    createdAt: new Date("2026-03-24T19:26:34.456Z"),
+    createdAt: new Date(),
     orderNumber: "ORD-1006",
-    issueDate: new Date("2026-03-24T19:26:34.456Z"),
+    issueDate: new Date(),
     lineItems: [
       {
         id: "line-006",
@@ -177,9 +177,9 @@ export const mockOrders: Order[] = [
     currency: "USD",
     totalAmount: 530.00,
     status: "Pending",
-    createdAt: new Date("2026-03-24T19:26:34.456Z"),
+    createdAt: new Date(),
     orderNumber: "ORD-1007",
-    issueDate: new Date("2026-03-24T19:26:34.456Z"),
+    issueDate: new Date(),
     lineItems: [
       {
         id: "line-007",

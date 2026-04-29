@@ -67,7 +67,7 @@
     "customer": "Kunde",
     "order": "Bestilling",
     "paymentMethod": "Betalingsmetode",
-    "issueDate": "Utstedelsesdato",
+    "issueDate": "Ordredato",
     "customerNumber": "Kundenummer",
     "orderNumber": "Bestillingsnummer",
     "company": "Firma",
