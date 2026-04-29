@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import type { Product } from "../models/product.model";
 import { productApi } from "../api/productApi";
+import { connectSocket, socket } from "@shared/socket/socket";
+import { EVENTS } from "@shared/models/constants/events.constants";
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -15,7 +17,37 @@ export function useProducts() {
         console.error("Failed to load products:", errorMessage);
       } 
     };
+
     loadProducts();
+    connectSocket();
+
+    const handleCreated = (product: Product) => {
+      setProducts((prev) =>
+        prev.some((p) => p.id === product.id) ? prev : [product, ...prev]
+      );
+    };
+
+    const handleUpdated = (updatedProduct: Product) => {
+      setProducts((prev) =>
+        prev.map((product) =>
+          product.id === updatedProduct.id ? updatedProduct : product
+        )
+      );
+    };
+
+    const handleDeleted = (productId: string) => {
+      setProducts((prev) => prev.filter((product) => product.id !== productId));
+    };
+
+    socket.on(EVENTS.PRODUCT.CREATED, handleCreated);
+    socket.on(EVENTS.PRODUCT.UPDATED, handleUpdated);
+    socket.on(EVENTS.PRODUCT.DELETED, handleDeleted);
+
+    return () => {
+      socket.off(EVENTS.PRODUCT.CREATED, handleCreated);
+      socket.off(EVENTS.PRODUCT.UPDATED, handleUpdated);
+      socket.off(EVENTS.PRODUCT.DELETED, handleDeleted);
+    };
   }, []);
 
   return products;
