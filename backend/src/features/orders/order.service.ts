@@ -6,7 +6,7 @@ import { generateOrderNumber } from "../../utils/generateOrderNumber";
 import { listCustomers } from "../customers/customer.service";
 import { createCustomerPayment, hasPaymentForInvoice, updatePaymentStatusByInvoice } from "../customers/customer.payment.service";
 import { convertToBaseCurrency } from "../../utils/convertToBaseCurrency";
-import { BASE_CURRENCY } from "../../shared/models/constants/currency.constants";
+import { BASE_CURRENCY } from "../../shared/models/currency.constants";
 
 let orders: Order[] = [...mockOrders];
 
@@ -90,7 +90,6 @@ export function createOrder(input: OrderCreate): OrderDetails | null {
   };
 
   orders.unshift(order);
-
   syncPaymentWithOrder(order);
 
   return mapOrderToDetails(order);
@@ -120,7 +119,6 @@ export function updateOrder(id: string, input: OrderUpdate): OrderDetails | null
   };
 
   orders[index] = updatedOrder;
-
   syncPaymentWithOrder(updatedOrder);
 
   return mapOrderToDetails(updatedOrder);

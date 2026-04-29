@@ -24,7 +24,6 @@ export function createTask(input: TaskCreate): Task {
   };
 
   tasks.unshift(task);
-
   return task;
 };
 
@@ -42,7 +41,6 @@ export function updateTask(id: string, input: TaskUpdate): Task | null {
   };
 
   tasks[index] = updatedTask;
-
   return updatedTask;
 };
 
