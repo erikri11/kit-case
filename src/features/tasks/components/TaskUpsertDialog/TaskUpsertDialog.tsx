@@ -1,8 +1,8 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle,FormControl,Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import type { Task } from "@features/tasks/models/task.model";
-import type { Mode } from "@shared/models/types/mode.type";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useTaskUpsertDialog } from "./useTaskUpsertDialog";
+import type { Mode } from "@shared/models/types/mode.type";
 
 export interface TaskUpsertDialogProps {
   open: boolean;

@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 import { customerApi } from "@features/customers/api/customersApi";
 import type { CustomerCreate, CustomerFieldName, CustomerUpdate } from "@features/customers/models/model/customer.model";
 import { validateEmail, validateName, validatePhone } from "@features/customers/validation/validateCustomer";
-import type { Mode } from "@shared/models/types/mode.type";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import type { CustomerStatus } from "@features/customers/models/constants/customer.constants";
+import type { Mode } from "@shared/models/types/mode.type";
 
 export function useCustomerUpsertDialog(
   mode: Mode,

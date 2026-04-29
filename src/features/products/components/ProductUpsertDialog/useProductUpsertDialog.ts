@@ -4,10 +4,10 @@ import { productApi } from "@features/products/api/productApi";
 import type { Product, ProductCreate, ProductFieldName, ProductUpdate } from "@features/products/models/product.model";
 import { validateName, validatePrice, validateQuantity } from "@features/products/validation/validateProduct";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
-import type { Mode } from "@shared/models/types/mode.type";
 import { productUploadApi } from "@features/products/api/productUploadApi";
 import type { Currency, ProductCategory, ProductStatus, ProductType } from "@features/products/models/product.constants";
 import { useProductImage } from "./useProductImage";
+import type { Mode } from "@shared/models/types/mode.type";
 
 export interface ProductUpsertDialogProps {
   mode: Mode;

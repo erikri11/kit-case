@@ -2,10 +2,10 @@ import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle,FormCont
 import DeleteIcon from "@mui/icons-material/Delete";
 import type { Product } from "@features/products/models/product.model";
 import { useProductUpsertDialog } from "./useProductUpsertDialog";
-import type { Mode } from "@shared/models/types/mode.type";
 import { FileDropzone } from "@shared/utils/FileDropzone";
 import { resolveImageUrl } from "@shared/utils/resolveImageUrl";
 import { CURRENCIES, PRODUCT_CATEGORIES, PRODUCT_STATUSES, PRODUCT_TYPES, type Currency, type ProductCategory, type ProductStatus, type ProductType } from "@features/products/models/product.constants";
+import type { Mode } from "@shared/models/types/mode.type";
 
 export interface ProductUpsertDialogProps {
   open: boolean;

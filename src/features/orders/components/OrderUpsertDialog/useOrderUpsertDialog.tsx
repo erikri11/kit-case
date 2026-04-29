@@ -9,9 +9,9 @@ import { useProducts } from "@features/products/hooks/useProducts";
 import useCurrency from "@shared/context/currency/useCurrency";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { useCustomers } from "@shared/hooks/useCustomers";
-import type { Mode } from "@shared/models/types/mode.type";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import type { Mode } from "@shared/models/types/mode.type";
 
 interface UseOrderUpsertDialogProps {
   mode: Mode;
