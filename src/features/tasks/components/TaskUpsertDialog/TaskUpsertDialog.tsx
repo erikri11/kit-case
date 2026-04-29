@@ -139,6 +139,7 @@ export function TaskUpsertDialog({
                       variant: "filled"
                     }
                   }}
+                  disablePast
                 />
               </Grid>
             </>
