@@ -1,4 +1,4 @@
-import type { CustomerDetails } from "@features/customers/models/customer.details.model";
+import type { CustomerDetails } from "@features/customers/models/model/customer.details.model";
 import useCurrency from "@shared/context/currency/useCurrency";
 import { formatPrice } from "@shared/utils/formatPrice";
 import { useTranslation } from "react-i18next";

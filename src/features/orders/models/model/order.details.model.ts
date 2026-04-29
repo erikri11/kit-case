@@ -1,5 +1,5 @@
 import type { Order } from "./order.model";
-import type { CustomerStatus } from "@features/customers/models/customer.constants";
+import type { CustomerStatus } from "@features/customers/models/constants/customer.constants";
 
 export interface OrderCustomerInfo {
   id: string;

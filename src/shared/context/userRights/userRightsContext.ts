@@ -1,4 +1,4 @@
-import type { RoleEnum } from "@shared/types/roleEnum";
+import type { RoleEnum } from "@shared/models/constants/role.constants";
 import { createContext } from "react";
 
 export interface UserRightsContextProps {

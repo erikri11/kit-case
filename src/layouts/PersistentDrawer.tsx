@@ -1,6 +1,6 @@
 import { Box, Drawer} from '@mui/material';
-import { DRAWER_WIDTH } from '../shared/types/drawerWidth';
-import type { MenuItem } from '@shared/types/menu';
+import { DRAWER_WIDTH } from '../shared/models/constants/drawerWidth.constants';
+import type { MenuItem } from '@shared/models/model/menu.model';
 import { PersistentDrawerContent } from './PersistentDrawerContent';
 
 export interface PersistentDrawerProps {

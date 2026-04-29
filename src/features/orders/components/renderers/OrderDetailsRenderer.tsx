@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import type { ColDef, IDetailCellRendererParams } from "ag-grid-enterprise";
 import { Box, Typography } from "@mui/material";
 import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
-import type { OrderDetails } from "@features/orders/models/order.details.model";
+import type { OrderDetails } from "@features/orders/models/model/order.details.model";
 import type { Currency } from "@features/products/models/product.constants";
 import { useTranslation } from "react-i18next";
 import useCurrency from "@shared/context/currency/useCurrency";

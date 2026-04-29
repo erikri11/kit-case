@@ -1,5 +1,5 @@
 import type { Currency } from "@features/products/models/product.constants";
-import type { PaymentStatus } from "./customer.payment.constants";
+import type { PaymentStatus } from "../constants/customer.payment.constants";
 
 export interface CustomerPayment {
   id: string;

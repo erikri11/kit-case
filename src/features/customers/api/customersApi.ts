@@ -1,7 +1,7 @@
 import { makeRequest } from '@shared/services/makeRequest';
-import type { QueryParams } from '@shared/types/queryParams';
-import type { Customer, CustomerCreate, CustomerUpdate } from '../models/customer.model';
-import type { CustomerDetails } from '../models/customer.details.model';
+import type { QueryParams } from '@shared/models/types/QueryParams.type';
+import type { Customer, CustomerCreate, CustomerUpdate } from '../models/model/customer.model';
+import type { CustomerDetails } from '../models/model/customer.details.model';
 
 function toQuery(params?: QueryParams) {
   if (!params) return '';

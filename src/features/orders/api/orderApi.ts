@@ -1,7 +1,7 @@
 import { makeRequest } from "@shared/services/makeRequest";
-import type { QueryParams } from "@shared/types/queryParams";
-import type { OrderCreate, OrderUpdate } from "../models/order.model";
-import type { OrderDetails } from "../models/order.details.model";
+import type { QueryParams } from "@shared/models/types/QueryParams.type";
+import type { OrderCreate, OrderUpdate } from "../models/model/order.model";
+import type { OrderDetails } from "../models/model/order.details.model";
 
 function toQuery(params?: QueryParams) {
   if (!params) return "";

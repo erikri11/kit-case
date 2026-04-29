@@ -1,4 +1,4 @@
-import type { UploadResponse } from "@features/customers/models/uploadResponse";
+import type { UploadResponse } from "@features/customers/models/model/uploadResponse.model";
 import { resolveAvatarSrc } from "@features/customers/utils/resolveAvatarSrc";
 import { API_BASE, API_PREFIX } from "@shared/config/api";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";

@@ -1,6 +1,6 @@
-import { RoleEnum } from "@shared/types/roleEnum";
+import { ROLES } from "@shared/models/constants/role.constants";
 
 export const ROLE_HIERARCHY = {
-  [RoleEnum.USER]: 1,
-  [RoleEnum.ADMIN]: 2
+  [ROLES.USER]: 1,
+  [ROLES.ADMIN]: 2,
 };

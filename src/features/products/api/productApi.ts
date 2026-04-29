@@ -1,6 +1,6 @@
 import { makeRequest } from '@shared/services/makeRequest';
 import type { Product, ProductCreate, ProductUpdate } from '../models/product.model';
-import type { QueryParams } from '@shared/types/queryParams';
+import type { QueryParams } from '@shared/models/types/QueryParams.type';
 import type { ProductStatus } from '../models/product.constants';
 
 function toQuery(params?: QueryParams) {

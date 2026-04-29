@@ -1,7 +1,7 @@
 import { Avatar, Card, CardContent, CardHeader, Chip, Divider, LinearProgress, Stack, Typography } from "@mui/material";
 import UserIcon from '@mui/icons-material/Person';
 import { useTranslation } from "react-i18next";
-import type { Customer } from "@features/customers/models/customer.model";
+import type { Customer } from "@features/customers/models/model/customer.model";
 
 interface CustomerBasicDetailsCardProps {
   customer: Customer;

@@ -1,6 +1,6 @@
-import type { BaseEntity } from "@shared/types/baseEntity";
+import type { BaseEntity } from "@shared/models/model/baseEntity.model";
 import type { LineItem } from "./lineItem.model";
-import type { OrderStatus } from "./order.constants";
+import type { OrderStatus } from "../constants/order.constants";
 import type { Currency } from "@features/products/models/product.constants";
 
 export interface Order extends BaseEntity {

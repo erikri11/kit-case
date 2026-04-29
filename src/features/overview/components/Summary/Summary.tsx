@@ -8,7 +8,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import TrendDownIcon from "@mui/icons-material/TrendingDown";
 import TrendUpIcon from "@mui/icons-material/TrendingUp";
-import type { Trend } from "@features/overview/models/trend";
+import type { Trend } from "@features/overview/models/trend.type";
 
 export interface SummaryProps {
 	amount: number;

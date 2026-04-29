@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Container, Toolbar } from "@mui/material";
 
-import { DRAWER_WIDTH } from '@shared/types/drawerWidth';
+import { DRAWER_WIDTH } from '@shared/models/constants/drawerWidth.constants';
 import AppHeader from '@widgets/AppHeader/AppHeader';
 import AppFooter from '@widgets/AppFooter';
 import { PersistentDrawer } from '@layouts/PersistentDrawer';

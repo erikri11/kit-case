@@ -7,7 +7,7 @@ import { OrderRenderer } from '../renderers/OrderRenderer';
 import { PaymentMethodRenderer } from '../renderers/PaymentMethodRenderer';
 import { OrderStatusChipRenderer } from '../renderers/OrderStatusChipRenderer';
 import { orderRankStatusesCompare } from '../comparators/orderRankStatusesCompare';
-import type { OrderDetails } from '@features/orders/models/order.details.model';
+import type { OrderDetails } from '@features/orders/models/model/order.details.model';
 import OrderCustomerRenderer from '../renderers/OrderCustomerRenderer';
 
 interface ColumnArgsProps {

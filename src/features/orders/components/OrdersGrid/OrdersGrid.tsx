@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { createOrderGridColumns } from "./createOrderGridColumns";
 import { OrderUpsertDialog } from "../OrderUpsertDialog/OrderUpsertDialog";
 import { OrderDeleteDialog } from "../OrderDeleteDialog/OrderDeleteDialog";
-import type { OrderDetails } from "@features/orders/models/order.details.model";
+import type { OrderDetails } from "@features/orders/models/model/order.details.model";
 import OrderDetailRenderer from "../renderers/OrderDetailsRenderer";
 
 interface OrdersGridProps {

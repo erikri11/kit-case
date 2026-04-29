@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "@shared/context/auth/useAuth";
-import type { RoleEnum } from "@shared/types/roleEnum";
+import type { RoleEnum } from "@shared/models/constants/role.constants";
 import { useUserRights } from "@shared/context/userRights/useUserRights";
 import UnauthorizedPage from "@pages/UnauthorizedPage";
 import { ROLE_HIERARCHY } from "@shared/constants/roleHierarchy";

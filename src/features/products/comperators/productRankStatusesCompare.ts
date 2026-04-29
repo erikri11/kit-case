@@ -1,4 +1,4 @@
 import { createConfigRankCompare } from "@shared/utils/createConfigRankCompare";
-import { PRODUCT_STATUS_CONFIG } from "../models/productStatusConfig";
+import { PRODUCT_STATUS_CONFIG } from "../models/productStatusConfig.constants";
 
 export const productRankStatusesCompare = createConfigRankCompare(PRODUCT_STATUS_CONFIG);

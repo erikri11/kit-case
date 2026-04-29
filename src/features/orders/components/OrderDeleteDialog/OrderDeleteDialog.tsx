@@ -1,5 +1,5 @@
 import { orderApi } from '@features/orders/api/orderApi';
-import type { Order } from '@features/orders/models/order.model';
+import type { Order } from '@features/orders/models/model/order.model';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@mui/material';
 import { useSnackbar } from '@shared/context/snackbar/useSnackbar';
 import { useTranslation } from 'react-i18next';

@@ -1,4 +1,4 @@
-import type { Order, OrderPaymentMethod } from "@features/orders/models/order.model";
+import type { Order, OrderPaymentMethod } from "@features/orders/models/model/order.model";
 import { Avatar, Stack, Typography } from "@mui/material";
 import type { ICellRendererParams } from "ag-grid-enterprise";
 

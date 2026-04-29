@@ -1,4 +1,4 @@
-import type { Customer } from "@features/customers/models/customer.model";
+import type { Customer } from "@features/customers/models/model/customer.model";
 import { CustomerInfo } from "@shared/components/CustomerInfo/CustomerInfo";
 import type { ICellRendererParams } from "ag-grid-enterprise";
 

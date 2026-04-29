@@ -1,4 +1,4 @@
-import type { BaseEntity } from "@shared/types/baseEntity";
+import type { BaseEntity } from "@shared/models/model/baseEntity.model";
 import type { Currency, ProductCategory, ProductStatus, ProductType } from "./product.constants";
 
 export interface Product extends BaseEntity {

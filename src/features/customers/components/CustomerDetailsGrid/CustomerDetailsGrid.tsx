@@ -1,7 +1,7 @@
 import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
 import { createCustomerDetailsGridColumns } from "./createCustomerDetailsGridColumns";
 import { useTranslation } from "react-i18next";
-import type { CustomerPayment } from "@features/customers/models/customer.payment.model";
+import type { CustomerPayment } from "@features/customers/models/model/customer.payment.model";
 import useCurrency from "@shared/context/currency/useCurrency";
 
 interface CustomerDetailsGridProps {

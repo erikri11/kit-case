@@ -1,4 +1,4 @@
-import type { BaseEntity } from "@shared/types/baseEntity";
+import type { BaseEntity } from "@shared/models/model/baseEntity.model";
 
 export interface Task extends BaseEntity {
   title: string;

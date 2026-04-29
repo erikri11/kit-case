@@ -1,4 +1,4 @@
-import type { StatusConfigItem } from "@shared/types/statusConfigItem";
+import type { StatusConfigItem } from "@shared/models/model/statusConfigItem.model";
 import type { ProductStatus } from "./product.constants";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";

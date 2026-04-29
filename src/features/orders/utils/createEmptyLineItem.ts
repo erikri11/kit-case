@@ -1,4 +1,4 @@
-import type { LineItem } from "../models/lineItem.model";
+import type { LineItem } from "../models/model/lineItem.model";
 
 export function createEmptyLineItem(): LineItem {
   return {

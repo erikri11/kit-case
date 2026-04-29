@@ -1,5 +1,5 @@
 import { customerApi } from "@features/customers/api/customersApi";
-import type { CustomerDetails } from "@features/customers/models/customer.details.model";
+import type { CustomerDetails } from "@features/customers/models/model/customer.details.model";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";

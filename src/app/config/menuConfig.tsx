@@ -1,4 +1,4 @@
-import type { MenuItem } from '../../shared/types/menu';
+import type { MenuItem } from '../../shared/models/model/menu.model';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import StoreOutlinedIcon from '@mui/icons-material/StoreOutlined';
 import WarehouseOutlinedIcon from '@mui/icons-material/WarehouseOutlined';

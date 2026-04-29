@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import DataGridTable from "@shared/components/DataGridTable/DataGridTable";
-import type { Customer } from "@features/customers/models/customer.model";
+import type { Customer } from "@features/customers/models/model/customer.model";
 import { createCustomerGridColumns } from "./createCustomerGridColumns";
 import { CustomerUpsertDialog } from "../CustomerUpsertDialog/CustomerUpsertDialog";
 import CustomerDeleteDialog from "../CustomerDeleteDialog/CustomerDeleteDialog";

@@ -1,5 +1,5 @@
 import { createChipRenderer } from "@shared/renderers/createChipRenderer";
-import { TASK_STATUS_CONFIG } from "@features/tasks/models/taskStatusConfig";
+import { TASK_STATUS_CONFIG } from "@features/tasks/models/taskStatusConfig.constants";
 import type { Task, TaskStatus } from "@features/tasks/models/task.model";
 
 export const TaskStatusChipRenderer =

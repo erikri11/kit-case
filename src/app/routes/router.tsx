@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { CenteredSpinner } from "@layouts/CenteredSpinner";
-import { RoleEnum } from "@shared/types/roleEnum";
+import { ROLES } from "@shared/models/constants/role.constants";
 import { ProtectedRoute } from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
 
@@ -30,7 +30,7 @@ export function AppRoutes() {
         <Route
           path="/overview"
           element={
-            <ProtectedRoute allowedRoles={[RoleEnum.USER]}>
+            <ProtectedRoute allowedRoles={[ROLES.USER]}>
               <OverviewPage />
             </ProtectedRoute>
           }
@@ -39,7 +39,7 @@ export function AppRoutes() {
         <Route
           path="/admin/orders"
           element={
-            <ProtectedRoute allowedRoles={[RoleEnum.ADMIN]}>
+            <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
               <OrdersPage />
             </ProtectedRoute>
           }
@@ -48,7 +48,7 @@ export function AppRoutes() {
         <Route
           path="/admin/products"
           element={
-            <ProtectedRoute allowedRoles={[RoleEnum.ADMIN]}>
+            <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
               <ProductPage />
             </ProtectedRoute>
           }
@@ -57,7 +57,7 @@ export function AppRoutes() {
         <Route
           path="/admin/customers/*"
           element={
-            <ProtectedRoute allowedRoles={[RoleEnum.ADMIN]}>
+            <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
               <CustomersRoutes />
             </ProtectedRoute>
           }
@@ -66,7 +66,7 @@ export function AppRoutes() {
         <Route
           path="/admin/tasks"
           element={
-            <ProtectedRoute allowedRoles={[RoleEnum.ADMIN]}>
+            <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
               <TasksPage />
             </ProtectedRoute>
           }

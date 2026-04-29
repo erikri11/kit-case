@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { SnackbarContext } from './SnackbarContext';
-import type { SnackbarMessage } from '@shared/types/snackbar';
+import type { SnackbarMessage } from '@shared/models/model/snackbar.model';
 
 export function SnackbarProvider({ children }: { children: ReactNode }) {
   const [snackbarMessage, setSnackbarMessage] = useState<SnackbarMessage | undefined>(undefined);

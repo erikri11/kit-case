@@ -4,13 +4,13 @@ import { Link, useLocation } from "react-router-dom";
 import { checkMenuAccess } from "@app/routes/access";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Collapse, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import type { MenuItem } from "@shared/types/menu";
-import type { RoleEnum } from "@shared/types/roleEnum";
+import type { MenuItem } from "@shared/models/model/menu.model";
 import { isSelectedPath } from "@shared/utils/isSelectedPath";
+import type { Role } from "@shared/models/constants/role.constants";
 
 interface MenuGroupItemProps {
   item: MenuItem;
-  role: RoleEnum;
+  role: Role;
 }
 
 export function MenuGroupItem({ 

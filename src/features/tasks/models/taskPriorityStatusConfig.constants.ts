@@ -1,6 +1,6 @@
 import OutlinedFlagIcon from "@mui/icons-material/OutlinedFlag";
 import FlagIcon from "@mui/icons-material/Flag";
-import type { StatusConfigItem } from "@shared/types/statusConfigItem";
+import type { StatusConfigItem } from "@shared/models/model/statusConfigItem.model";
 import type { TaskPriority } from "./task.model";
 
 export const TASK_PRIORITY_STATUS_CONFIG: Record<TaskPriority, StatusConfigItem> = {

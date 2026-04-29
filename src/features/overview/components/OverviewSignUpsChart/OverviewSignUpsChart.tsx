@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
 import { Avatar, Card, CardContent, CardHeader, useTheme } from '@mui/material';
 import { BarChart } from '@mui/x-charts/BarChart';
-import type { Customer } from "@features/customers/models/customer.model";
+import type { Customer } from "@features/customers/models/model/customer.model";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import green from 'node_modules/@mui/material/esm/colors/green';
 

@@ -1,10 +1,10 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
-import type { CustomerUpdate } from "@features/customers/models/customer.model";
-import type { Mode } from "@shared/types/mode";
+import type { CustomerUpdate } from "@features/customers/models/model/customer.model";
+import type { Mode } from "@shared/models/types/mode.type";
 import { AvatarUpload } from "../AvatarUpload/AvatarUpload";
 import { PhoneMaskInput } from "../PhoneMaskInput/PhoneMaskInput";
 import { useCustomerUpsertDialog } from "./useCustomerUpsertDialog";
-import { CUSTOMER_QUOTAS, CUSTOMER_STATUSES } from "@features/customers/models/customer.constants";
+import { CUSTOMER_QUOTAS, CUSTOMER_STATUSES } from "@features/customers/models/constants/customer.constants";
 
 export interface CustomerUpsertDialogProps {
   open: boolean;

@@ -4,10 +4,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { AppBarLogo } from './AppBarLogo';
 import { useUserRights } from '../../shared/context/userRights/useUserRights';
 import LanguageToggle from '@shared/components/LanguageToggle/LanguageToggle';
-import { RoleEnum } from '@shared/types/roleEnum';
 import CurrencyToggle from '@shared/components/CurrencyToggle/CurrencyToggle';
 import { ColorSchemeToggle } from '@shared/components/ColorSchemeToggle/ColorSchemeToggle';
 import { UserMenu } from '@shared/components/UserMenu/UserMenu';
+import { ROLES, type Role } from '@shared/models/constants/role.constants';
 
 interface AppHeaderProps {
   onMenuClick: () => void;
@@ -18,7 +18,7 @@ export function AppHeader(props: AppHeaderProps) {
   const { role, setRole } = useUserRights();
 
   const handleRoleChange = (e: SelectChangeEvent) => {
-    setRole(e.target.value as RoleEnum);
+    setRole(e.target.value as Role);
   };
 
   const labelSx = {
@@ -99,8 +99,8 @@ export function AppHeader(props: AppHeaderProps) {
             onChange={handleRoleChange}
             sx={selectSx}
           >
-            <MenuItem value={RoleEnum.USER}>{t("common:labels.user")}</MenuItem>
-            <MenuItem value={RoleEnum.ADMIN}>{t("common:labels.administrator")}</MenuItem>
+            <MenuItem value={ROLES.USER}>{t("common:labels.user")}</MenuItem>
+            <MenuItem value={ROLES.ADMIN}>{t("common:labels.administrator")}</MenuItem>
           </Select>
         </FormControl>
         

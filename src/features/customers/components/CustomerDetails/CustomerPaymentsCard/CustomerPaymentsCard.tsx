@@ -1,7 +1,7 @@
 import {Avatar, Box, Card, CardContent, CardHeader, Divider, Stack, Typography} from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { CustomerDetailsGrid } from "../../CustomerDetailsGrid/CustomerDetailsGrid";
-import type { CustomerDetails } from "@features/customers/models/customer.details.model";
+import type { CustomerDetails } from "@features/customers/models/model/customer.details.model";
 import { useCustomerPaymentsCard } from "./useCustomerPaymentsCard";
 
 interface CustomerPaymentsCardProps {

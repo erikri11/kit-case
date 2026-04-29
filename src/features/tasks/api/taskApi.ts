@@ -1,6 +1,6 @@
 import { makeRequest } from '@shared/services/makeRequest';
 import type { Task, TaskCreate, TaskUpdate } from '../models/task.model';
-import type { QueryParams } from '@shared/types/queryParams';
+import type { QueryParams } from '@shared/models/types/QueryParams.type';
 
 function toQuery(params?: QueryParams) {
   if (!params) return '';

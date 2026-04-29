@@ -1,5 +1,5 @@
 import { API_BASE, API_PREFIX } from "@shared/config/api";
-import type { UploadResponse } from "../models/uploadResponse";
+import type { UploadResponse } from "../models/uploadResponse.model";
 
 export async function productUploadApi(file: File): Promise<UploadResponse> {
 

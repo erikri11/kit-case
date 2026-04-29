@@ -1,5 +1,6 @@
 import { makeRequest } from "@shared/services/makeRequest";
-import type { PaymentStatus } from "../models/customer.payment.model";
+import type { PaymentStatus } from "../models/constants/customer.payment.constants";
+
 
 export const paymentApi = {
   updateStatus: (payload: { invoiceId: string; status: PaymentStatus }) =>

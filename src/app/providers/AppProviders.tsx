@@ -6,7 +6,7 @@ import { enUS, nb } from 'date-fns/locale';
 import { useTranslation } from 'react-i18next';
 import { SnackbarHost } from '@shared/components/SnackbarHost/SnackbarHost';
 import { SnackbarContext } from '../../shared/context/snackbar/SnackbarContext';
-import type { SnackbarMessage } from '@shared/types/snackbar';
+import type { SnackbarMessage } from '@shared/models/model/snackbar.model';
 import UserRightsProvider from '@shared/context/userRights/userRightsProvider';
 import CurrencyProvider from '@shared/context/currency/CurrencyProvider';
 import { AuthProvider } from '@shared/context/auth/AuthProvider';

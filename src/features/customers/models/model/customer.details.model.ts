@@ -1,4 +1,4 @@
-import type { Order } from "@features/orders/models/order.model";
+import type { Order } from "@features/orders/models/model/order.model";
 import type { Customer } from "./customer.model";
 import type { CustomerPayment } from "./customer.payment.model";
 import type { CustomerPaymentSummary } from "./customer.payment.summary.model";

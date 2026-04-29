@@ -1,4 +1,4 @@
-import type { Order } from "@features/orders/models/order.model";
+import type { Order } from "@features/orders/models/model/order.model";
 import { getTotalQuantity } from "@features/orders/utils/getTotalQuantity";
 import { Box, Stack, Typography } from "@mui/material";
 import useCurrency from "@shared/context/currency/useCurrency";

@@ -1,7 +1,7 @@
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import ReplayIcon from "@mui/icons-material/Replay";
-import type { StatusConfigItem } from "@shared/types/statusConfigItem";
+import type { StatusConfigItem } from "@shared/models/model/statusConfigItem.model";
 import type { PaymentStatus } from "./customer.payment.constants";
 
 export const CUSTOMER_PAYMENT_STATUS_CONFIG: Record<PaymentStatus, StatusConfigItem> = {

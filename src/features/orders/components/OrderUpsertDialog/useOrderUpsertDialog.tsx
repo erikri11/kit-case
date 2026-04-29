@@ -1,7 +1,7 @@
 import { orderApi } from "@features/orders/api/orderApi";
-import type { LineItem } from "@features/orders/models/lineItem.model";
-import { BASE_CURRENCY, LOCKED_STATUSES, type OrderStatus } from "@features/orders/models/order.constants";
-import type { Order, OrderCreate, OrderFieldName, OrderPaymentMethod, OrderUpdate } from "@features/orders/models/order.model";
+import type { LineItem } from "@features/orders/models/model/lineItem.model";
+import { BASE_CURRENCY, LOCKED_STATUSES, type OrderStatus } from "@features/orders/models/constants/order.constants";
+import type { Order, OrderCreate, OrderFieldName, OrderPaymentMethod, OrderUpdate } from "@features/orders/models/model/order.model";
 import { calculateOrderTotal } from "@features/orders/utils/calculateOrderTotal";
 import { createEmptyLineItem } from "@features/orders/utils/createEmptyLineItem";
 import { resolveSelectedValue } from "@features/orders/utils/resolveSelectedValue";
@@ -9,7 +9,7 @@ import { useProducts } from "@features/products/hooks/useProducts";
 import useCurrency from "@shared/context/currency/useCurrency";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
 import { useCustomers } from "@shared/hooks/useCustomers";
-import type { Mode } from "@shared/types/mode";
+import type { Mode } from "@shared/models/types/mode.type";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 

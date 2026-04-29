@@ -1,6 +1,6 @@
 import type { ICellRendererParams } from "ag-grid-enterprise";
 import { Avatar, Stack, Typography } from "@mui/material";
-import type { OrderDetails } from "@features/orders/models/order.details.model";
+import type { OrderDetails } from "@features/orders/models/model/order.details.model";
 import { resolveAvatarSrc } from "@features/customers/utils/resolveAvatarSrc";
 
 export function OrderCustomerRenderer(props: ICellRendererParams<OrderDetails>) {

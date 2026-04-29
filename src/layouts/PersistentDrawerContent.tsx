@@ -5,7 +5,7 @@ import { Box, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, T
 import { checkMenuAccess } from "@app/routes/access";
 import { useUserRights } from "@shared/context/userRights/useUserRights";
 import { MenuGroupItem } from "./MenuGroupItem";
-import type { MenuItem } from "@shared/types/menu";
+import type { MenuItem } from "@shared/models/model/menu.model";
 
 interface PersistentDrawerContentProps{
   menuItems: MenuItem[];

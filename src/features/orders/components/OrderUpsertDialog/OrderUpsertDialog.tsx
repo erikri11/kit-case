@@ -1,13 +1,13 @@
-import type {Order, OrderPaymentMethod} from "@features/orders/models/order.model";
+import type {Order, OrderPaymentMethod} from "@features/orders/models/model/order.model";
 import { generateLast4 } from "@features/orders/utils/generateLast4";
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormHelperText, Grid, IconButton, InputLabel, MenuItem, Select, TextField, Tooltip, Typography} from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import type { Mode } from "@shared/types/mode";
+import type { Mode } from "@shared/models/types/mode.type";
 import { useOrderUpsertDialog } from "./useOrderUpsertDialog";
 import DeleteIcon from "@mui/icons-material/Delete";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import AddIcon from "@mui/icons-material/Add";
-import { ORDER_PAYMENT_METHODS, ORDER_STATUSES, type OrderStatus } from "@features/orders/models/order.constants";
+import { ORDER_PAYMENT_METHODS, ORDER_STATUSES, type OrderStatus } from "@features/orders/models/constants/order.constants";
 import { resolveSelectedValue } from "@features/orders/utils/resolveSelectedValue";
 import { useTranslation } from "react-i18next";
 import { formatCurrency } from "@shared/utils/formatCurrency";

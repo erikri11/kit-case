@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@mui/material';
-import type { Customer } from '@features/customers/models/customer.model';
+import type { Customer } from '@features/customers/models/model/customer.model';
 import { useCustomerDeleteDialog } from './useCustomerDeleteDialog';
 
 export interface CustomerDeleteDialogProps {

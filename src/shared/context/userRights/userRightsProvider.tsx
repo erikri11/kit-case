@@ -1,9 +1,9 @@
 import { useMemo, useState, useCallback, type ReactNode } from 'react';
 import { UserRightsContext } from './UserRightsContext';
-import { RoleEnum } from '@shared/types/roleEnum';
+import { ROLES, type Role } from '@shared/models/constants/role.constants';
 
 const STORAGE_KEY = "app.role";
-const initialRole = RoleEnum.USER;
+const initialRole: Role = ROLES.USER;
 
 export interface UserRightsProviderProps {
   children: ReactNode;
@@ -13,17 +13,17 @@ export function UserRightsProvider({
   children 
 }: UserRightsProviderProps) {
   
-  const [role, setRoleState] = useState<RoleEnum>(() => {
+  const [role, setRoleState] = useState<Role>(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
 
-    if (stored && Object.values(RoleEnum).includes(stored as RoleEnum)) {
-      return stored as RoleEnum;
+    if (stored && Object.values(ROLES).includes(stored as Role)) {
+      return stored as Role;
     }
     
     return initialRole;
   });
 
-  const setRole = useCallback((newRole: RoleEnum) => {
+  const setRole = useCallback((newRole: Role) => {
     setRoleState(newRole);
     localStorage.setItem(STORAGE_KEY, newRole);
   }, []);

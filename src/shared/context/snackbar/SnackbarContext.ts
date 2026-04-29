@@ -1,5 +1,5 @@
 import { createContext, type Dispatch, type SetStateAction } from 'react';
-import type { SnackbarMessage } from '@shared/types/snackbar';
+import type { SnackbarMessage } from '@shared/models/model/snackbar.model';
 
 export interface SnackbarContextProps {
   snackbarMessage: SnackbarMessage | undefined;

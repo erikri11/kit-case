@@ -40,7 +40,7 @@
       "@shared/services/*": ["src/shared/services/*"],
       "@shared/styles/*": ["src/shared/styles/*"],
       "@shared/theme/*": ["src/shared/theme/*"],
-      "@shared/types/*": ["src/shared/types/*"],
+      "@shared/types/*": ["src/shared/models/*"],
       "@shared/utils/*": ["src/shared/utils/*"],
       "@shared/i18n/*": ["src/shared/i18n/*"],
       "@widgets/*": ["src/widgets/*"],

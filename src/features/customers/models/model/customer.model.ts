@@ -1,5 +1,5 @@
-import type { BaseEntity } from "@shared/types/baseEntity";
-import type { CustomerStatus } from "./customer.constants";
+import type { BaseEntity } from "@shared/models/model/baseEntity.model";
+import type { CustomerStatus } from "../constants/customer.constants";
 
 export interface Customer extends BaseEntity {
 	customerNumber: string;

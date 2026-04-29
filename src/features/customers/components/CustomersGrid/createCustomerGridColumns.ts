@@ -1,15 +1,15 @@
 import type { TFunction } from 'i18next';
 import type { ColDef } from 'ag-grid-enterprise';
-import type { Customer } from '@features/customers/models/customer.model';
+import type { Customer } from '@features/customers/models/model/customer.model';
 import { dateRenderer } from '../../../../shared/renderers/dateRenderer';
 import { CustomerStatusChipRenderer } from '../renderers/CustomerStatusChipRenderer';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { IconRenderer } from '../renderers/IconRenderer';
-import { LinearProgressRenderer } from '../renderers/LinearProgressRenderer';
 import { createActionButtonRenderer } from '../../../../shared/renderers/createActionButtonRenderer';
 import { CustomerRenderer } from '@features/customers/components/renderers/CustomerRenderer';
 import { customerRankStatusesCompare } from '../comparators/customerRankStatusesCompare';
+import { IconRenderer } from '../renderers/iconRenderer';
+import LinearProgressRenderer from '../renderers/linearProgressRenderer';
 
 interface ColumnArgsProps {
   t: TFunction;

@@ -1,4 +1,4 @@
-import type { LineItem } from "@features/orders/models/lineItem.model";
+import type { LineItem } from "@features/orders/models/model/lineItem.model";
 import type { Currency } from "@features/products/models/product.constants";
 import { convertToBaseCurrency } from "@shared/utils/convertToBaseCurrency";
 

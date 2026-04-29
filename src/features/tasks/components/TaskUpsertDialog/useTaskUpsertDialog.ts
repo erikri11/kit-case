@@ -2,7 +2,7 @@ import { taskApi } from "@features/tasks/api/taskApi";
 import type { Task, TaskCreate, TaskFieldName, TaskPriority, TaskStatus, TaskUpdate } from "@features/tasks/models/task.model";
 import { validateTitle } from "@features/tasks/validation/validateTask";
 import { useSnackbar } from "@shared/context/snackbar/useSnackbar";
-import type { Mode } from "@shared/types/mode";
+import type { Mode } from "@shared/models/types/mode.type";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
