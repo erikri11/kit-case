@@ -3,6 +3,11 @@ import { orderApi } from "../api/orderApi";
 import type { OrderDetails } from "../models/model/order.details.model";
 import { connectSocket, socket } from "@shared/socket/socket";
 import { EVENTS } from "@shared/models/constants/events.constants";
+import { getPercentChange } from "@shared/utils/getPercentChange";
+import type { Trend } from "@features/overview/models/trend.type";
+
+const isRefunded = (order: OrderDetails) =>
+  order.status === "Refunded";
 
 export function useOrders() {
   const [orders, setOrders] = useState<OrderDetails[]>([]);
@@ -50,12 +55,50 @@ export function useOrders() {
     };
   }, []);
 
-  const refundedOrders = orders.filter(
-    (order) => order.status === "Refunded"
-  ).length;
+  const now = new Date();
+
+  const startOfThisMonth = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    1
+  );
+
+  const startOfLastMonth = new Date(
+    now.getFullYear(),
+    now.getMonth() - 1,
+    1
+  );
+
+  const refundedOrders = orders.filter(isRefunded).length;
+
+  const refundedThisMonth = orders.filter((order) => {
+    const createdAt = new Date(order.createdAt);
+
+    return isRefunded(order) && createdAt >= startOfThisMonth;
+  }).length;
+
+  const refundedLastMonth = orders.filter((order) => {
+    const createdAt = new Date(order.createdAt);
+
+    return (
+      isRefunded(order) &&
+      createdAt >= startOfLastMonth &&
+      createdAt < startOfThisMonth
+    );
+  }).length;
+
+  const refundedDiff = getPercentChange(
+    refundedThisMonth, refundedLastMonth
+  );
+
+  const refundedTrend: Trend = 
+    refundedDiff >= 0 ? "up" : "down";
 
   return { 
     orders, 
-    refundedOrders 
+    refundedOrders,
+    refundedThisMonth,
+    refundedDiff,
+    refundedTrend
   };
 }

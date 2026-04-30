@@ -12,15 +12,18 @@ import type { Trend } from "@features/overview/models/trend.type";
 
 export interface SummaryProps {
 	amount: number;
+	totalAmount?: number;
 	diff: number;
 	icon: React.ElementType;
 	title: string;
 	trend: Trend;
+	
 	sx?: object;
 }
 
 export function Summary({ 
   amount, 
+	totalAmount,
   diff, 
   icon: Icon, 
   title, 
@@ -28,7 +31,7 @@ export function Summary({
 	sx
 }: SummaryProps) {
 
-	const { t, i18n } = useTranslation("common");
+	const { t, i18n } = useTranslation("overview");
 
 	const trendColor = trend === "up" ? "success.main" : "error.main";
 	const percentFormatter = new Intl.NumberFormat(i18n.language, {
@@ -53,7 +56,14 @@ export function Summary({
 						</Typography>
 						<Typography variant="h3">
 							{amount}
-							</Typography>
+						</Typography>
+						<Typography
+							variant="body2"
+							color="text.secondary"
+							sx={{ visibility: totalAmount === undefined ? "hidden" : "visible" }}
+						>
+							Totalt: {totalAmount ?? ""}
+						</Typography>
 					</Stack>
 				</Stack>
 			</CardContent>

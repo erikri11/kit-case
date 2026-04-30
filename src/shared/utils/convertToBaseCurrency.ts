@@ -2,8 +2,7 @@ import type { Currency } from "@features/products/models/product.constants";
 
 const EXCHANGE_RATES_TO_NOK: Record<Currency, number> = {
   NOK: 1,
-  USD: 10.8,
- 
+  USD: 10.8
 };
 
 export function convertToBaseCurrency(

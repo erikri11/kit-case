@@ -29,7 +29,7 @@ export function useOrderUpsertDialog({
   
   const { t } = useTranslation(["orders", "common", "products", "validation"]);
   const { setSnackbarMessage } = useSnackbar();
-  const customers = useCustomers();
+  const { customers } = useCustomers();
   const products = useProducts();
   const { currency: displayCurrency } = useCurrency();
 

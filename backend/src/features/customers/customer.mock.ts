@@ -2,6 +2,7 @@ import { customerIds } from "./customer.mock.ids";
 import { Customer } from "./customer.model";
 
 export const mockCustomers: Customer[] = [
+  // (April 2026)
   {
     id: customerIds.fran,
     customerNumber: "CUST-0001",
@@ -12,7 +13,7 @@ export const mockCustomers: Customer[] = [
     company: "",
     quota: 50,
     status: "Active",
-    createdAt: new Date("2026-03-24T19:26:34.456Z")
+    createdAt: new Date("2026-04-24T12:00:00")
   },
   {
     id: customerIds.penjani,
@@ -24,7 +25,7 @@ export const mockCustomers: Customer[] = [
     company: "",
     quota: 100,
     status: "Active",
-    createdAt: new Date("2026-03-25T20:31:32.456Z")
+    createdAt: new Date("2026-04-25T12:00:00")
   },
   {
     id: customerIds.carson,
@@ -36,8 +37,10 @@ export const mockCustomers: Customer[] = [
     company: "",
     quota: 50,
     status: "Active",
-    createdAt: new Date("2026-03-26T21:32:33.456Z")
+    createdAt: new Date("2026-04-26T12:00:00")
   },
+  
+  // (March 2026)
   {
     id: customerIds.siegbert,
     customerNumber: "CUST-0004",
@@ -48,7 +51,7 @@ export const mockCustomers: Customer[] = [
     company: "",
     quota: 0,
     status: "Active",
-    createdAt: new Date("2026-03-27T22:33:34.456Z")
+    createdAt: new Date("2026-03-02T12:00:00")
   },
   {
     id: customerIds.miron,
@@ -60,6 +63,6 @@ export const mockCustomers: Customer[] = [
     company: "",
     quota: 50,
     status: "Active",
-    createdAt: new Date("2026-03-28T23:34:35.456Z")
+    createdAt: new Date("2026-03-11T12:00:00")
   }
 ];

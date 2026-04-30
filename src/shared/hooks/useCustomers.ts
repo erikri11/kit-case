@@ -3,6 +3,8 @@ import { customerApi } from '@features/customers/api/customersApi';
 import type { Customer } from "@features/customers/models/model/customer.model";
 import { connectSocket, socket } from '@shared/socket/socket';
 import { EVENTS } from '@shared/models/constants/events.constants';
+import { getPercentChange } from '@shared/utils/getPercentChange';
+import type { Trend } from '@features/overview/models/trend.type';
 
 export function useCustomers() {
   const [customers, setCustomers] = useState<Customer[]>([]);
@@ -50,5 +52,41 @@ export function useCustomers() {
     };
   }, []);
 
-  return customers;
+  const now = new Date();
+
+  const startOfThisMonth = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    1
+  );
+
+  const startOfLastMonth = new Date(
+    now.getFullYear(),
+    now.getMonth() - 1,
+    1
+  );
+
+  const customersThisMonth = customers.filter((customer) => {
+    const createdAt = new Date(customer.createdAt);
+    return createdAt >= startOfThisMonth;
+  }).length;
+
+  const customersLastMonth = customers.filter((customer) => {
+    const createdAt = new Date(customer.createdAt);
+    return createdAt >= startOfLastMonth && createdAt < startOfThisMonth;
+  }).length;
+
+  const customerDiff = getPercentChange(
+    customersThisMonth, customersLastMonth
+  );
+
+  const customerTrend: Trend = 
+    customerDiff >= 0 ? "up" : "down";
+
+  return {
+    customers,
+    customersThisMonth,
+    customerDiff,
+    customerTrend
+  };
 }

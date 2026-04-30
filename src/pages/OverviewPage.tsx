@@ -13,9 +13,27 @@ import { useOrders } from '@features/orders/hooks/useOrders';
 
 export function OverviewPage() {
   const { t } = useTranslation("overview");
-  const customers = useCustomers();
-  const { activeTasks } = useTasks();
-  const { refundedOrders } = useOrders();
+
+  const { 
+    customers, 
+    customersThisMonth, 
+    customerDiff, 
+    customerTrend 
+  } = useCustomers();
+
+  const { 
+    activeTasks, 
+    activeTasksThisMonth,
+    activeTasksDiff, 
+    activeTasksTrend 
+  } = useTasks();
+
+  const { 
+    refundedOrders,
+    refundedThisMonth,
+    refundedDiff,
+    refundedTrend
+  } = useOrders();
 
   return (
     <>
@@ -27,33 +45,36 @@ export function OverviewPage() {
       <Grid container spacing={4}>
         <Grid size={{xs: 12, md: 4}}>
           <Summary 
-            amount={activeTasks}
-            diff={15} 
+            amount={activeTasksThisMonth}
+            totalAmount={activeTasks}
+            diff={activeTasksDiff} 
             icon={ChecksListIcon} 
             title={t("overview:labels.openTasks")}
-            trend="up" 
+            trend={activeTasksTrend} 
             sx={{ bgcolor: blue[500] }}
           />
         </Grid>
 
         <Grid size={{xs: 12, md: 4}}>
           <Summary 
-            amount={customers.length} 
-            diff={5} 
+            amount={customersThisMonth} 
+            totalAmount={customers.length}
+            diff={customerDiff} 
             icon={PeopleIcon} 
             title={t("overview:labels.signUps")}
-            trend="down" 
+            trend={customerTrend} 
             sx={{ bgcolor: green[500] }}
           />
         </Grid>
 
         <Grid size={{xs: 12, md: 4}}>
           <Summary 
-            amount={refundedOrders} 
-            diff={12} 
+            totalAmount={refundedOrders}
+            amount={refundedThisMonth} 
+            diff={refundedDiff} 
             icon={WarningIcon} 
             title={t("overview:labels.refundedOrders")} 
-            trend="up" 
+            trend={refundedTrend} 
             sx={{ bgcolor: orange[500] }}
           />
         </Grid>

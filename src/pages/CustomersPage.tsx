@@ -5,7 +5,7 @@ import { useCustomers } from '@shared/hooks/useCustomers';
 
 export function CustomersPage() {
   const { t } = useTranslation("customers");
-  const customers = useCustomers();
+  const { customers } = useCustomers();
 
   return (
    <>
