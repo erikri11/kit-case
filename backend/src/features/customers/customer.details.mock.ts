@@ -13,7 +13,7 @@ export const customerDetailsMock: CustomerDetails[] = [
     company: "",
     quota: 50,
     status: "Active",
-    createdAt: new Date("2026-03-24T19:26:34.456Z"),
+    createdAt: new Date("2026-04-24T12:00:00"),
     payments: franPayments,
     orders: [
       {
@@ -23,9 +23,9 @@ export const customerDetailsMock: CustomerDetails[] = [
         currency: "USD",
         totalAmount: 466.00,
         status: "Pending",
-        createdAt: new Date("2026-03-24T19:26:34.456Z"),
+        createdAt: new Date(),
         orderNumber: "ORD-1001",
-        issueDate: new Date("2026-03-24T19:26:34.456Z"),
+        issueDate: new Date(),
         lineItems: [
           {
             id: "line-001",
@@ -50,9 +50,9 @@ export const customerDetailsMock: CustomerDetails[] = [
         currency: "USD",
         totalAmount: 466.00,
         status: "Pending",
-        createdAt: new Date("2026-03-24T19:26:34.456Z"),
+        createdAt: new Date(),
         orderNumber: "ORD-1006",
-        issueDate: new Date("2026-03-24T19:26:34.456Z"),
+        issueDate: new Date(),
         lineItems: [
           {
             id: "line-006",
@@ -77,9 +77,9 @@ export const customerDetailsMock: CustomerDetails[] = [
         currency: "USD",
         totalAmount: 466.00,
         status: "Pending",
-        createdAt: new Date("2026-03-24T19:26:34.456Z"),
+        createdAt: new Date(),
         orderNumber: "ORD-1007",
-        issueDate: new Date("2026-03-24T19:26:34.456Z"),
+        issueDate: new Date(),
         lineItems: [
           {
             id: "line-007",
@@ -115,7 +115,7 @@ export const customerDetailsMock: CustomerDetails[] = [
     company: "",
     quota: 100,
     status: "Active",
-    createdAt: new Date("2026-03-25T20:31:32.456Z"),
+    createdAt: new Date("2026-04-25T12:00:00"),
     payments: penjaniPayments,
     orders: [
       {
@@ -125,9 +125,9 @@ export const customerDetailsMock: CustomerDetails[] = [
         currency: "USD",
         totalAmount: 356.00,
         status: "Pending",
-        createdAt: new Date("2026-03-24T19:26:34.456Z"),
+        createdAt: new Date(),
         orderNumber: "ORD-1002",
-        issueDate: new Date("2026-03-24T19:26:34.456Z"),
+        issueDate: new Date(),
         lineItems: [
           {
             id: "line-002",
@@ -163,7 +163,7 @@ export const customerDetailsMock: CustomerDetails[] = [
     company: "",
     quota: 50,
     status: "Active",
-    createdAt: new Date("2026-03-26T21:32:33.456Z"),
+    createdAt: new Date("2026-04-26T12:00:00"),
     payments: carsonPayments,
     orders: [
       {
@@ -173,9 +173,9 @@ export const customerDetailsMock: CustomerDetails[] = [
         currency: "USD",
         totalAmount: 155.00,
         status: "Pending",
-        createdAt: new Date("2026-03-24T19:26:34.456Z"),
+        createdAt: new Date(),
         orderNumber: "ORD-1003",
-        issueDate: new Date("2026-03-24T19:26:34.456Z"),
+        issueDate: new Date(),
         lineItems: [
           {
             id: "line-003",
@@ -211,7 +211,7 @@ export const customerDetailsMock: CustomerDetails[] = [
     company: "",
     quota: 0,
     status: "Active",
-    createdAt: new Date("2026-03-27T22:33:34.456Z"),
+    createdAt: new Date("2026-03-02T12:00:00"),
     payments: siegbertPayments,
     orders: [
       {
@@ -221,9 +221,9 @@ export const customerDetailsMock: CustomerDetails[] = [
         currency: "USD",
         totalAmount: 390.00,
         status: "Pending",
-        createdAt: new Date("2026-03-24T19:26:34.456Z"),
+        createdAt: new Date(),
         orderNumber: "ORD-1004",
-        issueDate: new Date("2026-03-24T19:26:34.456Z"),
+        issueDate: new Date(),
         lineItems: [
           {
             id: "line-004",
@@ -259,7 +259,7 @@ export const customerDetailsMock: CustomerDetails[] = [
     company: "",
     quota: 50,
     status: "Active",
-    createdAt: new Date("2026-03-28T23:34:35.456Z"),
+    createdAt: new Date("2026-03-11T12:00:00"),
     payments: mironPayments,
     orders: [
       {
@@ -269,9 +269,9 @@ export const customerDetailsMock: CustomerDetails[] = [
         currency: "USD",
         totalAmount: 490.00,
         status: "Pending",
-        createdAt: new Date("2026-03-24T19:26:34.456Z"),
+        createdAt: new Date(),
         orderNumber: "ORD-1005",
-        issueDate: new Date("2026-03-24T19:26:34.456Z"),
+        issueDate: new Date(),
         lineItems: [
           {
             id: "line-005",
