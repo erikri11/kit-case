@@ -62,7 +62,7 @@ export function Summary({
 							color="text.secondary"
 							sx={{ visibility: totalAmount === undefined ? "hidden" : "visible" }}
 						>
-							Totalt: {totalAmount ?? ""}
+							{t("common:labels.total")}: {totalAmount ?? ""}
 						</Typography>
 					</Stack>
 				</Stack>
