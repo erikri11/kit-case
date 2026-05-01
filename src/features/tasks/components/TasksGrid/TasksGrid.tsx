@@ -10,7 +10,7 @@ interface TasksGridProps {
   tasks: Task[];
 }
 
-export function TasksGrid({ tasks}: TasksGridProps) {
+export function TasksGrid({ tasks }: TasksGridProps) {
   const { t } = useTranslation();
 
   const [isAddOpen, setIsAddOpen] = useState(false);

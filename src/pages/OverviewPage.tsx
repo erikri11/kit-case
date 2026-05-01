@@ -10,6 +10,7 @@ import OverviewSignUpsChart from '@features/overview/components/OverviewSignUpsC
 import { useCustomers } from '@shared/hooks/useCustomers';
 import { useTasks } from '@features/tasks/hooks/useTasks';
 import { useOrders } from '@features/orders/hooks/useOrders';
+import TasksPreview from '@features/overview/components/TasksPreview/TasksPreview';
 
 export function OverviewPage() {
   const { t } = useTranslation("overview");
@@ -25,7 +26,8 @@ export function OverviewPage() {
     activeTasks, 
     activeTasksThisMonth,
     activeTasksDiff, 
-    activeTasksTrend 
+    activeTasksTrend,
+    upcomingTasks
   } = useTasks();
 
   const { 
@@ -43,19 +45,7 @@ export function OverviewPage() {
       />
 
       <Grid container spacing={4}>
-        <Grid size={{xs: 12, md: 4}}>
-          <Summary 
-            amount={activeTasksThisMonth}
-            totalAmount={activeTasks}
-            diff={activeTasksDiff} 
-            icon={ChecksListIcon} 
-            title={t("overview:labels.openTasks")}
-            trend={activeTasksTrend} 
-            sx={{ bgcolor: blue[500] }}
-          />
-        </Grid>
-
-        <Grid size={{xs: 12, md: 4}}>
+        <Grid size={{xs: 12, md: 6, lg: 4}}>
           <Summary 
             amount={customersThisMonth} 
             totalAmount={customers.length}
@@ -67,7 +57,19 @@ export function OverviewPage() {
           />
         </Grid>
 
-        <Grid size={{xs: 12, md: 4}}>
+        <Grid size={{xs: 12, md: 6, lg: 4}}>
+          <Summary 
+            amount={activeTasksThisMonth}
+            totalAmount={activeTasks}
+            diff={activeTasksDiff} 
+            icon={ChecksListIcon} 
+            title={t("overview:labels.openTasks")}
+            trend={activeTasksTrend} 
+            sx={{ bgcolor: blue[500] }}
+          />
+        </Grid>
+
+        <Grid size={{xs: 12, md: 6, lg: 4}}>
           <Summary 
             totalAmount={refundedOrders}
             amount={refundedThisMonth} 
@@ -83,6 +85,14 @@ export function OverviewPage() {
       <OverviewSignUpsChart 
         customers={customers} 
       />
+      
+      <Grid container spacing={4}>
+        <Grid size={{xs: 12, lg: 6, xl: 4}}>
+          <TasksPreview 
+            tasks={upcomingTasks}
+          />
+        </Grid>
+      </Grid>
     </>
   );
 }

@@ -34,9 +34,15 @@ export function OverviewSignUpsChart({
 
   return (
     <Card variant='outlined' sx={{ my: 4 }}>
-      <CardHeader
+      <CardHeader 
         avatar={
-          <Avatar sx={{ bgcolor: green[500] }}>
+          <Avatar 
+            sx={{
+              bgcolor: green[300],
+              border: "2px solid",
+              borderColor: green[500]
+            }}
+          >
             <BarChartIcon />
           </Avatar>
         }

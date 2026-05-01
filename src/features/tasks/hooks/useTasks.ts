@@ -96,11 +96,17 @@ export function useTasks() {
   const activeTasksTrend: Trend =
     activeTasksDiff >= 0 ? "up" : "down";
 
+  const upcomingTasks = tasks
+    .filter((task) => task.status !== "Done")
+    .sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime())
+    .slice(0, 3);
+
   return {
     tasks,
     activeTasks,
     activeTasksThisMonth,
     activeTasksDiff,
-    activeTasksTrend
+    activeTasksTrend,
+    upcomingTasks
   };
 }

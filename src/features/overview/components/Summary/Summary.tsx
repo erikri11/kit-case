@@ -17,7 +17,6 @@ export interface SummaryProps {
 	icon: React.ElementType;
 	title: string;
 	trend: Trend;
-	
 	sx?: object;
 }
 
@@ -93,7 +92,11 @@ export function Summary({
 						>
 							{percentFormatter.format(diff / 100)}
 						</Typography>{" "}
-						{trend === "up" ? t('overview:increase') : t('overview:decrease')} {t('overview:vsLastMonth')}
+						{trend === "up" 
+							? t('overview:increase') 
+							: t('overview:decrease')
+						} 
+						{t('overview:vsLastMonth')}
 					</Typography>
 				</Stack>
 			</Box>

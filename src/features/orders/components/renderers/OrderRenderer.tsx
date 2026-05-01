@@ -54,7 +54,7 @@ export function OrderRenderer(params: ICellRendererParams<Order>) {
           justifyContent: "center",
           alignItems: "center",
           height: 40,
-          minWidth: 40
+          width: 40
         }}
       >
         <Typography variant="caption" sx={{ lineHeight: 1 }}>
@@ -67,7 +67,7 @@ export function OrderRenderer(params: ICellRendererParams<Order>) {
       </Stack>
 
       <Stack>
-        <Typography color="text.secondary" variant="body2">
+        <Typography variant="body2">
           <Box component="span">{orderNumber}</Box>
         </Typography>
 
