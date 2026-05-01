@@ -3,12 +3,12 @@ import type { Customer, CustomerCreate, CustomerUpdate } from "./customer.model"
 import { mockCustomers } from "./customer.mock";
 import type { CustomerDetails } from "./customer.details.model";
 import { customerDetailsMock } from "./customer.details.mock";
-import { generateCustomerNumber } from "../../utils/generateCustomerNumber";
 import { listOrders } from "../orders/order.service";
 import { listCustomerPaymentsByCustomerId } from "./customer.payment.service";
 import { Currency } from "../products/product.model";
-import { calculatePaymentStatsInBaseCurrency } from "../../utils/calculatePaymentStatsInBaseCurrency";
-import { calculateOrderSummaryInBaseCurrency } from "../../utils/calculateOrderSummaryInBaseCurrency";
+import { generateCustomerNumber } from "../../shared/utils/generateCustomerNumber";
+import { calculateOrderSummaryInBaseCurrency } from "../../shared/utils/calculateOrderSummaryInBaseCurrency";
+import { calculatePaymentStatsInBaseCurrency } from "../../shared/utils/calculatePaymentStatsInBaseCurrency";
 
 let customers: Customer[] = [...mockCustomers];
 let customerDetails: CustomerDetails[] = [...customerDetailsMock];

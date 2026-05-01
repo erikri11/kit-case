@@ -1,4 +1,5 @@
-import { generateTaskNumber } from "../../utils/generateTaskNumber";
+import { addDays } from "../../shared/utils/addDays";
+import { generateTaskNumber } from "../../shared/utils/generateTaskNumber";
 import { Task } from "./task.model";
 
 export const mockTasks: Task[] = [
@@ -9,7 +10,7 @@ export const mockTasks: Task[] = [
     description: "Call customer and verify setup",
     priority: "High",
     status: "Todo",
-    dueDate: new Date(),
+    dueDate: addDays(7),
     createdAt: new Date("2026-04-20T12:00:00")
   },
   {
@@ -18,7 +19,7 @@ export const mockTasks: Task[] = [
     description: "Check latest contract details",
     priority: "Medium",
     status: "InProgress",
-    dueDate: new Date(),
+    dueDate: addDays(5),
     createdAt: new Date("2026-04-18T12:00:00")
   },
   {
@@ -26,7 +27,7 @@ export const mockTasks: Task[] = [
     title: "Send welcome email",
     priority: "Low",
     status: "Done",
-    dueDate: new Date(),
+    dueDate: addDays(3),
     createdAt: new Date("2026-04-10T12:00:00")
   },
   {
@@ -35,7 +36,7 @@ export const mockTasks: Task[] = [
     description: "Resolve authentication issue",
     priority: "High",
     status: "Todo",
-    dueDate: new Date(),
+    dueDate: addDays(7),
     createdAt: new Date("2026-04-22T12:00:00")
   },
   {
@@ -43,7 +44,7 @@ export const mockTasks: Task[] = [
     title: "Update dashboard UI",
     priority: "Medium",
     status: "InProgress",
-    dueDate: new Date(),
+    dueDate: addDays(7),
     createdAt: new Date("2026-04-24T12:00:00")
   },
 
@@ -54,7 +55,7 @@ export const mockTasks: Task[] = [
     description: "Create demo environment and test data",
     priority: "High",
     status: "InProgress",
-    dueDate: new Date(),
+    dueDate: addDays(7),
     createdAt: new Date("2026-03-20T12:00:00")
   },
   {
@@ -63,7 +64,7 @@ export const mockTasks: Task[] = [
     description: "Add latest feature updates to docs",
     priority: "Low",
     status: "Todo",
-    dueDate: new Date(),
+    dueDate: addDays(5),
     createdAt: new Date("2026-03-15T12:00:00")
   },
   {
@@ -71,7 +72,7 @@ export const mockTasks: Task[] = [
     title: "Refactor API calls",
     priority: "Medium",
     status: "Done",
-    dueDate: new Date(),
+    dueDate: addDays(3),
     createdAt: new Date("2026-03-10T12:00:00")
   },
   {
@@ -79,7 +80,7 @@ export const mockTasks: Task[] = [
     title: "Customer feedback review",
     priority: "Low",
     status: "Todo",
-    dueDate: new Date(),
+    dueDate: addDays(3),
     createdAt: new Date("2026-03-12T12:00:00")
   },
 
@@ -89,7 +90,7 @@ export const mockTasks: Task[] = [
     title: "Initial project setup",
     priority: "High",
     status: "Done",
-    dueDate: new Date(),
+    dueDate: addDays(7),
     createdAt: new Date("2026-02-10T12:00:00")
   }
 ];

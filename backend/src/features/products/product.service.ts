@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 import { mockProducts } from "./product.mock";
 import { Currency, Product, ProductCategory, ProductCreate, ProductStatus, ProductType } from "./product.model";
-import { generateSku } from "../../utils/generateSku";
-import { generateProductNumber } from "../../utils/generateProductNumber";
+import { generateSku } from "../../shared/utils/generateSku";
+import { generateProductNumber } from "../../shared/utils/generateProductNumber";
 
 let products: Product[] = [...mockProducts];
 

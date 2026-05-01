@@ -2,11 +2,11 @@ import { v4 as uuidv4 } from "uuid";
 import type { Order, OrderCreate, OrderUpdate } from "./order.model";
 import type { OrderDetails } from "./order.details.model";
 import { mockOrders } from "./order.mock";
-import { generateOrderNumber } from "../../utils/generateOrderNumber";
+import { generateOrderNumber } from "../../shared/utils/generateOrderNumber";
 import { listCustomers } from "../customers/customer.service";
 import { createCustomerPayment, hasPaymentForInvoice, updatePaymentStatusByInvoice } from "../customers/customer.payment.service";
-import { convertToBaseCurrency } from "../../utils/convertToBaseCurrency";
 import { BASE_CURRENCY } from "../../shared/models/currency.constants";
+import { convertToBaseCurrency } from "../../shared/utils/convertToBaseCurrency";
 
 let orders: Order[] = [...mockOrders];
 

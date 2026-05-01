@@ -1,4 +1,4 @@
-import { CustomerPayment } from "../features/customers/customer.payment.model";
+import { CustomerPayment } from "../../features/customers/customer.payment.model";
 
 export interface PaymentSummary {
   totalOrders: number;

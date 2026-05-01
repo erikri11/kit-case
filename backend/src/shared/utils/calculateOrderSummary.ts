@@ -1,4 +1,4 @@
-import type { Order } from "../features/orders/order.model";
+import { Order } from "../../features/orders/order.model";
 
 export function calculateOrderSummary(orders: Order[]) {
   const totalOrders = orders.filter((order) => order.status === "Completed").length;

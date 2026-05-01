@@ -1,4 +1,4 @@
-import { Currency } from "../features/products/product.model";
+import { Currency } from "../../features/products/product.model";
 import { convertToBaseCurrency } from "./convertToBaseCurrency";
 
 interface PaymentLike {

@@ -1,4 +1,4 @@
-import type { CustomerPayment } from "../features/customers/customer.payment.model";
+import { CustomerPayment } from "../../features/customers/customer.payment.model";
 
 export function calculatePaymentStats(payments: CustomerPayment[]) {
   const refundsValue = payments
