@@ -13,7 +13,7 @@ import type { Trend } from "@features/overview/models/trend.type";
 export interface SummaryProps {
 	amount: number;
 	totalAmount?: number;
-	diff: number;
+	diff: number | null;
 	icon: React.ElementType;
 	title: string;
 	trend: Trend;
@@ -90,13 +90,11 @@ export function Summary({
 							component="span" 
 							variant="subtitle2"
 						>
-							{percentFormatter.format(diff / 100)}
+							{diff === null ? `+${amount}` : percentFormatter.format(diff / 100)}
 						</Typography>{" "}
-						{trend === "up" 
-							? t('overview:increase') 
-							: t('overview:decrease')
-						} 
-						{t('overview:vsLastMonth')}
+						{diff === null
+							? t("overview:vsLastMonth")
+							: `${trend === "up" ? t("overview:increase") : t("overview:decrease")} ${t("overview:vsLastMonth")}`}
 					</Typography>
 				</Stack>
 			</Box>

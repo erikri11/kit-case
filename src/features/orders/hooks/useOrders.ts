@@ -91,8 +91,8 @@ export function useOrders() {
     refundedThisMonth, refundedLastMonth
   );
 
-  const refundedTrend: Trend = 
-    refundedDiff >= 0 ? "up" : "down";
+  const refundedTrend: Trend =
+    refundedDiff === null || refundedDiff > 0 ? "down" : "up";
 
   const latestRefundedOrders = orders
     .filter(isRefunded)
