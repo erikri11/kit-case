@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import type { Order } from "@features/orders/models/model/order.model";
 import { getPreviewHeight } from "@shared/utils/getPreviewHeight";
 import { useTranslation } from "react-i18next";
+import { formatPrice } from "@shared/utils/formatPrice";
+import useCurrency from "@shared/context/currency/useCurrency";
+import type { Currency } from "@features/products/models/product.constants";
 
 interface RefundedOrdersPreviewProps {
   orders: Order[];
@@ -17,8 +20,10 @@ export function RefundedOrdersPreview({
 }: RefundedOrdersPreviewProps) {
 
   const navigate = useNavigate();
-  const { t } = useTranslation("overview");
-  
+  const { t, i18n } = useTranslation("overview");
+  const { currency: displayCurrency } = useCurrency();
+
+  const language = i18n.language;
   const ROW_COUNT = 3;
 
   return (
@@ -61,6 +66,8 @@ export function RefundedOrdersPreview({
               <OrderPreviewItem 
                 order={order} 
                 key={order.id} 
+                language={language}
+                displayCurrency={displayCurrency}
               />
             ))}
           </List>
@@ -83,10 +90,14 @@ export function RefundedOrdersPreview({
 
 interface OrderPreviewItemProps {
   order: Order;
+  language: string;
+  displayCurrency: Currency;
 }
 
 function OrderPreviewItem({ 
-  order
+  order,
+  language,
+  displayCurrency
 }: OrderPreviewItemProps) {
 
   return (
@@ -138,7 +149,12 @@ function OrderPreviewItem({
             variant="body2" 
             noWrap
           >
-            {order.totalAmount}
+            {formatPrice(
+              order.totalAmount,
+              order.currency ?? "USD",
+              displayCurrency,
+              language
+            )}
           </Typography>
         }
       />
