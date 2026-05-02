@@ -5,7 +5,7 @@ import { useProducts } from '@features/products/hooks/useProducts';
 
 export function ProductPage() {
   const { t } = useTranslation("products");
-  const products = useProducts();
+  const { products } = useProducts();
   
   return (
     <>

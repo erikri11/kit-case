@@ -106,7 +106,10 @@
     "viewAllOrders": "View all orders",
     "upcomingTasks": "Upcoming tasks",
     "latestRefundedOrders": "Latest refunded orders",
-    "noRefundedOrdersYet": "No refunded orders yet"
+    "noRefundedOrdersYet": "No refunded orders yet",
+    "latestProducts": "Latest products",
+    "noProductsYet": "No products yet",
+    "viewAllProducts": "View all products"
   },
   "actions": {
     "edit": "Edit",

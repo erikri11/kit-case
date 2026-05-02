@@ -106,7 +106,10 @@
     "viewAllOrders": "Vis alle bestillinger",
     "upcomingTasks": "Kommende oppgaver",
     "latestRefundedOrders": "Siste refunderte bestillinger",
-    "noRefundedOrdersYet": "Ingen refunderte bestillinger ennå"
+    "noRefundedOrdersYet": "Ingen refunderte bestillinger ennå",
+    "latestProducts": "Siste produkter",
+    "noProductsYet": "Ingen produkter ennå",
+    "viewAllProducts": "Vis alle produkter"
   },
   "actions": {
     "edit": "Rediger",

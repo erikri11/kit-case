@@ -94,7 +94,7 @@ export function useTasks() {
   );
 
   const activeTasksTrend: Trend =
-    activeTasksDiff >= 0 ? "up" : "down";
+    activeTasksDiff === null || activeTasksDiff >= 0 ? "up" : "down";
 
   const upcomingTasks = tasks
     .filter((task) => task.status !== "Done")

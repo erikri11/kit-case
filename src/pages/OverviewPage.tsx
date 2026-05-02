@@ -12,6 +12,8 @@ import { useTasks } from '@features/tasks/hooks/useTasks';
 import { useOrders } from '@features/orders/hooks/useOrders';
 import TasksPreview from '@features/overview/components/TasksPreview/TasksPreview';
 import { RefundedOrdersPreview } from '@features/overview/components/RefundedOrdersPreview/RefundedOrdersPreview';
+import ProductsPreview from '@features/overview/components/ProductsPreview/ProductsPreview';
+import { useProducts } from '@features/products/hooks/useProducts';
 
 export function OverviewPage() {
   const { t } = useTranslation("overview");
@@ -38,6 +40,10 @@ export function OverviewPage() {
     refundedTrend,
     latestRefundedOrders
   } = useOrders();
+
+  const {
+    latestActiveProducts
+  } = useProducts();
 
   return (
     <>
@@ -98,6 +104,12 @@ export function OverviewPage() {
         <Grid size={{xs: 12, lg: 6, xl: 4}}>
           <RefundedOrdersPreview 
             orders={latestRefundedOrders}
+          />
+        </Grid>
+
+        <Grid size={{xs: 12, lg: 6, xl: 4}}>
+          <ProductsPreview 
+            products={latestActiveProducts}
           />
         </Grid>
       </Grid>

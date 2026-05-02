@@ -4,6 +4,9 @@ import { productApi } from "../api/productApi";
 import { connectSocket, socket } from "@shared/socket/socket";
 import { EVENTS } from "@shared/models/constants/events.constants";
 
+const isActiveProducts = (product: Product) =>
+  product.status === "Published";
+
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
   
@@ -50,5 +53,13 @@ export function useProducts() {
     };
   }, []);
 
-  return products;
+    const latestActiveProducts = products
+      .filter(isActiveProducts)
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      .slice(0, 3);
+
+  return { 
+    products, 
+    latestActiveProducts 
+  };
 }
