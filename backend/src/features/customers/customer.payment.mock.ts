@@ -9,7 +9,7 @@ export const franPayments: CustomerPayment[] = [
     amount: 466.00,
     invoiceId: "INV-001",
     status: "Pending",
-    createdAt: new Date("2026-03-27T22:33:34.456Z")
+    createdAt: new Date("2026-03-27T12:00:00")
   },
   {
     id: "pay-006",
@@ -18,7 +18,7 @@ export const franPayments: CustomerPayment[] = [
     amount: 466.00,
     invoiceId: "INV-006",
     status: "Pending",
-    createdAt: new Date("2026-03-27T22:33:34.456Z")
+    createdAt: new Date("2026-03-27T12:00:00")
   },
   {
     id: "pay-007",
@@ -27,7 +27,7 @@ export const franPayments: CustomerPayment[] = [
     amount: 466.00,
     invoiceId: "INV-007",
     status: "Pending",
-    createdAt: new Date("2026-03-27T22:33:34.456Z")
+    createdAt: new Date("2026-03-27T12:00:00")
   }
 ];
 
@@ -39,7 +39,7 @@ export const penjaniPayments: CustomerPayment[] = [
     amount: 356.00,
     invoiceId: "INV-002",
     status: "Pending",
-    createdAt: new Date("2026-03-24T19:26:34.456Z"),
+    createdAt: new Date("2026-03-24T12:00:00"),
   }
 ];
 
@@ -51,7 +51,7 @@ export const carsonPayments: CustomerPayment[] = [
     amount: 155.00,
     invoiceId: "INV-003",
     status: "Pending",
-    createdAt: new Date("2026-03-27T22:33:34.456Z")
+    createdAt: new Date("2026-03-27T12:00:00")
   }
 ];
 
@@ -63,7 +63,7 @@ export const siegbertPayments: CustomerPayment[] = [
     amount: 390.00,
     invoiceId: "INV-004",
     status: "Pending",
-    createdAt: new Date("2026-03-27T22:33:34.456Z")
+    createdAt: new Date("2026-03-27T12:00:00")
   }
 ];
 
@@ -75,6 +75,6 @@ export const mironPayments: CustomerPayment[] = [
     amount: 490.00,
     invoiceId: "INV-005",
     status: "Pending",
-    createdAt: new Date("2026-03-27T22:33:34.456Z")
+    createdAt: new Date("2026-03-27T12:00:00")
   }
 ];
