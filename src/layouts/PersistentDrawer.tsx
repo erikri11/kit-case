@@ -1,7 +1,7 @@
 import { Box, Drawer} from '@mui/material';
-import { DRAWER_WIDTH } from '../shared/models/constants/drawerWidth.constants';
 import type { MenuItem } from '@shared/models/model/menu.model';
 import { PersistentDrawerContent } from './PersistentDrawerContent';
+import { DRAWER_WIDTH } from '@shared/models/constants/layout.constants';
 
 export interface PersistentDrawerProps {
   mobileOpen: boolean;

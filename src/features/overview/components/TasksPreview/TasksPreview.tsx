@@ -5,6 +5,8 @@ import dayjs from "dayjs";
 import type { Task } from "@features/tasks/models/task.model";
 import { blue } from '@mui/material/colors';
 import { useNavigate } from "react-router-dom";
+import { getPreviewHeight } from "@shared/utils/getPreviewHeight";
+import { useTranslation } from "react-i18next";
 
 interface TasksPreviewProps {
   tasks: Task[];
@@ -15,6 +17,9 @@ export function TasksPreview({
 }: TasksPreviewProps) {
 
   const navigate = useNavigate();
+  const { t } = useTranslation("overview");
+  
+  const ROW_COUNT = 3;
 
   return (
 		<Card variant="outlined">
@@ -30,10 +35,13 @@ export function TasksPreview({
 						<CalendarTodayIcon />
 					</Avatar>
 				}
-        title="Upcoming tasks"
+        title={t("common:labels.upcomingTasks")}
 				subheader={new Date().toLocaleDateString()}
 			/>
-			<CardContent sx={{ py: "8px" }}>
+			<CardContent sx={{ 
+        py: "8px", 
+        height: getPreviewHeight(ROW_COUNT) }}
+      >
 				<List disablePadding>
 					{tasks.map((task) => (
 						<TaskPreviewItem task={task} key={task.id} />
@@ -48,7 +56,7 @@ export function TasksPreview({
           endIcon={<ArrowForwardIcon />} 
           onClick={() => navigate("/admin/tasks")}
         >
-					View all tasks
+					{t("common:labels.viewAllTasks")}
 				</Button>
 			</CardActions>
 		</Card>

@@ -94,11 +94,17 @@ export function useOrders() {
   const refundedTrend: Trend = 
     refundedDiff >= 0 ? "up" : "down";
 
+  const latestRefundedOrders = orders
+    .filter(isRefunded)
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .slice(0, 3);
+
   return { 
     orders, 
     refundedOrders,
     refundedThisMonth,
     refundedDiff,
-    refundedTrend
+    refundedTrend,
+    latestRefundedOrders
   };
 }

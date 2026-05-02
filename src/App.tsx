@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { Box, Container, Toolbar } from "@mui/material";
-
-import { DRAWER_WIDTH } from '@shared/models/constants/drawerWidth.constants';
 import AppHeader from '@widgets/AppHeader/AppHeader';
 import AppFooter from '@widgets/AppFooter';
 import { PersistentDrawer } from '@layouts/PersistentDrawer';
 import { AppRoutes } from './app/routes/router';
 import { useLocation } from 'react-router-dom';
 import { menuItems } from '@app/config/menuConfig';
+import { DRAWER_WIDTH } from '@shared/models/constants/layout.constants';
 
 export function App() {
  const [mobileOpen, setMobileOpen] = useState(false);

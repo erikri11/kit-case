@@ -101,7 +101,12 @@
     "confirmRestore": "Bekreft gjenoppretting",
     "confirmRestoreMessage": "Er du sikker på at du vil gjenopprette dette elementet?",
     "accountSettings": "Kontoinnstillinger",
-    "logout": "Logg ut"
+    "logout": "Logg ut",
+    "viewAllTasks": "Vis alle oppgaver",
+    "viewAllOrders": "Vis alle bestillinger",
+    "upcomingTasks": "Kommende oppgaver",
+    "latestRefundedOrders": "Siste refunderte bestillinger",
+    "noRefundedOrdersYet": "Ingen refunderte bestillinger ennå"
   },
   "actions": {
     "edit": "Rediger",
