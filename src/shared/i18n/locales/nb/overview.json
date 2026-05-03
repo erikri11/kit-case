@@ -14,5 +14,9 @@
   },
   "increase": "økning",
   "decrease": "nedgang",
-  "vsLastMonth": " sammenlignet med forrige måned"
+  "vsLastMonth": "fra forrige måned",
+  "status": {
+      "Active": "Aktiv",
+      "Blocked": "Blokkert"
+  }
 }

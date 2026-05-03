@@ -95,19 +95,19 @@ export function OverviewPage() {
       />
       
       <Grid container spacing={4}>
-        <Grid size={{xs: 12, lg: 6, xl: 4}}>
+        <Grid size={{xs: 12, md: 6, lg: 4}}>
           <TasksPreview 
             tasks={upcomingTasks}
           />
         </Grid>
 
-        <Grid size={{xs: 12, lg: 6, xl: 4}}>
+        <Grid size={{xs: 12, md: 6, lg: 4}}>
           <RefundedOrdersPreview 
             orders={latestRefundedOrders}
           />
         </Grid>
 
-        <Grid size={{xs: 12, lg: 6, xl: 4}}>
+        <Grid size={{xs: 12, md: 6, lg: 4}}>
           <ProductsPreview 
             products={latestActiveProducts}
           />
