@@ -1,7 +1,7 @@
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Divider, List, ListItem, ListItemText, Stack, Typography } from "@mui/material";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TrolleyIcon from '@mui/icons-material/Trolley';
-import { blue } from '@mui/material/colors';
+import { purple } from '@mui/material/colors';
 import { useNavigate } from "react-router-dom";
 import { getPreviewHeight } from "@shared/utils/getPreviewHeight";
 import { useTranslation } from "react-i18next";
@@ -26,9 +26,9 @@ export function ProductsPreview({
         avatar={
           <Avatar 
           sx={{
-              bgcolor: blue[300],
+              bgcolor: purple[300],
               border: "2px solid",
-              borderColor: blue[500]
+              borderColor: purple[500]
             }}
           >
             <TrolleyIcon />
