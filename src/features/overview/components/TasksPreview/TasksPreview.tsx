@@ -42,11 +42,26 @@ export function TasksPreview({
         py: "8px", 
         height: getPreviewHeight(ROW_COUNT) }}
       >
-				<List disablePadding>
-					{tasks.map((task) => (
-						<TaskPreviewItem task={task} key={task.id} />
-					))}
-				</List>
+				{tasks.length === 0 ? (
+          <Stack
+            sx={{
+              height: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <CalendarTodayIcon color="disabled" />
+            <Typography variant="body2" color="text.secondary">
+              {t("common:labels.noUpcomingTasksYet")}
+            </Typography>
+          </Stack>
+        ) : (
+          <List disablePadding>
+            {tasks.map((task) => (
+              <TaskPreviewItem task={task} key={task.id} />
+            ))}
+				  </List>
+        )}
 			</CardContent>
 			<Divider />
 			<CardActions sx={{ justifyContent: "flex-end" }}>

@@ -109,7 +109,8 @@
     "noRefundedOrdersYet": "Ingen refunderte bestillinger ennå",
     "latestProducts": "Siste produkter",
     "noProductsYet": "Ingen produkter ennå",
-    "viewAllProducts": "Vis alle produkter"
+    "viewAllProducts": "Vis alle produkter",
+    "noUpcomingTasksYet": "Ingen kommende oppgaver ennå"
   },
   "actions": {
     "edit": "Rediger",

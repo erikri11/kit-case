@@ -80,8 +80,10 @@ export function useCustomers() {
     customersThisMonth, customersLastMonth
   );
 
-  const customerTrend: Trend = 
-    customerDiff >= 0 ? "up" : "down";
+  const customerTrend: Trend =
+  (customerDiff ?? 0) >= 0
+    ? "up"
+    : "down";
 
   return {
     customers,

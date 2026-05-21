@@ -109,7 +109,8 @@
     "noRefundedOrdersYet": "No refunded orders yet",
     "latestProducts": "Latest products",
     "noProductsYet": "No products yet",
-    "viewAllProducts": "View all products"
+    "viewAllProducts": "View all products",
+    "noUpcomingTasksYet": "No upcoming tasks yet"
   },
   "actions": {
     "edit": "Edit",

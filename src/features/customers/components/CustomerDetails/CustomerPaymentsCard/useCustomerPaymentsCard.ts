@@ -16,10 +16,11 @@ export function useCustomerPaymentsCard({
 
   const paymentSummary = customer.paymentSummary;
   const language = i18n.language;
-  const totalOrders = customer.orders.length;
+  const totalOrders = customer.orders.filter(
+    (order) => order.status !== "Pending"
+  ).length;
 
-  const ordersNetBase =
-    paymentSummary.ordersValueBase - paymentSummary.refundsValueBase;
+  const ordersNetBase = paymentSummary.ordersValueBase;
 
   const statusCounts = customer.orders.reduce((acc, order) => {
     acc[order.status] = (acc[order.status] || 0) + 1;
@@ -27,12 +28,12 @@ export function useCustomerPaymentsCard({
   }, {} as Record<string, number>);
 
   const statusText = Object.entries(statusCounts)
-    .filter(([status]) => status !== "Completed")
+    .filter(([status]) => status === "Pending")
     .map(([status, count]) => `${count} ${t(`orders:status.${status}`)}`)
     .join(", ");
 
   const ordersLabel = statusText
-    ? `${totalOrders} (${statusText})`
+    ? `${totalOrders} (+${statusText})`
     : `${totalOrders}`;
 
   const formattedOrdersNet = formatPrice(
