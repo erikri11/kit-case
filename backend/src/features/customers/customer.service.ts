@@ -3,8 +3,6 @@ import type { Customer, CustomerCreate, CustomerUpdate } from "./customer.model"
 import { mockCustomers } from "./customer.mock";
 import type { CustomerDetails } from "./customer.details.model";
 import { customerDetailsMock } from "./customer.details.mock";
-import { listOrders } from "../orders/order.service";
-import { listCustomerPaymentsByCustomerId } from "./customer.payment.service";
 import { Currency } from "../products/product.model";
 import { generateCustomerNumber } from "../../shared/utils/generateCustomerNumber";
 import { calculateOrderSummaryInBaseCurrency } from "../../shared/utils/calculateOrderSummaryInBaseCurrency";
@@ -22,8 +20,15 @@ export function getCustomer(id: string): CustomerDetails | null {
 
   if (!customer) return null;
 
-  const customerOrders = listOrders().filter((order) => order.customerId === id);
-  const customerPayments = listCustomerPaymentsByCustomerId(id);
+  const customerOrders = customer.orders.map((order) => ({
+    ...order,
+    currency: order.currency as Currency,
+  }));
+
+  const customerPayments = customer.payments.map((payment) => ({
+    ...payment,
+    currency: payment.currency as Currency,
+  }));
 
   const baseCurrency: Currency = "NOK";
 

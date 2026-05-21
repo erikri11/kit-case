@@ -7,8 +7,8 @@ export const franPayments: CustomerPayment[] = [
     customerId: customerIds.fran,
     currency: "USD",
     amount: 466.00,
-    invoiceId: "INV-001",
-    status: "Pending",
+    invoiceId: "ORD-1001",
+    status: "Completed",
     createdAt: new Date("2026-03-27T12:00:00")
   },
   {
@@ -16,8 +16,8 @@ export const franPayments: CustomerPayment[] = [
     customerId: customerIds.fran,
     currency: "USD",
     amount: 466.00,
-    invoiceId: "INV-006",
-    status: "Pending",
+    invoiceId: "ORD-1006",
+    status: "Completed",
     createdAt: new Date("2026-03-27T12:00:00")
   },
   {
@@ -25,8 +25,8 @@ export const franPayments: CustomerPayment[] = [
     customerId: customerIds.fran,
     currency: "USD",
     amount: 466.00,
-    invoiceId: "INV-007",
-    status: "Pending",
+    invoiceId: "ORD-1007",
+    status: "Completed",
     createdAt: new Date("2026-03-27T12:00:00")
   }
 ];
@@ -37,8 +37,8 @@ export const penjaniPayments: CustomerPayment[] = [
     customerId: customerIds.penjani,
     currency: "USD",
     amount: 356.00,
-    invoiceId: "INV-002",
-    status: "Pending",
+    invoiceId: "ORD-1002",
+    status: "Completed",
     createdAt: new Date("2026-03-24T12:00:00"),
   }
 ];
@@ -49,8 +49,8 @@ export const carsonPayments: CustomerPayment[] = [
     customerId: customerIds.carson,
     currency: "USD",
     amount: 155.00,
-    invoiceId: "INV-003",
-    status: "Pending",
+    invoiceId: "ORD-1003",
+    status: "Completed",
     createdAt: new Date("2026-03-27T12:00:00")
   }
 ];
@@ -61,8 +61,8 @@ export const siegbertPayments: CustomerPayment[] = [
     customerId: customerIds.siegbert,
     currency: "USD",
     amount: 390.00,
-    invoiceId: "INV-004",
-    status: "Pending",
+    invoiceId: "ORD-1004",
+    status: "Completed",
     createdAt: new Date("2026-03-27T12:00:00")
   }
 ];
@@ -73,8 +73,8 @@ export const mironPayments: CustomerPayment[] = [
     customerId: customerIds.miron,
     currency: "USD",
     amount: 490.00,
-    invoiceId: "INV-005",
-    status: "Pending",
+    invoiceId: "ORD-1005",
+    status: "Completed",
     createdAt: new Date("2026-03-27T12:00:00")
   }
 ];

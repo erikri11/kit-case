@@ -4,15 +4,21 @@ import { convertToBaseCurrency } from "./convertToBaseCurrency";
 interface OrderLike {
   totalAmount: number;
   currency: Currency;
+  status: string;
 }
 
 export function calculateOrderSummaryInBaseCurrency(
   orders: OrderLike[],
   baseCurrency: Currency = "NOK"
 ) {
-  const totalOrders = orders.length;
+  
+  const completedOrders = orders.filter(
+    (order) => order.status === "Completed"
+  );
+  
+  const totalOrders = completedOrders.length;
 
-  const ordersValueBase = orders.reduce((sum, order) => {
+  const ordersValueBase = completedOrders.reduce((sum, order) => {
     return sum + convertToBaseCurrency(order.totalAmount, order.currency, baseCurrency);
   }, 0);
 
